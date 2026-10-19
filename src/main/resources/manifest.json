@@ -1,0 +1,22 @@
+{
+    "Group": "Ratnaraj",
+    "Name": "Herbarium",
+    "Version": "1.0.0",
+    "Description": "Discover and collect all Hytale plants!",
+    "Authors": [
+        {
+            "Name": "Ratnaraj"
+        }
+    ],
+    "Website": "",
+    "ServerVersion": "2026.02.17-255364b8e",
+    "Dependencies": {
+        
+    },
+    "OptionalDependencies": {
+        
+    },
+    "DisabledByDefault": false,
+    "Main": "com.ratnaraj.herbarium.Herbarium",
+    "IncludesAssetPack": true
+}
