@@ -1,0 +1,2693 @@
+{
+  "Bramble": [
+    {
+      "id": "Plant_Leaves_Bramble",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Howling_Sands", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Bush_Bramble",
+      "obtainableInExplorationMode": true,
+      "locations": []
+    }
+  ],
+  "Bush": [
+    {
+      "id": "Plant_Bush",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier1", "server.map.region.Zone1_Tier2"]
+    },
+    {
+      "id": "Plant_Bush_Arid",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier1"]
+    },
+    {
+      "id": "Plant_Bush_Arid_Palm",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Bush_Arid_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier2"]
+    },
+    {
+      "id": "Plant_Bush_Arid_Sharp",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier1"]
+    },
+    {
+      "id": "Plant_Bush_Crystal",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Devastated_Lands"]
+    },
+    {
+      "id": "Plant_Bush_Dead",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone4_Tier4"]
+    },
+    {
+      "id": "Plant_Bush_Dead_Hanging",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Devastated_Lands", "server.herbarium.location.outlander_sites"]
+    },
+    {
+      "id": "Plant_Bush_Dead_Tall",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Devastated_Lands"]
+    },
+    {
+      "id": "Plant_Bush_Dead_Twisted",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone4_Tier4"]
+    },
+    {
+      "id": "Plant_Bush_Green",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier1"]
+    },
+    {
+      "id": "Plant_Bush_Hanging",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone3_Tier2", "server.portals.boreal"]
+    },
+    {
+      "id": "Plant_Bush_Jungle",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier1", "server.map.region.Zone4_Tier4"]
+    },
+    {
+      "id": "Plant_Bush_Lush",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier1", "server.map.region.Zone1_Tier2"]
+    },
+    {
+      "id": "Plant_Bush_Wet",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Bush_Winter",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3"]
+    },
+    {
+      "id": "Plant_Bush_Winter_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Whisperfrost_Frontiers"]
+    },
+    {
+      "id": "Plant_Bush_Winter_Sharp",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone3_Tier2"]
+    },
+    {
+      "id": "Plant_Bush_Winter_Snow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Whisperfrost_Frontiers"]
+    },
+    {
+      "id": "Plant_Crop_Berry_Block",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier1", "server.map.region.Zone1_Tier2"]
+    },
+    {
+      "id": "Plant_Crop_Berry_Wet_Block",
+      "obtainableInExplorationMode": true,
+      "locations": []
+    },
+    {
+      "id": "Plant_Crop_Berry_Winter_Block",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone3_Tier1", "server.map.region.Zone3_Tier2", "server.map.region.Zone3_Tier3", "server.map.region.Zone4_Tier4"]
+    }
+  ],
+  "Cactus": [
+    {
+      "id": "Plant_Cactus_1",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Howling_Sands"]
+    },
+    {
+      "id": "Plant_Cactus_2",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Howling_Sands"]
+    },
+    {
+      "id": "Plant_Cactus_3",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Howling_Sands"]
+    },
+    {
+      "id": "Plant_Cactus_Ball_1",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Howling_Sands"]
+    },
+    {
+      "id": "Plant_Cactus_Flat_1",
+      "obtainableInExplorationMode": false,
+      "locations": ["server.map.zone.Howling_Sands"]
+    },
+    {
+      "id": "Plant_Cactus_Flat_2",
+      "obtainableInExplorationMode": false,
+      "locations": ["server.map.zone.Howling_Sands"]
+    },
+    {
+      "id": "Plant_Cactus_Flat_3",
+      "obtainableInExplorationMode": false,
+      "locations": ["server.map.zone.Howling_Sands"]
+    },
+    {
+      "id": "Plant_Cactus_Flower",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Howling_Sands"]
+    }
+  ],
+  "Coral": [
+    {
+      "id": "Plant_Coral_Block_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Block_Cyan",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Block_Dead",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Block_Dead2",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Block_Dead2_Half",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Block_Dead_Half",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Block_Green",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Block_Grey",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Block_Lime",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Block_Orange",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Block_Pink",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Block_Poison",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Devastated_Lands", "server.herbarium.location.sewers"]
+    },
+    {
+      "id": "Plant_Coral_Block_Purple",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Block_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Block_Violet",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Block_White",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Block_Yellow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Bush_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Coral_Bush_Cyan",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Bush_Dead",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Bush_Dead2",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Bush_Dead3",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Bush_Green",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Bush_Grey",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Bush_Lime",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Bush_Orange",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Bush_Pink",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Bush_Poisoned",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Devastated_Lands", "server.herbarium.location.sewers"]
+    },
+    {
+      "id": "Plant_Coral_Bush_Purple",
+      "obtainableInExplorationMode": true,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Bush_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Bush_Violet",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Bush_White",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Bush_Yellow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Giant_Dead",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Giant_Dead2",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Model_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Model_Cyan",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Model_Dead",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Model_Dead2",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Model_Dead3",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Model_Dead4",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Model_Dead5",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Model_Dead6",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Model_Dead7",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Model_Green",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Model_Grey",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Model_Lime",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Coral_Model_Orange",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Model_Pink",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Model_Purple",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Model_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Coral_Model_Violet",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Model_White",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Coral_Model_Yellow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    }
+  ],
+  "Crop": [
+    {
+      "id": "Plant_Crop_Aubergine_Item",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone3_Tier1", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Carrot_Item",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Emerald_Wilds", "server.herbarium.location.trork_camps", "server.herbarium.location.kweebec_villages", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Cauliflower_Item",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone3_Tier2", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Chilli_Item",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier1", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Corn_Item",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier2", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Cotton_Item",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier1", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Health1",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Emerald_Wilds", "server.map.zone.Howling_Sands", "server.map.zone.Devastated_Lands", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Health2",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.map.zone.Howling_Sands", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Health3",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.map.zone.Howling_Sands", "server.map.region.Zone3_Tier1", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Lettuce_Item",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.hidey_holes", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Mana1",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Howling_Sands", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Mana2",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier2", "server.herbarium.location.goblin_realm", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Mana3",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.map.zone.Howling_Sands", "server.map.zone.Whisperfrost_Frontiers", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Onion_Item",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier1", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Potato_Item",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Pumpkin_Item",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.herbarium.location.kweebec_villages", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Rice_Item",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Stamina1",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Emerald_Wilds", "server.map.zone.Howling_Sands", "server.map.zone.Whisperfrost_Frontiers", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Stamina2",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Emerald_Wilds", "server.map.zone.Howling_Sands", "server.map.zone.Whisperfrost_Frontiers", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Stamina3",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Emerald_Wilds", "server.map.zone.Howling_Sands", "server.map.zone.Whisperfrost_Frontiers", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Tomato_Item",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier1", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Turnip_Item",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone3_Tier1", "server.herbarium.location.cultivated"]
+    },
+    {
+      "id": "Plant_Crop_Wheat_Item",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Emerald_Wilds", "server.map.region.Zone2_Tier3", "server.map.region.Zone3_Tier2", "server.herbarium.location.cultivated"]
+    }
+  ],
+  "Fern": [
+    {
+      "id": "Plant_Fern",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Fern_Arid",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Howling_Sands", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Fern_Forest",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Whisperfrost_Frontiers"]
+    },
+    {
+      "id": "Plant_Fern_Giant",
+      "obtainableInExplorationMode": false,
+      "locations": ["server.map.region.Zone1_Tier2"]
+    },
+    {
+      "id": "Plant_Fern_Jungle",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Fern_Jungle_Trunk",
+      "obtainableInExplorationMode": false,
+      "locations": ["server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Fern_Tall",
+      "obtainableInExplorationMode": false,
+      "locations": ["server.portals.jungles"]
+    },
+    {
+      "id": "Plant_Fern_Trunk",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Fern_Wet",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Fern_Wet_Big",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Fern_Wet_Giant",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Fern_Wet_Giant_Trunk",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Fern_Winter",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Whisperfrost_Frontiers"]
+    }
+  ],
+  "Flower": [
+    {
+      "id": "Plant_Flower_Bushy_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Whisperfrost_Frontiers"]
+    },
+    {
+      "id": "Plant_Flower_Bushy_Cyan",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle", "server.herbarium.location.caves", "server.herbarium.location.mage_towers"]
+    },
+    {
+      "id": "Plant_Flower_Bushy_Green",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier3", "server.herbarium.location.oasis"]
+    },
+    {
+      "id": "Plant_Flower_Bushy_Grey",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Devastated_Lands"]
+    },
+    {
+      "id": "Plant_Flower_Bushy_Orange",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Flower_Bushy_Poisoned",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Devastated_Lands", "server.herbarium.location.firelands_temple", "server.herbarium.location.oasis", "server.herbarium.location.outlander_sites"]
+    },
+    {
+      "id": "Plant_Flower_Bushy_Purple",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Devastated_Lands", "server.herbarium.location.firelands_temple"]
+    },
+    {
+      "id": "Plant_Flower_Bushy_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Devastated_Lands"]
+    },
+    {
+      "id": "Plant_Flower_Bushy_Violet",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Flower_Bushy_White",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Whisperfrost_Frontiers"]
+    },
+    {
+      "id": "Plant_Flower_Bushy_Yellow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier2"]
+    },
+    {
+      "id": "Plant_Flower_Common_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Howling_Sands"]
+    },
+    {
+      "id": "Plant_Flower_Common_Blue2",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier3"]
+    },
+    {
+      "id": "Plant_Flower_Common_Cyan",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier3"]
+    },
+    {
+      "id": "Plant_Flower_Common_Cyan2",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone3_Tier1"]
+    },
+    {
+      "id": "Plant_Flower_Common_Grey",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Flower_Common_Grey2",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier3", "server.herbarium.location.oasis"]
+    },
+    {
+      "id": "Plant_Flower_Common_Lime",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Flower_Common_Lime2",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Howling_Sands", "server.herbarium.location.howling_sands_ruins"]
+    },
+    {
+      "id": "Plant_Flower_Common_Orange",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier2", "server.map.region.Zone3_Tier1"]
+    },
+    {
+      "id": "Plant_Flower_Common_Orange2",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Flower_Common_Pink",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Flower_Common_Pink2",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier2"]
+    },
+    {
+      "id": "Plant_Flower_Common_Poisoned",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier3", "server.herbarium.location.oasis"]
+    },
+    {
+      "id": "Plant_Flower_Common_Poisoned2",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Flower_Common_Purple",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier1"]
+    },
+    {
+      "id": "Plant_Flower_Common_Purple2",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Devastated_Lands", "server.herbarium.location.devastated_ruins"]
+    },
+    {
+      "id": "Plant_Flower_Common_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier3", "server.herbarium.location.oasis"]
+    },
+    {
+      "id": "Plant_Flower_Common_Red2",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier1"]
+    },
+    {
+      "id": "Plant_Flower_Common_Violet",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier1", "server.map.region.Zone2_Tier1"]
+    },
+    {
+      "id": "Plant_Flower_Common_Violet2",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Flower_Common_White",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Howling_Sands", "server.map.region.Zone3_Tier1"]
+    },
+    {
+      "id": "Plant_Flower_Common_White2",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier1", "server.map.region.Zone1_Tier2"]
+    },
+    {
+      "id": "Plant_Flower_Common_Yellow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier2", "server.map.region.Zone3_Tier1"]
+    },
+    {
+      "id": "Plant_Flower_Common_Yellow2",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier1", "server.map.region.Zone1_Tier2"]
+    },
+    {
+      "id": "Plant_Flower_Flax_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier2"]
+    },
+    {
+      "id": "Plant_Flower_Flax_Orange",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Howling_Sands"]
+    },
+    {
+      "id": "Plant_Flower_Flax_Pink",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier2", "server.map.region.Zone2_Tier3", "server.herbarium.location.oasis"]
+    },
+    {
+      "id": "Plant_Flower_Flax_Purple",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier2", "server.map.region.Zone2_Tier3", "server.herbarium.location.mage_towers"]
+    },
+    {
+      "id": "Plant_Flower_Flax_White",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Flower_Flax_Yellow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.mage_towers"]
+    },
+    {
+      "id": "Plant_Flower_Hemlock",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.labyrinths"]
+    },
+    {
+      "id": "Plant_Flower_Orchid_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier1", "server.map.zone.Whisperfrost_Frontiers", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Flower_Orchid_Cyan",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Flower_Orchid_Orange",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Devastated_Lands"]
+    },
+    {
+      "id": "Plant_Flower_Orchid_Pink",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Flower_Orchid_Poisoned",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.herbarium.location.outlander_sites"]
+    },
+    {
+      "id": "Plant_Flower_Orchid_Purple",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier1", "server.herbarium.location.caves", "server.herbarium.location.oasis", "server.herbarium.location.devastated_ruins"]
+    },
+    {
+      "id": "Plant_Flower_Orchid_Red",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Flower_Orchid_White",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Flower_Orchid_Yellow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier2", "server.map.region.Zone2_Tier1", "server.herbarium.location.caves", "server.herbarium.location.mage_towers"]
+    },
+    {
+      "id": "Plant_Flower_Poisoned_Orange",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.devastated_ruins", "server.portals.goblinBreach"]
+    },
+    {
+      "id": "Plant_Flower_Tall_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.kweebec_villages", "server.herbarium.location.mage_towers", "server.portals.oasis"]
+    },
+    {
+      "id": "Plant_Flower_Tall_Cyan",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Flower_Tall_Cyan2",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Flower_Tall_Pink",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Flower_Tall_Purple",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier1", "server.map.zone.Howling_Sands", "server.herbarium.location.oasis", "server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Flower_Tall_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Flower_Tall_Violet",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Flower_Tall_Yellow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Emerald_Wilds"]
+    },
+    {
+      "id": "Plant_Flower_Water_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.ruined_temples", "server.herbarium.location.slothian_villages"]
+    },
+    {
+      "id": "Plant_Flower_Water_Duckweed",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier1", "server.items.Tool_Fishing_Trap.name"]
+    },
+    {
+      "id": "Plant_Flower_Water_Green",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone3_Tier2", "server.map.zone.Emerald_Wilds"]
+    },
+    {
+      "id": "Plant_Flower_Water_Purple",
+      "obtainableInExplorationMode": true,
+      "locations": []
+    },
+    {
+      "id": "Plant_Flower_Water_Red",
+      "obtainableInExplorationMode": true,
+      "locations": []
+    },
+    {
+      "id": "Plant_Flower_Water_White",
+      "obtainableInExplorationMode": true,
+      "locations": []
+    }
+  ],
+  "Fruit": [
+    {
+      "id": "Plant_Fruit_Apple",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.caves", "server.herbarium.tree.apple", "server.map.zone.Emerald_Wilds", "server.map.region.ForgottenTemple"]
+    },
+    {
+      "id": "Plant_Fruit_Azure",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3"]
+    },
+    {
+      "id": "Plant_Fruit_Berries_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Emerald_Wilds", "server.map.zone.Whisperfrost_Frontiers"]
+    },
+    {
+      "id": "Plant_Fruit_Coconut",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Howling_Sands"]
+    },
+    {
+      "id": "Plant_Fruit_Mango",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Fruit_Pinkberry",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Fruit_Poison",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone4_Tier4", "server.portals.hederas_lair"]
+    },
+    {
+      "id": "Plant_Fruit_Spiral",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Whisperfrost_Frontiers", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Fruit_Windwillow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier3"]
+    }
+  ],
+  "Grass": [
+    {
+      "id": "Plant_Grass_Arid",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier1"]
+    },
+    {
+      "id": "Plant_Grass_Arid_Short",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier1"]
+    },
+    {
+      "id": "Plant_Grass_Arid_Tall",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone2_Tier1"]
+    },
+    {
+      "id": "Plant_Grass_Cave_Short",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Emerald_Wilds", "server.herbarium.location.caves", "server.map.zone.Devastated_Lands"]
+    },
+    {
+      "id": "Plant_Grass_Dry",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Howling_Sands"]
+    },
+    {
+      "id": "Plant_Grass_Dry_Tall",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Howling_Sands"]
+    },
+    {
+      "id": "Plant_Grass_Gnarled",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Devastated_Lands"]
+    },
+    {
+      "id": "Plant_Grass_Gnarled_Short",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Devastated_Lands"]
+    },
+    {
+      "id": "Plant_Grass_Gnarled_Tall",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Devastated_Lands"]
+    },
+    {
+      "id": "Plant_Grass_Jungle",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Grass_Jungle_Short",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Grass_Jungle_Tall",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Grass_Lush",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier1", "server.map.region.Zone1_Tier2"]
+    },
+    {
+      "id": "Plant_Grass_Lush_Short",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier1", "server.map.region.Zone1_Tier2"]
+    },
+    {
+      "id": "Plant_Grass_Lush_Tall",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier1", "server.map.region.Zone1_Tier2"]
+    },
+    {
+      "id": "Plant_Grass_Poisoned",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.oasis"]
+    },
+    {
+      "id": "Plant_Grass_Poisoned_Short",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.oasis"]
+    },
+    {
+      "id": "Plant_Grass_Rocky",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Emerald_Wilds", "server.herbarium.location.dungeons"]
+    },
+    {
+      "id": "Plant_Grass_Rocky_Short",
+      "obtainableInExplorationMode": true,
+      "locations": []
+    },
+    {
+      "id": "Plant_Grass_Rocky_Tall",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Grass_Sharp",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier1"]
+    },
+    {
+      "id": "Plant_Grass_Sharp_Overgrown",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Emerald_Wilds"]
+    },
+    {
+      "id": "Plant_Grass_Sharp_Short",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier1"]
+    },
+    {
+      "id": "Plant_Grass_Sharp_Tall",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Whisperfrost_Frontiers"]
+    },
+    {
+      "id": "Plant_Grass_Sharp_Wild",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier1"]
+    },
+    {
+      "id": "Plant_Grass_Snowy",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Whisperfrost_Frontiers", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Grass_Snowy_Short",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Whisperfrost_Frontiers", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Grass_Snowy_Tall",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Grass_Wet",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Grass_Wet_Overgrown",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Grass_Wet_Short",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Grass_Wet_Tall",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Grass_Wet_Wild",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Grass_Winter",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Whisperfrost_Frontiers"]
+    },
+    {
+      "id": "Plant_Grass_Winter_Short",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Whisperfrost_Frontiers"]
+    },
+    {
+      "id": "Plant_Grass_Winter_Tall",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Whisperfrost_Frontiers"]
+    }
+  ],
+  "Leaves": [
+    {
+      "id": "Plant_Leaves_Amber",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.amber"]
+    },
+    {
+      "id": "Plant_Leaves_Apple",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.apple"]
+    },
+    {
+      "id": "Plant_Leaves_Ash",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.ash", "server.map.region.Zone1_Tier1", "server.map.region.Zone1_Tier3"]
+    },
+    {
+      "id": "Plant_Leaves_Aspen",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.aspen", "server.map.region.Zone1_Tier2"]
+    },
+    {
+      "id": "Plant_Leaves_Autumn",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.autumn", "server.map.region.Zone1_Tier3"]
+    },
+    {
+      "id": "Plant_Leaves_Autumn_Floor",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3"]
+    },
+    {
+      "id": "Plant_Leaves_Azure",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.azure", "server.map.region.Zone1_Tier3"]
+    },
+    {
+      "id": "Plant_Leaves_Bamboo",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.bamboo", "server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Leaves_Banyan",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.banyan", "server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Leaves_Beech",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.beech", "server.map.region.Zone1_Tier1", "server.map.region.Zone1_Tier2"]
+    },
+    {
+      "id": "Plant_Leaves_Birch",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.birch", "server.map.region.Zone1_Tier2"]
+    },
+    {
+      "id": "Plant_Leaves_Bottle",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.bottletree", "server.herbarium.tree.gumboab", "server.map.region.Zone2_Tier1"]
+    },
+    {
+      "id": "Plant_Leaves_Burnt",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.burnt", "server.map.zone.Devastated_Lands"]
+    },
+    {
+      "id": "Plant_Leaves_Camphor",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.camphor", "server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Leaves_Cedar",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.cedar", "server.map.zone.Whisperfrost_Frontiers", "server.map.region.Zone3_Tier2"]
+    },
+    {
+      "id": "Plant_Leaves_Crystal",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.crystalwood", "server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Leaves_Dead",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.ash", "server.map.region.Zone4_Tier4"]
+    },
+    {
+      "id": "Plant_Leaves_Dry",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.dry", "server.map.region.Zone2_Tier1"]
+    },
+    {
+      "id": "Plant_Leaves_Fig_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.blue_fig", "server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Leaves_Fir",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.fir", "server.map.region.Zone3_Tier2"]
+    },
+    {
+      "id": "Plant_Leaves_Fire",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.fire", "server.map.zone.Devastated_Lands"]
+    },
+    {
+      "id": "Plant_Leaves_Fir_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.red_fir", "server.map.zone.Whisperfrost_Frontiers"]
+    },
+    {
+      "id": "Plant_Leaves_Fir_Snow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.snowy_fir", "server.map.region.Zone3_Tier2"]
+    },
+    {
+      "id": "Plant_Leaves_Fir_Tip",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.fir", "server.map.region.Zone3_Tier2"]
+    },
+    {
+      "id": "Plant_Leaves_Fir_Tip_Snow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.snowy_fir", "server.map.region.Zone3_Tier2"]
+    },
+    {
+      "id": "Plant_Leaves_Frostwood",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Leaves_Goldentree",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.amber"]
+    },
+    {
+      "id": "Plant_Leaves_Gumboab",
+      "obtainableInExplorationMode": false,
+      "locations": ["server.herbarium.tree.gumboab"]
+    },
+    {
+      "id": "Plant_Leaves_Jungle",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.jungle", "server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Leaves_Jungle_Floor",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Leaves_Maple",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.maple", "server.map.region.Zone1_Tier3"]
+    },
+    {
+      "id": "Plant_Leaves_Oak",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.oak", "server.map.region.Zone1_Tier1", "server.map.region.Zone1_Tier3"]
+    },
+    {
+      "id": "Plant_Leaves_Palm",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.hidey_holes"]
+    },
+    {
+      "id": "Plant_Leaves_Palm_Arid",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.palm", "server.map.zone.Howling_Sands"]
+    },
+    {
+      "id": "Plant_Leaves_Palm_Oasis",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.portals.oasis"]
+    },
+    {
+      "id": "Plant_Leaves_Palo",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.palo", "server.map.zone.Howling_Sands", "server.map.region.Zone2_Tier2"]
+    },
+    {
+      "id": "Plant_Leaves_Petrified",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.petrified_pine", "server.map.region.Zone4_Tier4"]
+    },
+    {
+      "id": "Plant_Leaves_Poisoned",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Leaves_Poisoned_Floor",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Leaves_Redwood",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.redwood", "server.map.region.Zone3_Tier1"]
+    },
+    {
+      "id": "Plant_Leaves_Sadwillow",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Leaves_Sallow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.sallow", "server.map.zone.Devastated_Lands"]
+    },
+    {
+      "id": "Plant_Leaves_Snow",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Leaves_Spiral",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.spiral", "server.map.zone.Whisperfrost_Frontiers", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Leaves_Stormbark",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.stormbark"]
+    },
+    {
+      "id": "Plant_Leaves_Windwillow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.windwillow", "server.map.region.Zone2_Tier3"]
+    },
+    {
+      "id": "Plant_Leaves_Wisteria_Wild",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.wisteria_wild"]
+    }
+  ],
+  "Moss": [
+    {
+      "id": "Plant_Moss_Block_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.map.zone.Whisperfrost_Frontiers", "server.herbarium.location.caves", "server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Block_Green",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Block_Green_Dark",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone4_Tier4", "server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Block_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.goblin_realm", "server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Block_Yellow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.map.zone.Whisperfrost_Frontiers", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Moss_Cave_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Whisperfrost_Frontiers", "server.herbarium.location.caves", "server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Cave_Green",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Cave_Green_Dark",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone4_Tier4", "server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Cave_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Cave_Yellow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Green",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3"]
+    },
+    {
+      "id": "Plant_Moss_Green_Dark",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone4_Tier4"]
+    },
+    {
+      "id": "Plant_Moss_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.goblin_realm"]
+    },
+    {
+      "id": "Plant_Moss_Rug_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.map.zone.Whisperfrost_Frontiers", "server.herbarium.location.caves", "server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Rug_Green",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Rug_Green_Dark",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone4_Tier4", "server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Rug_Lime",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle", "server.map.zone.Whisperfrost_Frontiers", "server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Rug_Pink",
+      "obtainableInExplorationMode": true,
+      "locations": []
+    },
+    {
+      "id": "Plant_Moss_Rug_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Rug_Yellow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Short_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.map.zone.Whisperfrost_Frontiers", "server.herbarium.location.caves", "server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Short_Green",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Short_Green_Dark",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone4_Tier4", "server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Short_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Short_Yellow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Moss_Wall_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.map.zone.Whisperfrost_Frontiers", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Moss_Wall_Green",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3"]
+    },
+    {
+      "id": "Plant_Moss_Wall_Green_Dark",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone4_Tier4"]
+    },
+    {
+      "id": "Plant_Moss_Wall_Red",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Moss_Wall_Yellow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3"]
+    },
+    {
+      "id": "Plant_Moss_Yellow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3"]
+    }
+  ],
+  "Mushroom": [
+    {
+      "id": "Plant_Crop_Mushroom_Block_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.cursed_crypts", "server.portals.goblinBreach"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Blue_Branch",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Blue_Mycelium",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Blue_Trunk",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.cursed_crypts", "server.portals.goblinBreach"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Brown",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Brown_Branch",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Brown_Mycelium",
+      "obtainableInExplorationMode": false,
+      "locations": ["server.map.region.Zone3_Tier2"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Brown_Trunk",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.goblin_realm"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Green",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone4_Tier4", "server.herbarium.location.goblin_realm", "server.herbarium.location.kweebec_villages", "server.portals.goblinBreach"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Green_Branch",
+      "obtainableInExplorationMode": false,
+      "locations": ["server.portals.goblinBreach"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Green_Mycelium",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.goblin_realm", "server.portals.goblinBreach"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Green_Trunk",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.goblin_realm", "server.portals.goblinBreach"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Purple",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.sewers", "server.herbarium.location.outlander_sites"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Purple_Branch",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Purple_Mycelium",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Purple_Trunk",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.portals.goblinBreach", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Red_Branch",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Red_Mycelium",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Red_Trunk",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_White",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_White_Branch",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_White_Mycelium",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_White_Trunk",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Yellow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.map.region.Zone4_Tier4"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Yellow_Branch",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Yellow_Mycelium",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Block_Yellow_Trunk",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Boomshroom_Large",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Boomshroom_Small",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Cap_Brown",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Emerald_Wilds", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Cap_Green",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone4_Tier4"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Cap_Poison",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.sewers", "server.herbarium.location.firelands_temple"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Cap_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Cap_White",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Emerald_Wilds", "server.map.zone.Howling_Sands", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Common_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.map.zone.Emerald_Wilds", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Common_Brown",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Emerald_Wilds", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Common_Lime",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.portals.goblinBreach"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Common_Lime_Large",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.portals.goblinBreach"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Flatcap_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone3_Tier2", "server.map.zone.Emerald_Wilds"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Flatcap_Green",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Emerald_Wilds", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Glowing_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.map.region.Zone4_Tier5"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Glowing_Green",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Glowing_Orange",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.map.zone.Howling_Sands", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Glowing_Purple",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone4_Tier5"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Glowing_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Glowing_Violet",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier3", "server.map.zone.Devastated_Lands"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Shelve_Brown",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Emerald_Wilds", "server.map.region.Zone1_Tier3"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Shelve_Green",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone4_Tier5", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Crop_Mushroom_Shelve_Yellow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Whisperfrost_Frontiers"]
+    }
+  ],
+  "Petals": [
+    {
+      "id": "Plant_Petals_Azure",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Plant_Crop_Mana1.name", "server.items.Plant_Crop_Mana2.name", "server.items.Plant_Crop_Mana3.name"]
+    },
+    {
+      "id": "Plant_Petals_Black",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Plant_Flower_Orchid_Poisoned.name"]
+    },
+    {
+      "id": "Plant_Petals_Blood",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Plant_Crop_Health1.name", "server.items.Plant_Crop_Health2.name", "server.items.Plant_Crop_Health3.name"]
+    },
+    {
+      "id": "Plant_Petals_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Plant_Flower_Tall_Blue.name", "server.items.Plant_Flower_Common_Blue2.name", "server.items.Plant_Flower_Orchid_Blue.name", "server.items.Plant_Flower_Flax_Blue.name"]
+    },
+    {
+      "id": "Plant_Petals_Cyan",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Plant_Flower_Common_Cyan.name", "server.items.Plant_Flower_Common_Cyan2.name"]
+    },
+    {
+      "id": "Plant_Petals_Green",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Plant_Flower_Water_Duckweed.name", "server.items.Plant_Flower_Hemlock.name", "server.items.Plant_Flower_Common_Lime2.name", "server.items.Plant_Flower_Water_Green.name"]
+    },
+    {
+      "id": "Plant_Petals_Orange",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Plant_Flower_Common_Orange.name", "server.items.Plant_Flower_Common_Orange2.name", "server.items.Plant_Flower_Flax_Orange.name", "server.items.Plant_Flower_Orchid_Orange.name"]
+    },
+    {
+      "id": "Plant_Petals_Pink",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Plant_Flower_Common_Pink2.name", "server.items.Plant_Flower_Common_Pink.name", "server.items.Plant_Flower_Tall_Pink.name", "server.items.Plant_Flower_Flax_Pink.name"]
+    },
+    {
+      "id": "Plant_Petals_Purple",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Plant_Flower_Flax_Purple.name", "server.items.Plant_Flower_Common_Violet.name", "server.items.Plant_Flower_Common_Purple2.name", "server.items.Plant_Flower_Tall_Purple.name"]
+    },
+    {
+      "id": "Plant_Petals_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Plant_Flower_Common_Poisoned.name", "server.items.Plant_Flower_Common_Red2.name", "server.items.Plant_Flower_Common_Red.name", "server.items.Plant_Flower_Water_Red.name"]
+    },
+    {
+      "id": "Plant_Petals_Storm",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Plant_Crop_Stamina1.name", "server.items.Plant_Crop_Stamina2.name", "server.items.Plant_Crop_Stamina3.name"]
+    },
+    {
+      "id": "Plant_Petals_White",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Plant_Flower_Common_White2.name", "server.items.Plant_Flower_Common_Grey2.name", "server.items.Plant_Flower_Common_White.name", "server.items.Plant_Flower_Water_White.name"]
+    },
+    {
+      "id": "Plant_Petals_Yellow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Plant_Flower_Common_Yellow2.name", "server.items.Plant_Flower_Flax_Yellow.name", "server.items.Plant_Flower_Tall_Yellow.name", "server.items.Plant_Flower_Common_Yellow.name"]
+    }
+  ],
+  "Reeds": [
+    {
+      "id": "Plant_Reeds_Arid",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Howling_Sands"]
+    },
+    {
+      "id": "Plant_Reeds_Lava",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Howling_Sands"]
+    },
+    {
+      "id": "Plant_Reeds_Marsh",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Emerald_Wilds", "server.map.region.Zone1_Tier3"]
+    },
+    {
+      "id": "Plant_Reeds_Poison",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Reeds_Water",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone4_Tier4"]
+    },
+    {
+      "id": "Plant_Reeds_Wet",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.portals.oasis"]
+    },
+    {
+      "id": "Plant_Reeds_Winter",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone3_Tier1"]
+    }
+  ],
+  "Sapling": [
+    {
+      "id": "Plant_Sapling_Amber",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Apple",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Ash",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Aspen",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Azure",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Bamboo",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Banyan",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Beech",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Birch",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Bottletree",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Camphor",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Cedar",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Crystal",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Sapling_Dry",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Fig_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Fire",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Gumboab",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Ice",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Jungle",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Maple",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Oak",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Palm",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Palo",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Petrified",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Poisoned",
+      "obtainableInExplorationMode": true,
+      "locations": []
+    },
+    {
+      "id": "Plant_Sapling_Redwood",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Sadwillow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Sallow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Spiral",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Spruce",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Spruce_Frozen",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Stormbark",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Windwillow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Sapling_Wisteria_Wild",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    }
+  ],
+  "Seaweed": [
+    {
+      "id": "Plant_Seaweed_Arid_Red",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans", "server.herbarium.location.red_coral_biome"]
+    },
+    {
+      "id": "Plant_Seaweed_Arid_Short",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Howling_Sands", "server.map.zone.Oceans", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Seaweed_Arid_Stack",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Seaweed_Arid_Tall",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Howling_Sands", "server.map.zone.Oceans", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Seaweed_Arid_Yellow",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Devastated_Lands"]
+    },
+    {
+      "id": "Plant_Seaweed_Dead_Eerie",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone4_Tier4", "server.herbarium.location.sewers"]
+    },
+    {
+      "id": "Plant_Seaweed_Dead_Ghostly",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.outlander_sites"]
+    },
+    {
+      "id": "Plant_Seaweed_Dead_Short",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone4_Tier4"]
+    },
+    {
+      "id": "Plant_Seaweed_Dead_Stack",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans", "server.herbarium.location.cold_trench_biome", "server.herbarium.location.tropical_jungle"]
+    },
+    {
+      "id": "Plant_Seaweed_Dead_Tall",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seaweed_Grass",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Seaweed_Grass_Bulbs",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Seaweed_Grass_Green",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Seaweed_Grass_Short",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Seaweed_Grass_Stack",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Seaweed_Grass_Tall",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans"]
+    },
+    {
+      "id": "Plant_Seaweed_Wet_Stack",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seaweed_Winter_Aurora",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Whisperfrost_Frontiers", "server.herbarium.location.caves", "server.herbarium.location.sewers"]
+    },
+    {
+      "id": "Plant_Seaweed_Winter_Blue",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans", "server.herbarium.location.cold_kelp_biome"]
+    },
+    {
+      "id": "Plant_Seaweed_Winter_Short",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Whisperfrost_Frontiers", "server.map.zone.Oceans", "server.herbarium.location.caves"]
+    },
+    {
+      "id": "Plant_Seaweed_Winter_Stack",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans", "server.herbarium.location.cold_kelp_biome"]
+    },
+    {
+      "id": "Plant_Seaweed_Winter_Tall",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.zone.Oceans", "server.herbarium.location.cold_kelp_biome"]
+    }
+  ],
+  "Seeds": [
+    {
+      "id": "Plant_Seeds_Amber",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Apple",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Ash",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Aspen",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Aubergine",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name", "server.herbarium.location.chests"]
+    },
+    {
+      "id": "Plant_Seeds_Aubergine_Eternal",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Seeds_Azure",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Bamboo",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Banyan",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Beans_Purple",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Beech",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Birch",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Bottletree",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Camphor",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Carrot",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name", "server.herbarium.location.chests"]
+    },
+    {
+      "id": "Plant_Seeds_Carrot_Eternal",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Seeds_Cauliflower",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name", "server.herbarium.location.chests"]
+    },
+    {
+      "id": "Plant_Seeds_Cauliflower_Eternal",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Seeds_Cedar",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Chilli",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name", "server.herbarium.location.chests"]
+    },
+    {
+      "id": "Plant_Seeds_Chilli_Eternal",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Seeds_Corn",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name", "server.herbarium.location.chests"]
+    },
+    {
+      "id": "Plant_Seeds_Corn_Eternal",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Seeds_Cotton",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Seeds_Cotton_Eternal",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Seeds_Crystal",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Dry",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Fig_Blue",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Fir",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Fire",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Frostwood",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Gumboab",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Health1",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Alchemy.name"]
+    },
+    {
+      "id": "Plant_Seeds_Health2",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Alchemy.name"]
+    },
+    {
+      "id": "Plant_Seeds_Health3",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Alchemy.name"]
+    },
+    {
+      "id": "Plant_Seeds_Jungle",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Lettuce",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name", "server.herbarium.location.chests"]
+    },
+    {
+      "id": "Plant_Seeds_Lettuce_Eternal",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Seeds_Mana1",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Alchemy.name"]
+    },
+    {
+      "id": "Plant_Seeds_Mana2",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Alchemy.name"]
+    },
+    {
+      "id": "Plant_Seeds_Mana3",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Alchemy.name"]
+    },
+    {
+      "id": "Plant_Seeds_Maple",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Mushroom",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Oak",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Onion",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name", "server.herbarium.location.chests"]
+    },
+    {
+      "id": "Plant_Seeds_Onion_Eternal",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Seeds_Palm",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Palo",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Petrified",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Pine",
+      "obtainableInExplorationMode": true,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Poisoned",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Potato",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name", "server.herbarium.location.chests"]
+    },
+    {
+      "id": "Plant_Seeds_Potato_Eternal",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Seeds_Pumpkin",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name", "server.herbarium.location.chests"]
+    },
+    {
+      "id": "Plant_Seeds_Pumpkin_Eternal",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Seeds_Redwood",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Rice",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name", "server.herbarium.location.chests"]
+    },
+    {
+      "id": "Plant_Seeds_Rice_Eternal",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Seeds_Sadwillow",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Sallow",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Spiral",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Stamina1",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Alchemy.name"]
+    },
+    {
+      "id": "Plant_Seeds_Stamina2",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Alchemy.name"]
+    },
+    {
+      "id": "Plant_Seeds_Stamina3",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Alchemy.name"]
+    },
+    {
+      "id": "Plant_Seeds_Stormbark",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Sunflower",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Seeds_Test_Tree",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Tomato",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name", "server.herbarium.location.chests"]
+    },
+    {
+      "id": "Plant_Seeds_Tomato_Eternal",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Seeds_Turnip",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name", "server.herbarium.location.chests"]
+    },
+    {
+      "id": "Plant_Seeds_Turnip_Eternal",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Seeds_Wheat",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name", "server.herbarium.location.chests"]
+    },
+    {
+      "id": "Plant_Seeds_Wheat_Eternal",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.items.Bench_Farming.name"]
+    },
+    {
+      "id": "Plant_Seeds_Wild",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.looted_from_plants"]
+    },
+    {
+      "id": "Plant_Seeds_Willow",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Seeds_Wisteria_Wild",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    }
+  ],
+  "Vine": [
+    {
+      "id": "Plant_Liana_Void",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Vine",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier1"]
+    },
+    {
+      "id": "Plant_Vine_Green_Hanging",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Vine_Hanging",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone3_Tier2"]
+    },
+    {
+      "id": "Plant_Vine_Jungle",
+      "obtainableInExplorationMode": true,
+      "locations": []
+    },
+    {
+      "id": "Plant_Vine_Liana",
+      "obtainableInExplorationMode": true,
+      "locations": []
+    },
+    {
+      "id": "Plant_Vine_Liana_End",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Vine_Red_Hanging",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Vine_Rug",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone3_Shore_Tier1", "server.map.region.Zone3_Tier1"]
+    },
+    {
+      "id": "Plant_Vine_Sadwillow_Hanging",
+      "obtainableInExplorationMode": false,
+      "locations": []
+    },
+    {
+      "id": "Plant_Vine_Thick_Roots",
+      "obtainableInExplorationMode": false,
+      "locations": ["server.map.region.Zone1_Tier1"]
+    },
+    {
+      "id": "Plant_Vine_Thick_Vertical",
+      "obtainableInExplorationMode": false,
+      "locations": ["server.map.region.Zone1_Tier1"]
+    },
+    {
+      "id": "Plant_Vine_Wall",
+      "obtainableInExplorationMode": true,
+      "locations": ["server.map.region.Zone1_Tier1", "server.map.region.Zone3_Tier2"]
+    },
+    {
+      "id": "Plant_Vine_Wall_Dead",
+      "obtainableInExplorationMode": true,
+      "locations": []
+    },
+    {
+      "id": "Plant_Vine_Wall_Dry",
+      "obtainableInExplorationMode": true,
+      "locations": []
+    },
+    {
+      "id": "Plant_Vine_Wall_Poisoned",
+      "obtainableInExplorationMode": true,
+      "locations": []
+    },
+    {
+      "id": "Plant_Vine_Wall_Winter",
+      "obtainableInExplorationMode": true,
+      "locations": []
+    }
+  ]
+}
