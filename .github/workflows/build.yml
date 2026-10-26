@@ -35,6 +35,14 @@ jobs:
       - name: Grant Execute Permission for Gradlew
         run: chmod +x gradlew
 
+      - name: Download Hytale Server Jar
+        run: |
+          PATCHLINE=$(grep '^patchline=' gradle.properties | cut -d= -f2)
+          HYTALE_BUILD=$(grep '^hytale_build=' gradle.properties | cut -d= -f2)
+          mkdir -p libs
+          curl -fL -o libs/HytaleServer.jar \
+            "https://maven.hytale.com/${PATCHLINE}/com/hypixel/hytale/Server/${HYTALE_BUILD}/Server-${HYTALE_BUILD}.jar"
+
       - name: Build with Gradle
         run: ./gradlew shadowJar
 
@@ -61,6 +69,14 @@ jobs:
 
       - name: Grant Execute Permission for Gradlew
         run: chmod +x gradlew
+
+      - name: Download Hytale Server Jar
+        run: |
+          PATCHLINE=$(grep '^patchline=' gradle.properties | cut -d= -f2)
+          HYTALE_BUILD=$(grep '^hytale_build=' gradle.properties | cut -d= -f2)
+          mkdir -p libs
+          curl -fL -o libs/HytaleServer.jar \
+            "https://maven.hytale.com/${PATCHLINE}/com/hypixel/hytale/Server/${HYTALE_BUILD}/Server-${HYTALE_BUILD}.jar"
 
       - name: Build with Gradle
         run: ./gradlew shadowJar
