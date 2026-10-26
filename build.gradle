@@ -57,6 +57,30 @@ dependencies {
     // Your dependencies here
 }
 
+// Downloads the Hytale server jar into libs/ from the official Hytale maven
+// repository when it is missing, so a fresh clone compiles without any
+// manual setup. The version and channel come from gradle.properties
+// (hytale_build and patchline).
+tasks.register('downloadServerJar') {
+    def serverJar = file('libs/HytaleServer.jar')
+    outputs.file(serverJar)
+    outputs.upToDateWhen { serverJar.exists() }
+    doLast {
+        def serverJarUrl = "https://maven.hytale.com/${patchline}/com/hypixel/hytale/Server/${hytale_build}/Server-${hytale_build}.jar"
+        logger.lifecycle("Downloading the Hytale server jar from ${serverJarUrl}")
+        serverJar.parentFile.mkdirs()
+        new URL(serverJarUrl).withInputStream { input ->
+            serverJar.withOutputStream { output ->
+                output << input
+            }
+        }
+    }
+}
+
+tasks.named('compileJava') {
+    dependsOn 'downloadServerJar'
+}
+
 repositories {
     mavenCentral()
     maven {
