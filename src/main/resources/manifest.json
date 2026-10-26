@@ -9,7 +9,7 @@
         }
     ],
     "Website": "",
-    "ServerVersion": "2026.02.17-255364b8e",
+    "ServerVersion": ">=0.7.4 <0.8.0",
     "Dependencies": {
         
     },
