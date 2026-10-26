@@ -37,6 +37,7 @@ public class Herbarium extends JavaPlugin {
         memoryManager.initialize(pluginDataDir);
         memoryManager.loadAllMemories();
 
+        registerEvents();
         registerJournalPage();
     }
 
@@ -106,6 +107,10 @@ public class Herbarium extends JavaPlugin {
     }
 
     public static final String JOURNAL_PAGE_KEY = "Herbarium_Journal";
+
+    private void registerEvents() {
+        this.getEntityStoreRegistry().registerSystem(new InventoryChangeSystem());
+    }
 
     private void registerJournalPage() {
         OpenCustomUIInteraction.registerCustomPageSupplier(
