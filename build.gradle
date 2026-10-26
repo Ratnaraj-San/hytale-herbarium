@@ -49,12 +49,10 @@ javadoc {
 // compile against their code without bundling it. When a local install is
 // present, we still use its jar for launching the server in IDE run configs.
 dependencies {
-    // Use local HytaleServer.jar from libs directory for both compile and runtime
-    implementation(files("libs/HytaleServer.jar"))
-    
-    if (hasHytaleHome) {
-        runtimeOnly(files("$hytaleHome/install/$patchline/package/game/latest/Server/HytaleServer.jar"))
-    }
+    // Use local HytaleServer.jar from libs directory for compilation only.
+    // The server provides these classes at runtime, so they are not bundled.
+    // runServerJar sets its own classpath from the local Hytale install.
+    compileOnly(files("libs/HytaleServer.jar"))
 
     // Your dependencies here
 }
