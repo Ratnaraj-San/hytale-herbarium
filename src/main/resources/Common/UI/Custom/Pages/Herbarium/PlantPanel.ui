@@ -1,0 +1,219 @@
+$C = "../../Common.ui";
+
+@JournalTitleStyle = LabelStyle(
+  FontSize: 15,
+  VerticalAlignment: Center,
+  RenderUppercase: true,
+  TextColor: #b4c8c9,
+  FontName: "Default",
+  RenderBold: true,
+  LetterSpacing: 0.5
+);
+
+@PlantNameStyle = LabelStyle(
+  FontSize: 25,
+  VerticalAlignment: Center,
+  RenderUppercase: true,
+  TextColor: #b4c8c9,
+  FontName: "Secondary",
+  RenderBold: true,
+  LetterSpacing: 0.5,
+  HorizontalAlignment: Center,
+  Wrap: true
+);
+
+@PlantStatusStyle = LabelStyle(
+  FontSize: 15,
+  TextColor: #565a68,
+  FontName: "Secondary",
+  HorizontalAlignment: Center,
+  Wrap: true,
+  RenderUppercase: false
+);
+
+@PlantLocationsTitleStyle = LabelStyle(
+  FontSize: 15,
+  TextColor: #b4c8c9,
+  FontName: "Secondary",
+  HorizontalAlignment: Center,
+  Wrap: true,
+  RenderUppercase: false,
+  RenderBold: true,
+  LetterSpacing: 0.5
+);
+
+@PlantLocationStyle = LabelStyle(
+  FontSize: 14,
+  TextColor: #8a8f9e,
+  FontName: "Secondary",
+  HorizontalAlignment: Center,
+  Wrap: true,
+  RenderUppercase: false
+);
+
+$C.@PageOverlay {
+  LayoutMode: Middle;
+
+  $C.@DecoratedContainer {
+    Anchor: (Height: 825, Width: 1070);
+
+    #Title {
+      Group {
+        LayoutMode: Center;
+
+        Label #TitleLabel {
+          Style: @JournalTitleStyle;
+          Text: "Herbarium";
+        }
+      }
+    }
+
+    #Content {
+      LayoutMode: Top;
+      Padding: (Full: 9);
+
+      Group {
+        LayoutMode: Left;
+        FlexWeight: 1;
+
+        // Left panel - plant grid
+        Group #LeftPanel {
+          LayoutMode: Top;
+          FlexWeight: 1;
+          Padding: (Left: 20, Right: 5, Vertical: 16);
+
+          Group #CategoryHeader {
+            LayoutMode: Left;
+
+            Label #CategoryTitle {
+              Style: (...@JournalTitleStyle, TextColor: #89899f);
+              Text: "";
+            }
+
+            Group {
+              FlexWeight: 1;
+            }
+
+            Label #CategoryCount {
+              Style: (...@JournalTitleStyle, TextColor: #89899f);
+              Text: "0/0";
+            }
+          }
+
+          // Plant grid
+          Group {
+            FlexWeight: 1;
+
+            Group {
+              LayoutMode: TopScrolling;
+              Anchor: (Vertical: 16);
+              ScrollbarStyle: $C.@DefaultScrollbarStyle;
+              FlexWeight: 1;
+
+              Group #IconList {
+                LayoutMode: LeftWrap;
+              }
+            }
+          }
+
+          // Back button
+          Group {
+            LayoutMode: Left;
+
+            $C.@SecondaryTextButton #BackButton {
+              Anchor: (Width: 150, Height: 42);
+              Text: %client.general.button.back;
+            }
+          }
+        }
+
+        // Right panel - plant details
+        Group #RightPanel {
+          LayoutMode: Top;
+          FlexWeight: 1;
+          Padding: (Right: 20, Left: 5, Vertical: 16);
+
+          Group #Background {
+            Background: (TexturePath: "ContainerBackgroundSecondary.png", Border: 23);
+            LayoutMode: Top;
+            FlexWeight: 1;
+
+            Label #PlantName {
+              Style: @PlantNameStyle;
+              Anchor: (Top: 35);
+              Text: "";
+            }
+
+            Group #PlantLocations {
+              LayoutMode: Top;
+              Padding: (Horizontal: 15);
+
+              Label #PlantLocationsTitle {
+                Style: @PlantLocationsTitleStyle;
+                Padding: (Top: 20);
+                Text: "";
+                Visible: false;
+              }
+
+              Label #PlantLocation0 {
+                Style: @PlantLocationStyle;
+                Text: "";
+                Visible: false;
+              }
+
+              Label #PlantLocation1 {
+                Style: @PlantLocationStyle;
+                Text: "";
+                Visible: false;
+              }
+
+              Label #PlantLocation2 {
+                Style: @PlantLocationStyle;
+                Text: "";
+                Visible: false;
+              }
+
+              Label #PlantLocation3 {
+                Style: @PlantLocationStyle;
+                Text: "";
+                Visible: false;
+              }
+
+              Label #PlantLocationUnknown {
+                Style: @PlantLocationStyle;
+                Text: "";
+                Visible: false;
+              }
+            }
+
+            Group {
+              FlexWeight: 1;
+            }
+
+            Group {
+              Anchor: (Height: 216, Width: 216);
+              LayoutMode: Middle;
+              Padding: (Top: 16, Bottom: 16);
+
+              AssetImage #PlantIcon {
+                Anchor: (Width: 200, Height: 200);
+                FallbackTexturePath: "UI/Custom/Pages/Memories/MissingIcon.png";
+              }
+            }
+
+            Group {
+              FlexWeight: 1;
+            }
+
+            Label #PlantDiscovery {
+              Style: @PlantStatusStyle;
+              Anchor: (Bottom: 35);
+              Padding: (Horizontal: 15);
+              Text: "";
+            }
+          }
+        }
+      }
+    }
+  }
+}

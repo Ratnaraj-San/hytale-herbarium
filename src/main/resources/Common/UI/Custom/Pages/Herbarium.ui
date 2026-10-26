@@ -1,0 +1,112 @@
+$C = "../Common.ui";
+
+@JournalTitleStyle = LabelStyle(
+  FontSize: 15,
+  VerticalAlignment: Center,
+  RenderUppercase: true,
+  TextColor: #b4c8c9,
+  FontName: "Default",
+  RenderBold: true,
+  LetterSpacing: 0.5
+);
+
+@progressBarWidth = 1018;
+
+$C.@PageOverlay {
+  LayoutMode: Middle;
+
+  $C.@DecoratedContainer {
+    Anchor: (Height: 825, Width: 1070);
+
+    #Title {
+      Group {
+        LayoutMode: Center;
+
+        Label #TitleLabel {
+          Style: @JournalTitleStyle;
+          Text: "Herbarium";
+        }
+      }
+    }
+
+    #Content {
+      LayoutMode: Top;
+      Padding: (Full: 9);
+
+      Group #Categories {
+        Background: (TexturePath: "Herbarium/MemoriesRunes.png", Border: 15);
+        FlexWeight: 1;
+
+        Group {
+          LayoutMode: TopScrolling;
+          Anchor: (Top: 15);
+          ScrollbarStyle: $C.@DefaultScrollbarStyle;
+          FlexWeight: 1;
+
+          Group #IconList {
+            LayoutMode: LeftCenterWrap;
+          }
+        }
+      }
+
+      Group #Footer {
+        Anchor: (Height: 175);
+        LayoutMode: Top;
+        Background: (TexturePath: "Herbarium/ContainerBackground.png", Border: 23);
+        Padding: (Horizontal: 20, Vertical: 15);
+
+        Group {
+          FlexWeight: 1;
+        }
+
+        Group {
+          Background: "Herbarium/MemoriesProgress/MemoriesBarBg.png";
+          Anchor: (Height: 22, Width: @progressBarWidth, Bottom: 30);
+          Padding: (Full: 6);
+
+          ProgressBar #PlantsProgressBar {
+            BarTexturePath: "Herbarium/MemoriesProgress/MemoriesBarFill.png";
+            EffectTexturePath: "Herbarium/MemoriesProgress/MemoriesBarTipOfTheBar.png";
+            EffectWidth: 114;
+            EffectHeight: 32;
+            EffectOffset: 104;
+          }
+
+          ProgressBar #PlantsProgressBarTexture {
+            BarTexturePath: "Herbarium/MemoriesProgress/MemoriesBarTexture.png";
+          }
+        }
+
+        Group {
+          FlexWeight: 1;
+        }
+
+        Group {
+          LayoutMode: Left;
+
+          Group {
+            FlexWeight: 1;
+            LayoutMode: Left;
+
+            Label #TotalCollected {
+              Style: @JournalTitleStyle;
+              Text: "";
+            }
+          }
+
+          $C.@TextButton #RewardsButton {
+            Anchor: (Width: 330, Height: 42);
+            Text: "Rewards coming soon";
+            Disabled: true;
+          }
+
+          Group {
+            FlexWeight: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+$C.@BackButton {}

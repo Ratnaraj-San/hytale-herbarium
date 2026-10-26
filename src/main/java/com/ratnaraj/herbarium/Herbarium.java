@@ -1,7 +1,10 @@
 package com.ratnaraj.herbarium;
 
+import com.hypixel.hytale.server.core.entity.entities.player.pages.CustomUIPage;
+import com.hypixel.hytale.server.core.modules.interaction.interaction.config.server.OpenCustomUIInteraction;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
+import com.hypixel.hytale.server.core.universe.PlayerRef;
 
 import javax.annotation.Nonnull;
 import java.nio.file.Files;
@@ -33,6 +36,8 @@ public class Herbarium extends JavaPlugin {
         Path pluginDataDir = getPluginDataDirectory();
         memoryManager.initialize(pluginDataDir);
         memoryManager.loadAllMemories();
+
+        registerJournalPage();
     }
 
     private Path getPluginDataDirectory() {
@@ -98,6 +103,29 @@ public class Herbarium extends JavaPlugin {
         memoryManager.saveAllMemories();
         
         getLogger().at(Level.INFO).log("[Herbarium] All memories saved!");
+    }
+
+    public static final String JOURNAL_PAGE_KEY = "Herbarium_Journal";
+
+    private void registerJournalPage() {
+        OpenCustomUIInteraction.registerCustomPageSupplier(
+                this,
+                HerbariumUIPage.class,
+                JOURNAL_PAGE_KEY,
+                (ref, componentAccessor, playerRef, interactionContext) -> createJournalPage(playerRef)
+        );
+    }
+
+    /**
+     * Creates the page to open when the player opens the journal: the intro
+     * modal on the very first opening (with the vanilla Memories unlock
+     * look and sound), the journal itself afterwards.
+     */
+    public static CustomUIPage createJournalPage(PlayerRef playerRef) {
+        if (memoryManager.hasOpenedJournal(playerRef)) {
+            return new HerbariumUIPage(playerRef);
+        }
+        return new HerbariumIntroPage(playerRef);
     }
 
 }

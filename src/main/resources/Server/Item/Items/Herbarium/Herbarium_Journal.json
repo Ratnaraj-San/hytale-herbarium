@@ -1,0 +1,73 @@
+{
+  "TranslationProperties": {
+    "Name": "server.items.Herbarium_Journal.name"
+  },
+  "Quality": "Common",
+  "MaxStack": 1,
+  "Categories": [
+    "Items.Books"
+  ],
+  "Model": "Items/Herbarium/Herbarium_Journal.blockymodel",
+  "Texture": "Items/Herbarium/Herbarium_Journal_Texture.png",
+  "UsePlayerAnimations": true,
+  "PlayerAnimationsId": "Spellbook",
+  "ItemSoundSetId": "ISS_Items_Paper",
+  "Tags": {
+    "Type": [
+      "Book"
+    ]
+  },
+  "Interactions": {
+    "Secondary": {
+      "Interactions": [
+        {
+          "Type": "Simple",
+          "Effects": {
+            "LocalSoundEventId": "SFX_Herbarium_Book_Open"
+          },
+          "Next": {
+            "Type": "OpenCustomUI",
+            "Page": {
+              "Id": "Herbarium_Journal"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "Recipe": {
+    "TimeSeconds": 3,
+    "Input": [
+      {
+        "ResourceTypeId": "Wood_Trunk",
+        "Quantity": 1
+      },
+      {
+        "ItemId": "Ingredient_Leather_Light",
+        "Quantity": 1
+      }
+    ],
+    "BenchRequirement": [
+      {
+        "Id": "Workbench",
+        "Type": "Crafting",
+        "Categories": [
+          "Workbench_Tools"
+        ]
+      }
+    ]
+  },
+  "Icon": "Icons/ItemsGenerated/Herbarium_Journal.png",
+  "IconProperties": {
+    "Scale": 0.745,
+    "Rotation": [
+      45,
+      90,
+      0
+    ],
+    "Translation": [
+      -7.8,
+      -7.8
+    ]
+  }
+}

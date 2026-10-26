@@ -1,0 +1,49 @@
+$Common = "../../Common.ui";
+$Intro = "../../Common/IntroModal.ui";
+
+// Texts are set at runtime by HerbariumIntroPage: .ui documents cannot
+// reference plugin translation keys with %refs, the client fails to load
+// the document when the key is not resolvable at parse time.
+//
+// The vanilla modal shows an image next to the text; here the text block
+// fills the modal and is centered horizontally and vertically. Override
+// blocks cannot override nested template elements (the template's
+// #TitleLabel), so the texts are plain labels added to the column.
+$Intro.@IntroModal {
+  #Content {
+    Anchor: (Full: 0);
+    LayoutMode: MiddleCenter;
+  }
+
+  #ContentText {
+    Label #ModalTitle {
+      Style: (HorizontalAlignment: Center, FontName: "Secondary", TextColor: #b6cfee, FontSize: 28, RenderBold: true, RenderUppercase: true, Wrap: true);
+      Text: "";
+    }
+
+    Label #ModalBullet1 {
+      Anchor: (Top: 15);
+      Style: (HorizontalAlignment: Center, FontSize: 18, Wrap: true, TextColor: #778393);
+      Text: "";
+    }
+
+    Label #ModalBullet2 {
+      Anchor: (Top: 15);
+      Style: (HorizontalAlignment: Center, FontSize: 18, Wrap: true, TextColor: #778393);
+      Text: "";
+    }
+
+    Label #ModalBullet3 {
+      Anchor: (Top: 15);
+      Style: (HorizontalAlignment: Center, FontSize: 18, Wrap: true, TextColor: #778393);
+      Text: "";
+    }
+  }
+
+  #Body {
+    $Common.@TextButton #OpenJournalButton {
+      @Anchor = $Intro.@ButtonAnchor;
+      @Text = "";
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "AudioCategory": "AudioCat_SFX",
+  "Layers": [
+    {
+      "Files": [
+        "Sounds/Herbarium/Herbarium_Journal_Open.ogg"
+      ],
+      "Volume": -4
+    }
+  ]
+}
