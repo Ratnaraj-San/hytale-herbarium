@@ -38,6 +38,7 @@ public class Herbarium extends JavaPlugin {
         memoryManager.loadAllMemories();
 
         registerEvents();
+        registerCommands();
         registerJournalPage();
     }
 
@@ -131,6 +132,10 @@ public class Herbarium extends JavaPlugin {
             return new HerbariumUIPage(playerRef);
         }
         return new HerbariumIntroPage(playerRef);
+    }
+
+    private void registerCommands() {
+        this.getCommandRegistry().registerCommand(new HerbariumCommand());
     }
 
 }
