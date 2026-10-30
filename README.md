@@ -39,6 +39,10 @@ to session.
 Every new plant you discover is automatically added to your herbarium, sorted by category:
 trees, bushes, brambles...
 
+### 4. Rewards
+
+Every 50 plants recorded, you can collect a reward straight from your journal!
+
 ## In-game commands
 
 OP perms are required.
@@ -62,7 +66,7 @@ If you encounter any problem or have any idea, please let me know!
 
 Here is what is planned for future updates:
 
-- A rewards system
+- ~~A rewards system~~
 - A better icon for the Journal
 - Category icons in the style of the Memories categories
 - More information in the plant pages

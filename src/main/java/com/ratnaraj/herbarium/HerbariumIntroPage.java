@@ -78,10 +78,14 @@ public class HerbariumIntroPage extends InteractiveCustomUIPage<HerbariumIntroPa
             UIEventBuilder events,
             Store<EntityStore> store
     ) {
-        // This modal is only reachable on the first opening: remember the
-        // player and play the vanilla feature-unlock sound as it appears.
+        // Remember the player on the very first opening. The modal is also
+        // reopened later through the journal info button, and the vanilla
+        // feature-unlock sound plays only on the first appearance.
+        boolean firstOpening = !Herbarium.getMemoryManager().hasOpenedJournal(playerRef);
         Herbarium.getMemoryManager().markJournalOpened(playerRef);
-        SoundUtil.playSoundEvent2dToPlayer(playerRef, UNLOCK_SOUND_EVENT, SoundCategory.SFX);
+        if (firstOpening) {
+            SoundUtil.playSoundEvent2dToPlayer(playerRef, UNLOCK_SOUND_EVENT, SoundCategory.SFX);
+        }
 
         commands.append("Pages/Herbarium/JournalUnlocked.ui");
 

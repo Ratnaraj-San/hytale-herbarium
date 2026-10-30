@@ -9,14 +9,22 @@ import com.hypixel.hytale.protocol.SoundCategory;
 import com.hypixel.hytale.protocol.packets.interface_.CustomPageLifetime;
 import com.hypixel.hytale.protocol.packets.interface_.CustomUIEventBindingType;
 import com.hypixel.hytale.server.core.Message;
+import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.entity.entities.player.pages.InteractiveCustomUIPage;
+import com.hypixel.hytale.server.core.inventory.InventoryComponent;
+import com.hypixel.hytale.server.core.inventory.ItemStack;
+import com.hypixel.hytale.server.core.inventory.container.SimpleItemContainer;
 import com.hypixel.hytale.server.core.ui.builder.EventData;
 import com.hypixel.hytale.server.core.ui.builder.UICommandBuilder;
 import com.hypixel.hytale.server.core.ui.builder.UIEventBuilder;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.SoundUtil;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
+import com.hypixel.hytale.server.core.ui.Anchor;
+import com.hypixel.hytale.server.core.ui.Value;
 
+import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -30,6 +38,8 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     private static final String TYPE_SELECT_CATEGORY = "SelectCategory";
     private static final String TYPE_SELECT_PLANT = "SelectPlant";
     private static final String TYPE_BACK = "Back";
+    private static final String TYPE_COLLECT_REWARD = "CollectReward";
+    private static final String TYPE_SHOW_INFO = "ShowInfo";
 
     /**
      * Translation key shared with the Herbarium Journal item name, so the
@@ -52,6 +62,38 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
      */
     private static final String LOCATIONS_FOUND_IN_KEY = "server.herbarium.location.found_in";
     private static final String LOCATION_UNKNOWN_KEY = "server.herbarium.location.unknown";
+
+    /**
+     * Width used to place the chest markers along the progress bar, in the
+     * same 0-1000 coordinates as the vanilla Memories page.
+     */
+    private static final int CHEST_MARKER_SCALE = 1000;
+
+    /**
+     * Translation keys of the chest marker tooltips. Set at runtime with
+     * Message.translation.
+     */
+    private static final String CHEST_LOCKED_TOOLTIP_KEY = "server.herbarium.rewards.chestLocked.tooltipText";
+    private static final String CHEST_ACTIVE_TOOLTIP_KEY = "server.herbarium.rewards.chestActive.tooltipText";
+    private static final String CHEST_COLLECTED_TOOLTIP_KEY = "server.herbarium.rewards.chestCollected.tooltipText";
+
+    /**
+     * Translation keys of the rewards button.
+     */
+    private static final String COLLECT_BUTTON_KEY = "server.herbarium.rewards.collectButton";
+    private static final String ALL_COLLECTED_KEY = "server.herbarium.rewards.allCollected";
+
+    /**
+     * Vanilla sound event played when a reward is successfully collected.
+     */
+    private static final String COLLECT_SOUND_EVENT = "SFX_MemoryRestored";
+
+    /**
+     * Colors of the reward list shown in the chest tooltips.
+     */
+    private static final Color REWARD_QUANTITY_COLOR = new Color(0x88, 0x88, 0x88);
+    private static final Color REWARD_ITEM_COLOR = Color.WHITE;
+    private static final Color REWARD_COLLECTED_COLOR = new Color(0x88, 0x88, 0x88);
 
     /**
      * Icon shown for each category tile, keyed by plants.json category.
@@ -179,6 +221,8 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                 selectedPlant = null;
                 rebuild();
             }
+            case TYPE_COLLECT_REWARD -> handleCollectReward(ref, store);
+            case TYPE_SHOW_INFO -> handleShowInfo(ref, store);
             default -> {
             }
         }
@@ -217,6 +261,21 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         commands.set("#PlantsProgressBar.Value", progress);
         commands.set("#PlantsProgressBarTexture.Value", progress);
         commands.set("#TotalCollected.Text", "plants recorded: " + totalDiscovered + " / " + totalPlants);
+
+        buildChestMarkers(commands, totalDiscovered, totalPlants);
+        setRewardsButtonState(commands, totalDiscovered, totalPlants);
+
+        events.addEventBinding(
+                CustomUIEventBindingType.Activating,
+                "#RewardsButton",
+                new EventData().append("Type", TYPE_COLLECT_REWARD)
+        );
+
+        events.addEventBinding(
+                CustomUIEventBindingType.Activating,
+                "#InfoButton",
+                new EventData().append("Type", TYPE_SHOW_INFO)
+        );
 
         int index = 0;
         for (Map.Entry<String, List<String>> entry : categories.entrySet()) {
@@ -265,6 +324,157 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
             );
             index++;
         }
+    }
+
+    /**
+     * Adds the chest reward markers on the progress bar.
+     */
+    private void buildChestMarkers(UICommandBuilder commands, int totalDiscovered, int totalPlants) {
+        PlantMemoryManager manager = Herbarium.getMemoryManager();
+        int tierCount = HerbariumRewards.getTierCount(totalPlants);
+
+        for (int tier = 1; tier <= tierCount; tier++) {
+            int threshold = HerbariumRewards.getTierThreshold(tier);
+            boolean reached = totalDiscovered >= threshold;
+            boolean rewardCollected = manager.isRewardTierCollected(playerRef, tier);
+            String marker = "#ChestMarkers[" + (tier - 1) + "]";
+
+            commands.append("#ChestMarkers", "Pages/Herbarium/ChestMarker.ui");
+
+            Anchor anchor = new Anchor();
+            anchor.setLeft(Value.of(threshold * CHEST_MARKER_SCALE / totalPlants));
+            commands.setObject(marker + ".Anchor", anchor);
+
+            String tooltipKey = rewardCollected
+                    ? CHEST_COLLECTED_TOOLTIP_KEY
+                    : reached ? CHEST_ACTIVE_TOOLTIP_KEY : CHEST_LOCKED_TOOLTIP_KEY;
+            Color itemColor = rewardCollected ? REWARD_COLLECTED_COLOR : REWARD_ITEM_COLOR;
+            Message tooltip = buildChestTooltip(tier, tooltipKey, itemColor);
+
+            if (reached || rewardCollected) {
+                String chest = rewardCollected ? "#ChestCollected" : "#ChestActive";
+                commands.set(marker + " " + chest + ".Visible", true);
+                commands.set(marker + " " + chest + ".TooltipTextSpans", tooltip);
+                commands.set(marker + " #Arrow.Visible", reached && !rewardCollected);
+            } else {
+                commands.set(marker + " #ChestDisabled.Visible", true);
+                commands.set(marker + " #ChestDisabled.TooltipTextSpans", tooltip);
+            }
+        }
+    }
+
+    /**
+     * Builds the tooltip of a chest marker.
+     */
+    private static Message buildChestTooltip(int tier, String tooltipKey, Color itemColor) {
+        return Message.translation(tooltipKey)
+                .param("count", HerbariumRewards.getTierThreshold(tier))
+                .insert("\n\n")
+                .insert(buildTierRewardsMessage(tier, itemColor));
+    }
+
+    /**
+     * Gets the lowest tier whose reward has not been collected yetd.
+     */
+    private int getNextUncollectedTier(int tierCount) {
+        PlantMemoryManager manager = Herbarium.getMemoryManager();
+        for (int tier = 1; tier <= tierCount; tier++) {
+            if (!manager.isRewardTierCollected(playerRef, tier)) {
+                return tier;
+            }
+        }
+        return 0;
+    }
+
+    private void setRewardsButtonState(UICommandBuilder commands, int totalDiscovered, int totalPlants) {
+        int nextTier = getNextUncollectedTier(HerbariumRewards.getTierCount(totalPlants));
+
+        if (nextTier == 0) {
+            commands.set("#RewardsButton.Text", Message.translation(ALL_COLLECTED_KEY));
+            commands.set("#RewardsButton.Disabled", true);
+        } else {
+            commands.set("#RewardsButton.Text",
+                    Message.translation(COLLECT_BUTTON_KEY).param("tier", nextTier));
+            commands.set("#RewardsButton.Disabled",
+                    totalDiscovered < HerbariumRewards.getTierThreshold(nextTier));
+        }
+    }
+
+    private void handleCollectReward(Ref<EntityStore> ref, Store<EntityStore> store) {
+        if (ref == null || store == null) {
+            return;
+        }
+
+        PlantMemoryManager manager = Herbarium.getMemoryManager();
+        int totalPlants = manager.getTotalPlantCount();
+        int totalDiscovered = manager.getMemoryCount(playerRef);
+        int tier = getNextUncollectedTier(HerbariumRewards.getTierCount(totalPlants));
+
+        // Nothing to collect, or the next uncollected tier has not been reached yet
+        if (tier == 0 || totalDiscovered < HerbariumRewards.getTierThreshold(tier)) {
+            return;
+        }
+
+        manager.markRewardTierCollected(playerRef, tier);
+
+        List<ItemStack> rewards = new ArrayList<>();
+        for (HerbariumRewards.Reward reward : HerbariumRewards.getTierRewards(tier)) {
+            rewards.add(new ItemStack(reward.itemId(), reward.quantity()));
+        }
+        SimpleItemContainer.addOrDropItemStacks(store, ref,
+                InventoryComponent.getCombined(store, ref, InventoryComponent.HOTBAR_FIRST), rewards);
+
+        SoundUtil.playSoundEvent2dToPlayer(playerRef, COLLECT_SOUND_EVENT, SoundCategory.SFX);
+
+        UICommandBuilder commands = new UICommandBuilder();
+
+        String marker = "#ChestMarkers[" + (tier - 1) + "]";
+        commands.set(marker + " #ChestActive.Visible", false);
+        commands.set(marker + " #ChestCollected.Visible", true);
+        commands.set(marker + " #Arrow.Visible", false);
+        commands.set(marker + " #ChestCollected.TooltipTextSpans",
+                buildChestTooltip(tier, CHEST_COLLECTED_TOOLTIP_KEY, REWARD_COLLECTED_COLOR));
+
+        setRewardsButtonState(commands, totalDiscovered, totalPlants);
+
+        sendUpdate(commands, false);
+    }
+
+    /**
+     * Reopens the intro modal when the info button is activated, mirroring
+     * the vanilla Memories page which shows its feature explanation again.
+     */
+    private void handleShowInfo(Ref<EntityStore> ref, Store<EntityStore> store) {
+        if (ref == null || store == null) {
+            return;
+        }
+
+        Player player = store.getComponent(ref, Player.getComponentType());
+        if (player != null) {
+            player.getPageManager().openCustomPage(ref, store, new HerbariumIntroPage(playerRef));
+        }
+    }
+
+    private static Message buildTierRewardsMessage(int tier, Color itemColor) {
+        Message list = Message.empty();
+
+        boolean first = true;
+        for (HerbariumRewards.Reward reward : HerbariumRewards.getTierRewards(tier)) {
+            if (!first) {
+                list = list.insert("\n");
+            }
+            first = false;
+
+            list = list.insert(Message.join(
+                    Message.raw(reward.quantity() + "x ").color(REWARD_QUANTITY_COLOR),
+                    rewardNameMessage(reward.itemId()).color(itemColor)
+            ));
+        }
+        return list;
+    }
+
+    private static Message rewardNameMessage(String itemId) {
+        return Message.translation("server.items." + itemId + ".name");
     }
 
     /**
