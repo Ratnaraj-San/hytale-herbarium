@@ -9,6 +9,7 @@ import com.hypixel.hytale.protocol.SoundCategory;
 import com.hypixel.hytale.protocol.packets.interface_.CustomPageLifetime;
 import com.hypixel.hytale.protocol.packets.interface_.CustomUIEventBindingType;
 import com.hypixel.hytale.server.core.Message;
+import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.entity.entities.player.pages.InteractiveCustomUIPage;
 import com.hypixel.hytale.server.core.inventory.InventoryComponent;
 import com.hypixel.hytale.server.core.inventory.ItemStack;
@@ -38,6 +39,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     private static final String TYPE_SELECT_PLANT = "SelectPlant";
     private static final String TYPE_BACK = "Back";
     private static final String TYPE_COLLECT_REWARD = "CollectReward";
+    private static final String TYPE_SHOW_INFO = "ShowInfo";
 
     /**
      * Translation key shared with the Herbarium Journal item name, so the
@@ -220,6 +222,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                 rebuild();
             }
             case TYPE_COLLECT_REWARD -> handleCollectReward(ref, store);
+            case TYPE_SHOW_INFO -> handleShowInfo(ref, store);
             default -> {
             }
         }
@@ -266,6 +269,12 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                 CustomUIEventBindingType.Activating,
                 "#RewardsButton",
                 new EventData().append("Type", TYPE_COLLECT_REWARD)
+        );
+
+        events.addEventBinding(
+                CustomUIEventBindingType.Activating,
+                "#InfoButton",
+                new EventData().append("Type", TYPE_SHOW_INFO)
         );
 
         int index = 0;
@@ -429,6 +438,21 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         setRewardsButtonState(commands, totalDiscovered, totalPlants);
 
         sendUpdate(commands, false);
+    }
+
+    /**
+     * Reopens the intro modal when the info button is activated, mirroring
+     * the vanilla Memories page which shows its feature explanation again.
+     */
+    private void handleShowInfo(Ref<EntityStore> ref, Store<EntityStore> store) {
+        if (ref == null || store == null) {
+            return;
+        }
+
+        Player player = store.getComponent(ref, Player.getComponentType());
+        if (player != null) {
+            player.getPageManager().openCustomPage(ref, store, new HerbariumIntroPage(playerRef));
+        }
     }
 
     private static Message buildTierRewardsMessage(int tier, Color itemColor) {

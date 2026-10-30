@@ -23,9 +23,35 @@ $C.@PageOverlay {
       Group {
         LayoutMode: Center;
 
+        Button #InfoButton {
+          Anchor: (Width: 24, Height: 24, Left: 15);
+          Style: (
+            Default: (Background: (TexturePath: "Herbarium/InfoButtonBackground.png", Border: 2)),
+            Hovered: (Background: (TexturePath: "Herbarium/InfoButtonBackgroundHovered.png", Border: 2))
+          );
+
+          Label {
+            Style: (FontSize: 14, TextColor: #b4c8c9, HorizontalAlignment: Center, RenderBold: true, VerticalAlignment: Center);
+            Text: "?";
+          }
+        }
+
+        Group {
+          FlexWeight: 1;
+        }
+
         Label #TitleLabel {
           Style: @JournalTitleStyle;
           Text: "Herbarium";
+        }
+
+        Group {
+          FlexWeight: 1;
+        }
+
+        Group {
+          LayoutMode: Right;
+          Anchor: (Width: 24, Right: 15);
         }
       }
     }
