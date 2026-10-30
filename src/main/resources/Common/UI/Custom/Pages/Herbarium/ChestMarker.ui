@@ -27,9 +27,9 @@ Group {
       }
     }
 
-    @ChestGroup #ChestClaimed {
+    @ChestGroup #ChestCollected {
       Group {
-        Background: "MemoriesProgress/IconChestClaimed.png";
+        Background: "MemoriesProgress/IconChestCollected.png";
         Anchor: (Width: 22, Height: 22, Bottom: 10);
       }
     }

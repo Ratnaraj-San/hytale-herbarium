@@ -70,6 +70,8 @@ herbarium.unlock.bullet3 = Parcourez votre collection par catégorie et suivez v
 herbarium.unlock.openJournal = Ouvrir le journal
 
 herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Verrouillé</b></color> \n<color is="#888888">Consignez {count, number} {count, plural, one {plante} other {plantes}} pour débloquer :</color>
-herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Débloqué</b></color> \n<color is="#888888">{count, number} {count, plural, one {plante} other {plantes}} consignées. Récompense à réclamer :</color>
-herbarium.rewards.chestClaimed.tooltipText = <color is="#888888"><b>Réclamé</b></color> \n<color is="#888888">{count, number} {count, plural, one {plante} other {plantes}} consignées. Récompense réclamée :</color>
+herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Débloqué</b></color> \n<color is="#888888">{count, number} {count, plural, one {plante} other {plantes}} consignées. Récompense à collecter :</color>
+herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Collecté</b></color> \n<color is="#888888">{count, number} {count, plural, one {plante} other {plantes}} consignées. Récompense collectée :</color>
 herbarium.rewards.item.batPlushie = Peluche de chauve-souris
+herbarium.rewards.collectButton = Collecter la récompense {tier, number}
+herbarium.rewards.allCollected = Toutes les récompenses sont collectées

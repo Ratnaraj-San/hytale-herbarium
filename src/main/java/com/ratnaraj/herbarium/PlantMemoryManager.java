@@ -12,6 +12,7 @@ import com.google.gson.JsonParser;
 
 import java.io.*;
 import java.nio.file.*;
+import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
@@ -40,8 +41,8 @@ public class PlantMemoryManager {
     // Plant memories per player (UUID -> Set of PlantInfo)
     private final Map<UUID, Set<PlantInfo>> playerMemories = new ConcurrentHashMap<>();
     
-    // Reward tiers already claimed per player (UUID -> tier numbers)
-    private final Map<UUID, Set<Integer>> claimedRewardTiers = new ConcurrentHashMap<>();
+    // Reward tiers already collected per player.
+    private final Map<UUID, Map<Integer, String>> collectedRewardTiers = new ConcurrentHashMap<>();
     
     // Players who have already opened the journal at least once (intro shown)
     private final Set<UUID> playersWhoOpenedJournal = ConcurrentHashMap.newKeySet();
@@ -366,19 +367,19 @@ public class PlantMemoryManager {
                 for (JsonElement element : rootObject.getAsJsonArray("plants")) {
                     plants.add(parsePlantMemory(element));
                 }
-                if (rootObject.has("claimedRewardTiers")) {
-                    Set<Integer> claimed = new HashSet<>();
-                    for (JsonElement element : rootObject.getAsJsonArray("claimedRewardTiers")) {
+                if (rootObject.has("collectedRewardTiers")) {
+                    for (JsonElement element : rootObject.getAsJsonArray("collectedRewardTiers")) {
                         try {
-                            claimed.add(element.getAsInt());
-                        } catch (ClassCastException | IllegalStateException e) {
+                            JsonObject entry = element.getAsJsonObject();
+                            String collectedDate = entry.has("collectedDate")
+                                    && !entry.get("collectedDate").isJsonNull()
+                                    ? entry.get("collectedDate").getAsString() : "";
+                            getCollectedRewardTiers(playerId).put(entry.get("tier").getAsInt(), collectedDate);
+                        } catch (ClassCastException | IllegalStateException | NullPointerException e) {
                             Herbarium.getInstance().getLogger().at(Level.WARNING).log(
-                                "[Herbarium] Invalid claimed reward tier for " + playerId + ": " + element
+                                "[Herbarium] Invalid collected reward tier for " + playerId + ": " + element
                             );
                         }
-                    }
-                    if (!claimed.isEmpty()) {
-                        getClaimedRewardTiers(playerId).addAll(claimed);
                     }
                 }
             } else {
@@ -452,13 +453,15 @@ public class PlantMemoryManager {
             JsonObject root = new JsonObject();
             root.addProperty("journalOpened", playersWhoOpenedJournal.contains(playerId));
 
-            List<Integer> claimed = new ArrayList<>(getClaimedRewardTiers(playerId));
-            Collections.sort(claimed);
-            JsonArray claimedArray = new JsonArray();
-            for (int tier : claimed) {
-                claimedArray.add(tier);
+            Map<Integer, String> collected = new TreeMap<>(getCollectedRewardTiers(playerId));
+            JsonArray collectedArray = new JsonArray();
+            for (Map.Entry<Integer, String> entry : collected.entrySet()) {
+                JsonObject collectedEntry = new JsonObject();
+                collectedEntry.addProperty("tier", entry.getKey());
+                collectedEntry.addProperty("collectedDate", entry.getValue());
+                collectedArray.add(collectedEntry);
             }
-            root.add("claimedRewardTiers", claimedArray);
+            root.add("collectedRewardTiers", collectedArray);
 
             JsonArray jsonArray = new JsonArray();
             for (PlantInfo plant : plants) {
@@ -598,24 +601,47 @@ public class PlantMemoryManager {
     }
 
     /**
-     * Gets the claimed reward tiers of a player, creating the set on first
-     * access.
+     * Gets the collected reward tiers of a player, creating the map on first
+     * access. Internal: the public methods below handle the PlayerRef
+     * unwrapping.
      */
-    private Set<Integer> getClaimedRewardTiers(UUID playerId) {
-        return claimedRewardTiers.computeIfAbsent(playerId, k -> ConcurrentHashMap.newKeySet());
+    private Map<Integer, String> getCollectedRewardTiers(UUID playerId) {
+        return collectedRewardTiers.computeIfAbsent(playerId, k -> new ConcurrentHashMap<>());
     }
 
-    public boolean isRewardTierClaimed(PlayerRef playerRef, int tier) {
-        return playerRef != null && getClaimedRewardTiers(playerRef.getUuid()).contains(tier);
+    /**
+     * Checks whether a player has already collected the reward of a tier.
+     */
+    public boolean isRewardTierCollected(PlayerRef playerRef, int tier) {
+        return playerRef != null && getCollectedRewardTiers(playerRef.getUuid()).containsKey(tier);
     }
 
-    public void markRewardTierClaimed(PlayerRef playerRef, int tier) {
+    /**
+     * Gets the date at which a player collected the reward of a tier, as an
+     * ISO-8601 instant, or null when the tier has not been collected or its
+     * save entry carries no date.
+     */
+    public String getRewardTierCollectedDate(PlayerRef playerRef, int tier) {
+        if (playerRef == null) {
+            return null;
+        }
+        String date = getCollectedRewardTiers(playerRef.getUuid()).get(tier);
+        return date == null || date.isEmpty() ? null : date;
+    }
+
+    /**
+     * Marks the reward of a tier as collected by the player, stamped with the
+     * current date, and persists it in their save file.
+     */
+    public void markRewardTierCollected(PlayerRef playerRef, int tier) {
         if (playerRef == null) {
             return;
         }
 
         UUID playerId = playerRef.getUuid();
-        if (getClaimedRewardTiers(playerId).add(tier)) {
+        Map<Integer, String> collected = getCollectedRewardTiers(playerId);
+        if (!collected.containsKey(tier)) {
+            collected.put(tier, Instant.now().toString());
             Set<PlantInfo> memories = playerMemories.computeIfAbsent(playerId, k -> loadPlayerMemories(k));
             savePlayerMemories(playerId, memories);
         }
@@ -637,7 +663,7 @@ public class PlantMemoryManager {
             
             // Update in memory and save
             playerMemories.put(playerId, clearedMemories);
-            getClaimedRewardTiers(playerId).clear();
+            getCollectedRewardTiers(playerId).clear();
             savePlayerMemories(playerId, clearedMemories);
 
             // Also forget the journal was opened, so the intro shows again

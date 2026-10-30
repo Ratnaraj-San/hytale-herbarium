@@ -1,4 +1,5 @@
 $C = "../Common.ui";
+$Sounds = "../Sounds.ui";
 
 @JournalTitleStyle = LabelStyle(
   FontSize: 15,
@@ -99,6 +100,7 @@ $C.@PageOverlay {
           }
 
           $C.@TextButton #RewardsButton {
+            @Sounds = $Sounds.@ButtonMemoryRestore;
             Anchor: (Width: 330, Height: 42);
             Text: "Rewards coming soon";
             Disabled: true;
