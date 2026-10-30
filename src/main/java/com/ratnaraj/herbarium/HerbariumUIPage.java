@@ -16,7 +16,10 @@ import com.hypixel.hytale.server.core.ui.builder.UIEventBuilder;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.SoundUtil;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
+import com.hypixel.hytale.server.core.ui.Anchor;
+import com.hypixel.hytale.server.core.ui.Value;
 
+import java.awt.Color;
 import java.util.List;
 import java.util.Map;
 
@@ -52,6 +55,27 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
      */
     private static final String LOCATIONS_FOUND_IN_KEY = "server.herbarium.location.found_in";
     private static final String LOCATION_UNKNOWN_KEY = "server.herbarium.location.unknown";
+
+    /**
+     * Width used to place the chest markers along the progress bar, in the
+     * same 0-1000 coordinates as the vanilla Memories page.
+     */
+    private static final int CHEST_MARKER_SCALE = 1000;
+
+    /**
+     * Translation keys of the chest marker tooltips. Set at runtime with
+     * Message.translation.
+     */
+    private static final String CHEST_LOCKED_TOOLTIP_KEY = "server.herbarium.rewards.chestLocked.tooltipText";
+    private static final String CHEST_ACTIVE_TOOLTIP_KEY = "server.herbarium.rewards.chestActive.tooltipText";
+    private static final String CHEST_CLAIMED_TOOLTIP_KEY = "server.herbarium.rewards.chestClaimed.tooltipText";
+
+    /**
+     * Colors of the reward list shown in the chest tooltips.
+     */
+    private static final Color REWARD_QUANTITY_COLOR = new Color(0x88, 0x88, 0x88);
+    private static final Color REWARD_ITEM_COLOR = Color.WHITE;
+    private static final Color REWARD_CLAIMED_COLOR = new Color(0x88, 0x88, 0x88);
 
     /**
      * Icon shown for each category tile, keyed by plants.json category.
@@ -218,6 +242,8 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         commands.set("#PlantsProgressBarTexture.Value", progress);
         commands.set("#TotalCollected.Text", "plants recorded: " + totalDiscovered + " / " + totalPlants);
 
+        buildChestMarkers(commands, totalDiscovered, totalPlants);
+
         int index = 0;
         for (Map.Entry<String, List<String>> entry : categories.entrySet()) {
             String category = entry.getKey();
@@ -265,6 +291,68 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
             );
             index++;
         }
+    }
+
+    /**
+     * Adds the chest reward markers on the progress bar.
+     */
+    private void buildChestMarkers(UICommandBuilder commands, int totalDiscovered, int totalPlants) {
+        PlantMemoryManager manager = Herbarium.getMemoryManager();
+        int tierCount = HerbariumRewards.getTierCount(totalPlants);
+
+        for (int tier = 1; tier <= tierCount; tier++) {
+            int threshold = HerbariumRewards.getTierThreshold(tier);
+            boolean reached = totalDiscovered >= threshold;
+            boolean rewardClaimed = manager.isRewardTierClaimed(playerRef, tier);
+            String marker = "#ChestMarkers[" + (tier - 1) + "]";
+
+            commands.append("#ChestMarkers", "Pages/Herbarium/ChestMarker.ui");
+
+            Anchor anchor = new Anchor();
+            anchor.setLeft(Value.of(threshold * CHEST_MARKER_SCALE / totalPlants));
+            commands.setObject(marker + ".Anchor", anchor);
+
+            String tooltipKey = rewardClaimed
+                    ? CHEST_CLAIMED_TOOLTIP_KEY
+                    : reached ? CHEST_ACTIVE_TOOLTIP_KEY : CHEST_LOCKED_TOOLTIP_KEY;
+            Color itemColor = rewardClaimed ? REWARD_CLAIMED_COLOR : REWARD_ITEM_COLOR;
+            Message tooltip = Message.translation(tooltipKey)
+                    .param("count", threshold)
+                    .insert("\n\n")
+                    .insert(buildTierRewardsMessage(tier, itemColor));
+
+            if (reached || rewardClaimed) {
+                String chest = rewardClaimed ? "#ChestClaimed" : "#ChestActive";
+                commands.set(marker + " " + chest + ".Visible", true);
+                commands.set(marker + " " + chest + ".TooltipTextSpans", tooltip);
+                commands.set(marker + " #Arrow.Visible", reached && !rewardClaimed);
+            } else {
+                commands.set(marker + " #ChestDisabled.Visible", true);
+                commands.set(marker + " #ChestDisabled.TooltipTextSpans", tooltip);
+            }
+        }
+    }
+
+    private static Message buildTierRewardsMessage(int tier, Color itemColor) {
+        Message list = Message.empty();
+
+        boolean first = true;
+        for (HerbariumRewards.Reward reward : HerbariumRewards.getTierRewards(tier)) {
+            if (!first) {
+                list = list.insert("\n");
+            }
+            first = false;
+
+            list = list.insert(Message.join(
+                    Message.raw(reward.quantity() + "x ").color(REWARD_QUANTITY_COLOR),
+                    rewardNameMessage(reward.itemId()).color(itemColor)
+            ));
+        }
+        return list;
+    }
+
+    private static Message rewardNameMessage(String itemId) {
+        return Message.translation("server.items." + itemId + ".name");
     }
 
     /**

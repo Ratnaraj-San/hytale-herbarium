@@ -68,3 +68,8 @@ herbarium.unlock.bullet1 = Ce journal vous accompagnera tout au long de votre ex
 herbarium.unlock.bullet2 = Chaque plante que vous cueillez y est consignée, avec la date et le lieu de sa découverte.
 herbarium.unlock.bullet3 = Parcourez votre collection par catégorie et suivez votre progression pour devenir un véritable maître botaniste.
 herbarium.unlock.openJournal = Ouvrir le journal
+
+herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Verrouillé</b></color> \n<color is="#888888">Consignez {count, number} {count, plural, one {plante} other {plantes}} pour débloquer :</color>
+herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Débloqué</b></color> \n<color is="#888888">{count, number} {count, plural, one {plante} other {plantes}} consignées. Récompense à réclamer :</color>
+herbarium.rewards.chestClaimed.tooltipText = <color is="#888888"><b>Réclamé</b></color> \n<color is="#888888">{count, number} {count, plural, one {plante} other {plantes}} consignées. Récompense réclamée :</color>
+herbarium.rewards.item.batPlushie = Peluche de chauve-souris

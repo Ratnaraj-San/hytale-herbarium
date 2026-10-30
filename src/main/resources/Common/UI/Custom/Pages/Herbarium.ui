@@ -59,6 +59,10 @@ $C.@PageOverlay {
           FlexWeight: 1;
         }
 
+        Group #ChestMarkers {
+          Anchor: (Bottom: -15, Left: -14);
+        }
+
         Group {
           Background: "Herbarium/MemoriesProgress/MemoriesBarBg.png";
           Anchor: (Height: 22, Width: @progressBarWidth, Bottom: 30);

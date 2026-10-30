@@ -68,3 +68,8 @@ herbarium.unlock.bullet1 = This journal will follow you throughout your explorat
 herbarium.unlock.bullet2 = Every plant you pick up is recorded here, along with the date and place of its discovery.
 herbarium.unlock.bullet3 = Browse your collection by category and track your progress to become a true master botanist.
 herbarium.unlock.openJournal = Open the journal
+
+herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Locked</b></color> \n<color is="#888888">Record {count, number} {count, plural, one {plant} other {plants}} to unlock:</color>
+herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Unlocked</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {plants}} recorded. Reward to claim:</color>
+herbarium.rewards.chestClaimed.tooltipText = <color is="#888888"><b>Claimed</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {plants}} recorded. Reward claimed:</color>
+herbarium.rewards.item.batPlushie = Bat Plushie

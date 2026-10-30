@@ -40,6 +40,9 @@ public class PlantMemoryManager {
     // Plant memories per player (UUID -> Set of PlantInfo)
     private final Map<UUID, Set<PlantInfo>> playerMemories = new ConcurrentHashMap<>();
     
+    // Reward tiers already claimed per player (UUID -> tier numbers)
+    private final Map<UUID, Set<Integer>> claimedRewardTiers = new ConcurrentHashMap<>();
+    
     // Players who have already opened the journal at least once (intro shown)
     private final Set<UUID> playersWhoOpenedJournal = ConcurrentHashMap.newKeySet();
     
@@ -363,6 +366,21 @@ public class PlantMemoryManager {
                 for (JsonElement element : rootObject.getAsJsonArray("plants")) {
                     plants.add(parsePlantMemory(element));
                 }
+                if (rootObject.has("claimedRewardTiers")) {
+                    Set<Integer> claimed = new HashSet<>();
+                    for (JsonElement element : rootObject.getAsJsonArray("claimedRewardTiers")) {
+                        try {
+                            claimed.add(element.getAsInt());
+                        } catch (ClassCastException | IllegalStateException e) {
+                            Herbarium.getInstance().getLogger().at(Level.WARNING).log(
+                                "[Herbarium] Invalid claimed reward tier for " + playerId + ": " + element
+                            );
+                        }
+                    }
+                    if (!claimed.isEmpty()) {
+                        getClaimedRewardTiers(playerId).addAll(claimed);
+                    }
+                }
             } else {
                 // Legacy format: plain array of plant memories
                 for (JsonElement element : root.getAsJsonArray()) {
@@ -433,6 +451,14 @@ public class PlantMemoryManager {
         try (BufferedWriter writer = Files.newBufferedWriter(file)) {
             JsonObject root = new JsonObject();
             root.addProperty("journalOpened", playersWhoOpenedJournal.contains(playerId));
+
+            List<Integer> claimed = new ArrayList<>(getClaimedRewardTiers(playerId));
+            Collections.sort(claimed);
+            JsonArray claimedArray = new JsonArray();
+            for (int tier : claimed) {
+                claimedArray.add(tier);
+            }
+            root.add("claimedRewardTiers", claimedArray);
 
             JsonArray jsonArray = new JsonArray();
             for (PlantInfo plant : plants) {
@@ -572,6 +598,30 @@ public class PlantMemoryManager {
     }
 
     /**
+     * Gets the claimed reward tiers of a player, creating the set on first
+     * access.
+     */
+    private Set<Integer> getClaimedRewardTiers(UUID playerId) {
+        return claimedRewardTiers.computeIfAbsent(playerId, k -> ConcurrentHashMap.newKeySet());
+    }
+
+    public boolean isRewardTierClaimed(PlayerRef playerRef, int tier) {
+        return playerRef != null && getClaimedRewardTiers(playerRef.getUuid()).contains(tier);
+    }
+
+    public void markRewardTierClaimed(PlayerRef playerRef, int tier) {
+        if (playerRef == null) {
+            return;
+        }
+
+        UUID playerId = playerRef.getUuid();
+        if (getClaimedRewardTiers(playerId).add(tier)) {
+            Set<PlantInfo> memories = playerMemories.computeIfAbsent(playerId, k -> loadPlayerMemories(k));
+            savePlayerMemories(playerId, memories);
+        }
+    }
+
+    /**
      * Clears all memories for a player by setting all wasDiscovered to false.
      */
     public void clearPlayerMemories(PlayerRef playerRef) {
@@ -587,6 +637,7 @@ public class PlantMemoryManager {
             
             // Update in memory and save
             playerMemories.put(playerId, clearedMemories);
+            getClaimedRewardTiers(playerId).clear();
             savePlayerMemories(playerId, clearedMemories);
 
             // Also forget the journal was opened, so the intro shows again
