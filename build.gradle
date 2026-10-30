@@ -45,15 +45,16 @@ javadoc {
     options.addStringOption('Xdoclint:-missing', '-quiet')
 }
 
-// Extracts the minimum compatible Hytale version from the plugin manifest
-// (e.g. ">=0.7.5 <0.8.0" gives "0.7.5") so the built jar can be named after
-// both the plugin version and the Hytale version it targets.
+// Extracts the compatible Hytale version from the plugin manifest (e.g.
+// ">=0.7.5 <0.8.0" gives "0.7.5"), then keeps only major.minor ("0.7") so
+// the built jar is named after both the plugin version and the Hytale
+// version line it targets, without the patch precision.
 def pluginManifest = new groovy.json.JsonSlurper().parseText(file('src/main/resources/manifest.json').text)
 def serverVersionMatch = (pluginManifest.ServerVersion ?: '') =~ '>=([0-9]+(?:\\.[0-9]+)*)'
 if (!serverVersionMatch.find()) {
     throw new GradleException("Could not parse a '>=x.y.z' Hytale version from ServerVersion '${pluginManifest.ServerVersion}' in manifest.json!")
 }
-def hytaleVersion = serverVersionMatch.group(1)
+def hytaleVersion = serverVersionMatch.group(1).split('\\.').take(2).join('.')
 
 // Adds the Hytale server as a build dependency, allowing you to reference and
 // compile against their code without bundling it. When a local install is
