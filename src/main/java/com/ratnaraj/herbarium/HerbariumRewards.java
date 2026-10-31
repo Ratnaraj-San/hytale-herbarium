@@ -50,7 +50,7 @@ public final class HerbariumRewards {
                     new Reward("Ingredient_Life_Essence_Concentrated", 32)),
             8, List.of(
                     new Reward("Deco_Trophy_Harvest", 1),
-                    new Reward("Food_Pie_Pumpkin", 1),
+                    new Reward("Food_Pie_Pumpkin", 25),
                     new Reward("Ingredient_Life_Essence_Concentrated", 64))
     );
 
