@@ -44,15 +44,13 @@ public class Herbarium extends JavaPlugin {
 
     private Path getPluginDataDirectory() {
         try {
-            // Method 1: Try to get via class loader
             Path codeSourcePath = Paths.get(
                 Herbarium.class.getProtectionDomain()
                     .getCodeSource()
                     .getLocation()
                     .toURI()
             ).getParent();
-            
-            // If the plugin is in a JAR, the parent directory contains the data
+
             Path dataDir = codeSourcePath.resolve("Herbarium");
             Files.createDirectories(dataDir);
             return dataDir;
@@ -61,8 +59,7 @@ public class Herbarium extends JavaPlugin {
                 "[Herbarium] Unable to get directory via CodeSource: " + e.getMessage()
             );
         }
-        
-        // Method 2: Use working directory + run/
+
         try {
             Path workingDir = Paths.get(System.getProperty("user.dir"));
             Path runDir = workingDir.resolve("run");
@@ -76,8 +73,7 @@ public class Herbarium extends JavaPlugin {
                 "[Herbarium] Unable to get directory via working dir: " + e.getMessage()
             );
         }
-        
-        // Method 3: Current directory
+
         try {
             Path currentDir = Paths.get(".").toAbsolutePath().normalize();
             Path dataDir = currentDir.resolve("Herbarium");
@@ -88,8 +84,7 @@ public class Herbarium extends JavaPlugin {
                 "[Herbarium] Unable to determine data directory: " + e.getMessage()
             );
         }
-        
-        // Return a default path
+
         return Paths.get("Herbarium");
     }
 

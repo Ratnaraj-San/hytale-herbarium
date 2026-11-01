@@ -16,17 +16,8 @@ import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
 import javax.annotation.Nonnull;
-import java.awt.Color;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
 
-/**
- * Main command to manage the herbarium.
- * Sub-commands: list, reset
- */
 public class HerbariumCommand extends AbstractCommandCollection {
 
     public HerbariumCommand() {

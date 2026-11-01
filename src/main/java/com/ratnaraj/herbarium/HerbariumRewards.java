@@ -5,20 +5,11 @@ import java.util.Map;
 
 public final class HerbariumRewards {
 
-    /**
-     * Number of discoveries per reward tier.
-     */
     public static final int TIER_SIZE = 50;
 
-    /**
-     * One reward of a tier: an item id with its quantity.
-     */
     public record Reward(String itemId, int quantity) {
     }
 
-    /**
-     * Items granted by each tier, in display order.
-     */
     private static final Map<Integer, List<Reward>> TIER_REWARDS = Map.of(
             1, List.of(
                     new Reward("Deco_Kweebec_Plush", 1),
@@ -54,12 +45,6 @@ public final class HerbariumRewards {
                     new Reward("Ingredient_Life_Essence_Concentrated", 64))
     );
 
-    private HerbariumRewards() {
-    }
-
-    /**
-     * Number of discoveries needed to reach a tier.
-     */
     public static int getTierThreshold(int tier) {
         return tier * TIER_SIZE;
     }
@@ -72,10 +57,6 @@ public final class HerbariumRewards {
         return Math.min(totalPlants / TIER_SIZE, TIER_REWARDS.size());
     }
 
-    /**
-     * Items granted by a tier, in display order, or an empty list when the
-     * tier has no configured rewards.
-     */
     public static List<Reward> getTierRewards(int tier) {
         return TIER_REWARDS.getOrDefault(tier, List.of());
     }
