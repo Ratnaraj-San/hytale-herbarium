@@ -1310,8 +1310,8 @@
     },
     {
       "id": "Plant_Leaves_Frostwood",
-      "obtainableInExplorationMode": false,
-      "locations": []
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.tree.frostwood"]
     },
     {
       "id": "Plant_Leaves_Goldentree",
@@ -1370,13 +1370,13 @@
     },
     {
       "id": "Plant_Leaves_Poisoned",
-      "obtainableInExplorationMode": false,
-      "locations": []
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.guttering_hollows"]
     },
     {
       "id": "Plant_Leaves_Poisoned_Floor",
-      "obtainableInExplorationMode": false,
-      "locations": []
+      "obtainableInExplorationMode": true,
+      "locations": ["server.herbarium.location.guttering_hollows"]
     },
     {
       "id": "Plant_Leaves_Redwood",
@@ -2060,7 +2060,7 @@
     },
     {
       "id": "Plant_Sapling_Poisoned",
-      "obtainableInExplorationMode": true,
+      "obtainableInExplorationMode": false,
       "locations": []
     },
     {
