@@ -5,38 +5,44 @@ $Intro = "../../Common/IntroModal.ui";
 // reference plugin translation keys with %refs, the client fails to load
 // the document when the key is not resolvable at parse time.
 //
-// The vanilla modal shows an image next to the text; here the text block
-// fills the modal and is centered horizontally and vertically. Override
-// blocks cannot override nested template elements (the template's
-// #TitleLabel), so the texts are plain labels added to the column.
+// The illustration is shown next to the text like the vanilla Memories
+// unlock modal. The @ImageWidth/@ImageHeight are logical (1x) sizes; the
+// asset JournalUnlocked/Herbarium_Journal@2x.png renders at half its
+// pixel size. Override blocks cannot override nested template elements
+// (the template's #TitleLabel), so the texts are plain labels added to
+// the column.
 $Intro.@IntroModal {
-  #Content {
-    Anchor: (Full: 0);
-    LayoutMode: MiddleCenter;
-  }
+  @ImageWidth = 315;
+  @ImageHeight = 393;
 
   #ContentText {
     Label #ModalTitle {
-      Style: (HorizontalAlignment: Center, FontName: "Secondary", TextColor: #b6cfee, FontSize: 28, RenderBold: true, RenderUppercase: true, Wrap: true);
+      Style: (HorizontalAlignment: Start, FontName: "Secondary", TextColor: #b6cfee, FontSize: 28, RenderBold: true, RenderUppercase: true, Wrap: true);
       Text: "";
     }
 
     Label #ModalBullet1 {
       Anchor: (Top: 15);
-      Style: (HorizontalAlignment: Center, FontSize: 18, Wrap: true, TextColor: #778393);
+      Style: (HorizontalAlignment: Start, FontSize: 18, Wrap: true, TextColor: #778393);
       Text: "";
     }
 
     Label #ModalBullet2 {
       Anchor: (Top: 15);
-      Style: (HorizontalAlignment: Center, FontSize: 18, Wrap: true, TextColor: #778393);
+      Style: (HorizontalAlignment: Start, FontSize: 18, Wrap: true, TextColor: #778393);
       Text: "";
     }
 
     Label #ModalBullet3 {
       Anchor: (Top: 15);
-      Style: (HorizontalAlignment: Center, FontSize: 18, Wrap: true, TextColor: #778393);
+      Style: (HorizontalAlignment: Start, FontSize: 18, Wrap: true, TextColor: #778393);
       Text: "";
+    }
+  }
+
+  #ContentImage {
+    Group {
+      Background: "JournalUnlocked/Herbarium_Journal.png";
     }
   }
 
