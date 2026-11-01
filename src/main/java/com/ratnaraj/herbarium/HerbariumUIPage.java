@@ -69,28 +69,15 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
      */
     private static final int CHEST_MARKER_SCALE = 1000;
 
-    /**
-     * Translation keys of the chest marker tooltips. Set at runtime with
-     * Message.translation.
-     */
     private static final String CHEST_LOCKED_TOOLTIP_KEY = "server.herbarium.rewards.chestLocked.tooltipText";
     private static final String CHEST_ACTIVE_TOOLTIP_KEY = "server.herbarium.rewards.chestActive.tooltipText";
     private static final String CHEST_COLLECTED_TOOLTIP_KEY = "server.herbarium.rewards.chestCollected.tooltipText";
 
-    /**
-     * Translation keys of the rewards button.
-     */
     private static final String COLLECT_BUTTON_KEY = "server.herbarium.rewards.collectButton";
     private static final String ALL_COLLECTED_KEY = "server.herbarium.rewards.allCollected";
 
-    /**
-     * Vanilla sound event played when a reward is successfully collected.
-     */
     private static final String COLLECT_SOUND_EVENT = "SFX_MemoryRestored";
 
-    /**
-     * Colors of the reward list shown in the chest tooltips.
-     */
     private static final Color REWARD_QUANTITY_COLOR = new Color(0x88, 0x88, 0x88);
     private static final Color REWARD_ITEM_COLOR = Color.WHITE;
     private static final Color REWARD_COLLECTED_COLOR = new Color(0x88, 0x88, 0x88);
@@ -124,9 +111,6 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     private String selectedCategory;
     private String selectedPlant;
 
-    /**
-     * Event payload sent by the client when the player interacts with the page.
-     */
     public static final class PageEventData {
         public static final BuilderCodec<PageEventData> CODEC =
                 BuilderCodec.builder(PageEventData.class, PageEventData::new)
@@ -228,17 +212,11 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         }
     }
 
-    /**
-     * Plays the book closing sound when the player dismisses the journal.
-     */
     @Override
     public void onDismiss(Ref<EntityStore> ref, Store<EntityStore> store) {
         SoundUtil.playSoundEvent2dToPlayer(playerRef, "SFX_Drop_Weapons_Books", SoundCategory.UI);
     }
 
-    /**
-     * Builds the category overview panel.
-     */
     private void buildCategoryView(UICommandBuilder commands, UIEventBuilder events) {
         PlantMemoryManager manager = Herbarium.getMemoryManager();
         Map<String, List<String>> categories = manager.getPlantCategories();
@@ -326,9 +304,6 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         }
     }
 
-    /**
-     * Adds the chest reward markers on the progress bar.
-     */
     private void buildChestMarkers(UICommandBuilder commands, int totalDiscovered, int totalPlants) {
         PlantMemoryManager manager = Herbarium.getMemoryManager();
         int tierCount = HerbariumRewards.getTierCount(totalPlants);
@@ -363,9 +338,6 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         }
     }
 
-    /**
-     * Builds the tooltip of a chest marker.
-     */
     private static Message buildChestTooltip(int tier, String tooltipKey, Color itemColor) {
         return Message.translation(tooltipKey)
                 .param("count", HerbariumRewards.getTierThreshold(tier))
@@ -373,9 +345,6 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                 .insert(buildTierRewardsMessage(tier, itemColor));
     }
 
-    /**
-     * Gets the lowest tier whose reward has not been collected yetd.
-     */
     private int getNextUncollectedTier(int tierCount) {
         PlantMemoryManager manager = Herbarium.getMemoryManager();
         for (int tier = 1; tier <= tierCount; tier++) {
@@ -410,7 +379,6 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         int totalDiscovered = manager.getMemoryCount(playerRef);
         int tier = getNextUncollectedTier(HerbariumRewards.getTierCount(totalPlants));
 
-        // Nothing to collect, or the next uncollected tier has not been reached yet
         if (tier == 0 || totalDiscovered < HerbariumRewards.getTierThreshold(tier)) {
             return;
         }
@@ -441,8 +409,8 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     }
 
     /**
-     * Reopens the intro modal when the info button is activated, mirroring
-     * the vanilla Memories page which shows its feature explanation again.
+     * Mirrors the vanilla Memories page, which shows its feature explanation
+     * again through its info button.
      */
     private void handleShowInfo(Ref<EntityStore> ref, Store<EntityStore> store) {
         if (ref == null || store == null) {
@@ -477,9 +445,6 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         return Message.translation("server.items." + itemId + ".name");
     }
 
-    /**
-     * Builds the plant list panel for the selected category.
-     */
     private void buildPlantView(UICommandBuilder commands, UIEventBuilder events) {
         PlantMemoryManager manager = Herbarium.getMemoryManager();
         List<String> plants = manager.getPlantsInCategory(selectedCategory);
@@ -546,18 +511,12 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         buildDetails(commands);
     }
 
-    /**
-     * Toggles the selected/not-selected buttons of a plant tile.
-     */
     private void setTileSelection(UICommandBuilder commands, int index, boolean selected) {
         String tile = "#IconList[" + index + "]";
         commands.set(tile + " #ButtonSelected.Visible", selected);
         commands.set(tile + " #ButtonNotSelected.Visible", !selected);
     }
 
-    /**
-     * Fills the right-side details panel with the selected plant.
-     */
     private void buildDetails(UICommandBuilder commands) {
         PlantMemoryManager manager = Herbarium.getMemoryManager();
 
@@ -634,9 +593,6 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         }
     }
 
-    /**
-     * Formats an ISO-8601 instant as a plain date (yyyy-MM-dd).
-     */
     private String formatDate(String isoInstant) {
         int separatorIndex = isoInstant.indexOf('T');
         return separatorIndex > 0 ? isoInstant.substring(0, separatorIndex) : isoInstant;
@@ -657,9 +613,6 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         }
     }
 
-    /**
-     * Finds a representative icon for a category (first plant with an icon).
-     */
     private String findCategoryIcon(PlantMemoryManager manager, List<String> plants) {
         for (String plantId : plants) {
             String icon = manager.getPlantIcon(plantId);

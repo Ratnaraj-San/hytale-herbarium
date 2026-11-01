@@ -26,9 +26,8 @@ import java.time.Instant;
 import java.util.logging.Level;
 
 /**
- * ECS system to detect inventory changes.
- * Sends a message to the player for pickup and take_from_container.
- * Saves plant memories when the player picks a plant.
+ * Records plant discoveries when a player picks up a plant item, on pickup
+ * or when taking it from a container.
  */
 public class InventoryChangeSystem extends EntityEventSystem<EntityStore, InventoryChangeEvent> {
 
@@ -36,9 +35,6 @@ public class InventoryChangeSystem extends EntityEventSystem<EntityStore, Invent
         super(InventoryChangeEvent.class);
     }
 
-    /**
-     * Gets the player's block position as "x, y, z", or null if unavailable.
-     */
     private String getPlayerPosition(Store<EntityStore> store, Ref<EntityStore> entityRef) {
         try {
             TransformComponent transform = store.getComponent(entityRef, TransformComponent.getComponentType());
@@ -71,7 +67,6 @@ public class InventoryChangeSystem extends EntityEventSystem<EntityStore, Invent
                        Store<EntityStore> store, CommandBuffer<EntityStore> commandBuffer,
                        InventoryChangeEvent event) {
 
-        // Determine the action type and the relevant item
         Transaction transaction = event.getTransaction();
         String actionType = null;
         ItemStack itemStack = null;
@@ -95,12 +90,10 @@ public class InventoryChangeSystem extends EntityEventSystem<EntityStore, Invent
             }
         }
 
-        // If the action is not interesting, exit
         if (actionType == null) {
             return;
         }
 
-        // Get the item id and name
         String itemId = "unknown";
         String itemName = null;
 
@@ -109,12 +102,8 @@ public class InventoryChangeSystem extends EntityEventSystem<EntityStore, Invent
             itemName = itemStack.getDisplayName().getRawText();
         }
 
-        // Check if the item is a plant
-        boolean isPlant = Herbarium.getMemoryManager().isPlantItem(itemId);
+        if (!Herbarium.getMemoryManager().isPlantItem(itemId)) { return; }
 
-        if (!isPlant) { return; }
-
-        // Iterate through all entities in the chunk to find the player
         for (int i = 0; i < chunk.size(); i++) {
             Ref<EntityStore> entityRef = chunk.getReferenceTo(i);
 
@@ -153,7 +142,6 @@ public class InventoryChangeSystem extends EntityEventSystem<EntityStore, Invent
                         return;
                     }
                 } catch (Exception e) {
-                    // Ignore errors
                     Herbarium.getInstance().getLogger().at(Level.WARNING).log(
                             "[Herbarium] Error during processing: " + e.getMessage()
                     );
