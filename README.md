@@ -71,7 +71,7 @@ If you encounter any problem or have any idea, please let me know!
 Here is what is planned for future updates:
 
 - ~~A rewards system~~
-- A better icon for the Journal
+- ~~Better model for the journal~~
 - Category icons in the style of the Memories categories
 - More information in the plant pages
 
