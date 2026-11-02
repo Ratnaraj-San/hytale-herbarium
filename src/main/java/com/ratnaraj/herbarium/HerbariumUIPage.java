@@ -152,7 +152,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     }
 
     public HerbariumUIPage(PlayerRef playerRef) {
-        super(playerRef, CustomPageLifetime.CanDismiss, PageEventData.CODEC);
+        super(playerRef, CustomPageLifetime.CanDismissOrCloseThroughInteraction, PageEventData.CODEC);
     }
 
     @Override

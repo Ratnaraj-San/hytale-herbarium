@@ -2,7 +2,7 @@
   "TranslationProperties": {
     "Name": "server.items.Herbarium_Journal.name"
   },
-  "Quality": "Common",
+  "Quality": "Uncommon",
   "MaxStack": 1,
   "Categories": [
     "Items.Books"
@@ -17,20 +17,72 @@
       "Book"
     ]
   },
+  "BlockType": {
+    "Material": "Solid",
+    "DrawType": "Model",
+    "Opacity": "Transparent",
+    "CustomModel": "Blocks/Dungeons/Book.blockymodel",
+    "CustomModelTexture": [
+      {
+        "Texture": "Items/Herbarium/Herbarium_Journal_Texture.png",
+        "Weight": 1
+      }
+    ],
+    "HitboxType": "Book",
+    "VariantRotation": "NESW",
+    "Flags": {},
+    "Gathering": {
+      "Soft": {
+        "IsWeaponBreakable": false
+      }
+    },
+    "BlockParticleSetId": "Stone",
+    "Support": {
+      "Down": [
+        {
+          "FaceType": "Full"
+        }
+      ]
+    },
+    "TextureComputedColor": "#8B7355",
+    "Interactions": {
+      "Use": {
+        "Interactions": [
+          {
+            "Type": "Simple",
+            "Effects": {
+              "LocalSoundEventId": "SFX_Herbarium_Book_Open"
+            },
+            "Next": {
+              "Type": "OpenCustomUI",
+              "Page": {
+                "Id": "Herbarium_Journal"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
   "Interactions": {
     "Secondary": {
       "Interactions": [
         {
-          "Type": "Simple",
-          "Effects": {
-            "LocalSoundEventId": "SFX_Herbarium_Book_Open"
-          },
+          "Type": "Condition",
+          "Crouching": false,
           "Next": {
-            "Type": "OpenCustomUI",
-            "Page": {
-              "Id": "Herbarium_Journal"
+            "Type": "Simple",
+            "Effects": {
+              "LocalSoundEventId": "SFX_Herbarium_Book_Open"
+            },
+            "Next": {
+              "Type": "OpenCustomUI",
+              "Page": {
+                "Id": "Herbarium_Journal"
+              }
             }
-          }
+          },
+          "Failed": "Place_Single"
         }
       ]
     }
@@ -57,6 +109,7 @@
       }
     ]
   },
+  "Scale": 1.2,
   "Icon": "Icons/ItemsGenerated/Herbarium_Journal.png",
   "IconProperties": {
     "Scale": 0.745,
