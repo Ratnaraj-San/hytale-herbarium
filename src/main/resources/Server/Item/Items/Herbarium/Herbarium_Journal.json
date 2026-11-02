@@ -2,7 +2,7 @@
   "TranslationProperties": {
     "Name": "server.items.Herbarium_Journal.name"
   },
-  "Quality": "Common",
+  "Quality": "Uncommon",
   "MaxStack": 1,
   "Categories": [
     "Items.Books"
@@ -57,6 +57,7 @@
       }
     ]
   },
+  "Scale": 1.2,
   "Icon": "Icons/ItemsGenerated/Herbarium_Journal.png",
   "IconProperties": {
     "Scale": 0.745,
