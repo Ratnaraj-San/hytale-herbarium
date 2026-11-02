@@ -186,7 +186,6 @@ if (hasHytaleHome) {
             def args = [
                 '--allow-op',
                 '--disable-sentry',
-                '--singleplayer',
                 "--assets=${assetsZip}".replace('\\', '/')
             ]
             
