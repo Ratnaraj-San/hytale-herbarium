@@ -27,6 +27,10 @@ At a workbench:
 
 Right-click while holding the journal to unlock tracking of your discoveries.
 
+You can also set the journal down: crouch and right-click while aiming at a
+horizontal surface to place it in the world. Once placed, use the interaction
+key on it to open it, and break it to pick it back up.
+
 For each recorded plant, the journal tells you where to look for it:
 caves, chests, Kweebec villages, Trork camps, the goblin realm, Howling
 Sands ruins, and many more.
