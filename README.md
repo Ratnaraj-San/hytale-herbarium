@@ -14,6 +14,8 @@ It is built entirely from vanilla assets — only a few of them were
 slightly tweaked (the Journal's model, for example). A few custom
 translations were also added, for texts the game does not provide.
 
+---
+
 ## How to play
 
 ### 1. Craft your journal
@@ -22,6 +24,8 @@ At a workbench:
 
 - 1 wood trunk
 - 1 light leather
+
+---
 
 ### 2. Open the journal
 
@@ -47,6 +51,8 @@ trees, bushes, brambles...
 
 Every 50 plants recorded, you can collect a reward straight from your journal!
 
+---
+
 ## In-game commands
 
 OP perms are required.
@@ -62,19 +68,20 @@ OP perms are required.
 Drop the mod JAR file into your solo world's or your server's `mods` folder.
 The mod is available in English and French only, for now.
 
-## Feedback
-
-If you encounter any problem or have any idea, please let me know!
+---
 
 ## Roadmap
 
 Here is what is planned for future updates:
 
 - ~~A rewards system~~
-- ~~Better model for the journal~~
+- ~~Better model for the journal~~ (not sure if the current one is the final model)
 - Category icons in the style of the Memories categories
-- More information in the plant pages
+- More accurate locations (continuous updates)
+- More information in the plant pages (how to harvest the plant, what other plants are related to it, etc.)
 
-## Credits
+---
 
-Mod created by **Ratnaraj**.
+## Feedback
+
+If you encounter any problem or have any idea, please let me know!
