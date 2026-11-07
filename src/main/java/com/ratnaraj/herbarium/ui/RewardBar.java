@@ -14,7 +14,7 @@ import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.SoundUtil;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.ratnaraj.herbarium.Herbarium;
-import com.ratnaraj.herbarium.HerbariumRewards;
+import com.ratnaraj.herbarium.data.HerbariumRewards;
 import com.ratnaraj.herbarium.data.PlayerStore;
 
 import java.awt.*;

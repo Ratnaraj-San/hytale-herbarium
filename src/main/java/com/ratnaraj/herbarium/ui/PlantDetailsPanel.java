@@ -4,8 +4,8 @@ import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.ui.builder.UICommandBuilder;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.ratnaraj.herbarium.Herbarium;
-import com.ratnaraj.herbarium.PlantInfo;
 import com.ratnaraj.herbarium.data.PlantAssets;
+import com.ratnaraj.herbarium.data.PlantInfo;
 import com.ratnaraj.herbarium.data.PlayerStore;
 
 import java.util.List;

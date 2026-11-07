@@ -2,7 +2,7 @@ package com.ratnaraj.herbarium.ui;
 
 import com.ratnaraj.herbarium.Herbarium;
 import com.ratnaraj.herbarium.data.PlantAssets;
-import com.ratnaraj.herbarium.data.PlayerStore;
+import com.ratnaraj.herbarium.data.PlantInfo;
 
 import com.hypixel.hytale.codec.Codec;
 import com.hypixel.hytale.codec.KeyedCodec;
@@ -22,8 +22,10 @@ import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.SoundUtil;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Botanical journal shown by /herbarium ui.
@@ -175,8 +177,8 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     }
 
     private void buildCategoryView(UICommandBuilder commands, UIEventBuilder events) {
-        PlayerStore store = Herbarium.getPlayerStore();
         Map<String, List<String>> categories = Herbarium.getCatalog().getPlantCategories();
+        Set<String> discoveredPlants = getDiscoveredPlantIds();
 
         commands.append("Pages/Herbarium.ui");
         commands.set("#TitleLabel.Text", Message.translation(JOURNAL_NAME_KEY));
@@ -185,7 +187,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         int totalPlants = 0;
         for (List<String> plants : categories.values()) {
             for (String plantId : plants) {
-                if (store.isPlantDiscovered(playerRef, plantId)) {
+                if (discoveredPlants.contains(plantId)) {
                     totalDiscovered++;
                 }
             }
@@ -219,7 +221,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
 
             int discovered = 0;
             for (String plantId : plants) {
-                if (store.isPlantDiscovered(playerRef, plantId)) {
+                if (discoveredPlants.contains(plantId)) {
                     discovered++;
                 }
             }
@@ -273,15 +275,15 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     }
 
     private void buildPlantView(UICommandBuilder commands, UIEventBuilder events) {
-        PlayerStore store = Herbarium.getPlayerStore();
         List<String> plants = Herbarium.getCatalog().getPlantsInCategory(selectedCategory);
+        Set<String> discoveredPlants = getDiscoveredPlantIds();
 
         commands.append("Pages/Herbarium/PlantPanel.ui");
         commands.set("#TitleLabel.Text", Message.translation(JOURNAL_NAME_KEY));
 
         int discovered = 0;
         for (String plantId : plants) {
-            if (store.isPlantDiscovered(playerRef, plantId)) {
+            if (discoveredPlants.contains(plantId)) {
                 discovered++;
             }
         }
@@ -293,7 +295,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
             commands.append("#IconList", "Pages/Herbarium/PlantTile.ui");
             String tile = "#IconList[" + index + "]";
 
-            boolean isDiscovered = store.isPlantDiscovered(playerRef, plantId);
+            boolean isDiscovered = discoveredPlants.contains(plantId);
             boolean isSelected = plantId.equals(selectedPlant);
 
             if (isDiscovered) {
@@ -342,6 +344,20 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         String tile = "#IconList[" + index + "]";
         commands.set(tile + " #ButtonSelected.Visible", selected);
         commands.set(tile + " #ButtonNotSelected.Visible", !selected);
+    }
+
+    /**
+     * Ids of the plants this player discovered, as a set for cheap
+     * membership checks while building the views.
+     */
+    private Set<String> getDiscoveredPlantIds() {
+        Set<String> discovered = new HashSet<>();
+        for (PlantInfo info : Herbarium.getPlayerStore().getPlayerMemories(playerRef)) {
+            if (info.wasDiscovered()) {
+                discovered.add(info.getId());
+            }
+        }
+        return discovered;
     }
 
     private String findCategoryIcon(List<String> plants) {

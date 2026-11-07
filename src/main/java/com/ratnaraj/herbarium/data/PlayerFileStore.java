@@ -8,7 +8,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import com.ratnaraj.herbarium.Herbarium;
-import com.ratnaraj.herbarium.PlantInfo;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

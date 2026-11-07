@@ -1,4 +1,4 @@
-package com.ratnaraj.herbarium;
+package com.ratnaraj.herbarium.command;
 
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
@@ -14,6 +14,8 @@ import com.hypixel.hytale.server.core.entity.entities.player.pages.CustomUIPage;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
+
+import com.ratnaraj.herbarium.Herbarium;
 
 import javax.annotation.Nonnull;
 import java.util.concurrent.CompletableFuture;

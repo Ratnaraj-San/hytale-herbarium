@@ -1,4 +1,4 @@
-package com.ratnaraj.herbarium;
+package com.ratnaraj.herbarium.event;
 
 import com.hypixel.hytale.component.system.EntityEventSystem;
 import com.hypixel.hytale.component.query.Query;
@@ -21,6 +21,7 @@ import com.hypixel.hytale.protocol.SoundCategory;
 
 import org.joml.Vector3d;
 
+import com.ratnaraj.herbarium.Herbarium;
 import com.ratnaraj.herbarium.data.PlantAssets;
 
 import java.awt.Color;

@@ -2,7 +2,6 @@ package com.ratnaraj.herbarium.data;
 
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.ratnaraj.herbarium.Herbarium;
-import com.ratnaraj.herbarium.PlantInfo;
 
 import java.nio.file.Path;
 import java.time.Instant;

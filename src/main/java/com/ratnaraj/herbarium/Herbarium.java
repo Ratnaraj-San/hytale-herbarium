@@ -5,8 +5,10 @@ import com.hypixel.hytale.server.core.modules.interaction.interaction.config.ser
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
+import com.ratnaraj.herbarium.command.HerbariumCommand;
 import com.ratnaraj.herbarium.data.PlantCatalog;
 import com.ratnaraj.herbarium.data.PlayerStore;
+import com.ratnaraj.herbarium.event.InventoryChangeSystem;
 import com.ratnaraj.herbarium.ui.HerbariumIntroPage;
 import com.ratnaraj.herbarium.ui.HerbariumUIPage;
 

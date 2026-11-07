@@ -1,7 +1,5 @@
 package com.ratnaraj.herbarium.data;
 
-import com.ratnaraj.herbarium.PlantInfo;
-
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;
