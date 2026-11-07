@@ -44,8 +44,8 @@ to session.
 
 ### 3. Explore and observe
 
-Every new plant you discover is automatically added to your herbarium, sorted by category:
-trees, bushes, brambles...
+Every new plant you discover is automatically added to your journal, sorted into one of 18 categories:
+bushes, brambles, ferns, flowers, and much more.
 
 ### 4. Rewards
 
@@ -74,14 +74,41 @@ The mod is available in English and French only, for now.
 
 Here is what is planned for future updates:
 
+### Plant data
+
 - ~~A rewards system~~
-- ~~Better model for the journal~~ (not sure if the current one is the final model)
-- Category icons in the style of the Memories categories
 - More accurate locations (continuous updates)
 - More information in the plant pages (how to harvest the plant, what other plants are related to it, etc.)
+
+### Journal look and feel
+
+- ~~Better model for the journal~~ (not sure if the current one is the final model)
+- Category icons in the style of the Memories categories
+- Higher resolution for the notification icon
+- Open/close animation for the journal
+
+### Translations
+
+- Chinese
+- Czech
+- Danish
+- Dutch
+- Finnish
+- German
+- Hungarian
+- Italian
+- Polish
+- Portuguese (Brazil)
+- Portuguese (Portugal)
+- Romanian
+- Russian
+- Spanish
+- Swedish
+- Turkish
+- Ukrainian
 
 ---
 
 ## Feedback
 
-If you encounter any problem or have any idea, please let me know!
+If you encounter any issue or have suggestions, please let me know!
