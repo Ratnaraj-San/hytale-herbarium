@@ -5,6 +5,8 @@ import com.hypixel.hytale.server.core.modules.interaction.interaction.config.ser
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
+import com.ratnaraj.herbarium.data.PlantCatalog;
+import com.ratnaraj.herbarium.data.PlayerStore;
 
 import javax.annotation.Nonnull;
 import java.nio.file.Files;
@@ -15,27 +17,33 @@ import java.util.logging.Level;
 public class Herbarium extends JavaPlugin {
 
     private static Herbarium instance;
-    private static PlantMemoryManager memoryManager;
+    private static PlantCatalog plantCatalog;
+    private static PlayerStore playerStore;
 
     public Herbarium(@Nonnull JavaPluginInit init) {
         super(init);
         instance = this;
-        memoryManager = new PlantMemoryManager();
+        plantCatalog = new PlantCatalog();
+        playerStore = new PlayerStore(plantCatalog);
     }
 
     public static Herbarium getInstance() {
         return instance;
     }
 
-    public static PlantMemoryManager getMemoryManager() {
-        return memoryManager;
+    public static PlantCatalog getCatalog() {
+        return plantCatalog;
+    }
+
+    public static PlayerStore getPlayerStore() {
+        return playerStore;
     }
 
     @Override
     protected void setup() {
         Path pluginDataDir = getPluginDataDirectory();
-        memoryManager.initialize(pluginDataDir);
-        memoryManager.loadAllMemories();
+        playerStore.initialize(pluginDataDir);
+        playerStore.loadAllMemories();
 
         registerEvents();
         registerCommands();
@@ -97,7 +105,7 @@ public class Herbarium extends JavaPlugin {
     public void shutdown() {
         getLogger().at(Level.INFO).log("[Herbarium] Plugin disabled!");
 
-        memoryManager.saveAllMemories();
+        playerStore.saveAllMemories();
         
         getLogger().at(Level.INFO).log("[Herbarium] All memories saved!");
     }
@@ -123,7 +131,7 @@ public class Herbarium extends JavaPlugin {
      * look and sound), the journal itself afterwards.
      */
     public static CustomUIPage createJournalPage(PlayerRef playerRef) {
-        if (memoryManager.hasOpenedJournal(playerRef)) {
+        if (playerStore.hasOpenedJournal(playerRef)) {
             return new HerbariumUIPage(playerRef);
         }
         return new HerbariumIntroPage(playerRef);

@@ -1,5 +1,8 @@
 package com.ratnaraj.herbarium;
 
+import com.ratnaraj.herbarium.data.PlantAssets;
+import com.ratnaraj.herbarium.data.PlayerStore;
+
 import com.hypixel.hytale.codec.Codec;
 import com.hypixel.hytale.codec.KeyedCodec;
 import com.hypixel.hytale.codec.builder.BuilderCodec;
@@ -183,8 +186,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                 String previous = selectedPlant;
                 selectedPlant = data.getPlant();
 
-                PlantMemoryManager manager = Herbarium.getMemoryManager();
-                List<String> plants = manager.getPlantsInCategory(selectedCategory);
+                List<String> plants = Herbarium.getCatalog().getPlantsInCategory(selectedCategory);
 
                 UICommandBuilder commands = new UICommandBuilder();
                 if (previous != null && !previous.equals(selectedPlant)) {
@@ -218,8 +220,8 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     }
 
     private void buildCategoryView(UICommandBuilder commands, UIEventBuilder events) {
-        PlantMemoryManager manager = Herbarium.getMemoryManager();
-        Map<String, List<String>> categories = manager.getPlantCategories();
+        PlayerStore store = Herbarium.getPlayerStore();
+        Map<String, List<String>> categories = Herbarium.getCatalog().getPlantCategories();
 
         commands.append("Pages/Herbarium.ui");
         commands.set("#TitleLabel.Text", Message.translation(JOURNAL_NAME_KEY));
@@ -228,7 +230,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         int totalPlants = 0;
         for (List<String> plants : categories.values()) {
             for (String plantId : plants) {
-                if (manager.isPlantDiscovered(playerRef, plantId)) {
+                if (store.isPlantDiscovered(playerRef, plantId)) {
                     totalDiscovered++;
                 }
             }
@@ -262,7 +264,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
 
             int discovered = 0;
             for (String plantId : plants) {
-                if (manager.isPlantDiscovered(playerRef, plantId)) {
+                if (store.isPlantDiscovered(playerRef, plantId)) {
                     discovered++;
                 }
             }
@@ -279,7 +281,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
 
             String icon = CATEGORY_ICON_OVERRIDES.containsKey(category)
                     ? CATEGORY_ICON_OVERRIDES.get(category)
-                    : findCategoryIcon(manager, plants);
+                    : findCategoryIcon(plants);
             if (icon != null) {
                 commands.set(tile + " #CategoryIcon.AssetPath", icon);
             } else {
@@ -305,13 +307,13 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     }
 
     private void buildChestMarkers(UICommandBuilder commands, int totalDiscovered, int totalPlants) {
-        PlantMemoryManager manager = Herbarium.getMemoryManager();
+        PlayerStore store = Herbarium.getPlayerStore();
         int tierCount = HerbariumRewards.getTierCount(totalPlants);
 
         for (int tier = 1; tier <= tierCount; tier++) {
             int threshold = HerbariumRewards.getTierThreshold(tier);
             boolean reached = totalDiscovered >= threshold;
-            boolean rewardCollected = manager.isRewardTierCollected(playerRef, tier);
+            boolean rewardCollected = store.isRewardTierCollected(playerRef, tier);
             String marker = "#ChestMarkers[" + (tier - 1) + "]";
 
             commands.append("#ChestMarkers", "Pages/Herbarium/ChestMarker.ui");
@@ -346,9 +348,8 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     }
 
     private int getNextUncollectedTier(int tierCount) {
-        PlantMemoryManager manager = Herbarium.getMemoryManager();
         for (int tier = 1; tier <= tierCount; tier++) {
-            if (!manager.isRewardTierCollected(playerRef, tier)) {
+            if (!Herbarium.getPlayerStore().isRewardTierCollected(playerRef, tier)) {
                 return tier;
             }
         }
@@ -374,16 +375,16 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
             return;
         }
 
-        PlantMemoryManager manager = Herbarium.getMemoryManager();
-        int totalPlants = manager.getTotalPlantCount();
-        int totalDiscovered = manager.getMemoryCount(playerRef);
+        PlayerStore playerStore = Herbarium.getPlayerStore();
+        int totalPlants = Herbarium.getCatalog().getTotalPlantCount();
+        int totalDiscovered = playerStore.getMemoryCount(playerRef);
         int tier = getNextUncollectedTier(HerbariumRewards.getTierCount(totalPlants));
 
         if (tier == 0 || totalDiscovered < HerbariumRewards.getTierThreshold(tier)) {
             return;
         }
 
-        manager.markRewardTierCollected(playerRef, tier);
+        playerStore.markRewardTierCollected(playerRef, tier);
 
         List<ItemStack> rewards = new ArrayList<>();
         for (HerbariumRewards.Reward reward : HerbariumRewards.getTierRewards(tier)) {
@@ -446,15 +447,15 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     }
 
     private void buildPlantView(UICommandBuilder commands, UIEventBuilder events) {
-        PlantMemoryManager manager = Herbarium.getMemoryManager();
-        List<String> plants = manager.getPlantsInCategory(selectedCategory);
+        PlayerStore store = Herbarium.getPlayerStore();
+        List<String> plants = Herbarium.getCatalog().getPlantsInCategory(selectedCategory);
 
         commands.append("Pages/Herbarium/PlantPanel.ui");
         commands.set("#TitleLabel.Text", Message.translation(JOURNAL_NAME_KEY));
 
         int discovered = 0;
         for (String plantId : plants) {
-            if (manager.isPlantDiscovered(playerRef, plantId)) {
+            if (store.isPlantDiscovered(playerRef, plantId)) {
                 discovered++;
             }
         }
@@ -466,7 +467,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
             commands.append("#IconList", "Pages/Herbarium/PlantTile.ui");
             String tile = "#IconList[" + index + "]";
 
-            boolean isDiscovered = manager.isPlantDiscovered(playerRef, plantId);
+            boolean isDiscovered = store.isPlantDiscovered(playerRef, plantId);
             boolean isSelected = plantId.equals(selectedPlant);
 
             if (isDiscovered) {
@@ -474,7 +475,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                 commands.set(tile + " " + button + ".Visible", true);
                 setPlantName(commands, tile + " " + button + ".TooltipText", plantId);
 
-                String icon = manager.getPlantIcon(plantId);
+                String icon = PlantAssets.getPlantIcon(plantId);
                 if (icon != null) {
                     commands.set(tile + " #Icon.AssetPath", icon);
                 } else {
@@ -518,7 +519,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     }
 
     private void buildDetails(UICommandBuilder commands) {
-        PlantMemoryManager manager = Herbarium.getMemoryManager();
+        PlayerStore store = Herbarium.getPlayerStore();
 
         if (selectedPlant == null) {
             commands.set("#PlantName.Text", "");
@@ -530,9 +531,9 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
 
         setPlantName(commands, "#PlantName.Text", selectedPlant);
 
-        setLocationsPanel(commands, manager.getPlantLocations(selectedPlant));
+        setLocationsPanel(commands, Herbarium.getCatalog().getPlantLocations(selectedPlant));
 
-        PlantInfo plantInfo = manager.getPlayerPlantInfo(playerRef, selectedPlant);
+        PlantInfo plantInfo = store.getPlayerPlantInfo(playerRef, selectedPlant);
         if (plantInfo != null && plantInfo.wasDiscovered()) {
             String date = plantInfo.getDiscoveredDate();
             String place = plantInfo.getDiscoveredPlace();
@@ -548,7 +549,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
             commands.set("#PlantDiscovery.Text", "");
         }
 
-        String icon = manager.getPlantIcon(selectedPlant);
+        String icon = PlantAssets.getPlantIcon(selectedPlant);
         if (icon != null) {
             commands.set("#PlantIcon.AssetPath", icon);
         } else {
@@ -604,8 +605,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
      * string and translated plants use a translation message.
      */
     private void setPlantName(UICommandBuilder commands, String selector, String plantId) {
-        PlantMemoryManager manager = Herbarium.getMemoryManager();
-        String translationKey = manager.getPlantTranslationKey(plantId);
+        String translationKey = PlantAssets.getPlantTranslationKey(plantId);
         if (translationKey != null) {
             commands.set(selector, Message.translation(translationKey));
         } else {
@@ -613,9 +613,9 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         }
     }
 
-    private String findCategoryIcon(PlantMemoryManager manager, List<String> plants) {
+    private String findCategoryIcon(List<String> plants) {
         for (String plantId : plants) {
-            String icon = manager.getPlantIcon(plantId);
+            String icon = PlantAssets.getPlantIcon(plantId);
             if (icon != null) {
                 return icon;
             }

@@ -21,6 +21,8 @@ import com.hypixel.hytale.protocol.SoundCategory;
 
 import org.joml.Vector3d;
 
+import com.ratnaraj.herbarium.data.PlantAssets;
+
 import java.awt.Color;
 import java.time.Instant;
 import java.util.logging.Level;
@@ -102,7 +104,7 @@ public class InventoryChangeSystem extends EntityEventSystem<EntityStore, Invent
             itemName = itemStack.getDisplayName().getRawText();
         }
 
-        if (!Herbarium.getMemoryManager().isPlantItem(itemId)) { return; }
+        if (!Herbarium.getCatalog().isPlantItem(itemId)) { return; }
 
         for (int i = 0; i < chunk.size(); i++) {
             Ref<EntityStore> entityRef = chunk.getReferenceTo(i);
@@ -112,13 +114,13 @@ public class InventoryChangeSystem extends EntityEventSystem<EntityStore, Invent
                     if (playerRef != null && playerRef.isValid()) {
                         // Discovery progression stays inactive until the
                         // player has opened the journal for the first time.
-                        if (!Herbarium.getMemoryManager().hasOpenedJournal(playerRef)) {
+                        if (!Herbarium.getPlayerStore().hasOpenedJournal(playerRef)) {
                             return;
                         }
 
                         String discoveredDate = Instant.now().toString();
                         String discoveredPlace = getPlayerPosition(store, entityRef);
-                        boolean isNewDiscovery = Herbarium.getMemoryManager().addPlantMemory(
+                        boolean isNewDiscovery = Herbarium.getPlayerStore().addPlantMemory(
                                 playerRef, itemId, itemName, discoveredDate, discoveredPlace);
 
                         if (isNewDiscovery) {
@@ -126,7 +128,7 @@ public class InventoryChangeSystem extends EntityEventSystem<EntityStore, Invent
                                     playerRef.getPacketHandler(),
                                     Message.join(
                                             Message.raw("New plant discovered: "),
-                                            Herbarium.getMemoryManager().getPlantNameMessage(itemId).color(Color.YELLOW)
+                                            PlantAssets.getPlantNameMessage(itemId).color(Color.YELLOW)
                                     ),
                                     null,
                                     "NotificationIcons/PlantIcon.png"
