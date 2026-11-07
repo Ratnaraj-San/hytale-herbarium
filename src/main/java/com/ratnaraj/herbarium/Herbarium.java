@@ -7,6 +7,8 @@ import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.ratnaraj.herbarium.data.PlantCatalog;
 import com.ratnaraj.herbarium.data.PlayerStore;
+import com.ratnaraj.herbarium.ui.HerbariumIntroPage;
+import com.ratnaraj.herbarium.ui.HerbariumUIPage;
 
 import javax.annotation.Nonnull;
 import java.nio.file.Files;

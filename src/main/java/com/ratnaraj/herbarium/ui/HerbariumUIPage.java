@@ -1,5 +1,6 @@
-package com.ratnaraj.herbarium;
+package com.ratnaraj.herbarium.ui;
 
+import com.ratnaraj.herbarium.Herbarium;
 import com.ratnaraj.herbarium.data.PlantAssets;
 import com.ratnaraj.herbarium.data.PlayerStore;
 
@@ -14,20 +15,13 @@ import com.hypixel.hytale.protocol.packets.interface_.CustomUIEventBindingType;
 import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.entity.entities.player.pages.InteractiveCustomUIPage;
-import com.hypixel.hytale.server.core.inventory.InventoryComponent;
-import com.hypixel.hytale.server.core.inventory.ItemStack;
-import com.hypixel.hytale.server.core.inventory.container.SimpleItemContainer;
 import com.hypixel.hytale.server.core.ui.builder.EventData;
 import com.hypixel.hytale.server.core.ui.builder.UICommandBuilder;
 import com.hypixel.hytale.server.core.ui.builder.UIEventBuilder;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.SoundUtil;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
-import com.hypixel.hytale.server.core.ui.Anchor;
-import com.hypixel.hytale.server.core.ui.Value;
 
-import java.awt.Color;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -44,52 +38,8 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     private static final String TYPE_COLLECT_REWARD = "CollectReward";
     private static final String TYPE_SHOW_INFO = "ShowInfo";
 
-    /**
-     * Translation key shared with the Herbarium Journal item name, so the
-     * on-screen title always matches the in-hand item name.
-     */
     private static final String JOURNAL_NAME_KEY = "server.items.Herbarium_Journal.name";
 
-    /**
-     * Number of location labels available in PlantPanel.ui. Text properties
-     * accept a single translation message only, so each vanilla location key
-     * of plants.json is rendered in its own label.
-     */
-    private static final int LOCATION_LABEL_COUNT = 4;
-
-    /**
-     * Translation keys for the plant locations panel header and the
-     * "location unknown" fallback. Set at runtime: .ui documents cannot
-     * reference plugin translation keys with %refs, the client fails to load
-     * the document when the key is not resolvable at parse time.
-     */
-    private static final String LOCATIONS_FOUND_IN_KEY = "server.herbarium.location.found_in";
-    private static final String LOCATION_UNKNOWN_KEY = "server.herbarium.location.unknown";
-
-    /**
-     * Width used to place the chest markers along the progress bar, in the
-     * same 0-1000 coordinates as the vanilla Memories page.
-     */
-    private static final int CHEST_MARKER_SCALE = 1000;
-
-    private static final String CHEST_LOCKED_TOOLTIP_KEY = "server.herbarium.rewards.chestLocked.tooltipText";
-    private static final String CHEST_ACTIVE_TOOLTIP_KEY = "server.herbarium.rewards.chestActive.tooltipText";
-    private static final String CHEST_COLLECTED_TOOLTIP_KEY = "server.herbarium.rewards.chestCollected.tooltipText";
-
-    private static final String COLLECT_BUTTON_KEY = "server.herbarium.rewards.collectButton";
-    private static final String ALL_COLLECTED_KEY = "server.herbarium.rewards.allCollected";
-
-    private static final String COLLECT_SOUND_EVENT = "SFX_MemoryRestored";
-
-    private static final Color REWARD_QUANTITY_COLOR = new Color(0x88, 0x88, 0x88);
-    private static final Color REWARD_ITEM_COLOR = Color.WHITE;
-    private static final Color REWARD_COLLECTED_COLOR = new Color(0x88, 0x88, 0x88);
-
-    /**
-     * Icon shown for each category tile, keyed by plants.json category.
-     * All values are vanilla item icon assets. Categories without an entry
-     * fall back to the icon of their first known plant item.
-     */
     private static final Map<String, String> CATEGORY_ICON_OVERRIDES = Map.ofEntries(
             Map.entry("Bramble", "Icons/ItemsGenerated/Plant_Bramble_Dry_Magic.png"),
             Map.entry("Bush", "Icons/ItemsGenerated/Plant_Bush_Green.png"),
@@ -199,7 +149,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                 if (newIndex >= 0) {
                     setTileSelection(commands, newIndex, true);
                 }
-                buildDetails(commands);
+                PlantDetailsPanel.buildDetails(playerRef, commands, selectedPlant);
                 sendUpdate(commands, false);
             }
             case TYPE_BACK -> {
@@ -207,7 +157,12 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                 selectedPlant = null;
                 rebuild();
             }
-            case TYPE_COLLECT_REWARD -> handleCollectReward(ref, store);
+            case TYPE_COLLECT_REWARD -> {
+                UICommandBuilder update = RewardBar.handleCollectReward(playerRef, ref, store);
+                if (update != null) {
+                    sendUpdate(update, false);
+                }
+            }
             case TYPE_SHOW_INFO -> handleShowInfo(ref, store);
             default -> {
             }
@@ -242,8 +197,8 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         commands.set("#PlantsProgressBarTexture.Value", progress);
         commands.set("#TotalCollected.Text", "plants recorded: " + totalDiscovered + " / " + totalPlants);
 
-        buildChestMarkers(commands, totalDiscovered, totalPlants);
-        setRewardsButtonState(commands, totalDiscovered, totalPlants);
+        RewardBar.buildChestMarkers(playerRef, commands, totalDiscovered, totalPlants);
+        RewardBar.setRewardsButtonState(playerRef, commands, totalDiscovered, totalPlants);
 
         events.addEventBinding(
                 CustomUIEventBindingType.Activating,
@@ -306,113 +261,6 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         }
     }
 
-    private void buildChestMarkers(UICommandBuilder commands, int totalDiscovered, int totalPlants) {
-        PlayerStore store = Herbarium.getPlayerStore();
-        int tierCount = HerbariumRewards.getTierCount(totalPlants);
-
-        for (int tier = 1; tier <= tierCount; tier++) {
-            int threshold = HerbariumRewards.getTierThreshold(tier);
-            boolean reached = totalDiscovered >= threshold;
-            boolean rewardCollected = store.isRewardTierCollected(playerRef, tier);
-            String marker = "#ChestMarkers[" + (tier - 1) + "]";
-
-            commands.append("#ChestMarkers", "Pages/Herbarium/ChestMarker.ui");
-
-            Anchor anchor = new Anchor();
-            anchor.setLeft(Value.of(threshold * CHEST_MARKER_SCALE / totalPlants));
-            commands.setObject(marker + ".Anchor", anchor);
-
-            String tooltipKey = rewardCollected
-                    ? CHEST_COLLECTED_TOOLTIP_KEY
-                    : reached ? CHEST_ACTIVE_TOOLTIP_KEY : CHEST_LOCKED_TOOLTIP_KEY;
-            Color itemColor = rewardCollected ? REWARD_COLLECTED_COLOR : REWARD_ITEM_COLOR;
-            Message tooltip = buildChestTooltip(tier, tooltipKey, itemColor);
-
-            if (reached || rewardCollected) {
-                String chest = rewardCollected ? "#ChestCollected" : "#ChestActive";
-                commands.set(marker + " " + chest + ".Visible", true);
-                commands.set(marker + " " + chest + ".TooltipTextSpans", tooltip);
-                commands.set(marker + " #Arrow.Visible", reached && !rewardCollected);
-            } else {
-                commands.set(marker + " #ChestDisabled.Visible", true);
-                commands.set(marker + " #ChestDisabled.TooltipTextSpans", tooltip);
-            }
-        }
-    }
-
-    private static Message buildChestTooltip(int tier, String tooltipKey, Color itemColor) {
-        return Message.translation(tooltipKey)
-                .param("count", HerbariumRewards.getTierThreshold(tier))
-                .insert("\n\n")
-                .insert(buildTierRewardsMessage(tier, itemColor));
-    }
-
-    private int getNextUncollectedTier(int tierCount) {
-        for (int tier = 1; tier <= tierCount; tier++) {
-            if (!Herbarium.getPlayerStore().isRewardTierCollected(playerRef, tier)) {
-                return tier;
-            }
-        }
-        return 0;
-    }
-
-    private void setRewardsButtonState(UICommandBuilder commands, int totalDiscovered, int totalPlants) {
-        int nextTier = getNextUncollectedTier(HerbariumRewards.getTierCount(totalPlants));
-
-        if (nextTier == 0) {
-            commands.set("#RewardsButton.Text", Message.translation(ALL_COLLECTED_KEY));
-            commands.set("#RewardsButton.Disabled", true);
-        } else {
-            commands.set("#RewardsButton.Text",
-                    Message.translation(COLLECT_BUTTON_KEY).param("tier", nextTier));
-            commands.set("#RewardsButton.Disabled",
-                    totalDiscovered < HerbariumRewards.getTierThreshold(nextTier));
-        }
-    }
-
-    private void handleCollectReward(Ref<EntityStore> ref, Store<EntityStore> store) {
-        if (ref == null || store == null) {
-            return;
-        }
-
-        PlayerStore playerStore = Herbarium.getPlayerStore();
-        int totalPlants = Herbarium.getCatalog().getTotalPlantCount();
-        int totalDiscovered = playerStore.getMemoryCount(playerRef);
-        int tier = getNextUncollectedTier(HerbariumRewards.getTierCount(totalPlants));
-
-        if (tier == 0 || totalDiscovered < HerbariumRewards.getTierThreshold(tier)) {
-            return;
-        }
-
-        playerStore.markRewardTierCollected(playerRef, tier);
-
-        List<ItemStack> rewards = new ArrayList<>();
-        for (HerbariumRewards.Reward reward : HerbariumRewards.getTierRewards(tier)) {
-            rewards.add(new ItemStack(reward.itemId(), reward.quantity()));
-        }
-        SimpleItemContainer.addOrDropItemStacks(store, ref,
-                InventoryComponent.getCombined(store, ref, InventoryComponent.HOTBAR_FIRST), rewards);
-
-        SoundUtil.playSoundEvent2dToPlayer(playerRef, COLLECT_SOUND_EVENT, SoundCategory.SFX);
-
-        UICommandBuilder commands = new UICommandBuilder();
-
-        String marker = "#ChestMarkers[" + (tier - 1) + "]";
-        commands.set(marker + " #ChestActive.Visible", false);
-        commands.set(marker + " #ChestCollected.Visible", true);
-        commands.set(marker + " #Arrow.Visible", false);
-        commands.set(marker + " #ChestCollected.TooltipTextSpans",
-                buildChestTooltip(tier, CHEST_COLLECTED_TOOLTIP_KEY, REWARD_COLLECTED_COLOR));
-
-        setRewardsButtonState(commands, totalDiscovered, totalPlants);
-
-        sendUpdate(commands, false);
-    }
-
-    /**
-     * Mirrors the vanilla Memories page, which shows its feature explanation
-     * again through its info button.
-     */
     private void handleShowInfo(Ref<EntityStore> ref, Store<EntityStore> store) {
         if (ref == null || store == null) {
             return;
@@ -422,28 +270,6 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         if (player != null) {
             player.getPageManager().openCustomPage(ref, store, new HerbariumIntroPage(playerRef));
         }
-    }
-
-    private static Message buildTierRewardsMessage(int tier, Color itemColor) {
-        Message list = Message.empty();
-
-        boolean first = true;
-        for (HerbariumRewards.Reward reward : HerbariumRewards.getTierRewards(tier)) {
-            if (!first) {
-                list = list.insert("\n");
-            }
-            first = false;
-
-            list = list.insert(Message.join(
-                    Message.raw(reward.quantity() + "x ").color(REWARD_QUANTITY_COLOR),
-                    rewardNameMessage(reward.itemId()).color(itemColor)
-            ));
-        }
-        return list;
-    }
-
-    private static Message rewardNameMessage(String itemId) {
-        return Message.translation("server.items." + itemId + ".name");
     }
 
     private void buildPlantView(UICommandBuilder commands, UIEventBuilder events) {
@@ -473,7 +299,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
             if (isDiscovered) {
                 String button = isSelected ? "#ButtonSelected" : "#ButtonNotSelected";
                 commands.set(tile + " " + button + ".Visible", true);
-                setPlantName(commands, tile + " " + button + ".TooltipText", plantId);
+                PlantDetailsPanel.setPlantName(commands, tile + " " + button + ".TooltipText", plantId);
 
                 String icon = PlantAssets.getPlantIcon(plantId);
                 if (icon != null) {
@@ -509,108 +335,13 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                 new EventData().append("Type", TYPE_BACK)
         );
 
-        buildDetails(commands);
+        PlantDetailsPanel.buildDetails(playerRef, commands, selectedPlant);
     }
 
     private void setTileSelection(UICommandBuilder commands, int index, boolean selected) {
         String tile = "#IconList[" + index + "]";
         commands.set(tile + " #ButtonSelected.Visible", selected);
         commands.set(tile + " #ButtonNotSelected.Visible", !selected);
-    }
-
-    private void buildDetails(UICommandBuilder commands) {
-        PlayerStore store = Herbarium.getPlayerStore();
-
-        if (selectedPlant == null) {
-            commands.set("#PlantName.Text", "");
-            setLocationsPanel(commands, null);
-            commands.set("#PlantDiscovery.Text", "");
-            commands.setNull("#PlantIcon.AssetPath");
-            return;
-        }
-
-        setPlantName(commands, "#PlantName.Text", selectedPlant);
-
-        setLocationsPanel(commands, Herbarium.getCatalog().getPlantLocations(selectedPlant));
-
-        PlantInfo plantInfo = store.getPlayerPlantInfo(playerRef, selectedPlant);
-        if (plantInfo != null && plantInfo.wasDiscovered()) {
-            String date = plantInfo.getDiscoveredDate();
-            String place = plantInfo.getDiscoveredPlace();
-            String text = "";
-            if (date != null) {
-                text = "Discovered on " + formatDate(date);
-                if (place != null) {
-                    text = text + " at (" + place + ")";
-                }
-            }
-            commands.set("#PlantDiscovery.Text", text);
-        } else {
-            commands.set("#PlantDiscovery.Text", "");
-        }
-
-        String icon = PlantAssets.getPlantIcon(selectedPlant);
-        if (icon != null) {
-            commands.set("#PlantIcon.AssetPath", icon);
-        } else {
-            commands.setNull("#PlantIcon.AssetPath");
-        }
-    }
-
-    /**
-     * Shows the plant locations in the details panel. A text property takes a
-     * single translation message only, so each location key gets its own
-     * label. A null list means no plant is selected: everything is hidden.
-     * An empty list means the selected plant has no known location: the
-     * header and the "location unknown" fallback are shown.
-     */
-    private void setLocationsPanel(UICommandBuilder commands, List<String> locationKeys) {
-        boolean hasPlant = locationKeys != null;
-        boolean hasLocations = hasPlant && !locationKeys.isEmpty();
-
-        commands.set("#PlantLocationsTitle.Visible", hasPlant);
-        if (hasPlant) {
-            commands.set("#PlantLocationsTitle.Text", Message.translation(LOCATIONS_FOUND_IN_KEY));
-        } else {
-            commands.set("#PlantLocationsTitle.Text", "");
-        }
-
-        commands.set("#PlantLocationUnknown.Visible", hasPlant && !hasLocations);
-        if (hasPlant && !hasLocations) {
-            commands.set("#PlantLocationUnknown.Text", Message.translation(LOCATION_UNKNOWN_KEY));
-        } else {
-            commands.set("#PlantLocationUnknown.Text", "");
-        }
-
-        for (int i = 0; i < LOCATION_LABEL_COUNT; i++) {
-            String label = "#PlantLocation" + i;
-            if (hasLocations && i < locationKeys.size()) {
-                commands.set(label + ".Text", Message.translation(locationKeys.get(i)));
-                commands.set(label + ".Visible", true);
-            } else {
-                commands.set(label + ".Text", "");
-                commands.set(label + ".Visible", false);
-            }
-        }
-    }
-
-    private String formatDate(String isoInstant) {
-        int separatorIndex = isoInstant.indexOf('T');
-        return separatorIndex > 0 ? isoInstant.substring(0, separatorIndex) : isoInstant;
-    }
-
-    /**
-     * Sets a plant display name on a text property. Raw messages cannot be
-     * assigned to text markup properties, so untranslated plants use a plain
-     * string and translated plants use a translation message.
-     */
-    private void setPlantName(UICommandBuilder commands, String selector, String plantId) {
-        String translationKey = PlantAssets.getPlantTranslationKey(plantId);
-        if (translationKey != null) {
-            commands.set(selector, Message.translation(translationKey));
-        } else {
-            commands.set(selector, plantId);
-        }
     }
 
     private String findCategoryIcon(List<String> plants) {
