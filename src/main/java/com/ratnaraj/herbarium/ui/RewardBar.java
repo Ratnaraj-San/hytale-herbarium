@@ -2,7 +2,6 @@ package com.ratnaraj.herbarium.ui;
 
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
-import com.hypixel.hytale.protocol.SoundCategory;
 import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.inventory.InventoryComponent;
 import com.hypixel.hytale.server.core.inventory.ItemStack;
@@ -11,11 +10,11 @@ import com.hypixel.hytale.server.core.ui.Anchor;
 import com.hypixel.hytale.server.core.ui.Value;
 import com.hypixel.hytale.server.core.ui.builder.UICommandBuilder;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
-import com.hypixel.hytale.server.core.universe.world.SoundUtil;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.ratnaraj.herbarium.Herbarium;
 import com.ratnaraj.herbarium.data.HerbariumRewards;
 import com.ratnaraj.herbarium.data.PlayerStore;
+import com.ratnaraj.herbarium.event.FeedbackSound;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -148,7 +147,7 @@ public class RewardBar {
         SimpleItemContainer.addOrDropItemStacks(store, ref,
                 InventoryComponent.getCombined(store, ref, InventoryComponent.HOTBAR_FIRST), rewards);
 
-        SoundUtil.playSoundEvent2dToPlayer(playerRef, COLLECT_SOUND_EVENT, SoundCategory.SFX);
+        FeedbackSound.play(playerRef, COLLECT_SOUND_EVENT, store, true);
 
         UICommandBuilder commands = new UICommandBuilder();
 
