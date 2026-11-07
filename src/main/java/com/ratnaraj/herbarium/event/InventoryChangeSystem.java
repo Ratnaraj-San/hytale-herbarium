@@ -8,7 +8,6 @@ import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.inventory.ItemStack;
 import com.hypixel.hytale.server.core.inventory.transaction.*;
-import com.hypixel.hytale.server.core.universe.world.SoundUtil;
 import com.hypixel.hytale.server.core.util.NotificationUtil;
 
 import com.hypixel.hytale.component.ArchetypeChunk;
@@ -16,8 +15,6 @@ import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.component.CommandBuffer;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.server.core.modules.entity.component.TransformComponent;
-
-import com.hypixel.hytale.protocol.SoundCategory;
 
 import org.joml.Vector3d;
 
@@ -33,6 +30,8 @@ import java.util.logging.Level;
  * or when taking it from a container.
  */
 public class InventoryChangeSystem extends EntityEventSystem<EntityStore, InventoryChangeEvent> {
+
+    private final String DISCOVERY_SOUND_EVENT = "SFX_MemoryMote";
 
     public InventoryChangeSystem() {
         super(InventoryChangeEvent.class);
@@ -167,11 +166,7 @@ public class InventoryChangeSystem extends EntityEventSystem<EntityStore, Invent
                                     "NotificationIcons/PlantIcon.png"
                             );
 
-                            SoundUtil.playSoundEvent2dToPlayer(
-                                    playerRef,
-                                    "SFX_MemoryMote",
-                                    SoundCategory.SFX
-                            );
+                            FeedbackSound.play(playerRef, DISCOVERY_SOUND_EVENT, store, false);
                         }
 
                         return;

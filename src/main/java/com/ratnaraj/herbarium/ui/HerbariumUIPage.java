@@ -9,7 +9,6 @@ import com.hypixel.hytale.codec.KeyedCodec;
 import com.hypixel.hytale.codec.builder.BuilderCodec;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
-import com.hypixel.hytale.protocol.SoundCategory;
 import com.hypixel.hytale.protocol.packets.interface_.CustomPageLifetime;
 import com.hypixel.hytale.protocol.packets.interface_.CustomUIEventBindingType;
 import com.hypixel.hytale.server.core.Message;
@@ -19,8 +18,8 @@ import com.hypixel.hytale.server.core.ui.builder.EventData;
 import com.hypixel.hytale.server.core.ui.builder.UICommandBuilder;
 import com.hypixel.hytale.server.core.ui.builder.UIEventBuilder;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
-import com.hypixel.hytale.server.core.universe.world.SoundUtil;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
+import com.ratnaraj.herbarium.event.FeedbackSound;
 
 import java.util.HashSet;
 import java.util.List;
@@ -33,6 +32,8 @@ import java.util.Set;
  * per-category plant grid with a details panel, swapped through rebuild().
  */
 public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.PageEventData> {
+
+    private static final String CLOSE_SOUND = "SFX_Drop_Weapons_Books";
 
     private static final String TYPE_SELECT_CATEGORY = "SelectCategory";
     private static final String TYPE_SELECT_PLANT = "SelectPlant";
@@ -173,7 +174,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
 
     @Override
     public void onDismiss(Ref<EntityStore> ref, Store<EntityStore> store) {
-        SoundUtil.playSoundEvent2dToPlayer(playerRef, "SFX_Drop_Weapons_Books", SoundCategory.UI);
+        FeedbackSound.play(playerRef, CLOSE_SOUND, store, true);
     }
 
     private void buildCategoryView(UICommandBuilder commands, UIEventBuilder events) {

@@ -5,7 +5,6 @@ import com.hypixel.hytale.codec.KeyedCodec;
 import com.hypixel.hytale.codec.builder.BuilderCodec;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
-import com.hypixel.hytale.protocol.SoundCategory;
 import com.hypixel.hytale.protocol.packets.interface_.CustomPageLifetime;
 import com.hypixel.hytale.protocol.packets.interface_.CustomUIEventBindingType;
 import com.hypixel.hytale.server.core.entity.entities.Player;
@@ -15,9 +14,9 @@ import com.hypixel.hytale.server.core.ui.builder.EventData;
 import com.hypixel.hytale.server.core.ui.builder.UICommandBuilder;
 import com.hypixel.hytale.server.core.ui.builder.UIEventBuilder;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
-import com.hypixel.hytale.server.core.universe.world.SoundUtil;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.ratnaraj.herbarium.Herbarium;
+import com.ratnaraj.herbarium.event.FeedbackSound;
 
 /**
  * Intro modal shown the first time a player opens the journal, mirroring
@@ -74,9 +73,11 @@ public class HerbariumIntroPage extends InteractiveCustomUIPage<HerbariumIntroPa
         // reopened later through the journal info button, and the vanilla
         // feature-unlock sound plays only on the first appearance.
         boolean firstOpening = !Herbarium.getPlayerStore().hasOpenedJournal(playerRef);
+
         Herbarium.getPlayerStore().markJournalOpened(playerRef);
+
         if (firstOpening) {
-            SoundUtil.playSoundEvent2dToPlayer(playerRef, UNLOCK_SOUND_EVENT, SoundCategory.SFX);
+            FeedbackSound.play(playerRef, UNLOCK_SOUND_EVENT, store, false);
         }
 
         commands.append("Pages/Herbarium/JournalUnlocked.ui");
