@@ -1,4 +1,4 @@
-package com.ratnaraj.herbarium;
+package com.ratnaraj.herbarium.command;
 
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
@@ -14,6 +14,8 @@ import com.hypixel.hytale.server.core.entity.entities.player.pages.CustomUIPage;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
+
+import com.ratnaraj.herbarium.Herbarium;
 
 import javax.annotation.Nonnull;
 import java.util.concurrent.CompletableFuture;
@@ -61,14 +63,13 @@ public class HerbariumCommand extends AbstractCommandCollection {
         protected CompletableFuture<Void> executeAsync(@Nonnull CommandContext ctx) {
             CommandSender sender = ctx.sender();
             PlayerRef playerRef = (sender instanceof PlayerRef) ? (PlayerRef) sender : null;
-            PlantMemoryManager memoryManager = Herbarium.getMemoryManager();
 
             if (playerRef == null) {
                 ctx.sendMessage(Message.raw("This command can only be executed by players."));
                 return CompletableFuture.completedFuture(null);
             }
 
-            memoryManager.clearPlayerMemories(playerRef);
+            Herbarium.getPlayerStore().clearPlayerMemories(playerRef);
 
             ctx.sendMessage(Message.raw("Your progress has been reset."));
 
@@ -86,14 +87,13 @@ public class HerbariumCommand extends AbstractCommandCollection {
         protected CompletableFuture<Void> executeAsync(@Nonnull CommandContext ctx) {
             CommandSender sender = ctx.sender();
             PlayerRef playerRef = (sender instanceof PlayerRef) ? (PlayerRef) sender : null;
-            PlantMemoryManager memoryManager = Herbarium.getMemoryManager();
 
             if (playerRef == null) {
                 ctx.sendMessage(Message.raw("This command can only be executed by players."));
                 return CompletableFuture.completedFuture(null);
             }
 
-            memoryManager.unlockAllPlayerMemories(playerRef);
+            Herbarium.getPlayerStore().unlockAllPlayerMemories(playerRef);
 
             ctx.sendMessage(Message.raw("All plants have been unlocked."));
 

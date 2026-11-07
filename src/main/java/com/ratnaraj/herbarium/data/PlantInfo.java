@@ -1,4 +1,4 @@
-package com.ratnaraj.herbarium;
+package com.ratnaraj.herbarium.data;
 
 public class PlantInfo {
     private final String id;

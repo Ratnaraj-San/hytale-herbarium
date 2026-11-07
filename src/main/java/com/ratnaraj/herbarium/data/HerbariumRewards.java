@@ -1,4 +1,4 @@
-package com.ratnaraj.herbarium;
+package com.ratnaraj.herbarium.data;
 
 import java.util.List;
 import java.util.Map;

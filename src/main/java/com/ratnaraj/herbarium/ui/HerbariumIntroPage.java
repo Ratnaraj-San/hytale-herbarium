@@ -1,4 +1,4 @@
-package com.ratnaraj.herbarium;
+package com.ratnaraj.herbarium.ui;
 
 import com.hypixel.hytale.codec.Codec;
 import com.hypixel.hytale.codec.KeyedCodec;
@@ -17,6 +17,7 @@ import com.hypixel.hytale.server.core.ui.builder.UIEventBuilder;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.SoundUtil;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
+import com.ratnaraj.herbarium.Herbarium;
 
 /**
  * Intro modal shown the first time a player opens the journal, mirroring
@@ -72,8 +73,8 @@ public class HerbariumIntroPage extends InteractiveCustomUIPage<HerbariumIntroPa
         // Remember the player on the very first opening. The modal is also
         // reopened later through the journal info button, and the vanilla
         // feature-unlock sound plays only on the first appearance.
-        boolean firstOpening = !Herbarium.getMemoryManager().hasOpenedJournal(playerRef);
-        Herbarium.getMemoryManager().markJournalOpened(playerRef);
+        boolean firstOpening = !Herbarium.getPlayerStore().hasOpenedJournal(playerRef);
+        Herbarium.getPlayerStore().markJournalOpened(playerRef);
         if (firstOpening) {
             SoundUtil.playSoundEvent2dToPlayer(playerRef, UNLOCK_SOUND_EVENT, SoundCategory.SFX);
         }
