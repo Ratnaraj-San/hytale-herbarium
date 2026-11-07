@@ -6,7 +6,6 @@ import com.hypixel.hytale.server.core.event.events.ecs.InventoryChangeEvent;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.Message;
-import com.hypixel.hytale.server.core.inventory.InventoryComponent;
 import com.hypixel.hytale.server.core.inventory.ItemStack;
 import com.hypixel.hytale.server.core.inventory.transaction.*;
 import com.hypixel.hytale.server.core.universe.world.SoundUtil;
@@ -56,10 +55,6 @@ public class InventoryChangeSystem extends EntityEventSystem<EntityStore, Invent
 
     private ItemStack findAddedStack(Transaction transaction) {
         if (transaction instanceof ItemStackTransaction itemTrans) {
-            ActionType action = itemTrans.getAction();
-
-            if (action != null) { return null; }
-
             return itemTrans.getAction().isAdd() ? itemTrans.getQuery() : null;
         }
 
@@ -150,14 +145,6 @@ public class InventoryChangeSystem extends EntityEventSystem<EntityStore, Invent
                 try {
                     PlayerRef playerRef = store.getComponent(entityRef, PlayerRef.getComponentType());
                     if (playerRef != null && playerRef.isValid()) {
-                        // Only react when the changed inventory belongs to
-                        // this player, so container-side events are never
-                        // counted as discoveries.
-                        InventoryComponent inventory = store.getComponent(entityRef, event.getComponentType());
-                        if (inventory != event.getInventory()) {
-                            continue;
-                        }
-
                         // Discovery progression stays inactive until the
                         // player has opened the journal for the first time.
                         if (!Herbarium.getPlayerStore().hasOpenedJournal(playerRef)) {
