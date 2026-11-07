@@ -6,8 +6,9 @@ import com.hypixel.hytale.server.core.event.events.ecs.InventoryChangeEvent;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.Message;
-import com.hypixel.hytale.server.core.inventory.transaction.*;
+import com.hypixel.hytale.server.core.inventory.InventoryComponent;
 import com.hypixel.hytale.server.core.inventory.ItemStack;
+import com.hypixel.hytale.server.core.inventory.transaction.*;
 import com.hypixel.hytale.server.core.universe.world.SoundUtil;
 import com.hypixel.hytale.server.core.util.NotificationUtil;
 
@@ -43,9 +44,7 @@ public class InventoryChangeSystem extends EntityEventSystem<EntityStore, Invent
             TransformComponent transform = store.getComponent(entityRef, TransformComponent.getComponentType());
             if (transform != null) {
                 Vector3d pos = transform.getPosition();
-                if (pos != null) {
-                    return Math.round(pos.x) + ", " + Math.round(pos.y) + ", " + Math.round(pos.z);
-                }
+                return Math.round(pos.x) + ", " + Math.round(pos.y) + ", " + Math.round(pos.z);
             }
         } catch (Exception e) {
             Herbarium.getInstance().getLogger().at(Level.WARNING).log(
@@ -53,6 +52,70 @@ public class InventoryChangeSystem extends EntityEventSystem<EntityStore, Invent
             );
         }
         return null;
+    }
+
+    private ItemStack findAddedStack(Transaction transaction) {
+        if (transaction instanceof ItemStackTransaction itemTrans) {
+            ActionType action = itemTrans.getAction();
+
+            if (action != null) { return null; }
+
+            return itemTrans.getAction().isAdd() ? itemTrans.getQuery() : null;
+        }
+
+        if (transaction instanceof MoveTransaction moveTrans) {
+            if (moveTrans.getMoveType() != MoveType.MOVE_TO_SELF) {
+                return null;
+            }
+
+            Transaction addTrans = moveTrans.getAddTransaction();
+
+            if (addTrans instanceof ItemStackTransaction itemAddTrans) {
+                return itemAddTrans.getQuery();
+            }
+
+            if (addTrans instanceof SlotTransaction) {
+                return getAddedSlotContent((SlotTransaction) addTrans);
+            }
+
+            return null;
+        }
+
+        if (transaction instanceof SlotTransaction slotTrans) {
+            // Slot-level drops: the dropped stack becomes the slot's new
+            // content. Rearranging plants between the player's own slots is
+            // harmless, addPlantMemory ignores rediscoveries.
+            if (slotTrans.getAction() == ActionType.SET
+                    || slotTrans.getAction() == ActionType.REPLACE
+                    || slotTrans.getAction().isAdd()) {
+                return getAddedSlotContent(slotTrans);
+            }
+            return null;
+        }
+
+        if (transaction instanceof ListTransaction<?> listTrans) {
+            for (Transaction child : listTrans.getList()) {
+                ItemStack stack = findAddedStack(child);
+                if (stack != null) {
+                    return stack;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * The content a slot transaction puts into its slot: the added stack
+     * when it is a stack-level add (drag &amp; drop), else the slot's new
+     * content.
+     */
+    private ItemStack getAddedSlotContent(SlotTransaction slotTrans) {
+        if (slotTrans instanceof ItemStackSlotTransaction stackSlotTrans
+                && stackSlotTrans.getQuery() != null) {
+            return stackSlotTrans.getQuery();
+        }
+        return slotTrans.getSlotAfter();
     }
 
     @Override
@@ -70,40 +133,14 @@ public class InventoryChangeSystem extends EntityEventSystem<EntityStore, Invent
                        Store<EntityStore> store, CommandBuffer<EntityStore> commandBuffer,
                        InventoryChangeEvent event) {
 
-        Transaction transaction = event.getTransaction();
-        String actionType = null;
-        ItemStack itemStack = null;
+        ItemStack itemStack = findAddedStack(event.getTransaction());
 
-        if (transaction instanceof ItemStackTransaction) {
-            ItemStackTransaction itemTrans = (ItemStackTransaction) transaction;
-            ActionType action = itemTrans.getAction();
-            if (action.isAdd()) {
-                actionType = "pickup";
-                itemStack = itemTrans.getQuery();
-            }
-        } else if (transaction instanceof MoveTransaction) {
-            MoveTransaction moveTrans = (MoveTransaction) transaction;
-            MoveType moveType = moveTrans.getMoveType();
-            if (moveType == MoveType.MOVE_TO_SELF) {
-                actionType = "take_from_container";
-                Transaction addTrans = moveTrans.getAddTransaction();
-                if (addTrans instanceof ItemStackTransaction) {
-                    itemStack = ((ItemStackTransaction) addTrans).getQuery();
-                }
-            }
-        }
-
-        if (actionType == null) {
+        if (itemStack == null || itemStack.isEmpty()) {
             return;
         }
 
-        String itemId = "unknown";
-        String itemName = null;
-
-        if (itemStack != null && !itemStack.isEmpty()) {
-            itemId = itemStack.getItemId();
-            itemName = itemStack.getDisplayName().getRawText();
-        }
+        String itemId = itemStack.getItemId();
+        String itemName = itemStack.getDisplayName().getRawText();
 
         if (!Herbarium.getCatalog().isPlantItem(itemId)) { return; }
 
@@ -113,6 +150,14 @@ public class InventoryChangeSystem extends EntityEventSystem<EntityStore, Invent
                 try {
                     PlayerRef playerRef = store.getComponent(entityRef, PlayerRef.getComponentType());
                     if (playerRef != null && playerRef.isValid()) {
+                        // Only react when the changed inventory belongs to
+                        // this player, so container-side events are never
+                        // counted as discoveries.
+                        InventoryComponent inventory = store.getComponent(entityRef, event.getComponentType());
+                        if (inventory != event.getInventory()) {
+                            continue;
+                        }
+
                         // Discovery progression stays inactive until the
                         // player has opened the journal for the first time.
                         if (!Herbarium.getPlayerStore().hasOpenedJournal(playerRef)) {
