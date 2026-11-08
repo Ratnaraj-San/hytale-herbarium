@@ -2590,7 +2590,7 @@
     {
       "id": "Plant_Seeds_Wild",
       "obtainableInExplorationMode": true,
-      "locations": ["server.herbarium.location.looted_from_plants"]
+      "locations": ["server.herbarium.location.wild_plants"]
     },
     {
       "id": "Plant_Seeds_Willow",
