@@ -1,0 +1,110 @@
+items.Herbarium_Journal.name = Botanikův deník
+
+herbarium.location.found_in = Lze nalézt v:
+herbarium.location.unknown = Místo výskytu neznámé
+herbarium.location.cultivated = Obdělaná pole
+herbarium.location.caves = Jeskyně
+herbarium.location.chests = V truhlách
+herbarium.location.looted_from_plants = Získávají se z planých rostlin
+herbarium.location.goblin_realm = Říše goblinů
+herbarium.location.trork_camps = Tábory trorků
+herbarium.location.kweebec_villages = Vesnice kweebeců
+herbarium.location.hidey_holes = Úkryty
+herbarium.location.sewers = Kanály
+herbarium.location.cold_kelp_biome = Biomy studených řas
+herbarium.location.cold_trench_biome = Biomy studených hlubin
+herbarium.location.red_coral_biome = Biomy červených korálů
+herbarium.location.tropical_jungle = Tropická džungle
+herbarium.location.oasis = Oázy
+herbarium.location.mage_towers = Věže mágů
+herbarium.location.firelands_temple = Chrám Ohnivých zemí
+herbarium.location.outlander_sites = Sídla outlanderů
+herbarium.location.devastated_ruins = Zpustošené ruiny
+herbarium.location.howling_sands_ruins = Ruiny Vyjících písků
+herbarium.location.labyrinths = Labyrinty
+herbarium.location.ruined_temples = Zřícené chrámy
+herbarium.location.slothian_villages = Vesnice slothianů
+herbarium.location.dungeons = Kobky
+herbarium.location.cursed_crypts = Prokleté krypty
+
+herbarium.tree.amber = Jantarové stromy
+herbarium.tree.apple = Jabloně
+herbarium.tree.ash = Jasany
+herbarium.tree.aspen = Osiky
+herbarium.tree.autumn = Podzimní stromy
+herbarium.tree.azure = Azurové stromy
+herbarium.tree.bamboo = Bambus
+herbarium.tree.banyan = Banyány
+herbarium.tree.beech = Buky
+herbarium.tree.birch = Břízy
+herbarium.tree.blue_fig = Modré fíkovníky
+herbarium.tree.bottletree = Lahvové stromy
+herbarium.tree.burnt = Spálené stromy
+herbarium.tree.camphor = Kafrovníky
+herbarium.tree.cedar = Cedry
+herbarium.tree.crystalwood = Krystalové stromy
+herbarium.tree.dry = Suché stromy
+herbarium.tree.fir = Jedle
+herbarium.tree.fire = Ohnivé stromy
+herbarium.tree.frostwood = Námrazové stromy
+herbarium.tree.gumboab = Gumboaby
+herbarium.tree.jungle = Džunglové stromy
+herbarium.tree.maple = Javory
+herbarium.tree.oak = Duby
+herbarium.tree.palm = Palmy
+herbarium.tree.palo = Stromy palo
+herbarium.tree.petrified_pine = Zkamenělé borovice
+herbarium.tree.red_fir = Rudé jedle
+herbarium.tree.redwood = Sekvoje
+herbarium.tree.sallow = Jívy
+herbarium.tree.snowy_fir = Zasněžené jedle
+herbarium.tree.spiral = Spirálové stromy
+herbarium.tree.stormbark = Bouřkové stromy
+herbarium.tree.windwillow = Větrné vrby
+herbarium.tree.wisteria_wild = Divoké glycínie
+
+herbarium.unlock.title = Odemkli jste Botanikův deník!
+herbarium.unlock.bullet1 = Tenhle deník vás doprovodí při celém průzkumu Orbisu.
+herbarium.unlock.bullet2 = Každá rostlina, kterou seberete, se zde zaznamená včetně data a místa nálezu.
+herbarium.unlock.bullet3 = Procházejte svou sbírku podle kategorií, sledujte svůj pokrok, staňte se skutečným botanikem a získejte odměny!
+herbarium.unlock.openJournal = Otevřít deník
+
+herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Uzamčeno</b></color> \n<color is="#888888">Zaznamenejte {count, number} {count, plural, one {rostlinu} few {rostliny} many {rostlin} other {rostlin}}, abyste odemkli:</color>
+herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Odemčeno</b></color> \n<color is="#888888">Zaznamenáno: {count, number} {count, plural, one {rostlina} few {rostliny} many {rostlin} other {rostlin}}. Odměna k vyzvednutí:</color>
+herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Vyzvednuto</b></color> \n<color is="#888888">Zaznamenáno: {count, number} {count, plural, one {rostlina} few {rostliny} many {rostlin} other {rostlin}}. Vyzvednutá odměna:</color>
+herbarium.rewards.collectButton = Vyzvednout odměnu {tier, number}
+herbarium.rewards.allCollected = Všechny odměny vyzvednuty
+
+herbarium.command.desc = Příkazy Herbarium
+herbarium.command.ui.desc = Otevře Botanikův deník.
+herbarium.command.reset.desc = Smaže veškerý váš pokrok.
+herbarium.command.unlockall.desc = Odemkne všechny rostliny.
+herbarium.command.playersOnly = Tento příkaz mohou spouštět jen hráči.
+herbarium.command.reset.done = Váš pokrok byl resetován.
+herbarium.command.unlockall.done = Všechny rostliny byly odemčeny.
+
+herbarium.progress.recorded = zaznamenaných rostlin: {count, number} / {total, number}
+
+herbarium.plant.discoveredOn = Nalezeno {date}
+herbarium.plant.discoveredAt = Nalezeno {date} na ({place})
+
+herbarium.notification.discovered = Objevena nová rostlina:
+
+herbarium.category.bramble = Trní
+herbarium.category.bush = Křoviny
+herbarium.category.cactus = Kaktusy
+herbarium.category.coral = Korály
+herbarium.category.crop = Plodiny
+herbarium.category.fern = Kapradí
+herbarium.category.flower = Květiny
+herbarium.category.fruit = Ovoce
+herbarium.category.grass = Trávy
+herbarium.category.leaves = Listy
+herbarium.category.moss = Mechy
+herbarium.category.mushroom = Houby
+herbarium.category.petals = Plátky
+herbarium.category.reeds = Rákosí
+herbarium.category.sapling = Sazenice
+herbarium.category.seaweed = Mořské řasy
+herbarium.category.seeds = Semena
+herbarium.category.vine = Liany

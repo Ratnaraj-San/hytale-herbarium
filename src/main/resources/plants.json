@@ -1371,12 +1371,12 @@
     {
       "id": "Plant_Leaves_Poisoned",
       "obtainableInExplorationMode": true,
-      "locations": ["server.herbarium.location.guttering_hollows"]
+      "locations": ["server.portals.goblinBreach"]
     },
     {
       "id": "Plant_Leaves_Poisoned_Floor",
       "obtainableInExplorationMode": true,
-      "locations": ["server.herbarium.location.guttering_hollows"]
+      "locations": ["server.portals.goblinBreach"]
     },
     {
       "id": "Plant_Leaves_Redwood",

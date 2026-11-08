@@ -1,0 +1,110 @@
+items.Herbarium_Journal.name = 植物学家的日志
+
+herbarium.location.found_in = 发现于：
+herbarium.location.unknown = 位置未知
+herbarium.location.cultivated = 耕作田地
+herbarium.location.caves = 洞穴
+herbarium.location.chests = 在宝箱中发现
+herbarium.location.looted_from_plants = 从野生植物上采集
+herbarium.location.goblin_realm = 哥布林领域
+herbarium.location.trork_camps = 兽魔营地
+herbarium.location.kweebec_villages = 木灵村庄
+herbarium.location.hidey_holes = 藏匿处
+herbarium.location.sewers = 下水道
+herbarium.location.cold_kelp_biome = 寒冷海藻生物群系
+herbarium.location.cold_trench_biome = 寒冷海沟生物群系
+herbarium.location.red_coral_biome = 红珊瑚生物群系
+herbarium.location.tropical_jungle = 热带丛林
+herbarium.location.oasis = 绿洲
+herbarium.location.mage_towers = 法师塔
+herbarium.location.firelands_temple = 烈焰之地神殿
+herbarium.location.outlander_sites = 霜境异民据点
+herbarium.location.devastated_ruins = 荒败遗迹
+herbarium.location.howling_sands_ruins = 尘啸沙海遗迹
+herbarium.location.labyrinths = 迷宫
+herbarium.location.ruined_temples = 残破神庙
+herbarium.location.slothian_villages = 林懒村庄
+herbarium.location.dungeons = 地牢
+herbarium.location.cursed_crypts = 被诅咒的墓穴
+
+herbarium.tree.amber = 琥珀树
+herbarium.tree.apple = 苹果树
+herbarium.tree.ash = 白蜡树
+herbarium.tree.aspen = 山杨
+herbarium.tree.autumn = 秋色树
+herbarium.tree.azure = 蔚蓝树
+herbarium.tree.bamboo = 竹子
+herbarium.tree.banyan = 榕树
+herbarium.tree.beech = 山毛榉
+herbarium.tree.birch = 桦树
+herbarium.tree.blue_fig = 蓝叶无花果树
+herbarium.tree.bottletree = 瓶树
+herbarium.tree.burnt = 焦枯树
+herbarium.tree.camphor = 樟树
+herbarium.tree.cedar = 雪松
+herbarium.tree.crystalwood = 水晶树
+herbarium.tree.dry = 旱地树
+herbarium.tree.fir = 云杉
+herbarium.tree.fire = 火树
+herbarium.tree.frostwood = 凝冰树
+herbarium.tree.gumboab = 猴面包树
+herbarium.tree.jungle = 丛林树
+herbarium.tree.maple = 枫树
+herbarium.tree.oak = 橡树
+herbarium.tree.palm = 棕榈树
+herbarium.tree.palo = 扁轴树
+herbarium.tree.petrified_pine = 石化松
+herbarium.tree.red_fir = 红云杉
+herbarium.tree.redwood = 红杉
+herbarium.tree.sallow = 黄柳
+herbarium.tree.snowy_fir = 霜冻云杉
+herbarium.tree.spiral = 螺旋树
+herbarium.tree.stormbark = 风暴树
+herbarium.tree.windwillow = 风柳
+herbarium.tree.wisteria_wild = 野紫藤
+
+herbarium.unlock.title = 你解锁了植物学家的日志！
+herbarium.unlock.bullet1 = 这本日志将伴随你探索奥比斯的全程。
+herbarium.unlock.bullet2 = 你拾取的每株植物都会记录在此，并注明发现日期和地点。
+herbarium.unlock.bullet3 = 按类别浏览你的收藏，追踪进度，成为真正的植物学家并获得奖励！
+herbarium.unlock.openJournal = 打开日志
+
+herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>未解锁</b></color> \n<color is="#888888">记录 {count, number} 株植物后解锁：</color>
+herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>已解锁</b></color> \n<color is="#888888">已记录 {count, number} 株植物。可领取的奖励：</color>
+herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>已领取</b></color> \n<color is="#888888">已记录 {count, number} 株植物。已领取的奖励：</color>
+herbarium.rewards.collectButton = 领取奖励 {tier, number}
+herbarium.rewards.allCollected = 已领取全部奖励
+
+herbarium.command.desc = Herbarium 命令
+herbarium.command.ui.desc = 打开植物学家的日志。
+herbarium.command.reset.desc = 删除你的全部进度。
+herbarium.command.unlockall.desc = 解锁所有植物。
+herbarium.command.playersOnly = 此命令只能由玩家执行。
+herbarium.command.reset.done = 你的进度已重置。
+herbarium.command.unlockall.done = 已解锁所有植物。
+
+herbarium.progress.recorded = 已记录植物：{count, number} / {total, number}
+
+herbarium.plant.discoveredOn = 发现于 {date}
+herbarium.plant.discoveredAt = 发现于 {date}，位于 ({place})
+
+herbarium.notification.discovered = 发现了新植物：
+
+herbarium.category.bramble = 荆棘
+herbarium.category.bush = 灌木
+herbarium.category.cactus = 仙人掌
+herbarium.category.coral = 珊瑚
+herbarium.category.crop = 作物
+herbarium.category.fern = 蕨类
+herbarium.category.flower = 花
+herbarium.category.fruit = 果实
+herbarium.category.grass = 草
+herbarium.category.leaves = 树叶
+herbarium.category.moss = 苔藓
+herbarium.category.mushroom = 蘑菇
+herbarium.category.petals = 花瓣
+herbarium.category.reeds = 芦苇
+herbarium.category.sapling = 树苗
+herbarium.category.seaweed = 海藻
+herbarium.category.seeds = 种子
+herbarium.category.vine = 藤蔓

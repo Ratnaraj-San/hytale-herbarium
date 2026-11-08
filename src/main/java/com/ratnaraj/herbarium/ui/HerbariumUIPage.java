@@ -23,6 +23,7 @@ import com.ratnaraj.herbarium.event.FeedbackSound;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -42,6 +43,8 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     private static final String TYPE_SHOW_INFO = "ShowInfo";
 
     private static final String JOURNAL_NAME_KEY = "server.items.Herbarium_Journal.name";
+    private static final String TOTAL_COLLECTED_KEY = "server.herbarium.progress.recorded";
+    private static final String CATEGORY_KEY_PREFIX = "server.herbarium.category.";
 
     private static final Map<String, String> CATEGORY_ICON_OVERRIDES = Map.ofEntries(
             Map.entry("Bramble", "Icons/ItemsGenerated/Plant_Bramble_Dry_Magic.png"),
@@ -198,7 +201,10 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         float progress = totalPlants == 0 ? 0f : (float) totalDiscovered / totalPlants;
         commands.set("#PlantsProgressBar.Value", progress);
         commands.set("#PlantsProgressBarTexture.Value", progress);
-        commands.set("#TotalCollected.Text", "plants recorded: " + totalDiscovered + " / " + totalPlants);
+        commands.set("#TotalCollected.Text",
+                Message.translation(TOTAL_COLLECTED_KEY)
+                        .param("count", totalDiscovered)
+                        .param("total", totalPlants));
 
         RewardBar.buildChestMarkers(playerRef, commands, totalDiscovered, totalPlants);
         RewardBar.setRewardsButtonState(playerRef, commands, totalDiscovered, totalPlants);
@@ -231,7 +237,8 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
             commands.append("#IconList", "Pages/Herbarium/CategoryTile.ui");
             String tile = "#IconList[" + index + "]";
 
-            commands.set(tile + " #Button.Text", category);
+            commands.set(tile + " #Button.Text",
+                    Message.translation(CATEGORY_KEY_PREFIX + category.toLowerCase(Locale.ROOT)));
             commands.set(tile + " #CurrentCategoryCountNotComplete.Text", String.valueOf(discovered));
             commands.set(tile + " #CurrentCategoryCountComplete.Text", String.valueOf(discovered));
             commands.set(tile + " #TotalCategoryCountNotComplete.Text", String.valueOf(plants.size()));
@@ -288,7 +295,8 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                 discovered++;
             }
         }
-        commands.set("#CategoryTitle.Text", selectedCategory);
+        commands.set("#CategoryTitle.Text",
+                Message.translation(CATEGORY_KEY_PREFIX + selectedCategory.toLowerCase(Locale.ROOT)));
         commands.set("#CategoryCount.Text", discovered + "/" + plants.size());
 
         int index = 0;

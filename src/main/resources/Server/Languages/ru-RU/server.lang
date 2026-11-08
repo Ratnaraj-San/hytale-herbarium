@@ -1,0 +1,110 @@
+items.Herbarium_Journal.name = Дневник ботаника
+
+herbarium.location.found_in = Встречается в:
+herbarium.location.unknown = Местонахождение неизвестно
+herbarium.location.cultivated = Возделанные поля
+herbarium.location.caves = Пещеры
+herbarium.location.chests = Находятся в сундуках
+herbarium.location.looted_from_plants = Добываются с диких растений
+herbarium.location.goblin_realm = Королевство гоблинов
+herbarium.location.trork_camps = Лагеря трорков
+herbarium.location.kweebec_villages = Деревни квибеков
+herbarium.location.hidey_holes = Тайники
+herbarium.location.sewers = Канализация
+herbarium.location.cold_kelp_biome = Биомы холодных водорослей
+herbarium.location.cold_trench_biome = Биомы холодных желобов
+herbarium.location.red_coral_biome = Биомы красных кораллов
+herbarium.location.tropical_jungle = Тропические джунгли
+herbarium.location.oasis = Оазисы
+herbarium.location.mage_towers = Башни магов
+herbarium.location.firelands_temple = Храм Огненных земель
+herbarium.location.outlander_sites = Стоянки чужеземцев
+herbarium.location.devastated_ruins = Опустошённые руины
+herbarium.location.howling_sands_ruins = Руины Воющих песков
+herbarium.location.labyrinths = Лабиринты
+herbarium.location.ruined_temples = Разрушенные храмы
+herbarium.location.slothian_villages = Деревни ленивианцев
+herbarium.location.dungeons = Подземелья
+herbarium.location.cursed_crypts = Проклятые крипты
+
+herbarium.tree.amber = Янтарные деревья
+herbarium.tree.apple = Яблони
+herbarium.tree.ash = Ясени
+herbarium.tree.aspen = Осины
+herbarium.tree.autumn = Осенние деревья
+herbarium.tree.azure = Лазурные деревья
+herbarium.tree.bamboo = Бамбук
+herbarium.tree.banyan = Баньяны
+herbarium.tree.beech = Буки
+herbarium.tree.birch = Берёзы
+herbarium.tree.blue_fig = Деревья синего инжира
+herbarium.tree.bottletree = Бутылочные деревья
+herbarium.tree.burnt = Сгоревшие деревья
+herbarium.tree.camphor = Камфорные деревья
+herbarium.tree.cedar = Кедры
+herbarium.tree.crystalwood = Кристальные деревья
+herbarium.tree.dry = Сухие деревья
+herbarium.tree.fir = Ели
+herbarium.tree.fire = Горящие деревья
+herbarium.tree.frostwood = Морозные деревья
+herbarium.tree.gumboab = Гамбоабы
+herbarium.tree.jungle = Тропические деревья
+herbarium.tree.maple = Клёны
+herbarium.tree.oak = Дубы
+herbarium.tree.palm = Пальмы
+herbarium.tree.palo = Деревья пало
+herbarium.tree.petrified_pine = Окаменевшие сосны
+herbarium.tree.red_fir = Красные ели
+herbarium.tree.redwood = Красные деревья
+herbarium.tree.sallow = Козьи ивы
+herbarium.tree.snowy_fir = Замёрзшие ели
+herbarium.tree.spiral = Спиральные деревья
+herbarium.tree.stormbark = Бурестойкие деревья
+herbarium.tree.windwillow = Ветряные ивы
+herbarium.tree.wisteria_wild = Дикие глицинии
+
+herbarium.unlock.title = Вы открыли Дневник ботаника!
+herbarium.unlock.bullet1 = Этот дневник будет сопровождать вас на протяжении всего исследования Орбиса.
+herbarium.unlock.bullet2 = Каждое подобранное вами растение записывается сюда вместе с датой и местом находки.
+herbarium.unlock.bullet3 = Просматривайте свою коллекцию по категориям, отслеживайте прогресс, станьте настоящим ботаником и получайте награды!
+herbarium.unlock.openJournal = Открыть дневник
+
+herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Закрыто</b></color> \n<color is="#888888">Запишите {count, number} {count, plural, one {растение} few {растения} many {растений} other {растения}}, чтобы открыть:</color>
+herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Открыто</b></color> \n<color is="#888888">Записано: {count, number} {count, plural, one {растение} few {растения} many {растений} other {растения}}. Награда к получению:</color>
+herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Получено</b></color> \n<color is="#888888">Записано: {count, number} {count, plural, one {растение} few {растения} many {растений} other {растения}}. Полученная награда:</color>
+herbarium.rewards.collectButton = Получить награду {tier, number}
+herbarium.rewards.allCollected = Все награды получены
+
+herbarium.command.desc = Команды Herbarium
+herbarium.command.ui.desc = Открывает Дневник ботаника.
+herbarium.command.reset.desc = Удаляет весь ваш прогресс.
+herbarium.command.unlockall.desc = Открывает все растения.
+herbarium.command.playersOnly = Эту команду могут выполнять только игроки.
+herbarium.command.reset.done = Ваш прогресс сброшен.
+herbarium.command.unlockall.done = Все растения открыты.
+
+herbarium.progress.recorded = растений записано: {count, number} / {total, number}
+
+herbarium.plant.discoveredOn = Обнаружено {date}
+herbarium.plant.discoveredAt = Обнаружено {date} в ({place})
+
+herbarium.notification.discovered = Обнаружено новое растение:
+
+herbarium.category.bramble = Ежевика
+herbarium.category.bush = Кусты
+herbarium.category.cactus = Кактусы
+herbarium.category.coral = Кораллы
+herbarium.category.crop = Посевы
+herbarium.category.fern = Папоротники
+herbarium.category.flower = Цветы
+herbarium.category.fruit = Фрукты
+herbarium.category.grass = Травы
+herbarium.category.leaves = Листва
+herbarium.category.moss = Мхи
+herbarium.category.mushroom = Грибы
+herbarium.category.petals = Лепестки
+herbarium.category.reeds = Камыши
+herbarium.category.sapling = Саженцы
+herbarium.category.seaweed = Морские водоросли
+herbarium.category.seeds = Семена
+herbarium.category.vine = Лианы

@@ -15,6 +15,8 @@ public class PlantDetailsPanel {
     private static final int LOCATION_LABEL_COUNT = 4;
     private static final String LOCATIONS_FOUND_IN_KEY = "server.herbarium.location.found_in";
     private static final String LOCATION_UNKNOWN_KEY = "server.herbarium.location.unknown";
+    private static final String DISCOVERED_ON_KEY = "server.herbarium.plant.discoveredOn";
+    private static final String DISCOVERED_AT_KEY = "server.herbarium.plant.discoveredAt";
 
     public static void buildDetails(PlayerRef playerRef, UICommandBuilder commands,
                                     String selectedPlant) {
@@ -33,15 +35,16 @@ public class PlantDetailsPanel {
         setLocationsPanel(commands, Herbarium.getCatalog().getPlantLocations(selectedPlant));
 
         PlantInfo plantInfo = store.getPlayerPlantInfo(playerRef, selectedPlant);
-        if (plantInfo != null && plantInfo.wasDiscovered()) {
+        if (plantInfo != null && plantInfo.wasDiscovered() && plantInfo.getDiscoveredDate() != null) {
             String date = plantInfo.getDiscoveredDate();
             String place = plantInfo.getDiscoveredPlace();
-            String text = "";
-            if (date != null) {
-                text = "Discovered on " + formatDate(date);
-                if (place != null) {
-                    text = text + " at (" + place + ")";
-                }
+            Message text;
+            if (place != null) {
+                text = Message.translation(DISCOVERED_AT_KEY)
+                        .param("date", formatDate(date))
+                        .param("place", place);
+            } else {
+                text = Message.translation(DISCOVERED_ON_KEY).param("date", formatDate(date));
             }
             commands.set("#PlantDiscovery.Text", text);
         } else {

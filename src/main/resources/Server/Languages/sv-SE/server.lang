@@ -1,0 +1,110 @@
+items.Herbarium_Journal.name = Botanikerns journal
+
+herbarium.location.found_in = Finns i:
+herbarium.location.unknown = Okänd plats
+herbarium.location.cultivated = Odlade fält
+herbarium.location.caves = Grottor
+herbarium.location.chests = Finns i kistor
+herbarium.location.looted_from_plants = Plundras från vilda växter
+herbarium.location.goblin_realm = Goblinriket
+herbarium.location.trork_camps = Trorkläger
+herbarium.location.kweebec_villages = Kweebecbyar
+herbarium.location.hidey_holes = Gömslen
+herbarium.location.sewers = Avlopp
+herbarium.location.cold_kelp_biome = Kalla tångbiomer
+herbarium.location.cold_trench_biome = Kalla djuphavsgravar
+herbarium.location.red_coral_biome = Röda korallbiomer
+herbarium.location.tropical_jungle = Tropisk djungel
+herbarium.location.oasis = Oaser
+herbarium.location.mage_towers = Magikertorn
+herbarium.location.firelands_temple = Eldländernas tempel
+herbarium.location.outlander_sites = Outlanderplatser
+herbarium.location.devastated_ruins = Ödelagda ruiner
+herbarium.location.howling_sands_ruins = Ruiner i de Ylande Sandarna
+herbarium.location.labyrinths = Labyrinter
+herbarium.location.ruined_temples = Förfallna tempel
+herbarium.location.slothian_villages = Slothianbyar
+herbarium.location.dungeons = Dungeons
+herbarium.location.cursed_crypts = Fördömda krypter
+
+herbarium.tree.amber = Amberträd
+herbarium.tree.apple = Äppelträd
+herbarium.tree.ash = Askar
+herbarium.tree.aspen = Aspar
+herbarium.tree.autumn = Höstträd
+herbarium.tree.azure = Azurträd
+herbarium.tree.bamboo = Bambu
+herbarium.tree.banyan = Banyanträd
+herbarium.tree.beech = Bokar
+herbarium.tree.birch = Björkar
+herbarium.tree.blue_fig = Blå fikenträd
+herbarium.tree.bottletree = Flaskträd
+herbarium.tree.burnt = Brända träd
+herbarium.tree.camphor = Kamferträd
+herbarium.tree.cedar = Cederträd
+herbarium.tree.crystalwood = Kristallträd
+herbarium.tree.dry = Torra träd
+herbarium.tree.fir = Granar
+herbarium.tree.fire = Eldträd
+herbarium.tree.frostwood = Frostträd
+herbarium.tree.gumboab = Gumboabträd
+herbarium.tree.jungle = Djungelträd
+herbarium.tree.maple = Lönnträd
+herbarium.tree.oak = Ekar
+herbarium.tree.palm = Palmer
+herbarium.tree.palo = Paloträd
+herbarium.tree.petrified_pine = Förstenade tallar
+herbarium.tree.red_fir = Röda granar
+herbarium.tree.redwood = Mammutträd
+herbarium.tree.sallow = Sälgar
+herbarium.tree.snowy_fir = Snötäckta granar
+herbarium.tree.spiral = Spiralträd
+herbarium.tree.stormbark = Stormbarksträd
+herbarium.tree.windwillow = Vindpilar
+herbarium.tree.wisteria_wild = Vild blåregn
+
+herbarium.unlock.title = Du har låst upp Botanikerns journal!
+herbarium.unlock.bullet1 = Den här journalen följer dig genom hela din utforskning av Orbis.
+herbarium.unlock.bullet2 = Varje växt du plockar upp registreras här, tillsammans med datum och plats för upptäckten.
+herbarium.unlock.bullet3 = Utforska din samling per kategori, följ dina framsteg, bli en riktig botaniker och få belöningar!
+herbarium.unlock.openJournal = Öppna journalen
+
+herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Låst</b></color> \n<color is="#888888">Registrera {count, number} {count, plural, one {växt} other {växter}} för att låsa upp:</color>
+herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Upplåst</b></color> \n<color is="#888888">{count, number} {count, plural, one {växt} other {växter}} registrerade. Belöning att hämta:</color>
+herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Hämtad</b></color> \n<color is="#888888">{count, number} {count, plural, one {växt} other {växter}} registrerade. Hämtad belöning:</color>
+herbarium.rewards.collectButton = Hämta belöning {tier, number}
+herbarium.rewards.allCollected = Alla belöningar hämtade
+
+herbarium.command.desc = Herbarium-kommandon
+herbarium.command.ui.desc = Öppnar Botanikerns journal.
+herbarium.command.reset.desc = Raderar hela din progression.
+herbarium.command.unlockall.desc = Låser upp alla växter.
+herbarium.command.playersOnly = Det här kommandot kan bara utföras av spelare.
+herbarium.command.reset.done = Din progression har återställts.
+herbarium.command.unlockall.done = Alla växter har låsts upp.
+
+herbarium.progress.recorded = växter registrerade: {count, number} / {total, number}
+
+herbarium.plant.discoveredOn = Upptäckt {date}
+herbarium.plant.discoveredAt = Upptäckt {date} vid ({place})
+
+herbarium.notification.discovered = Ny växt upptäckt:
+
+herbarium.category.bramble = Snår
+herbarium.category.bush = Buskar
+herbarium.category.cactus = Kaktusar
+herbarium.category.coral = Koraller
+herbarium.category.crop = Grödor
+herbarium.category.fern = Ormbunkar
+herbarium.category.flower = Blommor
+herbarium.category.fruit = Frukter
+herbarium.category.grass = Gräs
+herbarium.category.leaves = Löv
+herbarium.category.moss = Mossor
+herbarium.category.mushroom = Svampar
+herbarium.category.petals = Kronblad
+herbarium.category.reeds = Vass
+herbarium.category.sapling = Plantor
+herbarium.category.seaweed = Tång
+herbarium.category.seeds = Frön
+herbarium.category.vine = Lianor

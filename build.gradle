@@ -139,6 +139,140 @@ tasks.named('build') {
     dependsOn 'shadowJar'
 }
 
+// Verifies that every shipped language file defines the same set of keys as
+// the en-US reference, that every translation key referenced from plants.json
+// or the Java sources exists in all of them, and that the ICU placeholders
+// ({count}, {tier}, {date}, {place}, {total}) of each key match the reference.
+tasks.register('checkLanguages') {
+    group = 'verification'
+    description = 'Audits the plugin language files: key parity, referenced keys and ICU placeholders.'
+    inputs.dir('src/main/resources/Server/Languages')
+    inputs.file('src/main/resources/plants.json')
+    inputs.files(fileTree('src/main/java') { include '**/*.java' })
+
+    doLast {
+        def languagesDir = file('src/main/resources/Server/Languages')
+        def referenceLocale = 'en-US'
+        def referenceFile = file("${languagesDir}/${referenceLocale}/server.lang")
+        if (!referenceFile.exists()) {
+            throw new GradleException("Missing reference language file: ${referenceFile}")
+        }
+
+        // Parses a server.lang file into an ordered key -> value map.
+        def parseLang = { File langFile ->
+            def entries = new LinkedHashMap()
+            langFile.eachLine { raw ->
+                def line = raw.trim()
+                if (line.isEmpty() || line.startsWith('//')) {
+                    return
+                }
+                def matcher = (line =~ /^([A-Za-z0-9_.]+)\s*=\s*(.*)$/)
+                if (matcher.matches()) {
+                    entries.put(matcher.group(1), matcher.group(2))
+                } else {
+                    throw new GradleException("Unparsable line in ${langFile}: ${line}")
+                }
+            }
+            entries
+        }
+
+        // Collects the ICU placeholder names a translation value references.
+        def placeholderNames = { String value ->
+            def names = new TreeSet()
+            def matcher = (value =~ /\{(count|tier|date|place|total)\b/)
+            while (matcher.find()) {
+                names << matcher.group(1)
+            }
+            names
+        }
+
+        def errors = []
+        def reference = parseLang(referenceFile)
+
+        def localeFiles = new LinkedHashMap()
+        languagesDir.eachDir { dir ->
+            def langFile = new File(dir, 'server.lang')
+            if (langFile.exists()) {
+                localeFiles[dir.name] = parseLang(langFile)
+            } else {
+                errors << "Missing server.lang for locale ${dir.name}"
+            }
+        }
+        if (localeFiles.isEmpty()) {
+            errors << "No language files found in ${languagesDir}"
+        }
+
+        // 1. Key parity with the reference locale.
+        localeFiles.each { locale, entries ->
+            if (locale == referenceLocale) {
+                return
+            }
+            def missing = reference.keySet().findAll { !entries.containsKey(it) }.sort()
+            def unknown = entries.keySet().findAll { !reference.containsKey(it) }.sort()
+            if (missing) {
+                errors << "${locale}: missing keys: ${missing.join(', ')}"
+            }
+            if (unknown) {
+                errors << "${locale}: unknown keys: ${unknown.join(', ')}"
+            }
+        }
+
+        // 2. Translation keys referenced from plants.json and the Java
+        // sources must exist in every locale. Only plugin-owned keys are
+        // audited: keys from other namespaces (items.*, map.*, portals.*)
+        // are provided by the game's own language files. Category keys are
+        // built in code from the plants.json category names, so add them
+        // explicitly.
+        def plantsFile = file('src/main/resources/plants.json')
+        def referenced = new TreeSet()
+        ['herbarium\\.[A-Za-z0-9_.]+', 'items\\.[A-Za-z0-9_]+\\.name'].each { pattern ->
+            [plantsFile.text, fileTree('src/main/java') { include '**/*.java' }*.text.toList().join('\n')].each { text ->
+                def matcher = (text =~ /server\.${pattern}/)
+                while (matcher.find()) {
+                    referenced << matcher.group()
+                }
+            }
+        }
+        referenced.removeIf { it.endsWith('.') }
+        referenced.removeIf { !(it.startsWith('server.herbarium.') || it == 'server.items.Herbarium_Journal.name') }
+        new groovy.json.JsonSlurper().parseText(plantsFile.text).keySet().each { category ->
+            referenced << 'server.herbarium.category.' + category.toLowerCase(Locale.ROOT)
+        }
+
+        referenced.each { ref ->
+            def key = ref.startsWith('server.') ? ref.substring('server.'.length()) : ref
+            localeFiles.each { locale, entries ->
+                if (!entries.containsKey(key)) {
+                    errors << "${locale}: referenced key not translated: ${key}"
+                }
+            }
+        }
+
+        // 3. ICU placeholders of each key must match the reference locale.
+        localeFiles.each { locale, entries ->
+            if (locale == referenceLocale) {
+                return
+            }
+            reference.each { key, value ->
+                def other = entries.get(key)
+                if (other == null || placeholderNames(value as String) == placeholderNames(other as String)) {
+                    return
+                }
+                errors << "${locale}: key ${key} has different ICU placeholders than ${referenceLocale}"
+            }
+        }
+
+        if (errors) {
+            throw new GradleException("Language audit failed:\n  - " + errors.join("\n  - "))
+        }
+        logger.lifecycle("Language audit passed for ${localeFiles.size()} locales (${reference.size()} keys each).")
+    }
+}
+
+tasks.named('check') {
+    dependsOn 'checkLanguages'
+}
+
 if (hasHytaleHome) {
     // Create the working directory to run the server if it does not already exist.
     def serverRunDir = file("$projectDir/run")

@@ -1,0 +1,110 @@
+items.Herbarium_Journal.name = Botanikerens journal
+
+herbarium.location.found_in = Findes i:
+herbarium.location.unknown = Placering ukendt
+herbarium.location.cultivated = Dyrkede marker
+herbarium.location.caves = Huler
+herbarium.location.chests = Findes i kister
+herbarium.location.looted_from_plants = Byttet fra vilde planter
+herbarium.location.goblin_realm = Goblinriget
+herbarium.location.trork_camps = Trork-lejre
+herbarium.location.kweebec_villages = Kweebec-landsbyer
+herbarium.location.hidey_holes = Skjulesteder
+herbarium.location.sewers = Kloakker
+herbarium.location.cold_kelp_biome = Kolde tangbiomer
+herbarium.location.cold_trench_biome = Kolde havgrave
+herbarium.location.red_coral_biome = Røde koralbiomer
+herbarium.location.tropical_jungle = Tropisk jungle
+herbarium.location.oasis = Oaser
+herbarium.location.mage_towers = Magertårne
+herbarium.location.firelands_temple = Ildlandenes tempel
+herbarium.location.outlander_sites = Outlander-lokaliteter
+herbarium.location.devastated_ruins = Ødelagte ruiner
+herbarium.location.howling_sands_ruins = Ruiner i de Hylende Sande
+herbarium.location.labyrinths = Labyrinter
+herbarium.location.ruined_temples = Forfaldne templer
+herbarium.location.slothian_villages = Slothian-landsbyer
+herbarium.location.dungeons = Dungeons
+herbarium.location.cursed_crypts = Forbandte krypter
+
+herbarium.tree.amber = Ravtræer
+herbarium.tree.apple = Æbletræer
+herbarium.tree.ash = Asketræer
+herbarium.tree.aspen = Espetræer
+herbarium.tree.autumn = Efterårstræer
+herbarium.tree.azure = Azurtræer
+herbarium.tree.bamboo = Bambus
+herbarium.tree.banyan = Banyantræer
+herbarium.tree.beech = Bøgetræer
+herbarium.tree.birch = Birketræer
+herbarium.tree.blue_fig = Blå figentræer
+herbarium.tree.bottletree = Flaskestræer
+herbarium.tree.burnt = Brændte træer
+herbarium.tree.camphor = Kamfertræer
+herbarium.tree.cedar = Cedertræer
+herbarium.tree.crystalwood = Krystaltræer
+herbarium.tree.dry = Tørre træer
+herbarium.tree.fir = Grantræer
+herbarium.tree.fire = Ildtræer
+herbarium.tree.frostwood = Frosttræer
+herbarium.tree.gumboab = Gumboabtræer
+herbarium.tree.jungle = Jungletræer
+herbarium.tree.maple = Lønnetræer
+herbarium.tree.oak = Egetræer
+herbarium.tree.palm = Palmetræer
+herbarium.tree.palo = Palotræer
+herbarium.tree.petrified_pine = Forstenede fyrretræer
+herbarium.tree.red_fir = Røde grantræer
+herbarium.tree.redwood = Mammuttræer
+herbarium.tree.sallow = Seljepiler
+herbarium.tree.snowy_fir = Snedækkede grantræer
+herbarium.tree.spiral = Spiraltræer
+herbarium.tree.stormbark = Stormbarkstræer
+herbarium.tree.windwillow = Vindpiletræer
+herbarium.tree.wisteria_wild = Vilde blåregn
+
+herbarium.unlock.title = Du har låst op for Botanikerens journal!
+herbarium.unlock.bullet1 = Denne journal følger dig gennem hele din udforskning af Orbis.
+herbarium.unlock.bullet2 = Hver plante, du samler op, registreres her sammen med dato og sted for fundet.
+herbarium.unlock.bullet3 = Gennemse din samling efter kategorier, følg dit fremskridt, bliv en ægte botaniker, og få belønninger!
+herbarium.unlock.openJournal = Åbn journalen
+
+herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Låst</b></color> \n<color is="#888888">Registrér {count, number} {count, plural, one {plante} other {planter}} for at låse op:</color>
+herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Låst op</b></color> \n<color is="#888888">{count, number} {count, plural, one {plante} other {planter}} registreret. Belønning at hente:</color>
+herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Samlet</b></color> \n<color is="#888888">{count, number} {count, plural, one {plante} other {planter}} registreret. Belønning samlet:</color>
+herbarium.rewards.collectButton = Hent belønning {tier, number}
+herbarium.rewards.allCollected = Alle belønninger samlet
+
+herbarium.command.desc = Herbarium-kommandoer
+herbarium.command.ui.desc = Åbner Botanikerens journal.
+herbarium.command.reset.desc = Sletter hele dit fremskridt.
+herbarium.command.unlockall.desc = Låser op for alle planter.
+herbarium.command.playersOnly = Denne kommando kan kun udføres af spillere.
+herbarium.command.reset.done = Dit fremskridt er blevet nulstillet.
+herbarium.command.unlockall.done = Alle planter er blevet låst op.
+
+herbarium.progress.recorded = planter registreret: {count, number} / {total, number}
+
+herbarium.plant.discoveredOn = Opdaget {date}
+herbarium.plant.discoveredAt = Opdaget {date} på ({place})
+
+herbarium.notification.discovered = Ny plante opdaget:
+
+herbarium.category.bramble = Brombærkrat
+herbarium.category.bush = Buske
+herbarium.category.cactus = Kaktusser
+herbarium.category.coral = Koraller
+herbarium.category.crop = Afgrøder
+herbarium.category.fern = Bregner
+herbarium.category.flower = Blomster
+herbarium.category.fruit = Frugter
+herbarium.category.grass = Græsser
+herbarium.category.leaves = Blade
+herbarium.category.moss = Moser
+herbarium.category.mushroom = Svampe
+herbarium.category.petals = Kronblade
+herbarium.category.reeds = Rør
+herbarium.category.sapling = Frøplanter
+herbarium.category.seaweed = Tang
+herbarium.category.seeds = Frø
+herbarium.category.vine = Lianer

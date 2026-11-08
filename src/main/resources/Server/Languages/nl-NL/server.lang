@@ -1,0 +1,110 @@
+items.Herbarium_Journal.name = Botanisch journaal
+
+herbarium.location.found_in = Te vinden in:
+herbarium.location.unknown = Locatie onbekend
+herbarium.location.cultivated = Bebouwde velden
+herbarium.location.caves = Grotten
+herbarium.location.chests = In kisten te vinden
+herbarium.location.looted_from_plants = Geplunderd van wilde planten
+herbarium.location.goblin_realm = Goblinrijk
+herbarium.location.trork_camps = Trorkkampen
+herbarium.location.kweebec_villages = Kweebecdorpen
+herbarium.location.hidey_holes = Verstopplekken
+herbarium.location.sewers = Riolen
+herbarium.location.cold_kelp_biome = Koude kelpbiomen
+herbarium.location.cold_trench_biome = Koude troggen
+herbarium.location.red_coral_biome = Rode koraalbiomen
+herbarium.location.tropical_jungle = Tropisch oerwoud
+herbarium.location.oasis = Oases
+herbarium.location.mage_towers = Magiërstorens
+herbarium.location.firelands_temple = Tempel van de Vuurlanden
+herbarium.location.outlander_sites = Outlanderlocaties
+herbarium.location.devastated_ruins = Verwoeste ruïnes
+herbarium.location.howling_sands_ruins = Ruïnes in de Huilende Zanden
+herbarium.location.labyrinths = Labyrinten
+herbarium.location.ruined_temples = Vervallen tempels
+herbarium.location.slothian_villages = Slothiadorpen
+herbarium.location.dungeons = Kerkers
+herbarium.location.cursed_crypts = Vervloekte crypten
+
+herbarium.tree.amber = Amberbomen
+herbarium.tree.apple = Appelbomen
+herbarium.tree.ash = Essen
+herbarium.tree.aspen = Espen
+herbarium.tree.autumn = Herfstbomen
+herbarium.tree.azure = Azuurbomen
+herbarium.tree.bamboo = Bamboe
+herbarium.tree.banyan = Banyanbomen
+herbarium.tree.beech = Beuken
+herbarium.tree.birch = Berken
+herbarium.tree.blue_fig = Blauwe vijgenbomen
+herbarium.tree.bottletree = Flessenbomen
+herbarium.tree.burnt = Verbrande bomen
+herbarium.tree.camphor = Kamferbomen
+herbarium.tree.cedar = Ceders
+herbarium.tree.crystalwood = Kristalbomen
+herbarium.tree.dry = Droge bomen
+herbarium.tree.fir = Sparren
+herbarium.tree.fire = Vuurbomen
+herbarium.tree.frostwood = Vorstbomen
+herbarium.tree.gumboab = Gumboabbomen
+herbarium.tree.jungle = Junglebomen
+herbarium.tree.maple = Esdoorns
+herbarium.tree.oak = Eiken
+herbarium.tree.palm = Palmen
+herbarium.tree.palo = Palobomen
+herbarium.tree.petrified_pine = Versteende dennen
+herbarium.tree.red_fir = Rode sparren
+herbarium.tree.redwood = Mammoetbomen
+herbarium.tree.sallow = Boswilgen
+herbarium.tree.snowy_fir = Besneeuwde sparren
+herbarium.tree.spiral = Spiralbomen
+herbarium.tree.stormbark = Stormschorsbomen
+herbarium.tree.windwillow = Windwilgen
+herbarium.tree.wisteria_wild = Wilde blauwe regen
+
+herbarium.unlock.title = Je hebt het Botanische journaal ontgrendeld!
+herbarium.unlock.bullet1 = Dit journaal volgt je door je hele verkenning van Orbis.
+herbarium.unlock.bullet2 = Elke plant die je oppikt wordt hier vastgelegd, samen met de datum en plek van de vondst.
+herbarium.unlock.bullet3 = Doorzoek je collectie per categorie, volg je voortgang, word een echte botanicus en verdien beloningen!
+herbarium.unlock.openJournal = Open het journaal
+
+herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Vergrendeld</b></color> \n<color is="#888888">Leg {count, number} {count, plural, one {plant} other {planten}} vast om te ontgrendelen:</color>
+herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Ontgrendeld</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {planten}} vastgelegd. Beloning om op te halen:</color>
+herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Opgehaald</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {planten}} vastgelegd. Opgehaalde beloning:</color>
+herbarium.rewards.collectButton = Beloning {tier, number} ophalen
+herbarium.rewards.allCollected = Alle beloningen opgehaald
+
+herbarium.command.desc = Herbarium-commando's
+herbarium.command.ui.desc = Opent het Botanische journaal.
+herbarium.command.reset.desc = Verwijdert al je voortgang.
+herbarium.command.unlockall.desc = Ontgrendelt alle planten.
+herbarium.command.playersOnly = Dit commando kan alleen door spelers worden uitgevoerd.
+herbarium.command.reset.done = Je voortgang is gereset.
+herbarium.command.unlockall.done = Alle planten zijn ontgrendeld.
+
+herbarium.progress.recorded = planten vastgelegd: {count, number} / {total, number}
+
+herbarium.plant.discoveredOn = Ontdekt op {date}
+herbarium.plant.discoveredAt = Ontdekt op {date} bij ({place})
+
+herbarium.notification.discovered = Nieuwe plant ontdekt:
+
+herbarium.category.bramble = Braamstruiken
+herbarium.category.bush = Struiken
+herbarium.category.cactus = Cactussen
+herbarium.category.coral = Koraal
+herbarium.category.crop = Gewassen
+herbarium.category.fern = Varens
+herbarium.category.flower = Bloemen
+herbarium.category.fruit = Fruit
+herbarium.category.grass = Grassen
+herbarium.category.leaves = Bladeren
+herbarium.category.moss = Mossen
+herbarium.category.mushroom = Paddenstoelen
+herbarium.category.petals = Bloemblaadjes
+herbarium.category.reeds = Riet
+herbarium.category.sapling = Zaailingen
+herbarium.category.seaweed = Zeewier
+herbarium.category.seeds = Zaden
+herbarium.category.vine = Lianen

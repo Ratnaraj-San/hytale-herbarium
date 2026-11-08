@@ -1,0 +1,110 @@
+items.Herbarium_Journal.name = Diário do Botânico
+
+herbarium.location.found_in = Encontra-se em:
+herbarium.location.unknown = Localização desconhecida
+herbarium.location.cultivated = Campos cultivados
+herbarium.location.caves = Cavernas
+herbarium.location.chests = Encontradas em baús
+herbarium.location.looted_from_plants = Obtidas de plantas selvagens
+herbarium.location.goblin_realm = Reino dos goblins
+herbarium.location.trork_camps = Acampamentos trork
+herbarium.location.kweebec_villages = Aldeias dos Kweebecs
+herbarium.location.hidey_holes = Esconderijos
+herbarium.location.sewers = Esgotos
+herbarium.location.cold_kelp_biome = Biomas de algas frias
+herbarium.location.cold_trench_biome = Biomas de fossas frias
+herbarium.location.red_coral_biome = Biomas de coral vermelho
+herbarium.location.tropical_jungle = Selva tropical
+herbarium.location.oasis = Oásis
+herbarium.location.mage_towers = Torres de magos
+herbarium.location.firelands_temple = Templo das Terras Ardentes
+herbarium.location.outlander_sites = Sítios dos Outlanders
+herbarium.location.devastated_ruins = Ruínas Devastadas
+herbarium.location.howling_sands_ruins = Ruínas das Areias Uivantes
+herbarium.location.labyrinths = Labirintos
+herbarium.location.ruined_temples = Templos em ruínas
+herbarium.location.slothian_villages = Vilas Slothian
+herbarium.location.dungeons = Masmorras
+herbarium.location.cursed_crypts = Criptas amaldiçoadas
+
+herbarium.tree.amber = Árvores de âmbar
+herbarium.tree.apple = Macieiras
+herbarium.tree.ash = Freixos
+herbarium.tree.aspen = Álamos
+herbarium.tree.autumn = Árvores de outono
+herbarium.tree.azure = Árvores Azure
+herbarium.tree.bamboo = Bambus
+herbarium.tree.banyan = Figueiras
+herbarium.tree.beech = Faias
+herbarium.tree.birch = Bétulas
+herbarium.tree.blue_fig = Figueiras azuis
+herbarium.tree.bottletree = Árvores-garrafa
+herbarium.tree.burnt = Árvores queimadas
+herbarium.tree.camphor = Canforeiras
+herbarium.tree.cedar = Cedros
+herbarium.tree.crystalwood = Árvores de cristal
+herbarium.tree.dry = Árvores secas
+herbarium.tree.fir = Pinheiros
+herbarium.tree.fire = Árvores de fogo
+herbarium.tree.frostwood = Árvores de gelo
+herbarium.tree.gumboab = Baobás
+herbarium.tree.jungle = Árvores da selva
+herbarium.tree.maple = Bordo
+herbarium.tree.oak = Carvalhos
+herbarium.tree.palm = Palmeiras
+herbarium.tree.palo = Palos
+herbarium.tree.petrified_pine = Pinheiros petrificados
+herbarium.tree.red_fir = Pinheiros vermelhos
+herbarium.tree.redwood = Sequoias
+herbarium.tree.sallow = Salgueiros-cinzentos
+herbarium.tree.snowy_fir = Pinheiros congelados
+herbarium.tree.spiral = Árvores espirais
+herbarium.tree.stormbark = Tempestroncos
+herbarium.tree.windwillow = Salgueiros-alísios
+herbarium.tree.wisteria_wild = Glicínias selvagens
+
+herbarium.unlock.title = Desbloqueaste o Diário do Botânico!
+herbarium.unlock.bullet1 = Este diário vai acompanhar-te em toda a tua exploração de Orbis.
+herbarium.unlock.bullet2 = Toda a planta que apanhas é registada aqui, junto com a data e o local da descoberta.
+herbarium.unlock.bullet3 = Percorre a tua coleção por categoria, acompanha o teu progresso para te tornares um verdadeiro botânico e recebe recompensas!
+herbarium.unlock.openJournal = Abrir o diário
+
+herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Bloqueado</b></color> \n<color is="#888888">Regista {count, number} {count, plural, one {planta} other {plantas}} para desbloquear:</color>
+herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Desbloqueado</b></color> \n<color is="#888888">{count, number} {count, plural, one {planta} other {plantas}} registadas. Recompensa a colecionar:</color>
+herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Coletada</b></color> \n<color is="#888888">{count, number} {count, plural, one {planta} other {plantas}} registadas. Recompensa coletada:</color>
+herbarium.rewards.collectButton = Coletar a recompensa {tier, number}
+herbarium.rewards.allCollected = Todas as recompensas coletadas
+
+herbarium.command.desc = Comandos do Herbarium
+herbarium.command.ui.desc = Abre o Diário do Botânico.
+herbarium.command.reset.desc = Apaga todo o teu progresso.
+herbarium.command.unlockall.desc = Desbloqueia todas as plantas.
+herbarium.command.playersOnly = Este comando só pode ser executado por jogadores.
+herbarium.command.reset.done = O teu progresso foi reiniciado.
+herbarium.command.unlockall.done = Todas as plantas foram desbloqueadas.
+
+herbarium.progress.recorded = plantas registadas: {count, number} / {total, number}
+
+herbarium.plant.discoveredOn = Descoberta em {date}
+herbarium.plant.discoveredAt = Descoberta em {date} em ({place})
+
+herbarium.notification.discovered = Nova planta descoberta:
+
+herbarium.category.bramble = Silvas
+herbarium.category.bush = Arbustos
+herbarium.category.cactus = Cactos
+herbarium.category.coral = Corais
+herbarium.category.crop = Cultivos
+herbarium.category.fern = Samambaias
+herbarium.category.flower = Flores
+herbarium.category.fruit = Frutas
+herbarium.category.grass = Ervas
+herbarium.category.leaves = Folhas
+herbarium.category.moss = Musgos
+herbarium.category.mushroom = Cogumelos
+herbarium.category.petals = Pétalas
+herbarium.category.reeds = Caniços
+herbarium.category.sapling = Mudas
+herbarium.category.seaweed = Algas
+herbarium.category.seeds = Sementes
+herbarium.category.vine = Trepadeiras
