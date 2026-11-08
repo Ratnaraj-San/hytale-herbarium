@@ -16,6 +16,7 @@ import com.hypixel.hytale.server.core.ui.builder.UIEventBuilder;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.ratnaraj.herbarium.Herbarium;
+import com.ratnaraj.herbarium.event.FeedbackParticle;
 import com.ratnaraj.herbarium.event.FeedbackSound;
 
 /**
@@ -27,6 +28,8 @@ public class HerbariumIntroPage extends InteractiveCustomUIPage<HerbariumIntroPa
     private static final String TYPE_OPEN_JOURNAL = "OpenJournal";
 
     private static final String UNLOCK_SOUND_EVENT = "SFX_Memories_Unlock_Local";
+
+    private static final String UNLOCK_PARTICLE_SYSTEM = "MemoryUnlock";
 
     /**
      * Translation keys of the modal texts. They are set at runtime with
@@ -78,6 +81,7 @@ public class HerbariumIntroPage extends InteractiveCustomUIPage<HerbariumIntroPa
 
         if (firstOpening) {
             FeedbackSound.play(playerRef, UNLOCK_SOUND_EVENT, store, false);
+            FeedbackParticle.spawn(UNLOCK_PARTICLE_SYSTEM, ref, store);
         }
 
         commands.append("Pages/Herbarium/JournalUnlocked.ui");
