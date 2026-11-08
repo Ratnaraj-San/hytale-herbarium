@@ -2632,7 +2632,7 @@
     {
       "id": "Plant_Vine_Liana",
       "obtainableInExplorationMode": true,
-      "locations": ["server.map.zone.Emerald_Wilds", "server.herbarium.location.tropical_jungle"]
+      "locations": ["server.map.zone.Emerald_Wilds", "server.herbarium.location.tropical_jungle", "server.portals.goblinBreach"]
     },
     {
       "id": "Plant_Vine_Liana_End",
