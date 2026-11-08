@@ -42,6 +42,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     private static final String TYPE_SHOW_INFO = "ShowInfo";
 
     private static final String JOURNAL_NAME_KEY = "server.items.Herbarium_Journal.name";
+    private static final String TOTAL_COLLECTED_KEY = "server.herbarium.progress.recorded";
 
     private static final Map<String, String> CATEGORY_ICON_OVERRIDES = Map.ofEntries(
             Map.entry("Bramble", "Icons/ItemsGenerated/Plant_Bramble_Dry_Magic.png"),
@@ -198,7 +199,10 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         float progress = totalPlants == 0 ? 0f : (float) totalDiscovered / totalPlants;
         commands.set("#PlantsProgressBar.Value", progress);
         commands.set("#PlantsProgressBarTexture.Value", progress);
-        commands.set("#TotalCollected.Text", "plants recorded: " + totalDiscovered + " / " + totalPlants);
+        commands.set("#TotalCollected.Text",
+                Message.translation(TOTAL_COLLECTED_KEY)
+                        .param("count", totalDiscovered)
+                        .param("total", totalPlants));
 
         RewardBar.buildChestMarkers(playerRef, commands, totalDiscovered, totalPlants);
         RewardBar.setRewardsButtonState(playerRef, commands, totalDiscovered, totalPlants);

@@ -26,7 +26,6 @@ herbarium.location.ruined_temples = Temples en ruine
 herbarium.location.slothian_villages = Villages slothians
 herbarium.location.dungeons = Donjons
 herbarium.location.cursed_crypts = Cryptes maudites
-herbarium.location.guttering_hollows = The Guttering Hollows
 
 herbarium.tree.amber = Arbres d'ambre
 herbarium.tree.apple = Pommiers
@@ -73,6 +72,19 @@ herbarium.unlock.openJournal = Ouvrir le journal
 herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Verrouillé</b></color> \n<color is="#888888">Consignez {count, number} {count, plural, one {plante} other {plantes}} pour débloquer :</color>
 herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Débloqué</b></color> \n<color is="#888888">{count, number} {count, plural, one {plante} other {plantes}} consignées. Récompense à collecter :</color>
 herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Collecté</b></color> \n<color is="#888888">{count, number} {count, plural, one {plante} other {plantes}} consignées. Récompense collectée :</color>
-herbarium.rewards.item.batPlushie = Peluche de chauve-souris
 herbarium.rewards.collectButton = Collecter la récompense {tier, number}
-herbarium.rewards.allCollected = Récompenses collectées
+
+herbarium.command.desc = Commandes Herbarium
+herbarium.command.ui.desc = Ouvre le journal du botaniste.
+herbarium.command.reset.desc = Supprime toute votre progression.
+herbarium.command.unlockall.desc = Débloque toutes les plantes.
+herbarium.command.playersOnly = Cette commande ne peut être exécutée que par des joueurs.
+herbarium.command.reset.done = Votre progression a été réinitialisée.
+herbarium.command.unlockall.done = Toutes les plantes ont été débloquées.
+
+herbarium.progress.recorded = plantes consignées : {count, number} / {total, number}
+
+herbarium.plant.discoveredOn = Découverte le {date}
+herbarium.plant.discoveredAt = Découverte le {date} à ({place})
+
+herbarium.notification.discovered = Nouvelle plante découverte :

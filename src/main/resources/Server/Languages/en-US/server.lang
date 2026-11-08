@@ -26,7 +26,6 @@ herbarium.location.ruined_temples = Ruined Temples
 herbarium.location.slothian_villages = Slothian Villages
 herbarium.location.dungeons = Dungeons
 herbarium.location.cursed_crypts = Cursed Crypts
-herbarium.location.guttering_hollows = The Guttering Hollows
 
 herbarium.tree.amber = Amber Trees
 herbarium.tree.apple = Apple Trees
@@ -73,6 +72,19 @@ herbarium.unlock.openJournal = Open the journal
 herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Locked</b></color> \n<color is="#888888">Record {count, number} {count, plural, one {plant} other {plants}} to unlock:</color>
 herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Unlocked</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {plants}} recorded. Reward to collect:</color>
 herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Collected</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {plants}} recorded. Reward collected:</color>
-herbarium.rewards.item.batPlushie = Bat Plushie
 herbarium.rewards.collectButton = Collect reward {tier, number}
-herbarium.rewards.allCollected = All rewards collected
+
+herbarium.command.desc = Herbarium commands
+herbarium.command.ui.desc = Opens the Herbarium journal.
+herbarium.command.reset.desc = Deletes all your progression.
+herbarium.command.unlockall.desc = Unlocks all plants.
+herbarium.command.playersOnly = This command can only be executed by players.
+herbarium.command.reset.done = Your progress has been reset.
+herbarium.command.unlockall.done = All plants have been unlocked.
+
+herbarium.progress.recorded = plants recorded: {count, number} / {total, number}
+
+herbarium.plant.discoveredOn = Discovered on {date}
+herbarium.plant.discoveredAt = Discovered on {date} at ({place})
+
+herbarium.notification.discovered = New plant discovered:

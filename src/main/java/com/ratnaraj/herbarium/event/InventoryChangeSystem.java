@@ -31,6 +31,8 @@ import java.util.logging.Level;
  */
 public class InventoryChangeSystem extends EntityEventSystem<EntityStore, InventoryChangeEvent> {
 
+    private static final String DISCOVERY_NOTIFICATION_KEY = "server.herbarium.notification.discovered";
+
     private final String DISCOVERY_SOUND_EVENT = "SFX_MemoryMote";
 
     public InventoryChangeSystem() {
@@ -158,10 +160,9 @@ public class InventoryChangeSystem extends EntityEventSystem<EntityStore, Invent
                         if (isNewDiscovery) {
                             NotificationUtil.sendNotification(
                                     playerRef.getPacketHandler(),
-                                    Message.join(
-                                            Message.raw("New plant discovered: "),
-                                            PlantAssets.getPlantNameMessage(itemId).color(Color.YELLOW)
-                                    ),
+                                    Message.translation(DISCOVERY_NOTIFICATION_KEY)
+                                            .insert(" ")
+                                            .insert(PlantAssets.getPlantNameMessage(itemId).color(Color.YELLOW)),
                                     null,
                                     "NotificationIcons/PlantIcon.png"
                             );

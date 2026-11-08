@@ -22,8 +22,17 @@ import java.util.concurrent.CompletableFuture;
 
 public class HerbariumCommand extends AbstractCommandCollection {
 
+    private static final String ROOT_DESC_KEY = "server.herbarium.command.desc";
+    private static final String UI_DESC_KEY = "server.herbarium.command.ui.desc";
+    private static final String RESET_DESC_KEY = "server.herbarium.command.reset.desc";
+    private static final String UNLOCK_ALL_DESC_KEY = "server.herbarium.command.unlockall.desc";
+
+    private static final String PLAYERS_ONLY_KEY = "server.herbarium.command.playersOnly";
+    private static final String RESET_DONE_KEY = "server.herbarium.command.reset.done";
+    private static final String UNLOCK_ALL_DONE_KEY = "server.herbarium.command.unlockall.done";
+
     public HerbariumCommand() {
-        super("herbarium", "Herbarium commands");
+        super("herbarium", ROOT_DESC_KEY);
 
         requirePermission(HytalePermissions.fromCommand("herbarium"));
 
@@ -34,7 +43,7 @@ public class HerbariumCommand extends AbstractCommandCollection {
 
     private static class HerbariumCommandUI extends AbstractPlayerCommand {
         public HerbariumCommandUI() {
-            super("ui", "Opens the Herbarium UI.");
+            super("ui", UI_DESC_KEY);
             requirePermission(HytalePermissions.fromCommand("herbarium", "ui"));
         }
 
@@ -55,7 +64,7 @@ public class HerbariumCommand extends AbstractCommandCollection {
 
     private static class HerbariumCommandReset extends AbstractAsyncCommand {
         public HerbariumCommandReset() {
-            super("reset", "Deletes all your progression.");
+            super("reset", RESET_DESC_KEY);
             requirePermission(HytalePermissions.fromCommand("herbarium", "reset"));
         }
 
@@ -65,13 +74,13 @@ public class HerbariumCommand extends AbstractCommandCollection {
             PlayerRef playerRef = (sender instanceof PlayerRef) ? (PlayerRef) sender : null;
 
             if (playerRef == null) {
-                ctx.sendMessage(Message.raw("This command can only be executed by players."));
+                ctx.sendMessage(Message.translation(PLAYERS_ONLY_KEY));
                 return CompletableFuture.completedFuture(null);
             }
 
             Herbarium.getPlayerStore().clearPlayerMemories(playerRef);
 
-            ctx.sendMessage(Message.raw("Your progress has been reset."));
+            ctx.sendMessage(Message.translation(RESET_DONE_KEY));
 
             return CompletableFuture.completedFuture(null);
         }
@@ -79,7 +88,7 @@ public class HerbariumCommand extends AbstractCommandCollection {
 
     private static class HerbariumCommandUnlockAll extends AbstractAsyncCommand {
         public HerbariumCommandUnlockAll() {
-            super("unlockall", "Unlocks all plants.");
+            super("unlockall", UNLOCK_ALL_DESC_KEY);
             requirePermission(HytalePermissions.fromCommand("herbarium", "unlockall"));
         }
 
@@ -89,13 +98,13 @@ public class HerbariumCommand extends AbstractCommandCollection {
             PlayerRef playerRef = (sender instanceof PlayerRef) ? (PlayerRef) sender : null;
 
             if (playerRef == null) {
-                ctx.sendMessage(Message.raw("This command can only be executed by players."));
+                ctx.sendMessage(Message.translation(PLAYERS_ONLY_KEY));
                 return CompletableFuture.completedFuture(null);
             }
 
             Herbarium.getPlayerStore().unlockAllPlayerMemories(playerRef);
 
-            ctx.sendMessage(Message.raw("All plants have been unlocked."));
+            ctx.sendMessage(Message.translation(UNLOCK_ALL_DONE_KEY));
 
             return CompletableFuture.completedFuture(null);
         }

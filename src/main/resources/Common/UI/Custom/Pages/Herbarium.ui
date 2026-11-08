@@ -128,7 +128,7 @@ $C.@PageOverlay {
           $C.@TextButton #RewardsButton {
             @Sounds = $Sounds.@ButtonMemoryRestore;
             Anchor: (Width: 330, Height: 42);
-            Text: "Rewards coming soon";
+            Text: "";
             Disabled: true;
           }
 
