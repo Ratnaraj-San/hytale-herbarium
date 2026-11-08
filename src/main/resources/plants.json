@@ -3,7 +3,7 @@
     {
       "id": "Plant_Leaves_Bramble",
       "obtainableInExplorationMode": true,
-      "locations": ["server.map.zone.Howling_Sands", "server.herbarium.location.caves"]
+      "locations": ["server.map.zone.Howling_Sands", "server.herbarium.location.trork_camps", "server.herbarium.location.caves"]
     },
     {
       "id": "Plant_Bush_Bramble",
@@ -110,17 +110,17 @@
     {
       "id": "Plant_Crop_Berry_Block",
       "obtainableInExplorationMode": true,
-      "locations": ["server.map.region.Zone1_Tier1", "server.map.region.Zone1_Tier2"]
+      "locations": ["server.map.region.Zone1_Tier1", "server.map.region.Zone1_Tier2", "server.npcRoles.Kweebec_Rootling.name"]
     },
     {
       "id": "Plant_Crop_Berry_Wet_Block",
       "obtainableInExplorationMode": true,
-      "locations": []
+      "locations": ["server.npcRoles.Kweebec_Rootling.name"]
     },
     {
       "id": "Plant_Crop_Berry_Winter_Block",
       "obtainableInExplorationMode": true,
-      "locations": ["server.map.region.Zone3_Tier1", "server.map.region.Zone3_Tier2", "server.map.region.Zone3_Tier3", "server.map.region.Zone4_Tier4"]
+      "locations": ["server.map.zone.Whisperfrost_Frontiers", "server.map.region.Zone4_Tier4", "server.npcRoles.Kweebec_Rootling.name"]
     }
   ],
   "Cactus": [
@@ -309,7 +309,7 @@
     {
       "id": "Plant_Coral_Bush_Purple",
       "obtainableInExplorationMode": true,
-      "locations": []
+      "locations": ["server.map.zone.Oceans"]
     },
     {
       "id": "Plant_Coral_Bush_Red",
@@ -925,7 +925,7 @@
     {
       "id": "Plant_Flower_Water_Blue",
       "obtainableInExplorationMode": true,
-      "locations": ["server.herbarium.location.ruined_temples", "server.herbarium.location.slothian_villages"]
+      "locations": ["server.herbarium.location.ruined_temples", "server.herbarium.location.slothian_villages", "server.items.Tool_Fishing_Trap.name"]
     },
     {
       "id": "Plant_Flower_Water_Duckweed",
@@ -935,22 +935,22 @@
     {
       "id": "Plant_Flower_Water_Green",
       "obtainableInExplorationMode": true,
-      "locations": ["server.map.region.Zone3_Tier2", "server.map.zone.Emerald_Wilds"]
+      "locations": ["server.map.region.Zone3_Tier2", "server.map.zone.Emerald_Wilds", "server.items.Tool_Fishing_Trap.name"]
     },
     {
       "id": "Plant_Flower_Water_Purple",
       "obtainableInExplorationMode": true,
-      "locations": []
+      "locations": ["server.items.Tool_Fishing_Trap.name"]
     },
     {
       "id": "Plant_Flower_Water_Red",
       "obtainableInExplorationMode": true,
-      "locations": []
+      "locations": ["server.items.Tool_Fishing_Trap.name"]
     },
     {
       "id": "Plant_Flower_Water_White",
       "obtainableInExplorationMode": true,
-      "locations": []
+      "locations": ["server.items.Tool_Fishing_Trap.name"]
     }
   ],
   "Fruit": [
@@ -1513,7 +1513,7 @@
     {
       "id": "Plant_Moss_Rug_Pink",
       "obtainableInExplorationMode": true,
-      "locations": []
+      "locations": ["server.portals.goblinBreach"]
     },
     {
       "id": "Plant_Moss_Rug_Red",
@@ -2470,7 +2470,7 @@
     {
       "id": "Plant_Seeds_Pine",
       "obtainableInExplorationMode": true,
-      "locations": []
+      "locations": ["server.map.region.Zone3_Tier1"]
     },
     {
       "id": "Plant_Seeds_Poisoned",
@@ -2590,7 +2590,7 @@
     {
       "id": "Plant_Seeds_Wild",
       "obtainableInExplorationMode": true,
-      "locations": ["server.herbarium.location.looted_from_plants"]
+      "locations": ["server.herbarium.location.wild_plants"]
     },
     {
       "id": "Plant_Seeds_Willow",
@@ -2606,13 +2606,13 @@
   "Vine": [
     {
       "id": "Plant_Liana_Void",
-      "obtainableInExplorationMode": false,
-      "locations": []
+      "obtainableInExplorationMode": true,
+      "locations": ["server.portals.goblinBreach"]
     },
     {
       "id": "Plant_Vine",
       "obtainableInExplorationMode": true,
-      "locations": ["server.map.region.Zone1_Tier1"]
+      "locations": ["server.map.region.Zone1_Tier1", "server.items.Bench_Farming.name"]
     },
     {
       "id": "Plant_Vine_Green_Hanging",
@@ -2627,12 +2627,12 @@
     {
       "id": "Plant_Vine_Jungle",
       "obtainableInExplorationMode": true,
-      "locations": []
+      "locations": ["server.herbarium.location.tropical_jungle"]
     },
     {
       "id": "Plant_Vine_Liana",
       "obtainableInExplorationMode": true,
-      "locations": []
+      "locations": ["server.map.zone.Emerald_Wilds", "server.herbarium.location.tropical_jungle"]
     },
     {
       "id": "Plant_Vine_Liana_End",
@@ -2667,27 +2667,27 @@
     {
       "id": "Plant_Vine_Wall",
       "obtainableInExplorationMode": true,
-      "locations": ["server.map.region.Zone1_Tier1", "server.map.region.Zone3_Tier2"]
+      "locations": ["server.map.region.Zone1_Tier1", "server.map.region.Zone3_Tier2", "server.items.Bench_Farming.name"]
     },
     {
       "id": "Plant_Vine_Wall_Dead",
       "obtainableInExplorationMode": true,
-      "locations": []
+      "locations": ["server.herbarium.location.firelands_temple"]
     },
     {
       "id": "Plant_Vine_Wall_Dry",
       "obtainableInExplorationMode": true,
-      "locations": []
+      "locations": ["server.map.zone.Howling_Sands", "server.items.Bench_Farming.name"]
     },
     {
       "id": "Plant_Vine_Wall_Poisoned",
       "obtainableInExplorationMode": true,
-      "locations": []
+      "locations": ["server.map.zone.Devastated_Lands", "server.items.Bench_Farming.name"]
     },
     {
       "id": "Plant_Vine_Wall_Winter",
       "obtainableInExplorationMode": true,
-      "locations": []
+      "locations": ["server.items.Bench_Farming.name"]
     }
   ]
 }
