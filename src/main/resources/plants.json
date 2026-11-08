@@ -2622,7 +2622,7 @@
     {
       "id": "Plant_Vine_Hanging",
       "obtainableInExplorationMode": true,
-      "locations": ["server.map.region.Zone3_Tier2"]
+      "locations": ["server.map.region.Zone3_Tier2", "server.portals.hederas_lair"]
     },
     {
       "id": "Plant_Vine_Jungle",
