@@ -1,0 +1,110 @@
+items.Herbarium_Journal.name = Botanikus napló
+
+herbarium.location.found_in = Megtalálható:
+herbarium.location.unknown = Helyszín ismeretlen
+herbarium.location.cultivated = Megművelt földek
+herbarium.location.caves = Barlangok
+herbarium.location.chests = Ládákban található
+herbarium.location.looted_from_plants = Vadon élő növényekről szerezhető
+herbarium.location.goblin_realm = Goblin birodalom
+herbarium.location.trork_camps = Trork táborok
+herbarium.location.kweebec_villages = Kweebec falvak
+herbarium.location.hidey_holes = Búvóhelyek
+herbarium.location.sewers = Csatornák
+herbarium.location.cold_kelp_biome = Hideg hínár biomok
+herbarium.location.cold_trench_biome = Hideg árokbiomok
+herbarium.location.red_coral_biome = Vörös korall biomok
+herbarium.location.tropical_jungle = Trópusi dzsungel
+herbarium.location.oasis = Oázisok
+herbarium.location.mage_towers = Mágustornyok
+herbarium.location.firelands_temple = Tűzföldek temploma
+herbarium.location.outlander_sites = Outlander telepek
+herbarium.location.devastated_ruins = Elpusztított romok
+herbarium.location.howling_sands_ruins = Üvöltő Homokok romjai
+herbarium.location.labyrinths = Labirintusok
+herbarium.location.ruined_temples = Romos templomok
+herbarium.location.slothian_villages = Slothian falvak
+herbarium.location.dungeons = Kazamaták
+herbarium.location.cursed_crypts = Elátkozott kripták
+
+herbarium.tree.amber = Borostyánfák
+herbarium.tree.apple = Almafák
+herbarium.tree.ash = Kőrisek
+herbarium.tree.aspen = Nyárfák
+herbarium.tree.autumn = Őszi fák
+herbarium.tree.azure = Azúrfák
+herbarium.tree.bamboo = Bambuszok
+herbarium.tree.banyan = Banyánok
+herbarium.tree.beech = Bükkök
+herbarium.tree.birch = Nyírek
+herbarium.tree.blue_fig = Kék fügefák
+herbarium.tree.bottletree = Palackfák
+herbarium.tree.burnt = Égett fák
+herbarium.tree.camphor = Kámforfák
+herbarium.tree.cedar = Cédrusok
+herbarium.tree.crystalwood = Kristályfák
+herbarium.tree.dry = Száraz fák
+herbarium.tree.fir = Fenyők
+herbarium.tree.fire = Tűzfák
+herbarium.tree.frostwood = Fagyott fák
+herbarium.tree.gumboab = Gumboab fák
+herbarium.tree.jungle = Dzsungelefák
+herbarium.tree.maple = Juharok
+herbarium.tree.oak = Tölgyek
+herbarium.tree.palm = Pálmák
+herbarium.tree.palo = Palo fák
+herbarium.tree.petrified_pine = Megkövült fenyők
+herbarium.tree.red_fir = Vörös fenyők
+herbarium.tree.redwood = Szekvoják
+herbarium.tree.sallow = Kecskefüzek
+herbarium.tree.snowy_fir = Havas fenyők
+herbarium.tree.spiral = Spirálfák
+herbarium.tree.stormbark = Viharkéregfák
+herbarium.tree.windwillow = Szélfüzek
+herbarium.tree.wisteria_wild = Vad lilaakácok
+
+herbarium.unlock.title = Feloldottad a Botanikus naplót!
+herbarium.unlock.bullet1 = Ez a napló végigkíséri Orbisz felfedezését.
+herbarium.unlock.bullet2 = Minden felvett növény ide kerül bejegyzésre, a felfedezés dátumával és helyszínével együtt.
+herbarium.unlock.bullet3 = Böngészd a gyűjteményed kategóriánként, kövesd a fejlődésed, válj igazi botanikussá, és szerezz jutalmakat!
+herbarium.unlock.openJournal = Napló megnyitása
+
+herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Zárolva</b></color> \n<color is="#888888">Rögzíts {count, number} növényt a feloldáshoz:</color>
+herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Feloldva</b></color> \n<color is="#888888">Rögzített növények: {count, number}. Begyűjtendő jutalom:</color>
+herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Begyűjtve</b></color> \n<color is="#888888">Rögzített növények: {count, number}. Begyűjtött jutalom:</color>
+herbarium.rewards.collectButton = {tier, number}. jutalom begyűjtése
+herbarium.rewards.allCollected = Az összes jutalom begyűjtve
+
+herbarium.command.desc = Herbarium parancsok
+herbarium.command.ui.desc = Megnyitja a Botanikus naplót.
+herbarium.command.reset.desc = Törli az összes előrehaladásodat.
+herbarium.command.unlockall.desc = Feloldja az összes növényt.
+herbarium.command.playersOnly = Ezt a parancsot csak játékosok futtathatják.
+herbarium.command.reset.done = Az előrehaladásod vissza lett állítva.
+herbarium.command.unlockall.done = Az összes növény fel lett oldva.
+
+herbarium.progress.recorded = rögzített növények: {count, number} / {total, number}
+
+herbarium.plant.discoveredOn = Felfedezve: {date}
+herbarium.plant.discoveredAt = Felfedezve: {date}, itt: ({place})
+
+herbarium.notification.discovered = Új növény felfedezve:
+
+herbarium.category.bramble = Tövisbokrok
+herbarium.category.bush = Bokrok
+herbarium.category.cactus = Kaktuszok
+herbarium.category.coral = Korallok
+herbarium.category.crop = Termények
+herbarium.category.fern = Páfrányok
+herbarium.category.flower = Virágok
+herbarium.category.fruit = Gyümölcsök
+herbarium.category.grass = Füvek
+herbarium.category.leaves = Levelek
+herbarium.category.moss = Mohák
+herbarium.category.mushroom = Gombák
+herbarium.category.petals = Szirmok
+herbarium.category.reeds = Nádak
+herbarium.category.sapling = Csemeték
+herbarium.category.seaweed = Tengeri hínárok
+herbarium.category.seeds = Magvak
+herbarium.category.vine = Liánok

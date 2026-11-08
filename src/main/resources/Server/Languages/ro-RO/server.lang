@@ -1,0 +1,110 @@
+items.Herbarium_Journal.name = Jurnalul botanistului
+
+herbarium.location.found_in = Se găsește în:
+herbarium.location.unknown = Locație necunoscută
+herbarium.location.cultivated = Câmpuri cultivate
+herbarium.location.caves = Peșteri
+herbarium.location.chests = Se găsesc în cufere
+herbarium.location.looted_from_plants = Obținute de la plante sălbatice
+herbarium.location.goblin_realm = Regatul goblinilor
+herbarium.location.trork_camps = Tabere trork
+herbarium.location.kweebec_villages = Sate kweebec
+herbarium.location.hidey_holes = Ascunzători
+herbarium.location.sewers = Canale
+herbarium.location.cold_kelp_biome = Biomuri de alge reci
+herbarium.location.cold_trench_biome = Biomuri de fose reci
+herbarium.location.red_coral_biome = Biomuri de corali roșii
+herbarium.location.tropical_jungle = Junglă tropicală
+herbarium.location.oasis = Oaze
+herbarium.location.mage_towers = Turnuri de magi
+herbarium.location.firelands_temple = Templul Ținuturilor de Foc
+herbarium.location.outlander_sites = Așezări Outlander
+herbarium.location.devastated_ruins = Ruine devastate
+herbarium.location.howling_sands_ruins = Ruine în Nisipurile Urlătoare
+herbarium.location.labyrinths = Labirinturi
+herbarium.location.ruined_temples = Temple în ruine
+herbarium.location.slothian_villages = Sate slothian
+herbarium.location.dungeons = Temnițe
+herbarium.location.cursed_crypts = Cripte blestemate
+
+herbarium.tree.amber = Arbori de chihlimbar
+herbarium.tree.apple = Meri
+herbarium.tree.ash = Frasini
+herbarium.tree.aspen = Plopi tremurători
+herbarium.tree.autumn = Arbori de toamnă
+herbarium.tree.azure = Arbori azurii
+herbarium.tree.bamboo = Bambus
+herbarium.tree.banyan = Banyani
+herbarium.tree.beech = Fagi
+herbarium.tree.birch = Mesteceni
+herbarium.tree.blue_fig = Smochini albastri
+herbarium.tree.bottletree = Arbori butelie
+herbarium.tree.burnt = Arbori arși
+herbarium.tree.camphor = Arbori de camfor
+herbarium.tree.cedar = Cedri
+herbarium.tree.crystalwood = Arbori de cristal
+herbarium.tree.dry = Arbori uscați
+herbarium.tree.fir = Brazi
+herbarium.tree.fire = Arbori de foc
+herbarium.tree.frostwood = Arbori de gheață
+herbarium.tree.gumboab = Arbori gumboab
+herbarium.tree.jungle = Arbori de junglă
+herbarium.tree.maple = Arțari
+herbarium.tree.oak = Stejari
+herbarium.tree.palm = Palmieri
+herbarium.tree.palo = Arbori palo
+herbarium.tree.petrified_pine = Pini pietrificați
+herbarium.tree.red_fir = Brazi roșii
+herbarium.tree.redwood = Sequoias
+herbarium.tree.sallow = Salcii
+herbarium.tree.snowy_fir = Brazi înzăpeziți
+herbarium.tree.spiral = Arbori în spirală
+herbarium.tree.stormbark = Arbori cu scoarță de furtună
+herbarium.tree.windwillow = Salcii de vânt
+herbarium.tree.wisteria_wild = Wisteria sălbatică
+
+herbarium.unlock.title = Ai deblocat Jurnalul botanistului!
+herbarium.unlock.bullet1 = Acest jurnal te va însoți în întreaga ta explorare a lumii Orbis.
+herbarium.unlock.bullet2 = Fiecare plantă pe care o ridici este înregistrată aici, împreună cu data și locul descoperirii.
+herbarium.unlock.bullet3 = Parcurge-ți colecția pe categorii, urmărește-ți progresul, devino un adevărat botanist și primește recompense!
+herbarium.unlock.openJournal = Deschide jurnalul
+
+herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Blocat</b></color> \n<color is="#888888">Înregistrează {count, number} {count, plural, one {plantă} other {plante}} pentru a debloca:</color>
+herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Deblocat</b></color> \n<color is="#888888">Înregistrate: {count, number} {count, plural, one {plantă} other {plante}}. Recompensă de ridicat:</color>
+herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Ridicată</b></color> \n<color is="#888888">Înregistrate: {count, number} {count, plural, one {plantă} other {plante}}. Recompensă ridicată:</color>
+herbarium.rewards.collectButton = Ridică recompensa {tier, number}
+herbarium.rewards.allCollected = Toate recompensele au fost ridicate
+
+herbarium.command.desc = Comenzi Herbarium
+herbarium.command.ui.desc = Deschide Jurnalul botanistului.
+herbarium.command.reset.desc = Îți șterge întregul progres.
+herbarium.command.unlockall.desc = Deblochează toate plantele.
+herbarium.command.playersOnly = Această comandă poate fi executată doar de jucători.
+herbarium.command.reset.done = Progresul tău a fost resetat.
+herbarium.command.unlockall.done = Toate plantele au fost deblocate.
+
+herbarium.progress.recorded = plante înregistrate: {count, number} / {total, number}
+
+herbarium.plant.discoveredOn = Descoperită pe {date}
+herbarium.plant.discoveredAt = Descoperită pe {date} la ({place})
+
+herbarium.notification.discovered = Plantă nouă descoperită:
+
+herbarium.category.bramble = Măceși
+herbarium.category.bush = Tufe
+herbarium.category.cactus = Cactuși
+herbarium.category.coral = Corali
+herbarium.category.crop = Culturi
+herbarium.category.fern = Ferigi
+herbarium.category.flower = Flori
+herbarium.category.fruit = Fructe
+herbarium.category.grass = Ierburi
+herbarium.category.leaves = Frunze
+herbarium.category.moss = Mușchi
+herbarium.category.mushroom = Ciuperci
+herbarium.category.petals = Petale
+herbarium.category.reeds = Trestii
+herbarium.category.sapling = Puieți
+herbarium.category.seaweed = Alge
+herbarium.category.seeds = Semințe
+herbarium.category.vine = Liane

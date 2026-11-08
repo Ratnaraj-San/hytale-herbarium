@@ -1,0 +1,110 @@
+items.Herbarium_Journal.name = Botanik Günlüğü
+
+herbarium.location.found_in = Şurada bulunur:
+herbarium.location.unknown = Konum bilinmiyor
+herbarium.location.cultivated = Ekili tarlalar
+herbarium.location.caves = Mağaralar
+herbarium.location.chests = Sandıklarda bulunur
+herbarium.location.looted_from_plants = Vahşi bitkilerden elde edilir
+herbarium.location.goblin_realm = Goblin diyarı
+herbarium.location.trork_camps = Trork kampları
+herbarium.location.kweebec_villages = Kweebec köyleri
+herbarium.location.hidey_holes = Saklı yerler
+herbarium.location.sewers = Lağımlar
+herbarium.location.cold_kelp_biome = Soğuk su yosunu biyomları
+herbarium.location.cold_trench_biome = Soğuk çukur biyomları
+herbarium.location.red_coral_biome = Kırmızı mercan biyomları
+herbarium.location.tropical_jungle = Tropikal orman
+herbarium.location.oasis = Vahalar
+herbarium.location.mage_towers = Büyücü kuleleri
+herbarium.location.firelands_temple = Ateş Toprakları Tapınağı
+herbarium.location.outlander_sites = Outlander yerleşimleri
+herbarium.location.devastated_ruins = Tahrip edilmiş harabeler
+herbarium.location.howling_sands_ruins = Uluyan Kumlar Harabeleri
+herbarium.location.labyrinths = Labirentler
+herbarium.location.ruined_temples = Harabe tapınaklar
+herbarium.location.slothian_villages = Slothian köyleri
+herbarium.location.dungeons = Zindanlar
+herbarium.location.cursed_crypts = Lanetli kriptalar
+
+herbarium.tree.amber = Amber ağaçları
+herbarium.tree.apple = Elma ağaçları
+herbarium.tree.ash = Dişbudaklar
+herbarium.tree.aspen = Kavaklar
+herbarium.tree.autumn = Sonbahar ağaçları
+herbarium.tree.azure = Gök mavisi ağaçlar
+herbarium.tree.bamboo = Bambular
+herbarium.tree.banyan = Banyan ağaçları
+herbarium.tree.beech = Kayınlar
+herbarium.tree.birch = Huşlar
+herbarium.tree.blue_fig = Mavi incir ağaçları
+herbarium.tree.bottletree = Şişe ağaçları
+herbarium.tree.burnt = Yanmış ağaçlar
+herbarium.tree.camphor = Kafur ağaçları
+herbarium.tree.cedar = Sedirler
+herbarium.tree.crystalwood = Kristal ağaçlar
+herbarium.tree.dry = Kuru ağaçlar
+herbarium.tree.fir = Göknarlar
+herbarium.tree.fire = Ateş ağaçları
+herbarium.tree.frostwood = Buz ağaçları
+herbarium.tree.gumboab = Gumboab ağaçları
+herbarium.tree.jungle = Orman ağaçları
+herbarium.tree.maple = Akçaağaçlar
+herbarium.tree.oak = Meşeler
+herbarium.tree.palm = Palmiyeler
+herbarium.tree.palo = Palo ağaçları
+herbarium.tree.petrified_pine = Taşlaşmış çamlar
+herbarium.tree.red_fir = Kızıl göknarlar
+herbarium.tree.redwood = Sekoyalar
+herbarium.tree.sallow = Keçi söğütleri
+herbarium.tree.snowy_fir = Karlı göknarlar
+herbarium.tree.spiral = Spiral ağaçlar
+herbarium.tree.stormbark = Fırtına kabuğu ağaçları
+herbarium.tree.windwillow = Rüzgâr söğütleri
+herbarium.tree.wisteria_wild = Yabanî mor salkımlar
+
+herbarium.unlock.title = Botanik Günlüğü'nün kilidini açtın!
+herbarium.unlock.bullet1 = Bu günlük, Orbis'i keşfederken seni her adımda izleyecek.
+herbarium.unlock.bullet2 = Topladığın her bitki, keşif tarihi ve yeriyle birlikte buraya kaydedilir.
+herbarium.unlock.bullet3 = Koleksiyonunu kategoriye göre gez, ilerlemeni takip et, gerçek bir botanikçi ol ve ödüller kazan!
+herbarium.unlock.openJournal = Günlüğü aç
+
+herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Kilitli</b></color> \n<color is="#888888">Açmak için {count, number} bitki kaydet:</color>
+herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Açıldı</b></color> \n<color is="#888888">{count, number} bitki kaydedildi. Alınacak ödül:</color>
+herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Alındı</b></color> \n<color is="#888888">{count, number} bitki kaydedildi. Alınan ödül:</color>
+herbarium.rewards.collectButton = {tier, number}. ödülü al
+herbarium.rewards.allCollected = Tüm ödüller alındı
+
+herbarium.command.desc = Herbarium komutları
+herbarium.command.ui.desc = Botanik Günlüğü'nü açar.
+herbarium.command.reset.desc = Tüm ilerlemeni siler.
+herbarium.command.unlockall.desc = Tüm bitkilerin kilidini açar.
+herbarium.command.playersOnly = Bu komut yalnızca oyuncular tarafından çalıştırılabilir.
+herbarium.command.reset.done = İlerlemen sıfırlandı.
+herbarium.command.unlockall.done = Tüm bitkilerin kilidi açıldı.
+
+herbarium.progress.recorded = kaydedilen bitkiler: {count, number} / {total, number}
+
+herbarium.plant.discoveredOn = Keşfedildi: {date}
+herbarium.plant.discoveredAt = Keşfedildi: {date} ({place})
+
+herbarium.notification.discovered = Yeni bitki keşfedildi:
+
+herbarium.category.bramble = Dikenli çalılar
+herbarium.category.bush = Çalılar
+herbarium.category.cactus = Kaktüsler
+herbarium.category.coral = Mercanlar
+herbarium.category.crop = Ekinler
+herbarium.category.fern = Eğreltiler
+herbarium.category.flower = Çiçekler
+herbarium.category.fruit = Meyveler
+herbarium.category.grass = Çimenler
+herbarium.category.leaves = Yapraklar
+herbarium.category.moss = Yosunlar
+herbarium.category.mushroom = Mantarlar
+herbarium.category.petals = Taç yapraklar
+herbarium.category.reeds = Kamışlar
+herbarium.category.sapling = Fideler
+herbarium.category.seaweed = Deniz otları
+herbarium.category.seeds = Tohumlar
+herbarium.category.vine = Sarmaşıklar

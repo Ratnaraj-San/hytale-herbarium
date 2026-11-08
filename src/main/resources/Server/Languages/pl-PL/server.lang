@@ -1,0 +1,110 @@
+items.Herbarium_Journal.name = Dziennik botanika
+
+herbarium.location.found_in = Występuje w:
+herbarium.location.unknown = Nieznana lokalizacja
+herbarium.location.cultivated = Uprawne pola
+herbarium.location.caves = Jaskinie
+herbarium.location.chests = W skrzyniach
+herbarium.location.looted_from_plants = Zdobywane z dzikich roślin
+herbarium.location.goblin_realm = Kraina goblinów
+herbarium.location.trork_camps = Obozy trorków
+herbarium.location.kweebec_villages = Wioski Kweebeców
+herbarium.location.hidey_holes = Kryjówki
+herbarium.location.sewers = Kanały
+herbarium.location.cold_kelp_biome = Zimne biomy wodorostów
+herbarium.location.cold_trench_biome = Zimne rowy oceaniczne
+herbarium.location.red_coral_biome = Czerwone biomy koralowe
+herbarium.location.tropical_jungle = Tropikalna dżungla
+herbarium.location.oasis = Oazy
+herbarium.location.mage_towers = Wieże magów
+herbarium.location.firelands_temple = Świątynia Ognistych Krain
+herbarium.location.outlander_sites = Osady Outlanderów
+herbarium.location.devastated_ruins = Zniszczone ruiny
+herbarium.location.howling_sands_ruins = Ruiny Wyjących Piasków
+herbarium.location.labyrinths = Labirynty
+herbarium.location.ruined_temples = Zrujnowane świątynie
+herbarium.location.slothian_villages = Wioski slothianów
+herbarium.location.dungeons = Podziemia
+herbarium.location.cursed_crypts = Przeklęte krypty
+
+herbarium.tree.amber = Bursztynowe drzewa
+herbarium.tree.apple = Jabłonie
+herbarium.tree.ash = Jesiony
+herbarium.tree.aspen = Osiki
+herbarium.tree.autumn = Jesienne drzewa
+herbarium.tree.azure = Lazurowe drzewa
+herbarium.tree.bamboo = Bambusy
+herbarium.tree.banyan = Baniany
+herbarium.tree.beech = Buki
+herbarium.tree.birch = Brzozy
+herbarium.tree.blue_fig = Niebieskie figowce
+herbarium.tree.bottletree = Butelkowe drzewa
+herbarium.tree.burnt = Spalone drzewa
+herbarium.tree.camphor = Kamforowce
+herbarium.tree.cedar = Cedry
+herbarium.tree.crystalwood = Kryształowe drzewa
+herbarium.tree.dry = Suche drzewa
+herbarium.tree.fir = Jodły
+herbarium.tree.fire = Ogniste drzewa
+herbarium.tree.frostwood = Mroźne drzewa
+herbarium.tree.gumboab = Drzewa gumboab
+herbarium.tree.jungle = Drzewa dżungli
+herbarium.tree.maple = Klony
+herbarium.tree.oak = Dęby
+herbarium.tree.palm = Palmy
+herbarium.tree.palo = Drzewa palo
+herbarium.tree.petrified_pine = Skamieniałe sosny
+herbarium.tree.red_fir = Czerwone jodły
+herbarium.tree.redwood = Sekwoje
+herbarium.tree.sallow = Iwy
+herbarium.tree.snowy_fir = Ośnieżone jodły
+herbarium.tree.spiral = Spiralne drzewa
+herbarium.tree.stormbark = Drzewa o burzowej korze
+herbarium.tree.windwillow = Wierzby wiatrowe
+herbarium.tree.wisteria_wild = Dzikie glicynie
+
+herbarium.unlock.title = Odblokowano Dziennik botanika!
+herbarium.unlock.bullet1 = Ten dziennik będzie towarzyszył ci podczas całej eksploracji Orbisu.
+herbarium.unlock.bullet2 = Każda roślina, którą podniesiesz, zostanie tu zapisana wraz z datą i miejscem odkrycia.
+herbarium.unlock.bullet3 = Przeglądaj swoją kolekcję według kategorii, śledź postępy, zostań prawdziwym botanikiem i zbieraj nagrody!
+herbarium.unlock.openJournal = Otwórz dziennik
+
+herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Zablokowane</b></color> \n<color is="#888888">Zapisz {count, number} {count, plural, one {roślinę} few {rośliny} many {roślin} other {roślin}}, aby odblokować:</color>
+herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Odblokowane</b></color> \n<color is="#888888">Zapisano: {count, number} {count, plural, one {roślina} few {rośliny} many {roślin} other {roślin}}. Nagroda do odebrania:</color>
+herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Odebrane</b></color> \n<color is="#888888">Zapisano: {count, number} {count, plural, one {roślina} few {rośliny} many {roślin} other {roślin}}. Odebrana nagroda:</color>
+herbarium.rewards.collectButton = Odbierz nagrodę {tier, number}
+herbarium.rewards.allCollected = Wszystkie nagrody odebrane
+
+herbarium.command.desc = Komendy Herbarium
+herbarium.command.ui.desc = Otwiera Dziennik botanika.
+herbarium.command.reset.desc = Usuwa cały twój postęp.
+herbarium.command.unlockall.desc = Odblokowuje wszystkie rośliny.
+herbarium.command.playersOnly = To polecenie mogą wykonywać tylko gracze.
+herbarium.command.reset.done = Twój postęp został zresetowany.
+herbarium.command.unlockall.done = Odblokowano wszystkie rośliny.
+
+herbarium.progress.recorded = zapisanych roślin: {count, number} / {total, number}
+
+herbarium.plant.discoveredOn = Odkryto {date}
+herbarium.plant.discoveredAt = Odkryto {date} w ({place})
+
+herbarium.notification.discovered = Odkryto nową roślinę:
+
+herbarium.category.bramble = Jeżyny
+herbarium.category.bush = Krzewy
+herbarium.category.cactus = Kaktusy
+herbarium.category.coral = Koralowce
+herbarium.category.crop = Uprawy
+herbarium.category.fern = Paprocie
+herbarium.category.flower = Kwiaty
+herbarium.category.fruit = Owoce
+herbarium.category.grass = Trawy
+herbarium.category.leaves = Liście
+herbarium.category.moss = Mchy
+herbarium.category.mushroom = Grzyby
+herbarium.category.petals = Płatki
+herbarium.category.reeds = Trzciny
+herbarium.category.sapling = Sadzonki
+herbarium.category.seaweed = Wodorosty
+herbarium.category.seeds = Nasiona
+herbarium.category.vine = Pnącza

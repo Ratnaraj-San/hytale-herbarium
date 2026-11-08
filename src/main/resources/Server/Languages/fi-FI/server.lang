@@ -1,0 +1,110 @@
+items.Herbarium_Journal.name = Botanistin päiväkirja
+
+herbarium.location.found_in = Esiintyy:
+herbarium.location.unknown = Sijainti tuntematon
+herbarium.location.cultivated = Viljellyt pellot
+herbarium.location.caves = Luolat
+herbarium.location.chests = Löytyy arkkuista
+herbarium.location.looted_from_plants = Saadaan villeiltä kasveilta
+herbarium.location.goblin_realm = Goblinien valtakunta
+herbarium.location.trork_camps = Trork-leirit
+herbarium.location.kweebec_villages = Kweebec-kylät
+herbarium.location.hidey_holes = Piilopaikat
+herbarium.location.sewers = Viemärit
+herbarium.location.cold_kelp_biome = Kylmät merileväbiomit
+herbarium.location.cold_trench_biome = Kylmät merenhautabiomit
+herbarium.location.red_coral_biome = Punaiset korallibiomit
+herbarium.location.tropical_jungle = Trooppinen viidakko
+herbarium.location.oasis = Keitaat
+herbarium.location.mage_towers = Maagitornit
+herbarium.location.firelands_temple = Tulomaiden temppeli
+herbarium.location.outlander_sites = Outlander-paikat
+herbarium.location.devastated_ruins = Tuhotut rauniot
+herbarium.location.howling_sands_ruins = Ulvovien hiekkojen rauniot
+herbarium.location.labyrinths = Labyrintit
+herbarium.location.ruined_temples = Raunioituneet temppelit
+herbarium.location.slothian_villages = Slothian-kylät
+herbarium.location.dungeons = Luolastot
+herbarium.location.cursed_crypts = Kirotut kryptat
+
+herbarium.tree.amber = Amberpuut
+herbarium.tree.apple = Omenapuut
+herbarium.tree.ash = Saarnet
+herbarium.tree.aspen = Haavat
+herbarium.tree.autumn = Syyspuut
+herbarium.tree.azure = Asuurnipuut
+herbarium.tree.bamboo = Bambut
+herbarium.tree.banyan = Banyanit
+herbarium.tree.beech = Pyökit
+herbarium.tree.birch = Koivut
+herbarium.tree.blue_fig = Siniset viikunapuut
+herbarium.tree.bottletree = Pullopuut
+herbarium.tree.burnt = Palaneet puut
+herbarium.tree.camphor = Kamferipuut
+herbarium.tree.cedar = Setripuut
+herbarium.tree.crystalwood = Kristallipuut
+herbarium.tree.dry = Kuivat puut
+herbarium.tree.fir = Kuuset
+herbarium.tree.fire = Tulipuut
+herbarium.tree.frostwood = Pakkaspuut
+herbarium.tree.gumboab = Gumboabpuut
+herbarium.tree.jungle = Viidakkopuut
+herbarium.tree.maple = Vaahterat
+herbarium.tree.oak = Tammet
+herbarium.tree.palm = Palmut
+herbarium.tree.palo = Palopuut
+herbarium.tree.petrified_pine = Kivettymät männyt
+herbarium.tree.red_fir = Punaiset kuuset
+herbarium.tree.redwood = Mammuttipuut
+herbarium.tree.sallow = Raidat
+herbarium.tree.snowy_fir = Lumiset kuuset
+herbarium.tree.spiral = Kierrepuut
+herbarium.tree.stormbark = Myrskypuut
+herbarium.tree.windwillow = Tuulipajut
+herbarium.tree.wisteria_wild = Villit wisteriat
+
+herbarium.unlock.title = Olet avannut Botanistin päiväkirjan!
+herbarium.unlock.bullet1 = Tämä päiväkirja seuraa sinua koko Orbiksen tutkimisen ajan.
+herbarium.unlock.bullet2 = Jokainen poimimasi kasvi kirjataan tänne löytöpäivämäärineen ja -paikkoineen.
+herbarium.unlock.bullet3 = Selaa kokoelmaasi kategorioittain, seuraa edistymistäsi, tule aidoksi kasvitieteilijäksi ja tienaa palkintoja!
+herbarium.unlock.openJournal = Avaa päiväkirja
+
+herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Lukittu</b></color> \n<color is="#888888">Kirjaa {count, number} {count, plural, one {kasvi} other {kasvia}} avataksesi lukituksen:</color>
+herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Avattu</b></color> \n<color is="#888888">Kirjattu: {count, number} {count, plural, one {kasvi} other {kasvia}}. Noudettava palkinto:</color>
+herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Noudettu</b></color> \n<color is="#888888">Kirjattu: {count, number} {count, plural, one {kasvi} other {kasvia}}. Noudettu palkinto:</color>
+herbarium.rewards.collectButton = Nouda palkinto {tier, number}
+herbarium.rewards.allCollected = Kaikki palkinnot noudettu
+
+herbarium.command.desc = Herbarium-komennot
+herbarium.command.ui.desc = Avaa Botanistin päiväkirjan.
+herbarium.command.reset.desc = Poistaa koko edistymisesi.
+herbarium.command.unlockall.desc = Avaa kaikki kasvit.
+herbarium.command.playersOnly = Tämän komennon voivat suorittaa vain pelaajat.
+herbarium.command.reset.done = Edistymisesi on nollattu.
+herbarium.command.unlockall.done = Kaikki kasvit on avattu.
+
+herbarium.progress.recorded = kirjattuja kasveja: {count, number} / {total, number}
+
+herbarium.plant.discoveredOn = Löydetty {date}
+herbarium.plant.discoveredAt = Löydetty {date} kohdasta ({place})
+
+herbarium.notification.discovered = Uusi kasvi löydetty:
+
+herbarium.category.bramble = Vatukat
+herbarium.category.bush = Pensaat
+herbarium.category.cactus = Kaktukset
+herbarium.category.coral = Korallit
+herbarium.category.crop = Viljelykset
+herbarium.category.fern = Saniaiset
+herbarium.category.flower = Kukat
+herbarium.category.fruit = Hedelmät
+herbarium.category.grass = Heinät
+herbarium.category.leaves = Lehdet
+herbarium.category.moss = Sammalet
+herbarium.category.mushroom = Sienet
+herbarium.category.petals = Terälehdet
+herbarium.category.reeds = Kaislat
+herbarium.category.sapling = Taimet
+herbarium.category.seaweed = Merilevät
+herbarium.category.seeds = Siemenet
+herbarium.category.vine = Köynnökset
