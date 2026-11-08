@@ -89,23 +89,23 @@ Here is what is planned for future updates:
 
 ### Translations
 
-- Chinese
-- Czech
-- Danish
-- Dutch
-- Finnish
-- German
-- Hungarian
-- Italian
-- Polish
-- Portuguese (Brazil)
-- Portuguese (Portugal)
-- Romanian
-- Russian
-- Spanish
-- Swedish
-- Turkish
-- Ukrainian
+- ~~Chinese~~
+- ~~Czech~~
+- ~~Danish~~
+- ~~Dutch~~
+- ~~Finnish~~
+- ~~German~~
+- ~~Hungarian~~
+- ~~Italian~~
+- ~~Polish~~
+- ~~Portuguese (Brazil)~~
+- ~~Portuguese (Portugal)~~
+- ~~Romanian~~
+- ~~Russian~~
+- ~~Spanish~~
+- ~~Swedish~~
+- ~~Turkish~~
+- ~~Ukrainian~~
 
 ---
 
