@@ -75,7 +75,7 @@
     {
       "id": "Plant_Bush_Jungle",
       "obtainableInExplorationMode": true,
-      "locations": ["server.map.region.Zone2_Tier1", "server.map.region.Zone4_Tier4"]
+      "locations": ["server.map.region.Zone2_Tier1", "server.map.region.Zone4_Tier4", "server.portals.oasis"]
     },
     {
       "id": "Plant_Bush_Lush",
