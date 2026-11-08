@@ -73,6 +73,7 @@ herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Locked</b></c
 herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Unlocked</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {plants}} recorded. Reward to collect:</color>
 herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Collected</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {plants}} recorded. Reward collected:</color>
 herbarium.rewards.collectButton = Collect reward {tier, number}
+herbarium.rewards.allCollected = All rewards collected
 
 herbarium.command.desc = Herbarium commands
 herbarium.command.ui.desc = Opens the Herbarium journal.
@@ -88,3 +89,22 @@ herbarium.plant.discoveredOn = Discovered on {date}
 herbarium.plant.discoveredAt = Discovered on {date} at ({place})
 
 herbarium.notification.discovered = New plant discovered:
+
+herbarium.category.bramble = Bramble
+herbarium.category.bush = Bush
+herbarium.category.cactus = Cactus
+herbarium.category.coral = Coral
+herbarium.category.crop = Crop
+herbarium.category.fern = Fern
+herbarium.category.flower = Flower
+herbarium.category.fruit = Fruit
+herbarium.category.grass = Grass
+herbarium.category.leaves = Leaves
+herbarium.category.moss = Moss
+herbarium.category.mushroom = Mushroom
+herbarium.category.petals = Petals
+herbarium.category.reeds = Reeds
+herbarium.category.sapling = Sapling
+herbarium.category.seaweed = Seaweed
+herbarium.category.seeds = Seeds
+herbarium.category.vine = Vine
