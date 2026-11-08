@@ -1185,7 +1185,7 @@
   "Leaves": [
     {
       "id": "Plant_Leaves_Amber",
-      "obtainableInExplorationMode": true,
+      "obtainableInExplorationMode": false,
       "locations": ["server.herbarium.tree.amber"]
     },
     {
