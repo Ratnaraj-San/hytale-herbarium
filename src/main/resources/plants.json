@@ -1614,8 +1614,8 @@
     },
     {
       "id": "Plant_Crop_Mushroom_Block_Brown_Mycelium",
-      "obtainableInExplorationMode": false,
-      "locations": ["server.map.region.Zone3_Tier2"]
+      "obtainableInExplorationMode": true,
+      "locations": ["server.portals.hederas_lair"]
     },
     {
       "id": "Plant_Crop_Mushroom_Block_Brown_Trunk",
