@@ -80,9 +80,11 @@ herbarium.command.desc = Příkazy Herbarium
 herbarium.command.open.desc = Otevře Botanikův deník.
 herbarium.command.reset.desc = Smaže veškerý váš pokrok.
 herbarium.command.unlockall.desc = Odemkne všechny rostliny.
+herbarium.command.give.desc = Daruje Botanikův deník.
 herbarium.command.playersOnly = Tento příkaz mohou spouštět jen hráči.
 herbarium.command.reset.done = Váš pokrok byl resetován.
 herbarium.command.unlockall.done = Všechny rostliny byly odemčeny.
+herbarium.command.give.done = {journal} byl dán hráči {player}.
 
 herbarium.progress.recorded = zaznamenaných rostlin: {count, number} / {total, number}
 

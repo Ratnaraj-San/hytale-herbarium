@@ -80,9 +80,11 @@ herbarium.command.desc = Herbarium-komennot
 herbarium.command.open.desc = Avaa Botanistin päiväkirjan.
 herbarium.command.reset.desc = Poistaa koko edistymisesi.
 herbarium.command.unlockall.desc = Avaa kaikki kasvit.
+herbarium.command.give.desc = Antaa Botanistin päiväkirjan.
 herbarium.command.playersOnly = Tämän komennon voivat suorittaa vain pelaajat.
 herbarium.command.reset.done = Edistymisesi on nollattu.
 herbarium.command.unlockall.done = Kaikki kasvit on avattu.
+herbarium.command.give.done = {journal} on annettu pelaajalle {player}.
 
 herbarium.progress.recorded = kirjattuja kasveja: {count, number} / {total, number}
 

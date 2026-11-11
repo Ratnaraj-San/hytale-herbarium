@@ -80,9 +80,11 @@ herbarium.command.desc = Comandos do Herbarium
 herbarium.command.open.desc = Abre o Diário do Botânico.
 herbarium.command.reset.desc = Apaga todo o teu progresso.
 herbarium.command.unlockall.desc = Desbloqueia todas as plantas.
+herbarium.command.give.desc = Dá um Diário do Botânico.
 herbarium.command.playersOnly = Este comando só pode ser executado por jogadores.
 herbarium.command.reset.done = O teu progresso foi reiniciado.
 herbarium.command.unlockall.done = Todas as plantas foram desbloqueadas.
+herbarium.command.give.done = Foi dado um {journal} a {player}.
 
 herbarium.progress.recorded = plantas registadas: {count, number} / {total, number}
 

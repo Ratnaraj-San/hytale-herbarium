@@ -80,9 +80,11 @@ herbarium.command.desc = Herbarium-kommandoer
 herbarium.command.open.desc = Åbner Botanikerens journal.
 herbarium.command.reset.desc = Sletter hele dit fremskridt.
 herbarium.command.unlockall.desc = Låser op for alle planter.
+herbarium.command.give.desc = Giver en Botanikers journal.
 herbarium.command.playersOnly = Denne kommando kan kun udføres af spillere.
 herbarium.command.reset.done = Dit fremskridt er blevet nulstillet.
 herbarium.command.unlockall.done = Alle planter er blevet låst op.
+herbarium.command.give.done = {journal} er blevet givet til {player}.
 
 herbarium.progress.recorded = planter registreret: {count, number} / {total, number}
 

@@ -80,9 +80,11 @@ herbarium.command.desc = Komendy Herbarium
 herbarium.command.open.desc = Otwiera Dziennik botanika.
 herbarium.command.reset.desc = Usuwa cały twój postęp.
 herbarium.command.unlockall.desc = Odblokowuje wszystkie rośliny.
+herbarium.command.give.desc = Daje Dziennik botanika.
 herbarium.command.playersOnly = To polecenie mogą wykonywać tylko gracze.
 herbarium.command.reset.done = Twój postęp został zresetowany.
 herbarium.command.unlockall.done = Odblokowano wszystkie rośliny.
+herbarium.command.give.done = {journal} został nadany graczowi {player}.
 
 herbarium.progress.recorded = zapisanych roślin: {count, number} / {total, number}
 
