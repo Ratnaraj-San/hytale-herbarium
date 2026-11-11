@@ -273,6 +273,42 @@ tasks.named('check') {
     dependsOn 'checkLanguages'
 }
 
+// Scans the game's Assets.zip for every generated plant and how to obtain it
+// then diffs the result against src/main/resources/plants.json
+def scanAssetsZip = hasHytaleHome
+        ? file("${hytaleHome}/install/${patchline}/package/game/latest/Assets.zip")
+        : null
+
+tasks.register('scanPlantsScan', Exec) {
+    group = 'tools'
+    description = 'Runs tools/plants/scan_plants.py on the game Assets.zip.'
+    workingDir = rootDir
+    commandLine 'python3', 'tools/plants/scan_plants.py', scanAssetsZip?.absolutePath ?: 'MISSING_ASSETS_ZIP'
+    doFirst {
+        if (!hasHytaleHome) {
+            throw new GradleException("Hytale install not detected; set hytale_home in ~/.gradle/gradle.properties or pass -Phytale_home=/path/to/Hytale to enable scanPlants.")
+        }
+        if (!scanAssetsZip.exists()) {
+            throw new GradleException("Assets.zip not found at ${scanAssetsZip}")
+        }
+        logger.lifecycle("Scanning ${scanAssetsZip}")
+    }
+}
+
+tasks.register('scanPlantsCompare', Exec) {
+    group = 'tools'
+    description = 'Runs tools/plants/compare_plants.py (diff of the scan against plants.json).'
+    dependsOn 'scanPlantsScan'
+    workingDir = rootDir
+    commandLine 'python3', 'tools/plants/compare_plants.py'
+}
+
+tasks.register('scanPlants') {
+    group = 'tools'
+    description = 'Scans Assets.zip for generated plants and diffs the scan against plants.json. Requires hytale_home (-Phytale_home=/path/to/Hytale).'
+    dependsOn 'scanPlantsCompare'
+}
+
 if (hasHytaleHome) {
     // Create the working directory to run the server if it does not already exist.
     def serverRunDir = file("$projectDir/run")
