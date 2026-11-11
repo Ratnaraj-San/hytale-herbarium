@@ -142,7 +142,7 @@ public class PlayerFileStore {
                 plants.add(parsePlantMemory(element));
             }
 
-            Map<Integer, String> tiers = new ConcurrentHashMap<>();
+            Map<Integer, PlayerData.CollectedTier> tiers = new ConcurrentHashMap<>();
             if (rootObject.has("collectedRewardTiers")) {
                 for (JsonElement element : rootObject.getAsJsonArray("collectedRewardTiers")) {
                     try {
@@ -150,7 +150,11 @@ public class PlayerFileStore {
                         String collectedDate = entry.has("collectedDate")
                                 && !entry.get("collectedDate").isJsonNull()
                                 ? entry.get("collectedDate").getAsString() : "";
-                        tiers.put(entry.get("tier").getAsInt(), collectedDate);
+                        String tierRewardsVersion = entry.has("rewardsVersion")
+                                && entry.get("rewardsVersion").isJsonPrimitive()
+                                ? entry.get("rewardsVersion").getAsString() : "1.0.0";
+                        tiers.put(entry.get("tier").getAsInt(),
+                                new PlayerData.CollectedTier(collectedDate, tierRewardsVersion));
                     } catch (ClassCastException | IllegalStateException | NullPointerException e) {
                         Herbarium.getInstance().getLogger().at(Level.WARNING).log(
                                 "[Herbarium] Invalid collected reward tier for " + playerId + ": " + element
@@ -159,10 +163,27 @@ public class PlayerFileStore {
                 }
             }
 
+            Map<Integer, Set<String>> claimedCompensations = new ConcurrentHashMap<>();
+            if (rootObject.has("claimedCompensations") && rootObject.get("claimedCompensations").isJsonObject()) {
+                for (Map.Entry<String, JsonElement> entry : rootObject.getAsJsonObject("claimedCompensations").entrySet()) {
+                    try {
+                        Set<String> versions = new HashSet<>();
+                        for (JsonElement version : entry.getValue().getAsJsonArray()) {
+                            versions.add(version.getAsString());
+                        }
+                        claimedCompensations.put(Integer.parseInt(entry.getKey()), versions);
+                    } catch (ClassCastException | IllegalStateException | NullPointerException | NumberFormatException e) {
+                        Herbarium.getInstance().getLogger().at(Level.WARNING).log(
+                                "[Herbarium] Invalid claimed compensation for " + playerId + ": " + entry
+                        );
+                    }
+                }
+            }
+
             // Drop memories of plants the journal no longer tracks
             plants.removeIf(plant -> !catalog.getAllPlants().containsKey(plant.getId()));
 
-            return new PlayerData(plants, tiers, journalOpened);
+            return new PlayerData(plants, tiers, claimedCompensations, journalOpened);
         } catch (IOException e) {
             Herbarium.getInstance().getLogger().at(Level.WARNING).log(
                     "[Herbarium] Error reading file for " + playerId + ": " + e.getMessage()
@@ -189,15 +210,27 @@ public class PlayerFileStore {
             root.addProperty("pluginVersion", Herbarium.getPluginVersion());
             root.addProperty("journalOpened", data.hasOpenedJournal());
 
-            Map<Integer, String> collected = new TreeMap<>(data.getCollectedRewardTiers());
+            Map<Integer, PlayerData.CollectedTier> collected = new TreeMap<>(data.getCollectedRewardTiers());
             JsonArray collectedArray = new JsonArray();
-            for (Map.Entry<Integer, String> entry : collected.entrySet()) {
+            for (Map.Entry<Integer, PlayerData.CollectedTier> entry : collected.entrySet()) {
                 JsonObject collectedEntry = new JsonObject();
                 collectedEntry.addProperty("tier", entry.getKey());
-                collectedEntry.addProperty("collectedDate", entry.getValue());
+                collectedEntry.addProperty("collectedDate", entry.getValue().collectedDate());
+                collectedEntry.addProperty("rewardsVersion", entry.getValue().rewardsVersion());
                 collectedArray.add(collectedEntry);
             }
             root.add("collectedRewardTiers", collectedArray);
+
+            JsonObject claimedCompensationsJson = new JsonObject();
+            Map<Integer, Set<String>> claimedSorted = new TreeMap<>(data.getClaimedCompensations());
+            for (Map.Entry<Integer, Set<String>> entry : claimedSorted.entrySet()) {
+                JsonArray versionsArray = new JsonArray();
+                entry.getValue().stream()
+                        .sorted(HerbariumRewards::compareVersions)
+                        .forEach(versionsArray::add);
+                claimedCompensationsJson.add(String.valueOf(entry.getKey()), versionsArray);
+            }
+            root.add("claimedCompensations", claimedCompensationsJson);
 
             JsonArray jsonArray = new JsonArray();
             for (PlantInfo plant : data.getPlants()) {
@@ -247,7 +280,7 @@ public class PlayerFileStore {
         for (PlantInfo plant : catalog.getAllPlants().values()) {
             plants.add(new PlantInfo(plant.getId(), "", false));
         }
-        return new PlayerData(plants, new ConcurrentHashMap<>(), false);
+        return new PlayerData(plants, new ConcurrentHashMap<>(), new ConcurrentHashMap<>(), false);
     }
 
     private PlantInfo parsePlantMemory(JsonElement element) {

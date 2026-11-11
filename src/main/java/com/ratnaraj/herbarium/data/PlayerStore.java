@@ -129,7 +129,17 @@ public class PlayerStore {
             return;
         }
         PlayerData data = getOrCreate(playerRef.getUuid());
-        if (data.markRewardTierCollected(tier, Instant.now().toString())) {
+        if (data.markRewardTierCollected(tier, Instant.now().toString(), HerbariumRewards.REWARDS_VERSION)) {
+            fileStore.save(playerRef.getUuid(), data);
+        }
+    }
+
+    public void markCompensationClaimed(PlayerRef playerRef, int tier, String version) {
+        if (playerRef == null) {
+            return;
+        }
+        PlayerData data = getOrCreate(playerRef.getUuid());
+        if (data.markCompensationClaimed(tier, version)) {
             fileStore.save(playerRef.getUuid(), data);
         }
     }
