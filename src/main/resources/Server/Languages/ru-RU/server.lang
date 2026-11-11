@@ -78,12 +78,12 @@ herbarium.rewards.allCollected = Все награды получены
 
 herbarium.command.desc = Команды Herbarium
 herbarium.command.open.desc = Открывает Дневник ботаника.
-herbarium.command.reset.desc = Удаляет весь ваш прогресс.
+herbarium.command.resetall.desc = Удаляет весь ваш прогресс.
 herbarium.command.unlockall.desc = Открывает все растения.
 herbarium.command.give.desc = Выдаёт Дневник ботаника.
 herbarium.command.unlock.desc = Открывает все растения категории.
 herbarium.command.playersOnly = Эту команду могут выполнять только игроки.
-herbarium.command.reset.done = Ваш прогресс сброшен.
+herbarium.command.resetall.done = Ваш прогресс сброшен.
 herbarium.command.unlockall.done = Все растения открыты.
 herbarium.command.give.done = {journal} выдан игроку {player}.
 herbarium.command.unlock.category.desc = Категория для открытия (например, Flower).

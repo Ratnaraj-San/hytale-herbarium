@@ -78,12 +78,12 @@ herbarium.rewards.allCollected = Récompenses collectées
 
 herbarium.command.desc = Commandes Herbarium
 herbarium.command.open.desc = Ouvre le journal du botaniste.
-herbarium.command.reset.desc = Supprime toute votre progression.
+herbarium.command.resetall.desc = Supprime toute votre progression.
 herbarium.command.unlockall.desc = Débloque toutes les plantes.
 herbarium.command.give.desc = Donne un Journal du botaniste.
 herbarium.command.unlock.desc = Débloque toutes les plantes d'une catégorie.
 herbarium.command.playersOnly = Cette commande ne peut être exécutée que par des joueurs.
-herbarium.command.reset.done = Votre progression a été réinitialisée.
+herbarium.command.resetall.done = Votre progression a été réinitialisée.
 herbarium.command.unlockall.done = Toutes les plantes ont été débloquées.
 herbarium.command.give.done = Un {journal} a été donné à {player}.
 herbarium.command.unlock.category.desc = Catégorie à débloquer (ex. Flower).

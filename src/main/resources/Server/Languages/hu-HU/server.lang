@@ -78,12 +78,12 @@ herbarium.rewards.allCollected = Az összes jutalom begyűjtve
 
 herbarium.command.desc = Herbarium parancsok
 herbarium.command.open.desc = Megnyitja a Botanikus naplót.
-herbarium.command.reset.desc = Törli az összes előrehaladásodat.
+herbarium.command.resetall.desc = Törli az összes előrehaladásodat.
 herbarium.command.unlockall.desc = Feloldja az összes növényt.
 herbarium.command.give.desc = Ad egy Botanikus naplót.
 herbarium.command.unlock.desc = Feloldja egy kategória összes növényét.
 herbarium.command.playersOnly = Ezt a parancsot csak játékosok futtathatják.
-herbarium.command.reset.done = Az előrehaladásod vissza lett állítva.
+herbarium.command.resetall.done = Az előrehaladásod vissza lett állítva.
 herbarium.command.unlockall.done = Az összes növény fel lett oldva.
 herbarium.command.give.done = {journal} átadva neki: {player}.
 herbarium.command.unlock.category.desc = Feloldandó kategória (pl. Flower).

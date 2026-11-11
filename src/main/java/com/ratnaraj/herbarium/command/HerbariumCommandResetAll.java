@@ -12,14 +12,14 @@ import com.ratnaraj.herbarium.Herbarium;
 import javax.annotation.Nonnull;
 import java.util.concurrent.CompletableFuture;
 
-public class HerbariumCommandReset extends AbstractAsyncCommand {
+public class HerbariumCommandResetAll extends AbstractAsyncCommand {
 
-    private static final String RESET_DESC_KEY = "server.herbarium.command.reset.desc";
-    private static final String RESET_DONE_KEY = "server.herbarium.command.reset.done";
+    private static final String RESET_ALL_DESC_KEY = "server.herbarium.command.resetall.desc";
+    private static final String RESET_ALL_DONE_KEY = "server.herbarium.command.resetall.done";
 
-    public HerbariumCommandReset() {
-        super("reset", RESET_DESC_KEY);
-        requirePermission(HytalePermissions.fromCommand("herbarium", "reset"));
+    public HerbariumCommandResetAll() {
+        super("resetall", RESET_ALL_DESC_KEY);
+        requirePermission(HytalePermissions.fromCommand("herbarium", "resetall"));
     }
 
     @Override
@@ -34,7 +34,7 @@ public class HerbariumCommandReset extends AbstractAsyncCommand {
 
         Herbarium.getPlayerStore().clearPlayerMemories(playerRef);
 
-        ctx.sendMessage(Message.translation(RESET_DONE_KEY));
+        ctx.sendMessage(Message.translation(RESET_ALL_DONE_KEY));
 
         return CompletableFuture.completedFuture(null);
     }

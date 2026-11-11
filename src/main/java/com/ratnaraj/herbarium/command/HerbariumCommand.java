@@ -14,7 +14,7 @@ public class HerbariumCommand extends AbstractCommandCollection {
 
         requirePermission(HytalePermissions.fromCommand("herbarium"));
 
-        addSubCommand(new HerbariumCommandReset());
+        addSubCommand(new HerbariumCommandResetAll());
         addSubCommand(new HerbariumCommandUnlockAll());
         addSubCommand(new HerbariumCommandOpen());
         addSubCommand(new HerbariumCommandGive());
