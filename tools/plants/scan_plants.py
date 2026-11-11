@@ -85,6 +85,11 @@ def main():
             },
         })
 
+    # "Plant" is the fallback category for items with no proper category (e.g.
+    # Plant_Hay_Bundle): excluded for now; add a specific rule in obtained.py
+    # (EXACT_TO_CATEGORY / PREFIX_TO_CATEGORY) when such an item matters.
+    result.pop("Plant", None)
+
     OUT_FILE.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     entries = [it for items in result.values() for it in items]
