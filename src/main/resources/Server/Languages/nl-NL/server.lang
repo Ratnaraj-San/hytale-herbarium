@@ -81,10 +81,14 @@ herbarium.command.open.desc = Opent het Botanische journaal.
 herbarium.command.reset.desc = Verwijdert al je voortgang.
 herbarium.command.unlockall.desc = Ontgrendelt alle planten.
 herbarium.command.give.desc = Geeft een Botanisch journaal.
+herbarium.command.unlock.desc = Ontgrendelt alle planten van een categorie.
 herbarium.command.playersOnly = Dit commando kan alleen door spelers worden uitgevoerd.
 herbarium.command.reset.done = Je voortgang is gereset.
 herbarium.command.unlockall.done = Alle planten zijn ontgrendeld.
 herbarium.command.give.done = Een {journal} is aan {player} gegeven.
+herbarium.command.unlock.category.desc = Te ontgrendelen categorie (bijv. Flower).
+herbarium.command.unlock.done = Categorie {category} is ontgrendeld voor {player}.
+herbarium.command.unlock.unknownCategory = Onbekende categorie: {category}.
 
 herbarium.progress.recorded = planten vastgelegd: {count, number} / {total, number}
 

@@ -18,5 +18,6 @@ public class HerbariumCommand extends AbstractCommandCollection {
         addSubCommand(new HerbariumCommandUnlockAll());
         addSubCommand(new HerbariumCommandOpen());
         addSubCommand(new HerbariumCommandGive());
+        addSubCommand(new HerbariumCommandUnlock());
     }
 }

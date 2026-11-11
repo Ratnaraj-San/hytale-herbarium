@@ -104,6 +104,24 @@ public final class PlantCatalogV2 {
         return allPlantsFromConfig.size();
     }
 
+    public Set<String> getCategoryNames() {
+        return plantCategories.keySet();
+    }
+
+    public String getCategoryName(String inputCategory) {
+        Set<String> categories = getCategoryNames();
+        String categoryName = null;
+
+        for (String category : categories) {
+            if (category.equalsIgnoreCase(inputCategory)) {
+                categoryName = category;
+                break;
+            }
+        }
+
+        return categoryName;
+    }
+
     public boolean isPlantItem(String itemId) {
         if (itemId == null) return false;
 

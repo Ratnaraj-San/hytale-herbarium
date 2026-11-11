@@ -79,11 +79,15 @@ herbarium.rewards.allCollected = All rewards collected
 herbarium.command.desc = Herbarium commands
 herbarium.command.open.desc = Opens the Herbarium journal.
 herbarium.command.reset.desc = Deletes all your progression.
+herbarium.command.unlock.desc = Unlock a specific category.
+herbarium.command.unlock.category.desc = Category to unlock (e.g. Flower).
 herbarium.command.unlockall.desc = Unlocks all plants.
 herbarium.command.give.desc = Give a Botanist's Journal.
 herbarium.command.playersOnly = This command can only be executed by players.
 herbarium.command.reset.done = Your progress has been reset.
 herbarium.command.unlockall.done = All plants have been unlocked.
+herbarium.command.unlock.done = Category {category} has been unlocked for {player}.
+herbarium.command.unlock.unknownCategory = Unknown category: {category}.
 herbarium.command.give.done = A {journal} has been given to {player}.
 
 herbarium.progress.recorded = plants recorded: {count, number} / {total, number}

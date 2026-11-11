@@ -81,10 +81,14 @@ herbarium.command.open.desc = Deschide Jurnalul botanistului.
 herbarium.command.reset.desc = Îți șterge întregul progres.
 herbarium.command.unlockall.desc = Deblochează toate plantele.
 herbarium.command.give.desc = Oferă Jurnalul botanistului.
+herbarium.command.unlock.desc = Deblochează toate plantele unei categorii.
 herbarium.command.playersOnly = Această comandă poate fi executată doar de jucători.
 herbarium.command.reset.done = Progresul tău a fost resetat.
 herbarium.command.unlockall.done = Toate plantele au fost deblocate.
 herbarium.command.give.done = {journal} a fost dat lui {player}.
+herbarium.command.unlock.category.desc = Categoria de deblocat (ex. Flower).
+herbarium.command.unlock.done = Categoria {category} a fost deblocată pentru {player}.
+herbarium.command.unlock.unknownCategory = Categorie necunoscută: {category}.
 
 herbarium.progress.recorded = plante înregistrate: {count, number} / {total, number}
 
