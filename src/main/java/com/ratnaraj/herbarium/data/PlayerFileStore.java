@@ -180,10 +180,20 @@ public class PlayerFileStore {
                 }
             }
 
-            // Drop memories of plants the journal no longer tracks
-            plants.removeIf(plant -> !catalog.getAllPlants().containsKey(plant.getId()));
+            // The save must mirror the catalog exactly: keep discovered
+            // state/date/place of known plants, drop stale ones, and add
+            // catalog plants missing from the file as undiscovered
+            Map<String, PlantInfo> memoriesFromFile = new HashMap<>();
+            for (PlantInfo plant : plants) {
+                memoriesFromFile.put(plant.getId(), plant);
+            }
+            Set<PlantInfo> merged = new HashSet<>();
+            for (PlantInfo catalogPlant : catalog.getAllPlants().values()) {
+                PlantInfo previous = memoriesFromFile.get(catalogPlant.getId());
+                merged.add(previous != null ? previous : new PlantInfo(catalogPlant.getId(), "", false));
+            }
 
-            return new PlayerData(plants, tiers, claimedCompensations, journalOpened);
+            return new PlayerData(merged, tiers, claimedCompensations, journalOpened);
         } catch (IOException e) {
             Herbarium.getInstance().getLogger().at(Level.WARNING).log(
                     "[Herbarium] Error reading file for " + playerId + ": " + e.getMessage()
