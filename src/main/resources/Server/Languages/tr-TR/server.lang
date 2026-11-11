@@ -79,16 +79,19 @@ herbarium.rewards.allCollected = Tüm ödüller alındı
 herbarium.command.desc = Herbarium komutları
 herbarium.command.open.desc = Botanik Günlüğü'nü açar.
 herbarium.command.resetall.desc = Tüm ilerlemeni siler.
+herbarium.command.reset.desc = Belirli bir kategorinin ilerlemesini siler.
+herbarium.command.reset.category.desc = Sıfırlanacak kategori (örn. Flower).
 herbarium.command.unlockall.desc = Tüm bitkilerin kilidini açar.
 herbarium.command.give.desc = Bir Botanik Günlüğü verir.
 herbarium.command.unlock.desc = Bir kategorideki tüm bitkilerin kilidini açar.
 herbarium.command.playersOnly = Bu komut yalnızca oyuncular tarafından çalıştırılabilir.
 herbarium.command.resetall.done = İlerlemen sıfırlandı.
+herbarium.command.reset.done = {category} kategorisinin ilerlemesi {player} için sıfırlandı.
 herbarium.command.unlockall.done = Tüm bitkilerin kilidi açıldı.
 herbarium.command.give.done = {player} adlı oyuncuya bir {journal} verildi.
 herbarium.command.unlock.category.desc = Kilidi açılacak kategori (örn. Flower).
 herbarium.command.unlock.done = {category} kategorisinin kilidi {player} için açıldı.
-herbarium.command.unlock.unknownCategory = Bilinmeyen kategori: {category}.
+herbarium.command.common.unknownCategory = Bilinmeyen kategori: {category}.
 
 herbarium.progress.recorded = kaydedilen bitkiler: {count, number} / {total, number}
 

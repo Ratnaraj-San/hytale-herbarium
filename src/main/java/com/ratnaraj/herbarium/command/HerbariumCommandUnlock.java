@@ -26,7 +26,7 @@ public class HerbariumCommandUnlock extends AbstractPlayerCommand {
     private static final String UNLOCK_DESC_KEY = "server.herbarium.command.unlock.desc";
     private static final String CATEGORY_ARG_DESC_KEY = "server.herbarium.command.unlock.category.desc";
     private static final String UNLOCK_DONE_KEY = "server.herbarium.command.unlock.done";
-    private static final String UNKNOWN_CATEGORY_KEY = "server.herbarium.command.unlock.unknownCategory";
+    private static final String UNKNOWN_CATEGORY_KEY = "server.herbarium.command.common.unknownCategory";
 
     private static final SingleArgumentType<String> CATEGORY_TYPE = new SingleArgumentType<>(
             CATEGORY_ARG_DESC_KEY,

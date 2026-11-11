@@ -79,16 +79,19 @@ herbarium.rewards.allCollected = Alla belöningar hämtade
 herbarium.command.desc = Herbarium-kommandon
 herbarium.command.open.desc = Öppnar Botanikerns journal.
 herbarium.command.resetall.desc = Raderar hela din progression.
+herbarium.command.reset.desc = Raderar progressionen för en viss kategori.
+herbarium.command.reset.category.desc = Kategori att återställa (t.ex. Flower).
 herbarium.command.unlockall.desc = Låser upp alla växter.
 herbarium.command.give.desc = Ger Botanikerns journal.
 herbarium.command.unlock.desc = Låser upp alla växter i en kategori.
 herbarium.command.playersOnly = Det här kommandot kan bara utföras av spelare.
 herbarium.command.resetall.done = Din progression har återställts.
+herbarium.command.reset.done = Progressionen för kategorin {category} har återställts för {player}.
 herbarium.command.unlockall.done = Alla växter har låsts upp.
 herbarium.command.give.done = {journal} har getts till {player}.
 herbarium.command.unlock.category.desc = Kategori att låsa upp (t.ex. Flower).
 herbarium.command.unlock.done = Kategorin {category} har låsts upp för {player}.
-herbarium.command.unlock.unknownCategory = Okänd kategori: {category}.
+herbarium.command.common.unknownCategory = Okänd kategori: {category}.
 
 herbarium.progress.recorded = växter registrerade: {count, number} / {total, number}
 

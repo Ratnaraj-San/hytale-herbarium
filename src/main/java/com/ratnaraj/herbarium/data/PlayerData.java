@@ -154,4 +154,19 @@ public class PlayerData {
         plants.clear();
         plants.addAll(updated);
     }
+
+    public void resetCategory(Collection<String> plantIds) {
+        Set<PlantInfo> updated = new HashSet<>();
+
+        for (PlantInfo plant : plants) {
+            if (plantIds.contains(plant.getId())) {
+                updated.add(new PlantInfo(plant.getId(), plant.getPlantName(), false));
+            } else {
+                updated.add(plant);
+            }
+        }
+
+        plants.clear();
+        plants.addAll(updated);
+    }
 }

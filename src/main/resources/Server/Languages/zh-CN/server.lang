@@ -79,16 +79,19 @@ herbarium.rewards.allCollected = 已领取全部奖励
 herbarium.command.desc = Herbarium 命令
 herbarium.command.open.desc = 打开植物学家的日志。
 herbarium.command.resetall.desc = 删除你的全部进度。
+herbarium.command.reset.desc = 删除某个类别的进度。
+herbarium.command.reset.category.desc = 要重置的类别（例如 Flower）。
 herbarium.command.unlockall.desc = 解锁所有植物。
 herbarium.command.give.desc = 给予一本植物学家的日志。
 herbarium.command.unlock.desc = 解锁某个类别的所有植物。
 herbarium.command.playersOnly = 此命令只能由玩家执行。
 herbarium.command.resetall.done = 你的进度已重置。
+herbarium.command.reset.done = 已为 {player} 重置类别 {category} 的进度。
 herbarium.command.unlockall.done = 已解锁所有植物。
 herbarium.command.give.done = 已将一本{journal}给予 {player}。
 herbarium.command.unlock.category.desc = 要解锁的类别（例如 Flower）。
 herbarium.command.unlock.done = 已为 {player} 解锁类别 {category}。
-herbarium.command.unlock.unknownCategory = 未知类别：{category}。
+herbarium.command.common.unknownCategory = 未知类别：{category}。
 
 herbarium.progress.recorded = 已记录植物：{count, number} / {total, number}
 

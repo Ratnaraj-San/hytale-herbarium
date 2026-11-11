@@ -183,4 +183,18 @@ public class PlayerStore {
         data.unlockCategory(plantIds);
         fileStore.save(playerRef.getUuid(), data);
     }
+
+    public void resetCategoryMemories(PlayerRef playerRef, String category) {
+        if (playerRef == null || category == null) { return; }
+
+        List<String> plantIds = catalog.getPlantsInCategory(category);
+
+        if (plantIds.isEmpty()) { return; }
+
+        PlayerData data = getOrCreate(playerRef.getUuid());
+
+        data.resetCategory(plantIds);
+
+        fileStore.save(playerRef.getUuid(), data);
+    }
 }

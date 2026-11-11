@@ -79,16 +79,19 @@ herbarium.rewards.allCollected = Tutte le ricompense ritirate
 herbarium.command.desc = Comandi di Herbarium
 herbarium.command.open.desc = Apre il Diario del botanico.
 herbarium.command.resetall.desc = Elimina tutti i tuoi progressi.
+herbarium.command.reset.desc = Elimina i progressi di una categoria specifica.
+herbarium.command.reset.category.desc = Categoria da reimpostare (es. Flower).
 herbarium.command.unlockall.desc = Sblocca tutte le piante.
 herbarium.command.give.desc = Dà un Diario del botanico.
 herbarium.command.unlock.desc = Sblocca tutte le piante di una categoria.
 herbarium.command.playersOnly = Questo comando può essere eseguito solo dai giocatori.
 herbarium.command.resetall.done = I tuoi progressi sono stati azzerati.
+herbarium.command.reset.done = I progressi della categoria {category} sono stati azzerati per {player}.
 herbarium.command.unlockall.done = Tutte le piante sono state sbloccate.
 herbarium.command.give.done = Un {journal} è stato dato a {player}.
 herbarium.command.unlock.category.desc = Categoria da sbloccare (es. Flower).
 herbarium.command.unlock.done = La categoria {category} è stata sbloccata per {player}.
-herbarium.command.unlock.unknownCategory = Categoria sconosciuta: {category}.
+herbarium.command.common.unknownCategory = Categoria sconosciuta: {category}.
 
 herbarium.progress.recorded = piante registrate: {count, number} / {total, number}
 
