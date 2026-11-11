@@ -516,25 +516,12 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
           "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
+          "server.map.region.Zone2_Tier3"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
           "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Howling_Sands"
         ],
         "portals": []
       },
@@ -7244,40 +7231,6 @@
   ],
   "Leaves": [
     {
-      "id": "Plant_Leaves_Amber",
-      "obtainableInExplorationMode": true,
-      "locations": {
-        "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3"
-        ],
-        "zones": [
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
-        ],
-        "portals": []
-      },
-      "obtainedFrom": {
-        "plants": [],
-        "crafting": null,
-        "interactions": {
-          "break": false,
-          "collect": false,
-          "shears": true
-        }
-      }
-    },
-    {
       "id": "Plant_Leaves_Apple",
       "obtainableInExplorationMode": true,
       "locations": {
@@ -7307,24 +7260,15 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
           "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
           "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
+          "server.map.region.Zone3_Tier3"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
           "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
@@ -7353,24 +7297,15 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
           "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
           "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
+          "server.map.region.Zone3_Tier3"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
           "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": []
@@ -7397,22 +7332,10 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3"
+          "server.map.region.Zone1_Tier3"
         ],
         "zones": [
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Emerald_Wilds"
         ],
         "portals": []
       },
@@ -7433,11 +7356,9 @@
         "regions": [
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone4_Tier4"
+          "server.map.region.Zone1_Tier3"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
           "server.map.zone.Emerald_Wilds"
         ],
         "portals": []
@@ -7457,25 +7378,10 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
+          "server.map.region.Zone1_Tier3"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Emerald_Wilds"
         ],
         "portals": []
       },
@@ -7501,25 +7407,11 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
           "server.map.region.Zone4_Tier4",
           "server.map.region.Zone4_Tier5"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Devastated_Lands"
         ],
         "portals": []
       },
@@ -7546,24 +7438,12 @@
       "locations": {
         "regions": [
           "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
           "server.map.region.Zone4_Tier4",
           "server.map.region.Zone4_Tier5"
         ],
         "zones": [
           "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Oceans"
         ],
         "portals": []
       },
@@ -7589,25 +7469,12 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
+          "server.map.region.Zone1_Tier3"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Emerald_Wilds"
         ],
         "portals": []
       },
@@ -7633,25 +7500,12 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
+          "server.map.region.Zone1_Tier3"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Emerald_Wilds"
         ],
         "portals": []
       },
@@ -7677,25 +7531,12 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
           "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
+          "server.map.region.Zone2_Tier3"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Howling_Sands"
         ],
         "portals": []
       },
@@ -7727,25 +7568,11 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
           "server.map.region.Zone4_Tier4",
           "server.map.region.Zone4_Tier5"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Devastated_Lands"
         ],
         "portals": []
       },
@@ -7764,25 +7591,11 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
           "server.map.region.Zone4_Tier4",
           "server.map.region.Zone4_Tier5"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Devastated_Lands"
         ],
         "portals": []
       },
@@ -7808,24 +7621,15 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
           "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
           "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
+          "server.map.region.Zone3_Tier3"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
           "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": []
@@ -7852,25 +7656,10 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
           "server.map.region.Zone4_Tier5"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Devastated_Lands"
         ],
         "portals": []
       },
@@ -7896,13 +7685,6 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
           "server.map.region.Zone3_Tier2",
           "server.map.region.Zone3_Tier3",
@@ -7911,9 +7693,6 @@
         ],
         "zones": [
           "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": []
@@ -7933,25 +7712,12 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
           "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
+          "server.map.region.Zone2_Tier3"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Howling_Sands"
         ],
         "portals": []
       },
@@ -7977,25 +7743,11 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
           "server.map.region.Zone4_Tier4",
           "server.map.region.Zone4_Tier5"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Devastated_Lands"
         ],
         "portals": []
       },
@@ -8022,21 +7774,14 @@
       "locations": {
         "regions": [
           "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
           "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
           "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
+          "server.map.region.Zone3_Tier3"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
           "server.map.zone.Howling_Sands",
           "server.map.zone.Oceans",
           "server.map.zone.Whisperfrost_Frontiers"
@@ -8065,24 +7810,10 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
+          "server.map.region.Zone3_Tier2"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": []
@@ -8102,24 +7833,11 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
           "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
+          "server.map.region.Zone3_Tier3"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": []
@@ -8147,9 +7865,6 @@
       "locations": {
         "regions": [
           "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
           "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3",
@@ -8158,7 +7873,6 @@
           "server.map.region.Zone3_Tier3"
         ],
         "zones": [
-          "server.map.zone.Emerald_Wilds",
           "server.map.zone.Howling_Sands",
           "server.map.zone.Oceans",
           "server.map.zone.Whisperfrost_Frontiers"
@@ -8187,21 +7901,11 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
           "server.map.region.Zone3_Tier2",
           "server.map.region.Zone3_Tier3"
         ],
         "zones": [
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": []
@@ -8228,25 +7932,10 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
           "server.map.region.Zone4_Tier5"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Devastated_Lands"
         ],
         "portals": []
       },
@@ -8296,24 +7985,8 @@
       "id": "Plant_Leaves_Goldentree",
       "obtainableInExplorationMode": true,
       "locations": {
-        "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3"
-        ],
-        "zones": [
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
-        ],
+        "regions": [],
+        "zones": [],
         "portals": []
       },
       "obtainedFrom": {
@@ -8334,66 +8007,17 @@
       }
     },
     {
-      "id": "Plant_Leaves_Gumboab",
-      "obtainableInExplorationMode": true,
-      "locations": {
-        "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
-        ],
-        "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
-        ],
-        "portals": []
-      },
-      "obtainedFrom": {
-        "plants": [],
-        "crafting": null,
-        "interactions": {
-          "break": false,
-          "collect": false,
-          "shears": true
-        }
-      }
-    },
-    {
       "id": "Plant_Leaves_Jungle",
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
           "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
           "server.map.region.Zone4_Tier4",
           "server.map.region.Zone4_Tier5"
         ],
         "zones": [
           "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Oceans"
         ],
         "portals": []
       },
@@ -8415,51 +8039,14 @@
       }
     },
     {
-      "id": "Plant_Leaves_Jungle_Floor",
-      "obtainableInExplorationMode": true,
-      "locations": {
-        "regions": [
-          "server.map.region.Zone4_Tier4"
-        ],
-        "zones": [
-          "server.map.zone.Devastated_Lands"
-        ],
-        "portals": []
-      },
-      "obtainedFrom": {
-        "plants": [],
-        "crafting": null,
-        "interactions": {
-          "break": false,
-          "collect": false,
-          "shears": true
-        }
-      }
-    },
-    {
       "id": "Plant_Leaves_Maple",
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
+          "server.map.region.Zone1_Tier3"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Emerald_Wilds"
         ],
         "portals": []
       },
@@ -8485,25 +8072,16 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
           "server.map.region.Zone1_Tier3",
           "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
+          "server.map.region.Zone2_Tier3"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
           "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Howling_Sands"
         ],
         "portals": [
           "server.portals.goblinBreach"
@@ -8531,25 +8109,12 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
           "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
+          "server.map.region.Zone2_Tier3"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Howling_Sands"
         ],
         "portals": []
       },
@@ -8569,21 +8134,13 @@
       "locations": {
         "regions": [
           "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
           "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3"
+          "server.map.region.Zone2_Tier3"
         ],
         "zones": [
-          "server.map.zone.Emerald_Wilds",
           "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Oceans"
         ],
         "portals": []
       },
@@ -8609,22 +8166,12 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
           "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3"
+          "server.map.region.Zone2_Tier3"
         ],
         "zones": [
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Howling_Sands"
         ],
         "portals": []
       },
@@ -8643,22 +8190,12 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
           "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3"
+          "server.map.region.Zone2_Tier3"
         ],
         "zones": [
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Howling_Sands"
         ],
         "portals": []
       },
@@ -8684,24 +8221,10 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
           "server.map.region.Zone4_Tier4"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Devastated_Lands"
         ],
         "portals": []
       },
@@ -8727,21 +8250,9 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3"
+          "server.map.region.Zone3_Tier1"
         ],
         "zones": [
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
@@ -8794,24 +8305,11 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
           "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
+          "server.map.region.Zone3_Tier3"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": []
@@ -8838,24 +8336,10 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
           "server.map.region.Zone4_Tier4"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Devastated_Lands"
         ],
         "portals": []
       },
@@ -8877,59 +8361,15 @@
       }
     },
     {
-      "id": "Plant_Leaves_Snow",
-      "obtainableInExplorationMode": true,
-      "locations": {
-        "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3"
-        ],
-        "zones": [
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
-        ],
-        "portals": []
-      },
-      "obtainedFrom": {
-        "plants": [],
-        "crafting": null,
-        "interactions": {
-          "break": false,
-          "collect": false,
-          "shears": true
-        }
-      }
-    },
-    {
       "id": "Plant_Leaves_Spiral",
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
           "server.map.region.Zone3_Tier2",
           "server.map.region.Zone3_Tier3"
         ],
         "zones": [
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": []
@@ -8955,24 +8395,8 @@
       "id": "Plant_Leaves_Stormbark",
       "obtainableInExplorationMode": true,
       "locations": {
-        "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3"
-        ],
-        "zones": [
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
-        ],
+        "regions": [],
+        "zones": [],
         "portals": []
       },
       "obtainedFrom": {
@@ -8997,25 +8421,11 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
           "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
+          "server.map.region.Zone2_Tier3"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Howling_Sands"
         ],
         "portals": []
       },
@@ -9040,24 +8450,8 @@
       "id": "Plant_Leaves_Wisteria_Wild",
       "obtainableInExplorationMode": true,
       "locations": {
-        "regions": [
-          "server.map.region.Oceans",
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3"
-        ],
-        "zones": [
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Oceans",
-          "server.map.zone.Whisperfrost_Frontiers"
-        ],
+        "regions": [],
+        "zones": [],
         "portals": []
       },
       "obtainedFrom": {

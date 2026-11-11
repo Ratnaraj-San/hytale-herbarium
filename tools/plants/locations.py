@@ -116,6 +116,7 @@ def scan_locations(az):
     loc[plant] = {"regions": set, "zones": set, "portals": set} (raw keys; converted at output).
     prefab_plants[full prefab path] = set of plant ids inside that prefab."""
     loc = defaultdict(lambda: {"regions": set(), "zones": set(), "portals": set()})
+    prefab_backed = defaultdict(lambda: {"regions": set(), "zones": set(), "portals": set()})
     prefab_dir_regions = defaultdict(set)
     prefab_plants = defaultdict(set)
     portals = load_portals(az)
@@ -183,10 +184,12 @@ def scan_locations(az):
         if not is_valid_region(region):
             continue
         data = az.load_json(n)
-        ids = find_plant_ids(data) if data is not None else set()
-        ids |= plants_via_prefab_refs(az.read_text(n))
-        for pid in ids:
+        direct_ids = find_plant_ids(data) if data is not None else set()
+        prefab_ids = plants_via_prefab_refs(az.read_text(n))
+        for pid in direct_ids | prefab_ids:
             loc[pid]["regions"].add(region)
+        for pid in prefab_ids:
+            prefab_backed[pid]["regions"].add(region)
         # Custom files also tell us which prefab dirs and scatter patterns this zone uses
         if "/Custom." in n and isinstance(data, dict):
             for prefix in _prefab_prefixes(data):
@@ -221,8 +224,9 @@ def scan_locations(az):
             continue
         bdir = m.group(1)
         data = az.load_json(n)
-        ids = find_plant_ids(data) if data is not None else set()
-        ids |= plants_via_prefab_refs(az.read_text(n))
+        direct_ids = find_plant_ids(data) if data is not None else set()
+        prefab_ids = plants_via_prefab_refs(az.read_text(n))
+        ids = direct_ids | prefab_ids
         if not ids:
             continue
         if bdir.startswith("Portal_"):
@@ -235,11 +239,16 @@ def scan_locations(az):
             if portal_key:
                 for pid in ids:
                     loc[pid]["portals"].add(portal_key)
+                for pid in prefab_ids:
+                    prefab_backed[pid]["portals"].add(portal_key)
         else:
             prefix = BIOME_DIR_TO_REGION_PREFIX.get(bdir)
             if prefix:
+                regions = {r for r in all_regions if r.startswith(prefix)}
                 for pid in ids:
-                    loc[pid]["regions"].update(r for r in all_regions if r.startswith(prefix))
+                    loc[pid]["regions"].update(regions)
+                for pid in prefab_ids:
+                    prefab_backed[pid]["regions"].update(regions)
 
     # pass 1d: WorldEvent stages reference BlockTypeLists (e.g. PlantScatter) whose
     # content is the scattered plants; attribute to the matching portal when the
@@ -287,6 +296,7 @@ def scan_locations(az):
                 if n.startswith(prefix):
                     for pid in hits:
                         loc[pid]["regions"].update(regions)
+                        prefab_backed[pid]["regions"].update(regions)
         elif INSTANCE_SCAN_RE.match(n):
             data = az.load_json(n)
             if data is None:
@@ -301,5 +311,29 @@ def scan_locations(az):
             )
             for pid in ids:
                 loc[pid]["portals"].add(portal_key)
+                prefab_backed[pid]["portals"].add(portal_key)
 
-    return loc, portals, prefab_plants
+    # Diagnostic: plants whose only location evidence is a mask/block list,
+    # never placed by any prefab (masks are allowlists; prefab content wins).
+    mask_only = sorted(
+        pid for pid, l in loc.items()
+        if any(l[k] for k in ("regions", "zones", "portals"))
+        and not any(prefab_backed.get(pid, {}).get(k) for k in ("regions", "portals"))
+    )
+    if mask_only:
+        print("MASK-ONLY plants (in masks/lists, never placed by a prefab):")
+        for pid in mask_only:
+            print("   ", pid)
+
+    # Tree leaves are only ever placed as part of a tree prefab: their locations
+    # come exclusively from prefab contents, not from mask allowlists.
+    for pid in list(loc):
+        if pid.startswith("Plant_Leaves_"):
+            backed = prefab_backed.get(pid) or {"regions": set(), "zones": set(), "portals": set()}
+            loc[pid] = {
+                "regions": set(backed["regions"]),
+                "zones": set(),
+                "portals": set(backed["portals"]),
+            }
+
+    return loc, portals, prefab_plants, prefab_backed
