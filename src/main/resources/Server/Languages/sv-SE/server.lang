@@ -72,6 +72,7 @@ herbarium.unlock.openJournal = Öppna journalen
 herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Låst</b></color> \n<color is="#888888">Registrera {count, number} {count, plural, one {växt} other {växter}} för att låsa upp:</color>
 herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Upplåst</b></color> \n<color is="#888888">{count, number} {count, plural, one {växt} other {växter}} registrerade. Belöning att hämta:</color>
 herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Hämtad</b></color> \n<color is="#888888">{count, number} {count, plural, one {växt} other {växter}} registrerade. Hämtad belöning:</color>
+herbarium.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Uppdatering</b></color> \n<color is="#888888">{count, number} {count, plural, one {växt} other {växter}} registrerade. Hämtad belöningBelöning att hämta:</color>
 herbarium.rewards.collectButton = Hämta belöning {tier, number}
 herbarium.rewards.allCollected = Alla belöningar hämtade
 

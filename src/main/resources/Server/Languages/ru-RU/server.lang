@@ -72,6 +72,7 @@ herbarium.unlock.openJournal = Открыть дневник
 herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Закрыто</b></color> \n<color is="#888888">Запишите {count, number} {count, plural, one {растение} few {растения} many {растений} other {растения}}, чтобы открыть:</color>
 herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Открыто</b></color> \n<color is="#888888">Записано: {count, number} {count, plural, one {растение} few {растения} many {растений} other {растения}}. Награда к получению:</color>
 herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Получено</b></color> \n<color is="#888888">Записано: {count, number} {count, plural, one {растение} few {растения} many {растений} other {растения}}. Полученная награда:</color>
+herbarium.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Обновление</b></color> \n<color is="#888888">Записано: {count, number} {count, plural, one {растение} few {растения} many {растений} other {растения}}. Полученная наградаНаграда для получения:</color>
 herbarium.rewards.collectButton = Получить награду {tier, number}
 herbarium.rewards.allCollected = Все награды получены
 

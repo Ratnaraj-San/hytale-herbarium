@@ -72,6 +72,7 @@ herbarium.unlock.openJournal = Journal öffnen
 herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Gesperrt</b></color> \n<color is="#888888">Zeichne {count, number} {count, plural, one {Pflanze} other {Pflanzen}} auf, um freizuschalten:</color>
 herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Freigeschaltet</b></color> \n<color is="#888888">{count, number} {count, plural, one {Pflanze} other {Pflanzen}} aufgezeichnet. Zu sammelnde Belohnung:</color>
 herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Gesammelt</b></color> \n<color is="#888888">{count, number} {count, plural, one {Pflanze} other {Pflanzen}} aufgezeichnet. Gesammelte Belohnung:</color>
+herbarium.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Update</b></color> \n<color is="#888888">{count, number} {count, plural, one {Pflanze} other {Pflanzen}} aufgezeichnet. Gesammelte BelohnungBelohnung zum Einsammeln:</color>
 herbarium.rewards.collectButton = Belohnung {tier, number} einsammeln
 herbarium.rewards.allCollected = Alle Belohnungen gesammelt
 

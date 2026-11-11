@@ -72,6 +72,7 @@ herbarium.unlock.openJournal = Abrir el diario
 herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Bloqueado</b></color> \n<color is="#888888">Registra {count, number} {count, plural, one {planta} other {plantas}} para desbloquear:</color>
 herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Desbloqueado</b></color> \n<color is="#888888">Se han registrado {count, number} {count, plural, one {planta} other {plantas}}. Recompensa por reclamar:</color>
 herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Recogido</b></color> \n<color is="#888888">Se han registrado {count, number} {count, plural, one {planta} other {plantas}}. Recompensa recogida:</color>
+herbarium.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Actualización</b></color> \n<color is="#888888">Se han registrado {count, number} {count, plural, one {planta} other {plantas}}. Recompensa recogidaRecompensa por recoger:</color>
 herbarium.rewards.collectButton = Recoger la recompensa {tier, number}
 herbarium.rewards.allCollected = Todas las recompensas recogidas
 

@@ -6,6 +6,7 @@ import com.ratnaraj.herbarium.Herbarium;
 import java.nio.file.Path;
 import java.time.Instant;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -129,9 +130,18 @@ public class PlayerStore {
             return;
         }
         PlayerData data = getOrCreate(playerRef.getUuid());
-        if (data.markRewardTierCollected(tier, Instant.now().toString(), HerbariumRewards.REWARDS_VERSION)) {
+        if (data.markRewardTierCollected(tier, Instant.now().toString(), HerbariumRewards.rewardsVersion())) {
             fileStore.save(playerRef.getUuid(), data);
         }
+    }
+
+    public List<HerbariumRewards.CompensationGrant> getPendingCompensations(PlayerRef playerRef) {
+        if (playerRef == null) {
+            return List.of();
+        }
+        PlayerData data = getOrCreate(playerRef.getUuid());
+        return HerbariumRewards.getPendingCompensations(
+                data.getCollectedTierVersions(), data.getClaimedCompensations());
     }
 
     public void markCompensationClaimed(PlayerRef playerRef, int tier, String version) {

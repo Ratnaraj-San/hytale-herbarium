@@ -72,6 +72,7 @@ herbarium.unlock.openJournal = Otevřít deník
 herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Uzamčeno</b></color> \n<color is="#888888">Zaznamenejte {count, number} {count, plural, one {rostlinu} few {rostliny} many {rostlin} other {rostlin}}, abyste odemkli:</color>
 herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Odemčeno</b></color> \n<color is="#888888">Zaznamenáno: {count, number} {count, plural, one {rostlina} few {rostliny} many {rostlin} other {rostlin}}. Odměna k vyzvednutí:</color>
 herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Vyzvednuto</b></color> \n<color is="#888888">Zaznamenáno: {count, number} {count, plural, one {rostlina} few {rostliny} many {rostlin} other {rostlin}}. Vyzvednutá odměna:</color>
+herbarium.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Aktualizace</b></color> \n<color is="#888888">Zaznamenáno: {count, number} {count, plural, one {rostlina} few {rostliny} many {rostlin} other {rostlin}}. Vyzvednutá odměnaOdměna k vyzvednutí:</color>
 herbarium.rewards.collectButton = Vyzvednout odměnu {tier, number}
 herbarium.rewards.allCollected = Všechny odměny vyzvednuty
 

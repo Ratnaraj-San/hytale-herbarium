@@ -72,6 +72,7 @@ herbarium.unlock.openJournal = Napló megnyitása
 herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Zárolva</b></color> \n<color is="#888888">Rögzíts {count, number} növényt a feloldáshoz:</color>
 herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Feloldva</b></color> \n<color is="#888888">Rögzített növények: {count, number}. Begyűjtendő jutalom:</color>
 herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Begyűjtve</b></color> \n<color is="#888888">Rögzített növények: {count, number}. Begyűjtött jutalom:</color>
+herbarium.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Frissítés</b></color> \n<color is="#888888">Rögzített növények: {count, number}. Begyűjtött jutalomÁtvehető jutalom:</color>
 herbarium.rewards.collectButton = {tier, number}. jutalom begyűjtése
 herbarium.rewards.allCollected = Az összes jutalom begyűjtve
 

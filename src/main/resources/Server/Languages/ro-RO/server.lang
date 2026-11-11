@@ -72,6 +72,7 @@ herbarium.unlock.openJournal = Deschide jurnalul
 herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Blocat</b></color> \n<color is="#888888">Înregistrează {count, number} {count, plural, one {plantă} other {plante}} pentru a debloca:</color>
 herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Deblocat</b></color> \n<color is="#888888">Înregistrate: {count, number} {count, plural, one {plantă} other {plante}}. Recompensă de ridicat:</color>
 herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Ridicată</b></color> \n<color is="#888888">Înregistrate: {count, number} {count, plural, one {plantă} other {plante}}. Recompensă ridicată:</color>
+herbarium.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Actualizare</b></color> \n<color is="#888888">Înregistrate: {count, number} {count, plural, one {plantă} other {plante}}. Recompensă ridicatăRecompensă de ridicat:</color>
 herbarium.rewards.collectButton = Ridică recompensa {tier, number}
 herbarium.rewards.allCollected = Toate recompensele au fost ridicate
 

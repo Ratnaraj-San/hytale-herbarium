@@ -72,6 +72,7 @@ herbarium.unlock.openJournal = Avaa päiväkirja
 herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Lukittu</b></color> \n<color is="#888888">Kirjaa {count, number} {count, plural, one {kasvi} other {kasvia}} avataksesi lukituksen:</color>
 herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Avattu</b></color> \n<color is="#888888">Kirjattu: {count, number} {count, plural, one {kasvi} other {kasvia}}. Noudettava palkinto:</color>
 herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Noudettu</b></color> \n<color is="#888888">Kirjattu: {count, number} {count, plural, one {kasvi} other {kasvia}}. Noudettu palkinto:</color>
+herbarium.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Päivitys</b></color> \n<color is="#888888">Kirjattu: {count, number} {count, plural, one {kasvi} other {kasvia}}. Noudettu palkintoNoudettava palkinto:</color>
 herbarium.rewards.collectButton = Nouda palkinto {tier, number}
 herbarium.rewards.allCollected = Kaikki palkinnot noudettu
 
