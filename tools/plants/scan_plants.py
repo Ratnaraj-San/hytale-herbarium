@@ -15,7 +15,7 @@ from pathlib import Path
 
 from assets_zip import AssetsZip, PLANT_ID_RE, resolve_assets_zip
 from common import FINAL_FILE, SCAN_FILE, apply_obtainable_rules, recap
-from locations import load_lang_keys, make_key_fns, scan_locations
+from locations import is_valid_region, load_lang_keys, make_key_fns, normalize_region, scan_locations
 from obtained import (
     ItemChain,
     build_relations,
@@ -49,6 +49,8 @@ def main():
                     relations[leaf][sapling]  # source entry, all flags false (grown, not dropped)
 
     result = defaultdict(list)
+    for pid in loc:
+        loc[pid]["regions"] = {normalize_region(r) for r in loc[pid]["regions"] if is_valid_region(r)}
     all_plants = sorted(
         {p for p in loc if PLANT_ID_RE.match(p)} | {p for p in item_path if PLANT_ID_RE.match(p)}
     )

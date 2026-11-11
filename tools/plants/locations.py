@@ -28,12 +28,19 @@ BIOME_DIR_TO_REGION_PREFIX = {
 }
 
 # Only real world regions are kept: Oceans and ZoneN_Tier* (which map to the 5 named
-# zones). Drops Masks/, Layers/, Noise/, PrefabPatterns_Shared/, Spawn/Temple/Shore...
+# zones). Drops Masks/, Layers/, Noise/, PrefabPatterns_Shared/, Spawn/Temple...
+# Shallow_Ocean areas belong to the Oceans zone.
 REGION_RE = re.compile(r"^(Oceans|Zone[1-4]_Tier\d+)$")
 
 
+def normalize_region(region):
+    if "_Shallow_Ocean" in region:
+        return "Oceans"
+    return region
+
+
 def is_valid_region(region):
-    return bool(REGION_RE.match(region))
+    return bool(REGION_RE.match(normalize_region(region)))
 
 # Named zone (map.zone.*) per region prefix; all keys verified against the game lang files.
 REGION_TO_NAMED_ZONE = {
@@ -113,8 +120,8 @@ def scan_locations(az):
     prefab_plants = defaultdict(set)
     portals = load_portals(az)
 
-    all_regions = {r for r in (n.split("/")[4] for n in az.names
-                               if n.startswith("Server/World/Default/Zones/") and n.count("/") > 4)
+    all_regions = {normalize_region(r) for r in (n.split("/")[4] for n in az.names
+                   if n.startswith("Server/World/Default/Zones/") and n.count("/") > 4)
                    if is_valid_region(r)}
     zone_custom_patterns = defaultdict(set)  # region -> pattern file paths
 
@@ -125,16 +132,41 @@ def scan_locations(az):
             if hits:
                 prefab_plants[n].update(hits)
 
+    # PrefabList name -> prefab dir prefixes (e.g. "Trees" -> Trees/*)
+    prefab_lists = {}
+    for n in az.names:
+        m = re.match(r"^Server/PrefabList/([^/]+)\.json$", n)
+        if m:
+            d = az.load_json(n)
+            prefixes = set()
+            for p in (d or {}).get("Prefabs", []):
+                ppath = p.get("Path")
+                if ppath:
+                    prefixes.add("Server/Prefabs/" + ppath.rstrip("/") + "/")
+            prefab_lists[m.group(1)] = prefixes
+
     def plants_via_prefab_refs(text):
-        """Resolve any quoted prefab reference (slashed path or dotted id) to plant ids."""
+        """Resolve quoted prefab references (slashed path, dotted id, wildcard, or
+        PrefabList name) to plant ids."""
         out = set()
         for m in re.finditer(r'"([^"]+)"', text):
             s = m.group(1)
-            if ".prefab.json" in s or s.count(".") >= 2:
-                full = s if s.startswith("Server/") else "Server/Prefabs/" + s.replace(".", "/")
+            if s in prefab_lists:
+                for prefix in prefab_lists[s]:
+                    for fp, ids in prefab_plants.items():
+                        if fp.startswith(prefix):
+                            out |= ids
+                continue
+            if ".prefab.json" in s or s.count(".") >= 2 or ("/" in s and not s.startswith(("Common/", "Icons/", "Blocks/", "Items/"))):
+                full = s if s.startswith("Server/") else "Server/Prefabs/" + (s.replace(".", "/") if "." in s and "/" not in s else s)
+                if full.endswith(".*"):
+                    full = full[:-2]
+                if full.endswith("/*"):
+                    full = full[:-2]
                 if full.endswith(".prefab.json"):
                     out |= prefab_plants.get(full, set())
                 else:
+                    out |= prefab_plants.get(full + ".prefab.json", set())  # exact dotted name
                     prefix = full.rstrip("/") + "/"
                     for fp, ids in prefab_plants.items():
                         if fp.startswith(prefix):
@@ -147,7 +179,7 @@ def scan_locations(az):
         m = ZONE_ANY_RE.match(n)
         if not m:
             continue
-        region = m.group(1)
+        region = normalize_region(m.group(1))
         if not is_valid_region(region):
             continue
         data = az.load_json(n)
@@ -182,9 +214,9 @@ def scan_locations(az):
             for pid in find_plant_ids(mask_data):
                 loc[pid]["regions"].add(region)
 
-    # pass 1c: HytaleGenerator Assignments/<BiomeDir>/ -> region prefix or portal
+    # pass 1c: HytaleGenerator Assignments/<BiomeDir>/ and Biomes/<BiomeDir>/ -> region/portal
     for n in az.names:
-        m = ASSIGNMENT_RE.match(n)
+        m = ASSIGNMENT_RE.match(n) or re.match(r"^Server/HytaleGenerator/Biomes/([^/]+)/.+\.json$", n)
         if not m:
             continue
         bdir = m.group(1)
