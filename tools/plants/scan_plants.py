@@ -36,7 +36,7 @@ def main():
     drop_path = index_drops(az.names)
     salvage_rel = scan_salvage_relations(az)
     chain = ItemChain(az, item_path)
-    loc, _portals, prefab_plants = scan_locations(az)
+    loc, _portals, prefab_plants, _prefab_backed = scan_locations(az)
     _server_key, region_key, zone_key_for_region = make_key_fns(load_lang_keys(az))
     relations = build_relations(az, drop_path, item_path, salvage_rel)
 
@@ -84,6 +84,11 @@ def main():
                 },
             },
         })
+
+    # "Plant" is the fallback category for items with no proper category (e.g.
+    # Plant_Hay_Bundle): excluded for now; add a specific rule in obtained.py
+    # (EXACT_TO_CATEGORY / PREFIX_TO_CATEGORY) when such an item matters.
+    result.pop("Plant", None)
 
     OUT_FILE.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 

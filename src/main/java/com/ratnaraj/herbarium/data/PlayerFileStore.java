@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -32,11 +33,13 @@ import java.util.logging.Level;
  */
 public class PlayerFileStore {
 
-    private final PlantCatalog catalog;
+    private static final String V1_BACKUP_PREFIX = "v1.";
+
+    private final PlantCatalogV2 catalog;
 
     private Path dataDirectory;
 
-    public PlayerFileStore(PlantCatalog catalog) {
+    public PlayerFileStore(PlantCatalogV2 catalog) {
         this.catalog = catalog;
     }
 
@@ -72,7 +75,11 @@ public class PlayerFileStore {
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(dataDirectory, "*.json")) {
             for (Path file : stream) {
                 try {
-                    String playerId = file.getFileName().toString().replace(".json", "");
+                    String fileName = file.getFileName().toString();
+                    if (fileName.startsWith(V1_BACKUP_PREFIX)) {
+                        continue;
+                    }
+                    String playerId = fileName.replace(".json", "");
                     UUID uuid = UUID.fromString(playerId);
                     PlayerData data = loadPlayer(uuid);
                     if (!data.getPlants().isEmpty()) {
@@ -123,6 +130,10 @@ public class PlayerFileStore {
 
             JsonObject rootObject = JsonParser.parseString(fileContent).getAsJsonObject();
 
+            if (!rootObject.has("pluginVersion")) {
+                backupAsV1(file, playerId);
+            }
+
             boolean journalOpened = rootObject.has("journalOpened")
                     && rootObject.get("journalOpened").getAsBoolean();
 
@@ -131,7 +142,7 @@ public class PlayerFileStore {
                 plants.add(parsePlantMemory(element));
             }
 
-            Map<Integer, String> tiers = new ConcurrentHashMap<>();
+            Map<Integer, PlayerData.CollectedTier> tiers = new ConcurrentHashMap<>();
             if (rootObject.has("collectedRewardTiers")) {
                 for (JsonElement element : rootObject.getAsJsonArray("collectedRewardTiers")) {
                     try {
@@ -139,7 +150,11 @@ public class PlayerFileStore {
                         String collectedDate = entry.has("collectedDate")
                                 && !entry.get("collectedDate").isJsonNull()
                                 ? entry.get("collectedDate").getAsString() : "";
-                        tiers.put(entry.get("tier").getAsInt(), collectedDate);
+                        String tierRewardsVersion = entry.has("rewardsVersion")
+                                && entry.get("rewardsVersion").isJsonPrimitive()
+                                ? entry.get("rewardsVersion").getAsString() : "1.0.0";
+                        tiers.put(entry.get("tier").getAsInt(),
+                                new PlayerData.CollectedTier(collectedDate, tierRewardsVersion));
                     } catch (ClassCastException | IllegalStateException | NullPointerException e) {
                         Herbarium.getInstance().getLogger().at(Level.WARNING).log(
                                 "[Herbarium] Invalid collected reward tier for " + playerId + ": " + element
@@ -148,10 +163,37 @@ public class PlayerFileStore {
                 }
             }
 
-            // Drop memories of plants the journal no longer tracks
-            plants.removeIf(plant -> !catalog.getAllPlants().containsKey(plant.getId()));
+            Map<Integer, Set<String>> claimedCompensations = new ConcurrentHashMap<>();
+            if (rootObject.has("claimedCompensations") && rootObject.get("claimedCompensations").isJsonObject()) {
+                for (Map.Entry<String, JsonElement> entry : rootObject.getAsJsonObject("claimedCompensations").entrySet()) {
+                    try {
+                        Set<String> versions = new HashSet<>();
+                        for (JsonElement version : entry.getValue().getAsJsonArray()) {
+                            versions.add(version.getAsString());
+                        }
+                        claimedCompensations.put(Integer.parseInt(entry.getKey()), versions);
+                    } catch (ClassCastException | IllegalStateException | NullPointerException | NumberFormatException e) {
+                        Herbarium.getInstance().getLogger().at(Level.WARNING).log(
+                                "[Herbarium] Invalid claimed compensation for " + playerId + ": " + entry
+                        );
+                    }
+                }
+            }
 
-            return new PlayerData(plants, tiers, journalOpened);
+            // The save must mirror the catalog exactly: keep discovered
+            // state/date/place of known plants, drop stale ones, and add
+            // catalog plants missing from the file as undiscovered
+            Map<String, PlantInfo> memoriesFromFile = new HashMap<>();
+            for (PlantInfo plant : plants) {
+                memoriesFromFile.put(plant.getId(), plant);
+            }
+            Set<PlantInfo> merged = new HashSet<>();
+            for (PlantInfo catalogPlant : catalog.getAllPlants().values()) {
+                PlantInfo previous = memoriesFromFile.get(catalogPlant.getId());
+                merged.add(previous != null ? previous : new PlantInfo(catalogPlant.getId(), "", false));
+            }
+
+            return new PlayerData(merged, tiers, claimedCompensations, journalOpened);
         } catch (IOException e) {
             Herbarium.getInstance().getLogger().at(Level.WARNING).log(
                     "[Herbarium] Error reading file for " + playerId + ": " + e.getMessage()
@@ -175,17 +217,30 @@ public class PlayerFileStore {
 
         try (BufferedWriter writer = Files.newBufferedWriter(file)) {
             JsonObject root = new JsonObject();
+            root.addProperty("pluginVersion", Herbarium.getPluginVersion());
             root.addProperty("journalOpened", data.hasOpenedJournal());
 
-            Map<Integer, String> collected = new TreeMap<>(data.getCollectedRewardTiers());
+            Map<Integer, PlayerData.CollectedTier> collected = new TreeMap<>(data.getCollectedRewardTiers());
             JsonArray collectedArray = new JsonArray();
-            for (Map.Entry<Integer, String> entry : collected.entrySet()) {
+            for (Map.Entry<Integer, PlayerData.CollectedTier> entry : collected.entrySet()) {
                 JsonObject collectedEntry = new JsonObject();
                 collectedEntry.addProperty("tier", entry.getKey());
-                collectedEntry.addProperty("collectedDate", entry.getValue());
+                collectedEntry.addProperty("collectedDate", entry.getValue().collectedDate());
+                collectedEntry.addProperty("rewardsVersion", entry.getValue().rewardsVersion());
                 collectedArray.add(collectedEntry);
             }
             root.add("collectedRewardTiers", collectedArray);
+
+            JsonObject claimedCompensationsJson = new JsonObject();
+            Map<Integer, Set<String>> claimedSorted = new TreeMap<>(data.getClaimedCompensations());
+            for (Map.Entry<Integer, Set<String>> entry : claimedSorted.entrySet()) {
+                JsonArray versionsArray = new JsonArray();
+                entry.getValue().stream()
+                        .sorted(HerbariumRewards::compareVersions)
+                        .forEach(versionsArray::add);
+                claimedCompensationsJson.add(String.valueOf(entry.getKey()), versionsArray);
+            }
+            root.add("claimedCompensations", claimedCompensationsJson);
 
             JsonArray jsonArray = new JsonArray();
             for (PlantInfo plant : data.getPlants()) {
@@ -209,13 +264,33 @@ public class PlayerFileStore {
         return dataDirectory.resolve(playerId.toString() + ".json");
     }
 
+    /**
+     * A save file without pluginVersion predates versioned saves: keep an
+     * untouched copy as v1.<uuid>.json so the player can roll back by
+     * deleting the new file and renaming the backup. The current version is
+     * stamped on the file at the next save.
+     */
+    private void backupAsV1(Path file, UUID playerId) {
+        try {
+            Path backup = dataDirectory.resolve(V1_BACKUP_PREFIX + file.getFileName());
+            Files.copy(file, backup, StandardCopyOption.REPLACE_EXISTING);
+            Herbarium.getInstance().getLogger().at(Level.INFO).log(
+                    "[Herbarium] Save of " + playerId + " had no pluginVersion, backed up as " + backup.getFileName()
+            );
+        } catch (IOException e) {
+            Herbarium.getInstance().getLogger().at(Level.WARNING).log(
+                    "[Herbarium] Could not create v1 backup for " + playerId + ": " + e.getMessage()
+            );
+        }
+    }
+
     /** A fresh progression: every plant of the catalog, undiscovered. */
     private PlayerData newPlayerData() {
         Set<PlantInfo> plants = new HashSet<>();
         for (PlantInfo plant : catalog.getAllPlants().values()) {
             plants.add(new PlantInfo(plant.getId(), "", false));
         }
-        return new PlayerData(plants, new ConcurrentHashMap<>(), false);
+        return new PlayerData(plants, new ConcurrentHashMap<>(), new ConcurrentHashMap<>(), false);
     }
 
     private PlantInfo parsePlantMemory(JsonElement element) {

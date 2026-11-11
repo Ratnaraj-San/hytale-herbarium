@@ -72,6 +72,7 @@ herbarium.unlock.openJournal = Günlüğü aç
 herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Kilitli</b></color> \n<color is="#888888">Açmak için {count, number} bitki kaydet:</color>
 herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Açıldı</b></color> \n<color is="#888888">{count, number} bitki kaydedildi. Alınacak ödül:</color>
 herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Alındı</b></color> \n<color is="#888888">{count, number} bitki kaydedildi. Alınan ödül:</color>
+herbarium.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Güncelleme</b></color> \n<color is="#888888">{count, number} bitki kaydedildi. Alınan ödülAlınacak ödül:</color>
 herbarium.rewards.collectButton = {tier, number}. ödülü al
 herbarium.rewards.allCollected = Tüm ödüller alındı
 

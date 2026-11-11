@@ -72,6 +72,7 @@ herbarium.unlock.openJournal = Відкрити щоденник
 herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Замкнено</b></color> \n<color is="#888888">Запишіть {count, number} {count, plural, one {рослину} few {рослини} many {рослин} other {рослини}}, щоб відкрити:</color>
 herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Відкрито</b></color> \n<color is="#888888">Записано: {count, number} {count, plural, one {рослина} few {рослини} many {рослин} other {рослин}}. Винагорода до отримання:</color>
 herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Отримано</b></color> \n<color is="#888888">Записано: {count, number} {count, plural, one {рослина} few {рослини} many {рослин} other {рослин}}. Отримана винагорода:</color>
+herbarium.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Оновлення</b></color> \n<color is="#888888">Записано: {count, number} {count, plural, one {рослина} few {рослини} many {рослин} other {рослин}}. Отримана винагородаВинагорода для отримання:</color>
 herbarium.rewards.collectButton = Отримати винагороду {tier, number}
 herbarium.rewards.allCollected = Усі винагороди отримано
 

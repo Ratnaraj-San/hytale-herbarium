@@ -34,6 +34,13 @@ Group {
       }
     }
 
+    @ChestGroup #ChestClaimedPending {
+      Group {
+        Background: "MemoriesProgress/IconChestClaimedPending.png";
+        Anchor: (Width: 22, Height: 22, Bottom: 10);
+      }
+    }
+
     Group #Arrow {
       Background: "MemoriesProgress/MemoriesBarArrow.png";
       Anchor: (Left: 14, Width: 10, Height: 8, Bottom: 0);

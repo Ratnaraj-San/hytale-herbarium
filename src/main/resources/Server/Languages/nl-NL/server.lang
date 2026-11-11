@@ -72,6 +72,7 @@ herbarium.unlock.openJournal = Open het journaal
 herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Vergrendeld</b></color> \n<color is="#888888">Leg {count, number} {count, plural, one {plant} other {planten}} vast om te ontgrendelen:</color>
 herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Ontgrendeld</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {planten}} vastgelegd. Beloning om op te halen:</color>
 herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Opgehaald</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {planten}} vastgelegd. Opgehaalde beloning:</color>
+herbarium.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Update</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {planten}} vastgelegd. Opgehaalde beloningOp te halen beloning:</color>
 herbarium.rewards.collectButton = Beloning {tier, number} ophalen
 herbarium.rewards.allCollected = Alle beloningen opgehaald
 

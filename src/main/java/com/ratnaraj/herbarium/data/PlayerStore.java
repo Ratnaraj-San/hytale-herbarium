@@ -6,6 +6,7 @@ import com.ratnaraj.herbarium.Herbarium;
 import java.nio.file.Path;
 import java.time.Instant;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -20,11 +21,11 @@ import java.util.logging.Level;
  */
 public class PlayerStore {
 
-    private final PlantCatalog catalog;
+    private final PlantCatalogV2 catalog;
     private final PlayerFileStore fileStore;
     private final Map<UUID, PlayerData> players = new ConcurrentHashMap<>();
 
-    public PlayerStore(PlantCatalog catalog) {
+    public PlayerStore(PlantCatalogV2 catalog) {
         this.catalog = catalog;
         this.fileStore = new PlayerFileStore(catalog);
     }
@@ -129,7 +130,26 @@ public class PlayerStore {
             return;
         }
         PlayerData data = getOrCreate(playerRef.getUuid());
-        if (data.markRewardTierCollected(tier, Instant.now().toString())) {
+        if (data.markRewardTierCollected(tier, Instant.now().toString(), HerbariumRewards.rewardsVersion())) {
+            fileStore.save(playerRef.getUuid(), data);
+        }
+    }
+
+    public List<HerbariumRewards.CompensationGrant> getPendingCompensations(PlayerRef playerRef) {
+        if (playerRef == null) {
+            return List.of();
+        }
+        PlayerData data = getOrCreate(playerRef.getUuid());
+        return HerbariumRewards.getPendingCompensations(
+                data.getCollectedTierVersions(), data.getClaimedCompensations());
+    }
+
+    public void markCompensationClaimed(PlayerRef playerRef, int tier, String version) {
+        if (playerRef == null) {
+            return;
+        }
+        PlayerData data = getOrCreate(playerRef.getUuid());
+        if (data.markCompensationClaimed(tier, version)) {
             fileStore.save(playerRef.getUuid(), data);
         }
     }

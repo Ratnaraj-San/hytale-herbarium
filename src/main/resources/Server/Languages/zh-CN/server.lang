@@ -72,6 +72,7 @@ herbarium.unlock.openJournal = 打开日志
 herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>未解锁</b></color> \n<color is="#888888">记录 {count, number} 株植物后解锁：</color>
 herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>已解锁</b></color> \n<color is="#888888">已记录 {count, number} 株植物。可领取的奖励：</color>
 herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>已领取</b></color> \n<color is="#888888">已记录 {count, number} 株植物。已领取的奖励：</color>
+herbarium.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>更新</b></color> \n<color is="#888888">已记录 {count, number} 株植物。已领取的奖励可领取的奖励：</color>
 herbarium.rewards.collectButton = 领取奖励 {tier, number}
 herbarium.rewards.allCollected = 已领取全部奖励
 

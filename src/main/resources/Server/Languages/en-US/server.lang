@@ -72,6 +72,7 @@ herbarium.unlock.openJournal = Open the journal
 herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Locked</b></color> \n<color is="#888888">Record {count, number} {count, plural, one {plant} other {plants}} to unlock:</color>
 herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Unlocked</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {plants}} recorded. Reward to collect:</color>
 herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Collected</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {plants}} recorded. Reward collected:</color>
+herbarium.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Update</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {plants}} recorded. Reward to collect:</color>
 herbarium.rewards.collectButton = Collect reward {tier, number}
 herbarium.rewards.allCollected = All rewards collected
 

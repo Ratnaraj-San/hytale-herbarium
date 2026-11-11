@@ -47,7 +47,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     private static final String CATEGORY_KEY_PREFIX = "server.herbarium.category.";
 
     private static final Map<String, String> CATEGORY_ICON_OVERRIDES = Map.ofEntries(
-            Map.entry("Bramble", "Icons/ItemsGenerated/Plant_Bramble_Dry_Magic.png"),
+            Map.entry("Bramble", "Icons/ItemsGenerated/Plant_Bramble_Dry.png"),
             Map.entry("Bush", "Icons/ItemsGenerated/Plant_Bush_Green.png"),
             Map.entry("Cactus", "Icons/ItemsGenerated/Plant_Cactus_1.png"),
             Map.entry("Coral", "Icons/ItemsGenerated/Plant_Coral_Model_Yellow.png"),

@@ -4,7 +4,7 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 SCAN_FILE = HERE / "plants-scan.json"
-FINAL_FILE = HERE / "plants-final.json"
+FINAL_FILE = HERE.parent.parent / "src/main/resources/plants-v2.json"
 PLANTS_JSON = HERE.parent.parent / "src/main/resources/plants.json"
 
 

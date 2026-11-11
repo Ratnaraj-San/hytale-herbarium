@@ -1,6 +1,7 @@
 package com.ratnaraj.herbarium.data;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -12,14 +13,23 @@ import java.util.Set;
  */
 public class PlayerData {
 
+    /**
+     * A collected reward tier: when it was collected and at which rewards
+     * definition version (used to know which compensation grants apply).
+     */
+    public record CollectedTier(String collectedDate, String rewardsVersion) {
+    }
+
     private final Set<PlantInfo> plants;
-    private final Map<Integer, String> collectedRewardTiers;
+    private final Map<Integer, CollectedTier> collectedRewardTiers;
+    private final Map<Integer, Set<String>> claimedCompensations;
     private boolean journalOpened;
 
-    public PlayerData(Set<PlantInfo> plants, Map<Integer, String> collectedRewardTiers,
-                      boolean journalOpened) {
+    public PlayerData(Set<PlantInfo> plants, Map<Integer, CollectedTier> collectedRewardTiers,
+                      Map<Integer, Set<String>> claimedCompensations, boolean journalOpened) {
         this.plants = plants;
         this.collectedRewardTiers = collectedRewardTiers;
+        this.claimedCompensations = claimedCompensations;
         this.journalOpened = journalOpened;
     }
 
@@ -81,12 +91,31 @@ public class PlayerData {
         return collectedRewardTiers.containsKey(tier);
     }
 
-    public boolean markRewardTierCollected(int tier, String collectedDate) {
-        return collectedRewardTiers.putIfAbsent(tier, collectedDate) == null;
+    public boolean markRewardTierCollected(int tier, String collectedDate, String rewardsVersion) {
+        return collectedRewardTiers.putIfAbsent(tier, new CollectedTier(collectedDate, rewardsVersion)) == null;
     }
 
-    public Map<Integer, String> getCollectedRewardTiers() {
+    public Map<Integer, CollectedTier> getCollectedRewardTiers() {
         return Collections.unmodifiableMap(collectedRewardTiers);
+    }
+
+    /**
+     * Tier -> rewards definition version at the time the tier was collected.
+     */
+    public Map<Integer, String> getCollectedTierVersions() {
+        Map<Integer, String> versions = new HashMap<>();
+        for (Map.Entry<Integer, CollectedTier> entry : collectedRewardTiers.entrySet()) {
+            versions.put(entry.getKey(), entry.getValue().rewardsVersion());
+        }
+        return versions;
+    }
+
+    public boolean markCompensationClaimed(int tier, String version) {
+        return claimedCompensations.computeIfAbsent(tier, t -> new HashSet<>()).add(version);
+    }
+
+    public Map<Integer, Set<String>> getClaimedCompensations() {
+        return Collections.unmodifiableMap(claimedCompensations);
     }
 
     public void reset() {
@@ -97,6 +126,7 @@ public class PlayerData {
         plants.clear();
         plants.addAll(cleared);
         collectedRewardTiers.clear();
+        claimedCompensations.clear();
         journalOpened = false;
     }
 
