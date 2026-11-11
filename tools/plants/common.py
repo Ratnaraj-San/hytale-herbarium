@@ -45,31 +45,21 @@ def apply_obtainable_rule(entry):
 def apply_obtainable_rules(by_id):
     """Fixpoint post-processing (see AGENTS.md).
 
-    Base rule: apply_obtainable_rule. Then, iteratively until stable, set
-    obtainableInExplorationMode = false when ALL of:
-      - every locations list is empty (regions/zones/portals)
-      - obtainedFrom.crafting is falsy
-      - obtainedFrom.plants is empty OR no source plant in it is itself obtainable
+    Base rule: apply_obtainable_rule. Then set obtainableInExplorationMode = false
+    when ALL of:
+      - every locations list is empty (regions/zones/portals) -> not generated in the world
+      - obtainedFrom.crafting is falsy -> not player-craftable
+      - obtainedFrom.plants is empty -> does not come from another item
+    Rationale: an item that neither generates in the world, nor is crafted, nor comes
+    from another item cannot be obtained.
     """
     for it in by_id.values():
         apply_obtainable_rule(it)
-    changed = True
-    while changed:
-        changed = False
-        for pid, it in by_id.items():
-            if not it.get("obtainableInExplorationMode"):
-                continue
-            loc = it.get("locations") or {}
-            locations_empty = all(not loc.get(k) for k in ("regions", "zones", "portals"))
-            o = it.get("obtainedFrom") or {}
-            no_craft = not o.get("crafting")
-            sources = o.get("plants") or []
-            sources_ok = any(
-                by_id.get(s.get("id"), {}).get("obtainableInExplorationMode") for s in sources
-            )
-            if locations_empty and no_craft and (not sources or not sources_ok):
-                it["obtainableInExplorationMode"] = False
-                changed = True
+        loc = it.get("locations") or {}
+        locations_empty = all(not loc.get(k) for k in ("regions", "zones", "portals"))
+        o = it.get("obtainedFrom") or {}
+        if locations_empty and not o.get("crafting") and not o.get("plants"):
+            it["obtainableInExplorationMode"] = False
     return by_id
 
 

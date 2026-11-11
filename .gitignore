@@ -39,3 +39,6 @@ AGENTS.md
 
 # Plant scan tools: version the Python scripts, ignore generated JSON output
 /tools/plants/*.json
+# Python
+__pycache__/
+*.pyc

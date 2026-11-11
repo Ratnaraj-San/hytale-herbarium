@@ -47,7 +47,7 @@ class AssetsZip:
         if name not in self._cache:
             try:
                 with self.zf.open(name) as f:
-                    self._cache[name] = json.loads(f.read().decode("utf-8"))
+                    self._cache[name] = json.loads(f.read().decode("utf-8-sig"))
             except Exception:
                 self._cache[name] = None
         return self._cache[name]
@@ -61,15 +61,18 @@ class AssetsZip:
 
 
 def find_plant_ids(obj):
-    """Recursively collect Plant_* strings in Type/Solid values."""
+    """Recursively collect Plant_* strings in block-reference values
+    (Type/Solid in covers/assignments, Block in tile/mask files, name in prefabs)."""
     found = set()
     if isinstance(obj, dict):
         for k, v in obj.items():
-            if k in ("Type", "Solid"):
+            if k in ("Type", "Solid", "Block", "name"):
                 vals = v if isinstance(v, list) else [v]
                 for x in vals:
                     if isinstance(x, str):
                         found.update(PLANT_RE.findall(x))
+                    else:
+                        found |= find_plant_ids(x)  # e.g. Type: [{Block: "Plant_..."}]
             else:
                 found |= find_plant_ids(v)
     elif isinstance(obj, list):

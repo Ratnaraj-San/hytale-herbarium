@@ -59,8 +59,16 @@ def index_items(names):
 
 
 def index_drops(names):
-    """drops file stem -> path"""
-    return {m.group(1): n for n in names if (m := DROP_RE.match(n))}
+    """drops file stem (without .json and without the Drops_ prefix) -> path"""
+    out = {}
+    for n in names:
+        m = DROP_RE.match(n)
+        if m:
+            stem = m.group(1)
+            if stem.startswith("Drops_"):
+                stem = stem[len("Drops_"):]
+            out[stem] = n
+    return out
 
 
 def scan_salvage_relations(az):
@@ -156,8 +164,22 @@ class ItemChain:
         return False
 
     def has_break_drop(self, pid, drop_path):
-        """Break = breaking drops the item itself: a non-harvest Drops file of this
-        plant contains ItemId == pid (e.g. Plant_Barnacles drops only fibre -> false)."""
+        """Break = breaking drops the item itself, either via:
+        - a non-harvest Drops file of this plant containing ItemId == pid
+          (e.g. Plant_Barnacles drops only fibre -> false), or
+        - a Gathering.Breaking key in the Parent chain (no DropList -> the block
+          drops itself when broken, e.g. cacti with hatchet), or
+        - a Gathering.Soft key with no DropList (soft block drops itself, e.g. corals;
+          Soft.DropList "Empty" means breaking gives nothing, e.g. grasses)."""
+        for _, data in self._chain(pid):
+            g = (data.get("BlockType") or {}).get("Gathering")
+            if not isinstance(g, dict):
+                continue
+            if "Breaking" in g:
+                return True
+            soft = g.get("Soft")
+            if isinstance(soft, dict) and not soft.get("DropList"):
+                return True
         for stem, path in drop_path.items():
             if (stem == pid or stem.startswith(pid + "_")) and not stem.endswith("_Harvest"):
                 data = self.az.load_json(path)
@@ -174,17 +196,43 @@ class ItemChain:
         return "Shears" in self.tools_of(pid)
 
 
+def sapling_prefab_links(az, item_path):
+    """sapling item id -> set of full prefab paths it grows into
+    (BlockType.Farming.Stages[*].Prefabs[*].Path)."""
+    links = defaultdict(set)
+    for pid, path in item_path.items():
+        if not pid.startswith("Plant_Sapling"):
+            continue
+        data = az.load_json(path)
+        if not data:
+            continue
+        stages = ((data.get("BlockType") or {}).get("Farming") or {}).get("Stages") or {}
+        for stage_list in stages.values():
+            for stage in stage_list or []:
+                if not isinstance(stage, dict):
+                    continue
+                for p in stage.get("Prefabs", []):
+                    ppath = p.get("Path")
+                    if ppath:
+                        links[pid].add("Server/Prefabs/" + ppath)
+    return links
+
+
 def build_relations(az, drop_path, item_path, salvage_rel):
     """obtained plant A -> {source plant B -> {shears, drop, salvage}}"""
     relations = defaultdict(lambda: defaultdict(lambda: {"shears": False, "drop": False, "salvage": False}))
     for src, out in salvage_rel:
         if src and out and PLANT_ID_RE.match(src) and PLANT_ID_RE.match(out):
             relations[out][src]["salvage"] = True
+    plant_ids = sorted((p for p in item_path if PLANT_ID_RE.match(p)), key=len, reverse=True)
     for stem, path in drop_path.items():
         src = stem if PLANT_ID_RE.match(stem) else None
         if src is None:
-            for pid in item_path:
-                if PLANT_ID_RE.match(pid) and stem.startswith(pid + "_"):
+            # drops may be named after block states: "Plant_Crop_Carrot_StageFinal_Harvest"
+            # belongs to the block item "Plant_Crop_Carrot_Block"
+            for pid in plant_ids:
+                alt = pid[:-len("_Block")] if pid.endswith("_Block") else pid
+                if stem.startswith(alt + "_"):
                     src = pid
                     break
         if src is None:

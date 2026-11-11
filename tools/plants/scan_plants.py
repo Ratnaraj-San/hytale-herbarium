@@ -21,6 +21,7 @@ from obtained import (
     build_relations,
     index_drops,
     index_items,
+    sapling_prefab_links,
     scan_salvage_relations,
 )
 
@@ -35,9 +36,17 @@ def main():
     drop_path = index_drops(az.names)
     salvage_rel = scan_salvage_relations(az)
     chain = ItemChain(az, item_path)
-    loc, _portals = scan_locations(az)
+    loc, _portals, prefab_plants = scan_locations(az)
     _server_key, region_key, zone_key_for_region = make_key_fns(load_lang_keys(az))
     relations = build_relations(az, drop_path, item_path, salvage_rel)
+
+    # leaves (and any plant inside a tree prefab) are obtainable via the tree grown
+    # from a craftable sapling: sapling -> Farming stages -> prefab -> leaves
+    for sapling, prefab_paths in sapling_prefab_links(az, item_path).items():
+        for pp in prefab_paths:
+            for leaf in prefab_plants.get(pp, ()):
+                if leaf.startswith("Plant_Leaves"):
+                    relations[leaf][sapling]  # source entry, all flags false (grown, not dropped)
 
     result = defaultdict(list)
     all_plants = sorted(
