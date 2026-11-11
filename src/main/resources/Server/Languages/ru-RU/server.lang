@@ -86,12 +86,13 @@ herbarium.command.give.desc = Выдаёт Дневник ботаника.
 herbarium.command.unlock.desc = Открывает все растения категории.
 herbarium.command.playersOnly = Эту команду могут выполнять только игроки.
 herbarium.command.resetall.done = Ваш прогресс сброшен.
-herbarium.command.reset.done = Прогресс категории {category} сброшен для игрока {player}.
+herbarium.command.reset.done = Категория {category} сброшена для игрока {player}.
 herbarium.command.unlockall.done = Все растения открыты.
 herbarium.command.give.done = {journal} выдан игроку {player}.
 herbarium.command.unlock.category.desc = Категория для открытия (например, Flower).
 herbarium.command.unlock.done = Категория {category} открыта для игрока {player}.
 herbarium.command.common.unknownCategory = Неизвестная категория: {category}.
+herbarium.command.common.player.desc = Целевой игрок (по умолчанию — вы сами).
 
 herbarium.progress.recorded = растений записано: {count, number} / {total, number}
 

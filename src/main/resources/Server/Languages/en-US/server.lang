@@ -93,6 +93,7 @@ herbarium.command.unlock.done = Category {category} has been unlocked for {playe
 herbarium.command.give.done = A {journal} has been given to {player}.
 
 herbarium.command.common.unknownCategory = Unknown category: {category}.
+herbarium.command.common.player.desc = Target player (defaults to yourself).
 
 herbarium.progress.recorded = plants recorded: {count, number} / {total, number}
 

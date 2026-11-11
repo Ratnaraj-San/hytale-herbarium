@@ -86,12 +86,13 @@ herbarium.command.give.desc = Daruje Botanikův deník.
 herbarium.command.unlock.desc = Odemkne všechny rostliny jedné kategorie.
 herbarium.command.playersOnly = Tento příkaz mohou spouštět jen hráči.
 herbarium.command.resetall.done = Váš pokrok byl resetován.
-herbarium.command.reset.done = Pokrok kategorie {category} byl resetován pro hráče {player}.
+herbarium.command.reset.done = Kategorie {category} byla resetována pro hráče {player}.
 herbarium.command.unlockall.done = Všechny rostliny byly odemčeny.
 herbarium.command.give.done = {journal} byl dán hráči {player}.
 herbarium.command.unlock.category.desc = Kategorie k odemčení (např. Flower).
 herbarium.command.unlock.done = Kategorie {category} byla odemčena pro hráče {player}.
 herbarium.command.common.unknownCategory = Neznámá kategorie: {category}.
+herbarium.command.common.player.desc = Cílový hráč (výchozí sám sebe).
 
 herbarium.progress.recorded = zaznamenaných rostlin: {count, number} / {total, number}
 

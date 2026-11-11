@@ -86,12 +86,13 @@ herbarium.command.give.desc = Bir Botanik Günlüğü verir.
 herbarium.command.unlock.desc = Bir kategorideki tüm bitkilerin kilidini açar.
 herbarium.command.playersOnly = Bu komut yalnızca oyuncular tarafından çalıştırılabilir.
 herbarium.command.resetall.done = İlerlemen sıfırlandı.
-herbarium.command.reset.done = {category} kategorisinin ilerlemesi {player} için sıfırlandı.
+herbarium.command.reset.done = {category} kategorisi {player} için sıfırlandı.
 herbarium.command.unlockall.done = Tüm bitkilerin kilidi açıldı.
 herbarium.command.give.done = {player} adlı oyuncuya bir {journal} verildi.
 herbarium.command.unlock.category.desc = Kilidi açılacak kategori (örn. Flower).
 herbarium.command.unlock.done = {category} kategorisinin kilidi {player} için açıldı.
 herbarium.command.common.unknownCategory = Bilinmeyen kategori: {category}.
+herbarium.command.common.player.desc = Hedef oyuncu (varsayılan: kendin).
 
 herbarium.progress.recorded = kaydedilen bitkiler: {count, number} / {total, number}
 

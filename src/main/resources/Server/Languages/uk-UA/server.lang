@@ -86,12 +86,13 @@ herbarium.command.give.desc = Видає Щоденник ботаніка.
 herbarium.command.unlock.desc = Відкриває всі рослини категорії.
 herbarium.command.playersOnly = Цю команду можуть виконувати лише гравці.
 herbarium.command.resetall.done = Ваш прогрес скинуто.
-herbarium.command.reset.done = Прогрес категорії {category} скинуто для гравця {player}.
+herbarium.command.reset.done = Категорію {category} скинуто для гравця {player}.
 herbarium.command.unlockall.done = Усі рослини відкрито.
 herbarium.command.give.done = {journal} видано гравцю {player}.
 herbarium.command.unlock.category.desc = Категорія для відкриття (наприклад, Flower).
 herbarium.command.unlock.done = Категорію {category} відкрито для гравця {player}.
 herbarium.command.common.unknownCategory = Невідома категорія: {category}.
+herbarium.command.common.player.desc = Цільовий гравець (за замовчуванням — ви самі).
 
 herbarium.progress.recorded = рослин записано: {count, number} / {total, number}
 
