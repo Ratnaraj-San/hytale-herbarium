@@ -36,3 +36,6 @@ AGENTS.md
 
 # Generated plant location checklists
 /plants/
+
+# Plant scan tools: version the Python scripts, ignore generated JSON output
+/tools/plants/*.json
