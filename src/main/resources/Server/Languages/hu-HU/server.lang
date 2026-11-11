@@ -77,7 +77,7 @@ herbarium.rewards.collectButton = {tier, number}. jutalom begyűjtése
 herbarium.rewards.allCollected = Az összes jutalom begyűjtve
 
 herbarium.command.desc = Herbarium parancsok
-herbarium.command.ui.desc = Megnyitja a Botanikus naplót.
+herbarium.command.open.desc = Megnyitja a Botanikus naplót.
 herbarium.command.reset.desc = Törli az összes előrehaladásodat.
 herbarium.command.unlockall.desc = Feloldja az összes növényt.
 herbarium.command.playersOnly = Ezt a parancsot csak játékosok futtathatják.

@@ -77,7 +77,7 @@ herbarium.rewards.collectButton = 领取奖励 {tier, number}
 herbarium.rewards.allCollected = 已领取全部奖励
 
 herbarium.command.desc = Herbarium 命令
-herbarium.command.ui.desc = 打开植物学家的日志。
+herbarium.command.open.desc = 打开植物学家的日志。
 herbarium.command.reset.desc = 删除你的全部进度。
 herbarium.command.unlockall.desc = 解锁所有植物。
 herbarium.command.playersOnly = 此命令只能由玩家执行。

@@ -77,7 +77,7 @@ herbarium.rewards.collectButton = Nouda palkinto {tier, number}
 herbarium.rewards.allCollected = Kaikki palkinnot noudettu
 
 herbarium.command.desc = Herbarium-komennot
-herbarium.command.ui.desc = Avaa Botanistin päiväkirjan.
+herbarium.command.open.desc = Avaa Botanistin päiväkirjan.
 herbarium.command.reset.desc = Poistaa koko edistymisesi.
 herbarium.command.unlockall.desc = Avaa kaikki kasvit.
 herbarium.command.playersOnly = Tämän komennon voivat suorittaa vain pelaajat.

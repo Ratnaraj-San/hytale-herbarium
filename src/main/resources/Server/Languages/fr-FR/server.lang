@@ -77,7 +77,7 @@ herbarium.rewards.collectButton = Collecter la récompense {tier, number}
 herbarium.rewards.allCollected = Récompenses collectées
 
 herbarium.command.desc = Commandes Herbarium
-herbarium.command.ui.desc = Ouvre le journal du botaniste.
+herbarium.command.open.desc = Ouvre le journal du botaniste.
 herbarium.command.reset.desc = Supprime toute votre progression.
 herbarium.command.unlockall.desc = Débloque toutes les plantes.
 herbarium.command.playersOnly = Cette commande ne peut être exécutée que par des joueurs.

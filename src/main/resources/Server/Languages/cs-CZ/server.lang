@@ -77,7 +77,7 @@ herbarium.rewards.collectButton = Vyzvednout odměnu {tier, number}
 herbarium.rewards.allCollected = Všechny odměny vyzvednuty
 
 herbarium.command.desc = Příkazy Herbarium
-herbarium.command.ui.desc = Otevře Botanikův deník.
+herbarium.command.open.desc = Otevře Botanikův deník.
 herbarium.command.reset.desc = Smaže veškerý váš pokrok.
 herbarium.command.unlockall.desc = Odemkne všechny rostliny.
 herbarium.command.playersOnly = Tento příkaz mohou spouštět jen hráči.

@@ -77,7 +77,7 @@ herbarium.rewards.collectButton = Ridică recompensa {tier, number}
 herbarium.rewards.allCollected = Toate recompensele au fost ridicate
 
 herbarium.command.desc = Comenzi Herbarium
-herbarium.command.ui.desc = Deschide Jurnalul botanistului.
+herbarium.command.open.desc = Deschide Jurnalul botanistului.
 herbarium.command.reset.desc = Îți șterge întregul progres.
 herbarium.command.unlockall.desc = Deblochează toate plantele.
 herbarium.command.playersOnly = Această comandă poate fi executată doar de jucători.

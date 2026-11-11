@@ -77,7 +77,7 @@ herbarium.rewards.collectButton = Получить награду {tier, number}
 herbarium.rewards.allCollected = Все награды получены
 
 herbarium.command.desc = Команды Herbarium
-herbarium.command.ui.desc = Открывает Дневник ботаника.
+herbarium.command.open.desc = Открывает Дневник ботаника.
 herbarium.command.reset.desc = Удаляет весь ваш прогресс.
 herbarium.command.unlockall.desc = Открывает все растения.
 herbarium.command.playersOnly = Эту команду могут выполнять только игроки.

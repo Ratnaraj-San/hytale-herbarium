@@ -77,7 +77,7 @@ herbarium.rewards.collectButton = Belohnung {tier, number} einsammeln
 herbarium.rewards.allCollected = Alle Belohnungen gesammelt
 
 herbarium.command.desc = Herbarium-Befehle
-herbarium.command.ui.desc = Öffnet das Botaniker-Journal.
+herbarium.command.open.desc = Öffnet das Botaniker-Journal.
 herbarium.command.reset.desc = Löscht deinen gesamten Fortschritt.
 herbarium.command.unlockall.desc = Schaltet alle Pflanzen frei.
 herbarium.command.playersOnly = Dieser Befehl kann nur von Spielern ausgeführt werden.

@@ -15,13 +15,13 @@ import com.ratnaraj.herbarium.Herbarium;
 
 import javax.annotation.Nonnull;
 
-public class HerbariumCommandUI extends AbstractPlayerCommand {
+public class HerbariumCommandOpen extends AbstractPlayerCommand {
 
-    private static final String UI_DESC_KEY = "server.herbarium.command.ui.desc";
+    private static final String OPEN_DESC_KEY = "server.herbarium.command.open.desc";
 
-    public HerbariumCommandUI() {
-        super("ui", UI_DESC_KEY);
-        requirePermission(HytalePermissions.fromCommand("herbarium", "ui"));
+    public HerbariumCommandOpen() {
+        super("open", OPEN_DESC_KEY);
+        requirePermission(HytalePermissions.fromCommand("herbarium", "open"));
     }
 
     @Override

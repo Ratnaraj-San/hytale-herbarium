@@ -77,7 +77,7 @@ herbarium.rewards.collectButton = Beloning {tier, number} ophalen
 herbarium.rewards.allCollected = Alle beloningen opgehaald
 
 herbarium.command.desc = Herbarium-commando's
-herbarium.command.ui.desc = Opent het Botanische journaal.
+herbarium.command.open.desc = Opent het Botanische journaal.
 herbarium.command.reset.desc = Verwijdert al je voortgang.
 herbarium.command.unlockall.desc = Ontgrendelt alle planten.
 herbarium.command.playersOnly = Dit commando kan alleen door spelers worden uitgevoerd.

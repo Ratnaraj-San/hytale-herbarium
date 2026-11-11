@@ -77,7 +77,7 @@ herbarium.rewards.collectButton = Hämta belöning {tier, number}
 herbarium.rewards.allCollected = Alla belöningar hämtade
 
 herbarium.command.desc = Herbarium-kommandon
-herbarium.command.ui.desc = Öppnar Botanikerns journal.
+herbarium.command.open.desc = Öppnar Botanikerns journal.
 herbarium.command.reset.desc = Raderar hela din progression.
 herbarium.command.unlockall.desc = Låser upp alla växter.
 herbarium.command.playersOnly = Det här kommandot kan bara utföras av spelare.

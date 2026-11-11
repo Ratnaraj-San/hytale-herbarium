@@ -77,7 +77,7 @@ herbarium.rewards.collectButton = Coletar a recompensa {tier, number}
 herbarium.rewards.allCollected = Todas as recompensas coletadas
 
 herbarium.command.desc = Comandos do Herbarium
-herbarium.command.ui.desc = Abre o Diário do Botânico.
+herbarium.command.open.desc = Abre o Diário do Botânico.
 herbarium.command.reset.desc = Apaga todo o teu progresso.
 herbarium.command.unlockall.desc = Desbloqueia todas as plantas.
 herbarium.command.playersOnly = Este comando só pode ser executado por jogadores.

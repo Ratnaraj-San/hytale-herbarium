@@ -77,7 +77,7 @@ herbarium.rewards.collectButton = Отримати винагороду {tier, n
 herbarium.rewards.allCollected = Усі винагороди отримано
 
 herbarium.command.desc = Команди Herbarium
-herbarium.command.ui.desc = Відкриває Щоденник ботаніка.
+herbarium.command.open.desc = Відкриває Щоденник ботаніка.
 herbarium.command.reset.desc = Видаляє весь ваш прогрес.
 herbarium.command.unlockall.desc = Відкриває всі рослини.
 herbarium.command.playersOnly = Цю команду можуть виконувати лише гравці.

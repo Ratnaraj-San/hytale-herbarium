@@ -77,7 +77,7 @@ herbarium.rewards.collectButton = {tier, number}. ödülü al
 herbarium.rewards.allCollected = Tüm ödüller alındı
 
 herbarium.command.desc = Herbarium komutları
-herbarium.command.ui.desc = Botanik Günlüğü'nü açar.
+herbarium.command.open.desc = Botanik Günlüğü'nü açar.
 herbarium.command.reset.desc = Tüm ilerlemeni siler.
 herbarium.command.unlockall.desc = Tüm bitkilerin kilidini açar.
 herbarium.command.playersOnly = Bu komut yalnızca oyuncular tarafından çalıştırılabilir.
