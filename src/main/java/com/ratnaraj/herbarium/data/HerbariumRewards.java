@@ -16,11 +16,11 @@ public final class HerbariumRewards {
                     new Reward("Ingredient_Charcoal", 50),
                     new Reward("Ingredient_Life_Essence", 50)),
             2, List.of(
-                    new Reward("Potion_Poison", 1),
+                    new Reward("Potion_Poison", 5),
                     new Reward("Ingredient_Flour", 10),
                     new Reward("Ingredient_Life_Essence_Concentrated", 1)),
             3, List.of(
-                    new Reward("Potion_Regen_Mana", 1),
+                    new Reward("Potion_Regen_Mana", 5),
                     new Reward("Tool_Trap_Bait", 10),
                     new Reward("Ingredient_Life_Essence_Concentrated", 2)),
             4, List.of(
@@ -28,11 +28,11 @@ public final class HerbariumRewards {
                     new Reward("Ingredient_Poop", 50),
                     new Reward("Ingredient_Life_Essence_Concentrated", 4)),
             5, List.of(
-                    new Reward("Potion_Regen_Health", 1),
+                    new Reward("Potion_Regen_Health", 5),
                     new Reward("Ingredient_Salt", 25),
                     new Reward("Ingredient_Life_Essence_Concentrated", 8)),
             6, List.of(
-                    new Reward("Potion_Regen_Stamina", 1),
+                    new Reward("Potion_Regen_Stamina", 5),
                     new Reward("Ingredient_Dough", 25),
                     new Reward("Ingredient_Life_Essence_Concentrated", 16)),
             7, List.of(
@@ -40,9 +40,13 @@ public final class HerbariumRewards {
                     new Reward("Ingredient_Spices", 25),
                     new Reward("Ingredient_Life_Essence_Concentrated", 32)),
             8, List.of(
-                    new Reward("Deco_Trophy_Harvest", 1),
+                    new Reward("Potion_Mana", 5),
                     new Reward("Food_Pie_Pumpkin", 25),
-                    new Reward("Ingredient_Life_Essence_Concentrated", 64))
+                    new Reward("Ingredient_Life_Essence_Concentrated", 64)),
+            9, List.of(
+                    new Reward("Deco_Trophy_Harvest", 1),
+                    new Reward("Tool_Repair_Kit_Goblin", 25),
+                    new Reward("Ingredient_Life_Essence_Concentrated", 100))
     );
 
     public static int getTierThreshold(int tier) {
