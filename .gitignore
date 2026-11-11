@@ -33,3 +33,6 @@ buildSrc/
 
 # Other
 AGENTS.md
+
+# Generated plant location checklists
+/plants/

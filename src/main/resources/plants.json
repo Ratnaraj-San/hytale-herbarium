@@ -75,7 +75,7 @@
     {
       "id": "Plant_Bush_Jungle",
       "obtainableInExplorationMode": true,
-      "locations": ["server.map.region.Zone2_Tier1", "server.map.region.Zone4_Tier4"]
+      "locations": ["server.map.region.Zone2_Tier1", "server.map.region.Zone4_Tier4", "server.portals.oasis"]
     },
     {
       "id": "Plant_Bush_Lush",
@@ -1185,7 +1185,7 @@
   "Leaves": [
     {
       "id": "Plant_Leaves_Amber",
-      "obtainableInExplorationMode": true,
+      "obtainableInExplorationMode": false,
       "locations": ["server.herbarium.tree.amber"]
     },
     {
@@ -1614,8 +1614,8 @@
     },
     {
       "id": "Plant_Crop_Mushroom_Block_Brown_Mycelium",
-      "obtainableInExplorationMode": false,
-      "locations": ["server.map.region.Zone3_Tier2"]
+      "obtainableInExplorationMode": true,
+      "locations": ["server.portals.hederas_lair"]
     },
     {
       "id": "Plant_Crop_Mushroom_Block_Brown_Trunk",
@@ -2622,7 +2622,7 @@
     {
       "id": "Plant_Vine_Hanging",
       "obtainableInExplorationMode": true,
-      "locations": ["server.map.region.Zone3_Tier2"]
+      "locations": ["server.map.region.Zone3_Tier2", "server.portals.hederas_lair"]
     },
     {
       "id": "Plant_Vine_Jungle",
@@ -2632,7 +2632,7 @@
     {
       "id": "Plant_Vine_Liana",
       "obtainableInExplorationMode": true,
-      "locations": ["server.map.zone.Emerald_Wilds", "server.herbarium.location.tropical_jungle"]
+      "locations": ["server.map.zone.Emerald_Wilds", "server.herbarium.location.tropical_jungle", "server.portals.goblinBreach"]
     },
     {
       "id": "Plant_Vine_Liana_End",
