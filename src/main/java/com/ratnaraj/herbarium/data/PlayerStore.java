@@ -20,11 +20,11 @@ import java.util.logging.Level;
  */
 public class PlayerStore {
 
-    private final PlantCatalog catalog;
+    private final PlantCatalogV2 catalog;
     private final PlayerFileStore fileStore;
     private final Map<UUID, PlayerData> players = new ConcurrentHashMap<>();
 
-    public PlayerStore(PlantCatalog catalog) {
+    public PlayerStore(PlantCatalogV2 catalog) {
         this.catalog = catalog;
         this.fileStore = new PlayerFileStore(catalog);
     }

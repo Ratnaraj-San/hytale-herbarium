@@ -6,8 +6,10 @@ import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.ratnaraj.herbarium.Herbarium;
 import com.ratnaraj.herbarium.data.PlantAssets;
 import com.ratnaraj.herbarium.data.PlantInfo;
+import com.ratnaraj.herbarium.data.PlantLocationsV2;
 import com.ratnaraj.herbarium.data.PlayerStore;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlantDetailsPanel {
@@ -59,8 +61,16 @@ public class PlantDetailsPanel {
         }
     }
 
-    public static void setLocationsPanel(UICommandBuilder commands, List<String> locationKeys) {
-        boolean hasPlant = locationKeys != null;
+    public static void setLocationsPanel(UICommandBuilder commands, PlantLocationsV2 locations) {
+        List<String> locationKeys = new ArrayList<>();
+        boolean hasPlant = locations != null;
+
+        if (hasPlant) {
+            locationKeys.addAll(locations.getRegions());
+            locationKeys.addAll(locations.getZones());
+            locationKeys.addAll(locations.getPortals());
+        }
+
         boolean hasLocations = hasPlant && !locationKeys.isEmpty();
 
         commands.set("#PlantLocationsTitle.Visible", hasPlant);

@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -32,11 +33,13 @@ import java.util.logging.Level;
  */
 public class PlayerFileStore {
 
-    private final PlantCatalog catalog;
+    private static final String V1_BACKUP_PREFIX = "v1.";
+
+    private final PlantCatalogV2 catalog;
 
     private Path dataDirectory;
 
-    public PlayerFileStore(PlantCatalog catalog) {
+    public PlayerFileStore(PlantCatalogV2 catalog) {
         this.catalog = catalog;
     }
 
@@ -72,7 +75,11 @@ public class PlayerFileStore {
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(dataDirectory, "*.json")) {
             for (Path file : stream) {
                 try {
-                    String playerId = file.getFileName().toString().replace(".json", "");
+                    String fileName = file.getFileName().toString();
+                    if (fileName.startsWith(V1_BACKUP_PREFIX)) {
+                        continue;
+                    }
+                    String playerId = fileName.replace(".json", "");
                     UUID uuid = UUID.fromString(playerId);
                     PlayerData data = loadPlayer(uuid);
                     if (!data.getPlants().isEmpty()) {
@@ -122,6 +129,10 @@ public class PlayerFileStore {
             }
 
             JsonObject rootObject = JsonParser.parseString(fileContent).getAsJsonObject();
+
+            if (!rootObject.has("pluginVersion")) {
+                backupAsV1(file, playerId);
+            }
 
             boolean journalOpened = rootObject.has("journalOpened")
                     && rootObject.get("journalOpened").getAsBoolean();
@@ -175,6 +186,7 @@ public class PlayerFileStore {
 
         try (BufferedWriter writer = Files.newBufferedWriter(file)) {
             JsonObject root = new JsonObject();
+            root.addProperty("pluginVersion", Herbarium.getPluginVersion());
             root.addProperty("journalOpened", data.hasOpenedJournal());
 
             Map<Integer, String> collected = new TreeMap<>(data.getCollectedRewardTiers());
@@ -207,6 +219,26 @@ public class PlayerFileStore {
 
     private Path getPlayerFile(UUID playerId) {
         return dataDirectory.resolve(playerId.toString() + ".json");
+    }
+
+    /**
+     * A save file without pluginVersion predates versioned saves: keep an
+     * untouched copy as v1.<uuid>.json so the player can roll back by
+     * deleting the new file and renaming the backup. The current version is
+     * stamped on the file at the next save.
+     */
+    private void backupAsV1(Path file, UUID playerId) {
+        try {
+            Path backup = dataDirectory.resolve(V1_BACKUP_PREFIX + file.getFileName());
+            Files.copy(file, backup, StandardCopyOption.REPLACE_EXISTING);
+            Herbarium.getInstance().getLogger().at(Level.INFO).log(
+                    "[Herbarium] Save of " + playerId + " had no pluginVersion, backed up as " + backup.getFileName()
+            );
+        } catch (IOException e) {
+            Herbarium.getInstance().getLogger().at(Level.WARNING).log(
+                    "[Herbarium] Could not create v1 backup for " + playerId + ": " + e.getMessage()
+            );
+        }
     }
 
     /** A fresh progression: every plant of the catalog, undiscovered. */
