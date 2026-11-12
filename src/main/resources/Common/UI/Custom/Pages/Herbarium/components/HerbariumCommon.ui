@@ -132,6 +132,47 @@ $Sounds = "../../../Sounds.ui";
   }
 };
 
+// Section box with a header row: title left (#SectionTitle, FlexWeight 1), optional
+// icon right (#HeaderIcon, 48px, hidden by default), then a wrapping list.
+// Usage: $H.@SectionBox #MySection { @BoxPad = ...; }   (override @BoxPad to change padding)
+// Java addresses "#MySection #SectionTitle", "#MySection #HeaderIcon",
+// and appends into "#MySection #SectionList".
+@SectionBox = Group {
+  @BoxPad = Padding(Full: 8);
+
+  LayoutMode: Top;
+  Background: (TexturePath: "../textures/SectionBackground.png", Border: 8);
+  Padding: @BoxPad;
+
+  Group #SectionHeader {
+    LayoutMode: CenterMiddle;
+
+    Label #SectionTitle {
+      Style: (...@SectionTitleStyle, VerticalAlignment: Center);
+      Text: "";
+      FlexWeight: 1;
+      Visible: false;
+    }
+
+    AssetImage #HeaderIcon {
+      Anchor: (Width: 48, Height: 48);
+      FallbackTexturePath: "UI/Custom/Pages/Memories/MissingIcon.png";
+      TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+      TooltipText: "";
+      Visible: false;
+    }
+  }
+
+  @Spacer {
+    @Pad = Padding(Vertical: 4);
+  }
+
+  Group #SectionList {
+    LayoutMode: LeftCenterWrap;
+    Anchor: (Full: 0);
+  }
+};
+
 // Small tile for a crafting ingredient: icon + tooltip name (amount sits below the tile).
 // Same structure as PlantTile (centered icon over labels) on a section background.
 // Usage: $H.@IngredientTile #MyTile {}

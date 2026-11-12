@@ -117,58 +117,12 @@ $Herbarium = "HerbariumCommon.ui";
 
         $Herbarium.@Spacer #SpacerAfterInteractions { Visible: false; }
 
-        Group #PlantContainerObtainedFromCrafting {
-          LayoutMode: Top;
-          Background: (TexturePath: "../textures/SectionBackground.png", Border: 8);
-          Padding: (Full: 8);
-
-          Group #CraftingHeader {
-            LayoutMode: CenterMiddle;
-
-            Label #SectionTitle {
-              Style: (...$Herbarium.@SectionTitleStyle, VerticalAlignment: Center);
-              Text: "";
-              FlexWeight: 1;
-              Visible: false;
-            }
-
-            AssetImage #BenchIcon {
-              Anchor: (Width: 48, Height: 48);
-              FallbackTexturePath: "UI/Custom/Pages/Memories/MissingIcon.png";
-              TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
-              TooltipText: "";
-            }
-          }
-
-          $Herbarium.@Spacer {
-            @Pad = Padding(Vertical: 4);
-          }
-
-          Group #SectionList {
-            LayoutMode: LeftCenterWrap;
-            Anchor: (Full: 0);
-          }
-        }
+        $Herbarium.@SectionBox #PlantContainerObtainedFromCrafting {}
 
         $Herbarium.@Spacer #SpacerAfterCrafting { Visible: false; }
 
-        Group #PlantContainerObtainedFromPlants {
-          LayoutMode: Top;
-          Background: (TexturePath: "../textures/SectionBackground.png", Border: 8);
-          Padding: (Horizontal: 8, Top: 16, Bottom: 8);
-
-          Label #SectionTitle {
-            Style: $Herbarium.@SectionTitleStyle;
-            Text: "";
-            Visible: false;
-          }
-
-          $Herbarium.@Spacer { @Pad = Padding(Vertical: 4); }
-
-          Group #SectionList {
-            LayoutMode: LeftCenterWrap;
-            Anchor: (Full: 0);
-          }
+        $Herbarium.@SectionBox #PlantContainerObtainedFromPlants {
+          @BoxPad = Padding(Horizontal: 8, Top: 16, Bottom: 8);
         }
       }
 

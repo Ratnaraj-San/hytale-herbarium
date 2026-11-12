@@ -22,7 +22,6 @@ public class PlantDetailsPanel {
     private static final String ZONE_SECTION_UI = "Pages/Herbarium/components/ZoneSection.ui";
     private static final String INGREDIENT_TILE_UI = "Pages/Herbarium/components/IngredientTile.ui";
     private static final String PLANT_INGREDIENT_TILE_UI = "Pages/Herbarium/components/PlantIngredientTile.ui";
-    private static final String FLEX_SPACER_UI = "Pages/Herbarium/components/FlexSpacer.ui";
     private static final String PLANT_SOURCE_TILE_UI = "Pages/Herbarium/components/PlantSourceTile.ui";
     private static final String LOCATIONS_FOUND_IN_KEY = "server.herbarium.ui.container.locations.title";
     private static final String LOCATION_UNKNOWN_KEY = "server.herbarium.ui.locations.unknown";
@@ -194,50 +193,32 @@ public class PlantDetailsPanel {
 
     private static void setPlantsSection(UICommandBuilder commands, boolean visible, List<PlantSource> sources) {
         String section = "#PlantContainerObtainedFrom #PlantContainerObtainedFromPlants";
-        String list = section + " #SectionList";
+        String list = beginSection(commands, section, visible, PLANTS_TITLE_KEY);
 
-        commands.set(section + ".Visible", visible);
-        commands.set(section + " #SectionTitle.Visible", visible);
-        commands.clear(list);
-
-        if (!visible) {
-            commands.set(section + " #SectionTitle.Text", "");
-            return;
-        }
-
-        commands.set(section + " #SectionTitle.Text", Message.translation(PLANTS_TITLE_KEY));
+        if (list == null) { return; }
 
         for (int j = 0; j < sources.size(); j++) {
             PlantSource source = sources.get(j);
-            String entry = list + "[" + j + "]";
+            String entry = appendEntry(commands, list, PLANT_SOURCE_TILE_UI, j);
 
-            commands.append(list, PLANT_SOURCE_TILE_UI);
             commands.set(entry + " #PlantTile #ButtonNotSelected.Visible", true);
-            setPlantName(commands, entry + " #PlantTile #ButtonNotSelected.TooltipText", source.plantId());
+            setPlantName(commands, entry + " #PlantTile #ButtonNotSelected.TooltipTextSpans", source.plantId());
             setAssetIcon(commands, entry + " #PlantTile #Icon", source.plantId());
 
             String icons = entry + " #SourceInteractions";
             commands.set(icons + " #IconBreak.Visible", source.drop());
-            commands.set(icons + " #IconBreak.TooltipText", Message.translation(INTERACTION_BREAK_KEY));
+            commands.set(icons + " #IconBreak.TooltipTextSpans", Message.translation(INTERACTION_BREAK_KEY));
             commands.set(icons + " #IconShears.Visible", source.shears());
-            commands.set(icons + " #IconShears.TooltipText", Message.translation(INTERACTION_SHEARS_KEY));
+            commands.set(icons + " #IconShears.TooltipTextSpans", Message.translation(INTERACTION_SHEARS_KEY));
             commands.set(icons + " #IconSalvage.Visible", source.salvage());
-            commands.set(icons + " #IconSalvage.TooltipText", Message.translation(INTERACTION_SALVAGE_KEY));
+            commands.set(icons + " #IconSalvage.TooltipTextSpans", Message.translation(INTERACTION_SALVAGE_KEY));
         }
     }
 
     private static void setInteractionsSection(UICommandBuilder commands, boolean visible, PlantInteractions interactions) {
         String section = "#PlantContainerObtainedFrom #PlantContainerObtainedFromInteractions";
 
-        commands.set(section + ".Visible", visible);
-        commands.set(section + " #SectionTitle.Visible", visible);
-
-        if (!visible) {
-            commands.set(section + " #SectionTitle.Text", "");
-            return;
-        }
-
-        commands.set(section + " #SectionTitle.Text", Message.translation(INTERACTIONS_TITLE_KEY));
+        if (beginSection(commands, section, visible, INTERACTIONS_TITLE_KEY) == null) { return; }
 
         String row = section + " #InteractionsHeader #InteractionsRow";
 
@@ -248,65 +229,73 @@ public class PlantDetailsPanel {
 
     private static void setCraftingSection(UICommandBuilder commands, boolean visible, PlantCrafting crafting) {
         String section = "#PlantContainerObtainedFrom #PlantContainerObtainedFromCrafting";
-        String body = section + " #SectionList";
+        String body = beginSection(commands, section, visible, CRAFTING_TITLE_KEY);
 
-        commands.set(section + ".Visible", visible);
-        commands.set(section + " #SectionTitle.Visible", visible);
-        commands.clear(body);
-
-        if (!visible || crafting == null) {
-            commands.set(section + " #SectionTitle.Text", "");
-            return;
-        }
-
-        commands.set(section + " #SectionTitle.Text", Message.translation(CRAFTING_TITLE_KEY));
+        if (body == null || crafting == null) { return; }
 
         // A recipe has a single bench requirement (verified in plants-v2.json).
         // Its icon sits in the section header (48px, right side); name only as tooltip.
         PlantCrafting.Bench bench = crafting.benches().get(0);
-        String header = section + " #CraftingHeader";
-        setAssetTooltip(commands, header + " #BenchIcon", bench.itemId());
-        setAssetIcon(commands, header + " #BenchIcon", bench.itemId());
+        String header = section + " #SectionHeader";
+        commands.set(header + " #HeaderIcon.Visible", true);
+        setAssetTooltip(commands, header + " #HeaderIcon", bench.itemId());
+        setAssetIcon(commands, header + " #HeaderIcon", bench.itemId());
 
         for (int j = 0; j < crafting.inputs().size(); j++) {
             PlantCrafting.Ingredient ingredient = crafting.inputs().get(j);
-            String entry = body + "[" + j + "]";
+            boolean isPlant = Herbarium.getCatalog().isPlantItem(ingredient.itemId());
+            String entry = appendEntry(commands, body, isPlant ? PLANT_INGREDIENT_TILE_UI : INGREDIENT_TILE_UI, j);
 
-            if (Herbarium.getCatalog().isPlantItem(ingredient.itemId())) {
+            if (isPlant) {
                 // Plant ingredient: PlantTile shrunk to the ingredient tile size.
-                commands.append(body, PLANT_INGREDIENT_TILE_UI);
                 commands.set(entry + " #PlantTile #ButtonNotSelected.Visible", true);
-                setPlantName(commands, entry + " #PlantTile #ButtonNotSelected.TooltipText", ingredient.itemId());
+                setPlantName(commands, entry + " #PlantTile #ButtonNotSelected.TooltipTextSpans", ingredient.itemId());
                 setAssetIcon(commands, entry + " #PlantTile #Icon", ingredient.itemId());
             } else {
-                commands.append(body, INGREDIENT_TILE_UI);
-                String tile = entry + " #IngredientTile";
-                setAssetTooltip(commands, tile, ingredient.itemId());
-                setAssetIcon(commands, tile + " #IngredientIcon", ingredient.itemId());
+                setAssetTooltip(commands, entry + " #IngredientTile", ingredient.itemId());
+                setAssetIcon(commands, entry + " #IngredientTile #IngredientIcon", ingredient.itemId());
             }
 
             commands.set(entry + " #IngredientAmount.Text", "x" + ingredient.quantity());
         }
     }
 
-    private static void setAssetLabel(UICommandBuilder commands, String labelSelector, String assetId) {
-        String translationKey = PlantAssets.getPlantTranslationKey(assetId);
+    /**
+     * Common section setup: visibility, title, cleared list. Returns the list selector,
+     * or null when the section is hidden.
+     */
+    private static String beginSection(UICommandBuilder commands, String section, boolean visible, String titleKey) {
+        String list = section + " #SectionList";
 
-        if (translationKey != null) {
-            commands.set(labelSelector + ".Text", Message.translation(translationKey));
-        } else {
-            commands.set(labelSelector + ".Text", assetId);
+        commands.set(section + ".Visible", visible);
+        commands.set(section + " #SectionTitle.Visible", visible);
+        commands.clear(list);
+
+        if (!visible) {
+            commands.set(section + " #SectionTitle.Text", "");
+            return null;
         }
+
+        commands.set(section + " #SectionTitle.Text", Message.translation(titleKey));
+        return list;
+    }
+
+    private static String appendEntry(UICommandBuilder commands, String list, String uiFile, int index) {
+        commands.append(list, uiFile);
+        return list + "[" + index + "]";
+    }
+
+    private static Message assetMessage(String assetId) {
+        String translationKey = PlantAssets.getPlantTranslationKey(assetId);
+        return translationKey != null ? Message.translation(translationKey) : Message.raw(assetId);
+    }
+
+    private static void setAssetLabel(UICommandBuilder commands, String labelSelector, String assetId) {
+        commands.set(labelSelector + ".Text", assetMessage(assetId));
     }
 
     private static void setAssetTooltip(UICommandBuilder commands, String selector, String assetId) {
-        String translationKey = PlantAssets.getPlantTranslationKey(assetId);
-
-        if (translationKey != null) {
-            commands.set(selector + ".TooltipText", Message.translation(translationKey));
-        } else {
-            commands.set(selector + ".TooltipText", assetId);
-        }
+        commands.set(selector + ".TooltipTextSpans", assetMessage(assetId));
     }
 
     private static void setAssetIcon(UICommandBuilder commands, String iconSelector, String assetId) {
@@ -322,11 +311,9 @@ public class PlantDetailsPanel {
     private static void setInteractionIcon(UICommandBuilder commands, String icon, boolean visible, String tooltipKey) {
         commands.set(icon + ".Visible", visible);
 
-        if (visible) {
-            commands.set(icon + ".TooltipText", Message.translation(tooltipKey));
-        } else {
-            commands.set(icon + ".TooltipText", "");
-        }
+        // TooltipTextSpans rejects null; clear with an empty message instead.
+        commands.set(icon + ".TooltipTextSpans",
+                visible ? Message.translation(tooltipKey) : Message.raw(""));
     }
 
     public static String formatDate(String isoInstant) {
@@ -335,13 +322,7 @@ public class PlantDetailsPanel {
     }
 
     public static void setPlantName(UICommandBuilder commands, String selector, String plantId) {
-        String translationKey = PlantAssets.getPlantTranslationKey(plantId);
-
-        if (translationKey != null) {
-            commands.set(selector, Message.translation(translationKey));
-        } else {
-            commands.set(selector, plantId);
-        }
+        commands.set(selector, assetMessage(plantId));
     }
 
     public static void setPlantId(UICommandBuilder commands, String selector, String plantId, boolean devView) {

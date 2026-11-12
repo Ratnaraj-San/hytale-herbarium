@@ -345,7 +345,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
             if (isDiscovered) {
                 String button = isSelected ? "#ButtonSelected" : "#ButtonNotSelected";
                 commands.set(tile + " " + button + ".Visible", true);
-                PlantDetailsPanel.setPlantName(commands, tile + " " + button + ".TooltipText", plantId);
+                PlantDetailsPanel.setPlantName(commands, tile + " " + button + ".TooltipTextSpans", plantId);
 
                 String icon = PlantAssets.getPlantIcon(plantId);
                 if (icon != null) {
