@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,7 +46,15 @@ public class PlantLocationsV2 {
                 map.put(zone, Collections.unmodifiableList(regions));
             }
 
-            return Collections.unmodifiableMap(map);
+            // Player progression order: Zone1, Zone2, Zone3, Zone4, then the rest (Oceans).
+            List<Map.Entry<String, List<String>>> entries = new ArrayList<>(map.entrySet());
+            entries.sort(Comparator.comparingInt(e -> zoneOrder(e.getValue())));
+            Map<String, List<String>> sorted = new LinkedHashMap<>();
+            for (Map.Entry<String, List<String>> e : entries) {
+                sorted.put(e.getKey(), e.getValue());
+            }
+
+            return Collections.unmodifiableMap(sorted);
         } catch (Exception e) {
             Herbarium
                     .getInstance()
@@ -56,6 +65,17 @@ public class PlantLocationsV2 {
 
             return Map.of();
         }
+    }
+
+    /** Zone number from its first ZoneN_* region; Integer.MAX_VALUE when none (e.g. Oceans). */
+    private static int zoneOrder(List<String> regions) {
+        for (String region : regions) {
+            java.util.regex.Matcher m = java.util.regex.Pattern.compile("Zone(\\d+)_").matcher(region);
+            if (m.find()) {
+                return Integer.parseInt(m.group(1));
+            }
+        }
+        return Integer.MAX_VALUE;
     }
 
     private final List<String> regions;

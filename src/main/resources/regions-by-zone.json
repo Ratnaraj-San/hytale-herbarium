@@ -1,10 +1,4 @@
 {
-  "server.map.zone.Devastated_Lands": [
-    "server.map.region.Zone4_Shallow_Ocean_Tier4",
-    "server.map.region.Zone4_Shore_Tier4",
-    "server.map.region.Zone4_Tier4",
-    "server.map.region.Zone4_Tier5"
-  ],
   "server.map.zone.Emerald_Wilds": [
     "server.map.region.Zone1_Shallow_Ocean",
     "server.map.region.Zone1_Shore",
@@ -20,14 +14,20 @@
     "server.map.region.Zone2_Tier2",
     "server.map.region.Zone2_Tier3"
   ],
-  "server.map.zone.Oceans": [
-    "server.map.region.Oceans"
-  ],
   "server.map.zone.Whisperfrost_Frontiers": [
     "server.map.region.Zone3_Shallow_Ocean_Tier1",
     "server.map.region.Zone3_Shore_Tier1",
     "server.map.region.Zone3_Tier1",
     "server.map.region.Zone3_Tier2",
     "server.map.region.Zone3_Tier3"
+  ],
+  "server.map.zone.Devastated_Lands": [
+    "server.map.region.Zone4_Shallow_Ocean_Tier4",
+    "server.map.region.Zone4_Shore_Tier4",
+    "server.map.region.Zone4_Tier4",
+    "server.map.region.Zone4_Tier5"
+  ],
+  "server.map.zone.Oceans": [
+    "server.map.region.Oceans"
   ]
 }

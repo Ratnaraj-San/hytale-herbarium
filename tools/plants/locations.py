@@ -123,7 +123,14 @@ def scan_regions_by_zone(az):
             seen_values.add(value)
             deduped.append(rk)
         result[zone] = deduped
-    return result
+    # Player progression order: Zone1, Zone2, Zone3, Zone4, then the rest (Oceans).
+    def zone_num(entry):
+        for rk in entry[1]:
+            m = re.match(r"server\.map\.region\.Zone(\d+)_", rk)
+            if m:
+                return int(m.group(1))
+        return 99
+    return dict(sorted(result.items(), key=zone_num))
 
 
 def load_portals(az):
