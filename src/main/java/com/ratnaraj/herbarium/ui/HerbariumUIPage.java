@@ -41,8 +41,9 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     private static final String TYPE_BACK = "Back";
     private static final String TYPE_COLLECT_REWARD = "CollectReward";
     private static final String TYPE_SHOW_INFO = "ShowInfo";
-
+    
     private static final String JOURNAL_NAME_KEY = "server.items.Herbarium_Journal.name";
+    private static final String JOURNAL_DEV_NAME_KEY = "server.items.Herbarium_Journal_Dev.name";
     private static final String TOTAL_COLLECTED_KEY = "server.herbarium.progress.recorded";
     private static final String CATEGORY_KEY_PREFIX = "server.herbarium.category.";
 
@@ -69,6 +70,8 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
 
     private String selectedCategory;
     private String selectedPlant;
+
+    private final boolean devView;
 
     public static final class PageEventData {
         public static final BuilderCodec<PageEventData> CODEC =
@@ -113,9 +116,14 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     /** Whose journal data is displayed; the page itself belongs to playerRef (the viewer). */
     private final PlayerRef subjectRef;
 
-    public HerbariumUIPage(PlayerRef subject, PlayerRef viewer) {
+    public static HerbariumUIPage devJournal(PlayerRef viewer) {
+        return new HerbariumUIPage(viewer, viewer, true);
+    }
+    
+    public HerbariumUIPage(PlayerRef subject, PlayerRef viewer, boolean devView) {
         super(viewer, CustomPageLifetime.CanDismissOrCloseThroughInteraction, PageEventData.CODEC);
         this.subjectRef = subject;
+        this.devView = devView;
     }
 
     private boolean isOwnJournal() {
@@ -173,7 +181,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
             }
             case TYPE_COLLECT_REWARD -> {
                 // Rewards can only be collected on one's own journal.
-                if (isOwnJournal()) {
+                if (!devView && isOwnJournal()) {
                     UICommandBuilder update = RewardBar.handleCollectReward(subjectRef, ref, store);
 
                     if (update != null) {
@@ -190,6 +198,11 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     @Override
     public void onDismiss(Ref<EntityStore> ref, Store<EntityStore> store) {
         FeedbackSound.play(playerRef, CLOSE_SOUND, store, true);
+    }
+    
+    private Message buildTitle() {
+        if (devView) { return Message.translation(JOURNAL_DEV_NAME_KEY); }
+        return Message.translation(JOURNAL_NAME_KEY);
     }
 
     private void buildCategoryView(UICommandBuilder commands, UIEventBuilder events, Ref<EntityStore> ref) {
@@ -218,18 +231,23 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                         .param("count", totalDiscovered)
                         .param("total", totalPlants));
 
-        RewardBar.buildChestMarkers(subjectRef, commands, totalDiscovered, totalPlants);
-        RewardBar.setRewardsButtonState(subjectRef, commands, totalDiscovered, totalPlants);
+        if (devView) {
+            commands.set("#ChestMarkers.Visible", false);
+            commands.set("#RewardsButton.Visible", false);
+        } else {
+            RewardBar.buildChestMarkers(subjectRef, commands, totalDiscovered, totalPlants);
+            RewardBar.setRewardsButtonState(subjectRef, commands, totalDiscovered, totalPlants);
 
-        if (!isOwnJournal()) {
-            commands.set("#RewardsButton.Disabled", true);
+            if (!isOwnJournal()) {
+                commands.set("#RewardsButton.Disabled", true);
+            }
+
+            events.addEventBinding(
+                    CustomUIEventBindingType.Activating,
+                    "#RewardsButton",
+                    new EventData().append("Type", TYPE_COLLECT_REWARD)
+            );
         }
-
-        events.addEventBinding(
-                CustomUIEventBindingType.Activating,
-                "#RewardsButton",
-                new EventData().append("Type", TYPE_COLLECT_REWARD)
-        );
 
         events.addEventBinding(
                 CustomUIEventBindingType.Activating,
@@ -377,6 +395,10 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
      * membership checks while building the views.
      */
     private Set<String> getDiscoveredPlantIds() {
+        if (devView) {
+            return Herbarium.getCatalog().getAllPlants().keySet();
+        }
+        
         Set<String> discovered = new HashSet<>();
 
         for (PlantInfo info : Herbarium.getPlayerStore().getPlayerMemories(subjectRef)) {

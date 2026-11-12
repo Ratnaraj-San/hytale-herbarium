@@ -111,8 +111,10 @@ public class HerbariumIntroPage extends InteractiveCustomUIPage<HerbariumIntroPa
     public void handleDataEvent(Ref<EntityStore> ref, Store<EntityStore> store, PageEventData data) {
         if (TYPE_OPEN_JOURNAL.equals(data.getType())) {
             Player player = store.getComponent(ref, Player.getComponentType());
+
             if (player != null) {
-                player.getPageManager().openCustomPage(ref, store, new HerbariumUIPage(subjectRef, playerRef));
+                HerbariumUIPage page = new HerbariumUIPage(subjectRef, playerRef, false);
+                player.getPageManager().openCustomPage(ref, store, page);
             }
         }
     }
