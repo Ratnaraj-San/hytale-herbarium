@@ -150,7 +150,26 @@ $Herbarium = "HerbariumCommon.ui";
           }
         }
 
-        // $Herbarium.@Section #PlantContainerObtainedFromPlants {}
+        $Herbarium.@Spacer #SpacerAfterCrafting { Visible: false; }
+
+        Group #PlantContainerObtainedFromPlants {
+          LayoutMode: Top;
+          Background: (TexturePath: "../textures/SectionBackground.png", Border: 8);
+          Padding: (Horizontal: 8, Top: 16, Bottom: 8);
+
+          Label #SectionTitle {
+            Style: $Herbarium.@SectionTitleStyle;
+            Text: "";
+            Visible: false;
+          }
+
+          $Herbarium.@Spacer { @Pad = Padding(Vertical: 4); }
+
+          Group #SectionList {
+            LayoutMode: LeftCenterWrap;
+            Anchor: (Full: 0);
+          }
+        }
       }
 
     }

@@ -34,9 +34,11 @@ herbarium.ui.locations.regions = 地区
 herbarium.ui.locations.portals = 传送门
 herbarium.ui.obtained_from.interactions = 交互
 herbarium.ui.obtained_from.crafting = 制作
+herbarium.ui.obtained_from.plants = 植物
 herbarium.ui.interaction.break = 破坏
 herbarium.ui.interaction.collect = 采集
 herbarium.ui.interaction.shears = 剪刀
+herbarium.ui.interaction.salvage = 拆解
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>未解锁</b></color> \n<color is="#888888">记录 {count, number} 株植物后解锁：</color>

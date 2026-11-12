@@ -18,6 +18,7 @@ public final class PlantCatalogV2 {
     private final Map<String, PlantLocationsV2> plantLocations = new HashMap<>();
     private final Map<String, PlantInteractions> plantInteractions = new HashMap<>();
     private final Map<String, PlantCrafting> plantCrafting = new HashMap<>();
+    private final Map<String, List<PlantSource>> plantSources = new HashMap<>();
 
     public PlantCatalogV2() {
         this.allPlantsFromConfig = loadPlantsFromConfig();
@@ -67,6 +68,8 @@ public final class PlantCatalogV2 {
                         ) {
                             plantCrafting.put(id, readCrafting(obtainedFrom.getAsJsonObject("crafting")));
                         }
+
+                        plantSources.put(id, readSources(obtainedFrom));
                     }
 
                     if (!categoryPlants.isEmpty()) {
@@ -100,6 +103,28 @@ public final class PlantCatalogV2 {
 
     public PlantCrafting getPlantCrafting(String plantId) {
         return plantCrafting.get(plantId);
+    }
+
+    public List<PlantSource> getPlantSources(String plantId) {
+        return plantSources.getOrDefault(plantId, Collections.emptyList());
+    }
+
+    private static List<PlantSource> readSources(JsonObject obtainedFrom) {
+        List<PlantSource> sources = new ArrayList<>();
+
+        if (obtainedFrom != null && obtainedFrom.has("plants") && obtainedFrom.get("plants").isJsonArray()) {
+            for (JsonElement e : obtainedFrom.getAsJsonArray("plants")) {
+                JsonObject s = e.getAsJsonObject();
+                sources.add(new PlantSource(
+                        s.has("id") ? s.get("id").getAsString() : "",
+                        readBool(s, "drop"),
+                        readBool(s, "shears"),
+                        readBool(s, "salvage")
+                ));
+            }
+        }
+
+        return List.copyOf(sources);
     }
 
     private static PlantCrafting readCrafting(JsonObject crafting) {

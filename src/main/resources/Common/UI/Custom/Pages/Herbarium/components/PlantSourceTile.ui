@@ -1,0 +1,44 @@
+$Common = "../../../Common.ui";
+$Herbarium = "HerbariumCommon.ui";
+
+// Source plant tile: same shrunk PlantTile as ingredients, with a horizontal row
+// of interaction icons (break / shears / salvage) below instead of an amount.
+Group {
+  LayoutMode: Top;
+
+  $Herbarium.@PlantTile #PlantTile {
+    @Width = 96;
+    @Height = 124;
+    @IconSize = 48;
+    @Gap = 16;
+  }
+
+  Group #SourceInteractions {
+    LayoutMode: CenterMiddle;
+    Padding: (Top: 2);
+
+    Group #IconBreak {
+      Anchor: (Width: 32, Height: 32, Right: 4);
+      Background: "../textures/InteractionBreak.png";
+      TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+      TooltipText: "";
+      Visible: false;
+    }
+
+    Group #IconShears {
+      Anchor: (Width: 32, Height: 32, Right: 4);
+      Background: "../textures/InteractionShears.png";
+      TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+      TooltipText: "";
+      Visible: false;
+    }
+
+    Group #IconSalvage {
+      Anchor: (Width: 40, Height: 40);
+      Background: "../textures/InteractionSalvage.png";
+      TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+      TooltipText: "";
+      Visible: false;
+    }
+  }
+}

@@ -34,9 +34,11 @@ herbarium.ui.locations.regions = Регіони
 herbarium.ui.locations.portals = Портали
 herbarium.ui.obtained_from.interactions = Взаємодії
 herbarium.ui.obtained_from.crafting = Виготовлення
+herbarium.ui.obtained_from.plants = Рослини
 herbarium.ui.interaction.break = Зламати
 herbarium.ui.interaction.collect = Зібрати
 herbarium.ui.interaction.shears = Ножиці
+herbarium.ui.interaction.salvage = Розібрати
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Замкнено</b></color> \n<color is="#888888">Запишіть {count, number} {count, plural, one {рослину} few {рослини} many {рослин} other {рослини}}, щоб відкрити:</color>

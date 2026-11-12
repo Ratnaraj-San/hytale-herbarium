@@ -34,9 +34,11 @@ herbarium.ui.locations.regions = Yöreler
 herbarium.ui.locations.portals = Portallar
 herbarium.ui.obtained_from.interactions = Etkileşimler
 herbarium.ui.obtained_from.crafting = Üretim
+herbarium.ui.obtained_from.plants = Bitkiler
 herbarium.ui.interaction.break = Kır
 herbarium.ui.interaction.collect = Topla
 herbarium.ui.interaction.shears = Makas
+herbarium.ui.interaction.salvage = Parçala
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Kilitli</b></color> \n<color is="#888888">Açmak için {count, number} bitki kaydet:</color>

@@ -34,9 +34,11 @@ herbarium.ui.locations.regions = Регионы
 herbarium.ui.locations.portals = Порталы
 herbarium.ui.obtained_from.interactions = Взаимодействия
 herbarium.ui.obtained_from.crafting = Изготовление
+herbarium.ui.obtained_from.plants = Растения
 herbarium.ui.interaction.break = Сломать
 herbarium.ui.interaction.collect = Собрать
 herbarium.ui.interaction.shears = Ножницы
+herbarium.ui.interaction.salvage = Разобрать
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Закрыто</b></color> \n<color is="#888888">Запишите {count, number} {count, plural, one {растение} few {растения} many {растений} other {растения}}, чтобы открыть:</color>

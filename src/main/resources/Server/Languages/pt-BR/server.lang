@@ -34,9 +34,11 @@ herbarium.ui.locations.regions = Regiões
 herbarium.ui.locations.portals = Portais
 herbarium.ui.obtained_from.interactions = Interações
 herbarium.ui.obtained_from.crafting = Fabricação
+herbarium.ui.obtained_from.plants = Plantas
 herbarium.ui.interaction.break = Quebrar
 herbarium.ui.interaction.collect = Coletar
 herbarium.ui.interaction.shears = Tesouras
+herbarium.ui.interaction.salvage = Desmanchar
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Bloqueado</b></color> \n<color is="#888888">Registre {count, number} {count, plural, one {planta} other {plantas}} para desbloquear:</color>

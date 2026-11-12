@@ -9,6 +9,7 @@ import com.ratnaraj.herbarium.data.PlantCrafting;
 import com.ratnaraj.herbarium.data.PlantInfo;
 import com.ratnaraj.herbarium.data.PlantInteractions;
 import com.ratnaraj.herbarium.data.PlantLocationsV2;
+import com.ratnaraj.herbarium.data.PlantSource;
 import com.ratnaraj.herbarium.data.PlayerStore;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class PlantDetailsPanel {
     private static final String INGREDIENT_TILE_UI = "Pages/Herbarium/components/IngredientTile.ui";
     private static final String PLANT_INGREDIENT_TILE_UI = "Pages/Herbarium/components/PlantIngredientTile.ui";
     private static final String FLEX_SPACER_UI = "Pages/Herbarium/components/FlexSpacer.ui";
+    private static final String PLANT_SOURCE_TILE_UI = "Pages/Herbarium/components/PlantSourceTile.ui";
     private static final String LOCATIONS_FOUND_IN_KEY = "server.herbarium.ui.container.locations.title";
     private static final String LOCATION_UNKNOWN_KEY = "server.herbarium.ui.locations.unknown";
     private static final String PORTALS_TITLE_KEY = "server.herbarium.ui.locations.portals";
@@ -33,6 +35,8 @@ public class PlantDetailsPanel {
     private static final String INTERACTION_COLLECT_KEY = "server.herbarium.ui.interaction.collect";
     private static final String INTERACTION_SHEARS_KEY = "server.herbarium.ui.interaction.shears";
     private static final String CRAFTING_TITLE_KEY = "server.herbarium.ui.obtained_from.crafting";
+    private static final String PLANTS_TITLE_KEY = "server.herbarium.ui.obtained_from.plants";
+    private static final String INTERACTION_SALVAGE_KEY = "server.herbarium.ui.interaction.salvage";
 
     public static void buildDetails(
             PlayerRef playerRef,
@@ -162,12 +166,16 @@ public class PlantDetailsPanel {
         PlantCrafting crafting = plantId != null
                 ? Herbarium.getCatalog().getPlantCrafting(plantId)
                 : null;
+        List<PlantSource> sources = plantId != null
+                ? Herbarium.getCatalog().getPlantSources(plantId)
+                : List.of();
 
         boolean showInteractions = plantId != null && interactions.any();
         boolean showCrafting = crafting != null
                 && !crafting.benches().isEmpty()
                 && !crafting.inputs().isEmpty();
-        boolean showContainer = showInteractions || showCrafting;
+        boolean showPlants = plantId != null && !sources.isEmpty();
+        boolean showContainer = showInteractions || showCrafting || showPlants;
 
         commands.set("#PlantContainerObtainedFrom.Visible", showContainer);
 
@@ -177,8 +185,45 @@ public class PlantDetailsPanel {
 
         setInteractionsSection(commands, showInteractions, interactions);
         setCraftingSection(commands, showCrafting, crafting);
+        setPlantsSection(commands, showPlants, sources);
 
-        commands.set("#SpacerAfterInteractions.Visible", showInteractions && showCrafting);
+        // Spacers only between two visible sections
+        commands.set("#SpacerAfterInteractions.Visible", showInteractions && (showCrafting || showPlants));
+        commands.set("#SpacerAfterCrafting.Visible", showCrafting && showPlants);
+    }
+
+    private static void setPlantsSection(UICommandBuilder commands, boolean visible, List<PlantSource> sources) {
+        String section = "#PlantContainerObtainedFrom #PlantContainerObtainedFromPlants";
+        String list = section + " #SectionList";
+
+        commands.set(section + ".Visible", visible);
+        commands.set(section + " #SectionTitle.Visible", visible);
+        commands.clear(list);
+
+        if (!visible) {
+            commands.set(section + " #SectionTitle.Text", "");
+            return;
+        }
+
+        commands.set(section + " #SectionTitle.Text", Message.translation(PLANTS_TITLE_KEY));
+
+        for (int j = 0; j < sources.size(); j++) {
+            PlantSource source = sources.get(j);
+            String entry = list + "[" + j + "]";
+
+            commands.append(list, PLANT_SOURCE_TILE_UI);
+            commands.set(entry + " #PlantTile #ButtonNotSelected.Visible", true);
+            setPlantName(commands, entry + " #PlantTile #ButtonNotSelected.TooltipText", source.plantId());
+            setAssetIcon(commands, entry + " #PlantTile #Icon", source.plantId());
+
+            String icons = entry + " #SourceInteractions";
+            commands.set(icons + " #IconBreak.Visible", source.drop());
+            commands.set(icons + " #IconBreak.TooltipText", Message.translation(INTERACTION_BREAK_KEY));
+            commands.set(icons + " #IconShears.Visible", source.shears());
+            commands.set(icons + " #IconShears.TooltipText", Message.translation(INTERACTION_SHEARS_KEY));
+            commands.set(icons + " #IconSalvage.Visible", source.salvage());
+            commands.set(icons + " #IconSalvage.TooltipText", Message.translation(INTERACTION_SALVAGE_KEY));
+        }
     }
 
     private static void setInteractionsSection(UICommandBuilder commands, boolean visible, PlantInteractions interactions) {
@@ -242,10 +287,6 @@ public class PlantDetailsPanel {
 
             commands.set(entry + " #IngredientAmount.Text", "x" + ingredient.quantity());
         }
-
-        // Absorbs the remaining width so the tiles stay left-aligned; when the list
-        // wraps (longer than the available width) the spacer just ends the last line.
-        commands.append(body, FLEX_SPACER_UI);
     }
 
     private static void setAssetLabel(UICommandBuilder commands, String labelSelector, String assetId) {
