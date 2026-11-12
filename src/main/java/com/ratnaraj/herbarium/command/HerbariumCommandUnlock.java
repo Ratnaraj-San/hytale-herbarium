@@ -6,10 +6,13 @@ import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.command.system.CommandContext;
 import com.hypixel.hytale.server.core.command.system.CommandSender;
 import com.hypixel.hytale.server.core.command.system.ParseResult;
+import com.hypixel.hytale.server.core.command.system.arguments.system.OptionalArg;
 import com.hypixel.hytale.server.core.command.system.arguments.system.RequiredArg;
+import com.hypixel.hytale.server.core.command.system.arguments.types.ArgTypes;
 import com.hypixel.hytale.server.core.command.system.arguments.types.SingleArgumentType;
 import com.hypixel.hytale.server.core.command.system.basecommands.AbstractPlayerCommand;
 import com.hypixel.hytale.server.core.command.system.suggestion.SuggestionResult;
+import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.permissions.HytalePermissions;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
@@ -27,6 +30,7 @@ public class HerbariumCommandUnlock extends AbstractPlayerCommand {
     private static final String CATEGORY_ARG_DESC_KEY = "server.herbarium.command.unlock.category.desc";
     private static final String UNLOCK_DONE_KEY = "server.herbarium.command.unlock.done";
     private static final String UNKNOWN_CATEGORY_KEY = "server.herbarium.command.common.unknownCategory";
+    private static final String PLAYER_ARG_DESC_KEY = "server.herbarium.command.common.player.desc";
 
     private static final SingleArgumentType<String> CATEGORY_TYPE = new SingleArgumentType<>(
             CATEGORY_ARG_DESC_KEY,
@@ -51,11 +55,13 @@ public class HerbariumCommandUnlock extends AbstractPlayerCommand {
     };
 
     private final RequiredArg<String> categoryArg;
+    private final OptionalArg<PlayerRef> playerArg;
 
     public HerbariumCommandUnlock() {
         super("unlock", UNLOCK_DESC_KEY);
         requirePermission(HytalePermissions.fromCommand("herbarium", "unlock"));
         categoryArg = withRequiredArg("category", CATEGORY_ARG_DESC_KEY, CATEGORY_TYPE);
+        playerArg = withOptionalArg("player", PLAYER_ARG_DESC_KEY, ArgTypes.PLAYER_REF);
     }
 
     @Override
@@ -67,6 +73,7 @@ public class HerbariumCommandUnlock extends AbstractPlayerCommand {
             @Nonnull World world
     ) {
         String inputCategory = categoryArg.get(ctx);
+        PlayerRef targetRef = ctx.provided(playerArg) ? playerArg.get(ctx) : playerRef;
         PlantCatalogV2 catalog = Herbarium.getCatalog();
         String categoryName = catalog.getCategoryName(inputCategory);
 
@@ -75,12 +82,12 @@ public class HerbariumCommandUnlock extends AbstractPlayerCommand {
             return;
         }
 
-        Herbarium.getPlayerStore().unlockCategoryMemories(playerRef, categoryName);
+        Herbarium.getPlayerStore().unlockCategoryMemories(targetRef, categoryName);
 
         ctx.sendMessage(Message
                 .translation(UNLOCK_DONE_KEY)
                 .param("category", Message.translation("server.herbarium.category." + categoryName.toLowerCase()))
-                .param("player", playerRef.getUsername())
+                .param("player", targetRef.getUsername())
         );
     }
 }
