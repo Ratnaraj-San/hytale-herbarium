@@ -80,7 +80,7 @@ public class Herbarium extends JavaPlugin {
 
         registerEvents();
         registerCommands();
-        registerJournalPage();
+        registerJournalPages();
     }
 
     private Path getPluginDataDirectory() {
@@ -144,17 +144,35 @@ public class Herbarium extends JavaPlugin {
     }
 
     public static final String JOURNAL_PAGE_KEY = "Herbarium_Journal";
+    public static final String JOURNAL_DEV_PAGE_KEY = "Herbarium_Journal_Dev";
 
     private void registerEvents() {
         this.getEntityStoreRegistry().registerSystem(new InventoryChangeSystem());
     }
 
-    private void registerJournalPage() {
+    private void registerJournalPages() {
         OpenCustomUIInteraction.registerCustomPageSupplier(
                 this,
                 HerbariumUIPage.class,
                 JOURNAL_PAGE_KEY,
-                (ref, componentAccessor, playerRef, interactionContext) -> createJournalPage(playerRef)
+                (
+                        ref,
+                        componentAccessor,
+                        playerRef,
+                        interactionContext
+                ) -> createJournalPage(playerRef)
+        );
+
+        OpenCustomUIInteraction.registerCustomPageSupplier(
+                this,
+                HerbariumUIPage.class,
+                JOURNAL_DEV_PAGE_KEY,
+                (
+                        ref,
+                        componentAccessor,
+                        playerRef,
+                        interactionContext
+                ) -> HerbariumUIPage.devJournal(playerRef)
         );
     }
 
@@ -169,7 +187,7 @@ public class Herbarium extends JavaPlugin {
 
     public static CustomUIPage createJournalPage(PlayerRef subject, PlayerRef viewer) {
         if (playerStore.hasOpenedJournal(subject)) {
-            return new HerbariumUIPage(subject, viewer);
+            return new HerbariumUIPage(subject, viewer, false);
         }
         return new HerbariumIntroPage(subject, viewer);
     }
