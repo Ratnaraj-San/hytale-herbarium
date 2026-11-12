@@ -85,7 +85,7 @@ public class HerbariumCommandUnlock extends AbstractPlayerCommand {
 
         ctx.sendMessage(Message
                 .translation(UNLOCK_DONE_KEY)
-                .param("category", Message.translation("server.herbarium.category." + categoryName.toLowerCase()))
+                .param("category", Message.translation("server.herbarium.ui.category." + categoryName.toLowerCase()))
                 .param("player", targetRef.getUsername())
         );
     }

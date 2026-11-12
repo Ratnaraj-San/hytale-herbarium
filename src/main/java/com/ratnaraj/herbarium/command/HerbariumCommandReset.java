@@ -85,7 +85,7 @@ public class HerbariumCommandReset extends AbstractPlayerCommand {
 
         ctx.sendMessage(Message
                 .translation(RESET_DONE_KEY)
-                .param("category", Message.translation("server.herbarium.category." + categoryName.toLowerCase()))
+                .param("category", Message.translation("server.herbarium.ui.category." + categoryName.toLowerCase()))
                 .param("player", targetRef.getUsername())
         );
     }

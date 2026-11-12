@@ -1,5 +1,5 @@
-$C = "../../Common.ui";
-$Sounds = "../../Sounds.ui";
+$Common = "../../../Common.ui";
+$Sounds = "../../../Sounds.ui";
 
 Group {
   Anchor: (Width: 144, Height: 176, Right: 16, Bottom: 16);
@@ -7,14 +7,14 @@ Group {
 
   Group #EmptyBackground {
     Visible: false;
-    Background: (TexturePath: "Tiles/TileEmpty.png", Border: 8);
+    Background: (TexturePath: "../textures/Tiles/TileEmpty.png", Border: 8);
     TooltipText: %server.memories.general.undiscovered.tooltipText;
-    TextTooltipStyle: $C.@DefaultTextTooltipStyle;
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
   }
 
   TextButton #ButtonNotSelected {
     Visible: false;
-    TextTooltipStyle: $C.@DefaultTextTooltipStyle;
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
     Style: (
       Sounds: $Sounds.@ButtonsLight,
       Default: (
@@ -23,7 +23,7 @@ Group {
           HorizontalAlignment: Center,
           VerticalAlignment: Center
         ),
-        Background: (TexturePath: "Tiles/TileDefault.png", Border: 8)
+        Background: (TexturePath: "../textures/Tiles/TileDefault.png", Border: 8)
       ),
       Hovered: (
         LabelStyle: (
@@ -31,14 +31,14 @@ Group {
           HorizontalAlignment: Center,
           VerticalAlignment: Center
         ),
-        Background: (TexturePath: "Tiles/TileHovered.png", Border: 8)
+        Background: (TexturePath: "../textures/Tiles/TileHovered.png", Border: 8)
       )
     );
     FlexWeight: 1;
   }
 
   TextButton #ButtonSelected {
-    TextTooltipStyle: $C.@DefaultTextTooltipStyle;
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
     Visible: false;
     Style: (
       Sounds: $Sounds.@ButtonsLight,
@@ -48,7 +48,7 @@ Group {
           HorizontalAlignment: Center,
           VerticalAlignment: Center
         ),
-        Background: (TexturePath: "Tiles/TileSelected.png", Border: 8)
+        Background: (TexturePath: "../textures/Tiles/TileSelected.png", Border: 8)
       )
     );
     FlexWeight: 1;

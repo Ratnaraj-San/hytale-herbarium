@@ -1,8 +1,74 @@
+# === Items ===
 items.Herbarium_Journal.name = Botanist's Journal
 items.Herbarium_Journal_Dev.name = Botanist's Journal (Developer)
 
-herbarium.location.found_in = Found in:
-herbarium.location.unknown = Location unknown
+# === CustomUI: journal page ===
+herbarium.ui.journal.progress = plants recorded: {count, number} / {total, number}
+herbarium.ui.category.bramble = Bramble
+herbarium.ui.category.bush = Bush
+herbarium.ui.category.cactus = Cactus
+herbarium.ui.category.coral = Coral
+herbarium.ui.category.crop = Crop
+herbarium.ui.category.fern = Fern
+herbarium.ui.category.flower = Flower
+herbarium.ui.category.fruit = Fruit
+herbarium.ui.category.grass = Grass
+herbarium.ui.category.leaves = Leaves
+herbarium.ui.category.moss = Moss
+herbarium.ui.category.mushroom = Mushroom
+herbarium.ui.category.petals = Petals
+herbarium.ui.category.reeds = Reeds
+herbarium.ui.category.sapling = Sapling
+herbarium.ui.category.seaweed = Seaweed
+herbarium.ui.category.seeds = Seeds
+herbarium.ui.category.vine = Vine
+
+# === CustomUI: plant details containers ===
+herbarium.ui.container.locations.title = Found in
+herbarium.ui.locations.unknown = Location unknown
+herbarium.ui.locations.zones = Zones
+herbarium.ui.locations.regions = Regions
+herbarium.ui.locations.portals = Portals
+herbarium.ui.plant.discoveredOn = Discovered on {date}
+herbarium.ui.plant.discoveredAt = Discovered on {date} at ({place})
+
+# === CustomUI: rewards bar ===
+herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Locked</b></color> \n<color is="#888888">Record {count, number} {count, plural, one {plant} other {plants}} to unlock:</color>
+herbarium.ui.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Unlocked</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {plants}} recorded. Reward to collect:</color>
+herbarium.ui.rewards.chestCollected.tooltipText = <color is="#888888"><b>Collected</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {plants}} recorded. Reward collected:</color>
+herbarium.ui.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Update</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {plants}} recorded. Reward to collect:</color>
+herbarium.ui.rewards.collectButton = Collect reward {tier, number}
+herbarium.ui.rewards.allCollected = All rewards collected
+
+# === CustomUI: intro page ===
+herbarium.ui.intro.title = You have unlocked the Botanist's Journal!
+herbarium.ui.intro.bullet1 = This journal will follow you throughout your exploration of Orbis.
+herbarium.ui.intro.bullet2 = Every plant you pick up is recorded here, along with the date and place of its discovery.
+herbarium.ui.intro.bullet3 = Browse your collection by category, track your progress to become a true botanist and get rewarded!
+herbarium.ui.intro.openJournal = Open the journal
+
+# === Chat and commands (not CustomUI) ===
+herbarium.command.desc = Herbarium commands
+herbarium.command.open.desc = Opens the Herbarium journal.
+herbarium.command.resetall.desc = Deletes all your progression.
+herbarium.command.reset.desc = Deletes progression for a specific category.
+herbarium.command.reset.category.desc = Category to reset (e.g. Flower).
+herbarium.command.unlock.desc = Unlock a specific category.
+herbarium.command.unlock.category.desc = Category to unlock (e.g. Flower).
+herbarium.command.unlockall.desc = Unlocks all plants.
+herbarium.command.give.desc = Give a Botanist's Journal.
+herbarium.command.playersOnly = This command can only be executed by players.
+herbarium.command.resetall.done = Your progress has been reset for {player}.
+herbarium.command.reset.done = Category {category} has been reset for {player}.
+herbarium.command.unlockall.done = All plants have been unlocked for {player}.
+herbarium.command.unlock.done = Category {category} has been unlocked for {player}.
+herbarium.command.give.done = A {journal} has been given to {player}.
+herbarium.command.common.unknownCategory = Unknown category: {category}.
+herbarium.command.common.player.desc = Target player (defaults to yourself).
+herbarium.command.common.devflag.desc = Give the Developer journal (all plants registered) instead.
+herbarium.notification.discovered = New plant discovered:
+
+# === Data referenced by plants.json (do not rename) ===
 herbarium.location.cultivated = Cultivated fields
 herbarium.location.caves = Caves
 herbarium.location.chests = Chests
@@ -27,7 +93,6 @@ herbarium.location.ruined_temples = Ruined Temples
 herbarium.location.slothian_villages = Slothian Villages
 herbarium.location.dungeons = Dungeons
 herbarium.location.cursed_crypts = Cursed Crypts
-
 herbarium.tree.amber = Amber Trees
 herbarium.tree.apple = Apple Trees
 herbarium.tree.ash = Ash Trees
@@ -63,61 +128,3 @@ herbarium.tree.spiral = Spiral Trees
 herbarium.tree.stormbark = Stormbark Trees
 herbarium.tree.windwillow = Windwillow Trees
 herbarium.tree.wisteria_wild = Wild Wisteria Trees
-
-herbarium.unlock.title = You have unlocked the Botanist's Journal!
-herbarium.unlock.bullet1 = This journal will follow you throughout your exploration of Orbis.
-herbarium.unlock.bullet2 = Every plant you pick up is recorded here, along with the date and place of its discovery.
-herbarium.unlock.bullet3 = Browse your collection by category, track your progress to become a true botanist and get rewarded!
-herbarium.unlock.openJournal = Open the journal
-
-herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Locked</b></color> \n<color is="#888888">Record {count, number} {count, plural, one {plant} other {plants}} to unlock:</color>
-herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Unlocked</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {plants}} recorded. Reward to collect:</color>
-herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Collected</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {plants}} recorded. Reward collected:</color>
-herbarium.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Update</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {plants}} recorded. Reward to collect:</color>
-herbarium.rewards.collectButton = Collect reward {tier, number}
-herbarium.rewards.allCollected = All rewards collected
-
-herbarium.command.desc = Herbarium commands
-herbarium.command.open.desc = Opens the Herbarium journal.
-herbarium.command.resetall.desc = Deletes all your progression.
-herbarium.command.reset.desc = Deletes progression for a specific category.
-herbarium.command.reset.category.desc = Category to reset (e.g. Flower).
-herbarium.command.unlock.desc = Unlock a specific category.
-herbarium.command.unlock.category.desc = Category to unlock (e.g. Flower).
-herbarium.command.unlockall.desc = Unlocks all plants.
-herbarium.command.give.desc = Give a Botanist's Journal.
-herbarium.command.playersOnly = This command can only be executed by players.
-herbarium.command.resetall.done = Your progress has been reset for {player}.
-herbarium.command.reset.done = Category {category} has been reset for {player}.
-herbarium.command.unlockall.done = All plants have been unlocked for {player}.
-herbarium.command.unlock.done = Category {category} has been unlocked for {player}.
-herbarium.command.give.done = A {journal} has been given to {player}.
-
-herbarium.command.common.unknownCategory = Unknown category: {category}.
-herbarium.command.common.player.desc = Target player (defaults to yourself).
-
-herbarium.progress.recorded = plants recorded: {count, number} / {total, number}
-
-herbarium.plant.discoveredOn = Discovered on {date}
-herbarium.plant.discoveredAt = Discovered on {date} at ({place})
-
-herbarium.notification.discovered = New plant discovered:
-
-herbarium.category.bramble = Bramble
-herbarium.category.bush = Bush
-herbarium.category.cactus = Cactus
-herbarium.category.coral = Coral
-herbarium.category.crop = Crop
-herbarium.category.fern = Fern
-herbarium.category.flower = Flower
-herbarium.category.fruit = Fruit
-herbarium.category.grass = Grass
-herbarium.category.leaves = Leaves
-herbarium.category.moss = Moss
-herbarium.category.mushroom = Mushroom
-herbarium.category.petals = Petals
-herbarium.category.reeds = Reeds
-herbarium.category.sapling = Sapling
-herbarium.category.seaweed = Seaweed
-herbarium.category.seeds = Seeds
-herbarium.category.vine = Vine

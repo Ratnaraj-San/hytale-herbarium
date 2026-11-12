@@ -37,11 +37,11 @@ public class HerbariumIntroPage extends InteractiveCustomUIPage<HerbariumIntroPa
      * translation keys with %refs, the client fails to load the document
      * when the key is not resolvable at parse time.
      */
-    private static final String TITLE_KEY = "server.herbarium.unlock.title";
-    private static final String BULLET1_KEY = "server.herbarium.unlock.bullet1";
-    private static final String BULLET2_KEY = "server.herbarium.unlock.bullet2";
-    private static final String BULLET3_KEY = "server.herbarium.unlock.bullet3";
-    private static final String OPEN_JOURNAL_KEY = "server.herbarium.unlock.openJournal";
+    private static final String TITLE_KEY = "server.herbarium.ui.intro.title";
+    private static final String BULLET1_KEY = "server.herbarium.ui.intro.bullet1";
+    private static final String BULLET2_KEY = "server.herbarium.ui.intro.bullet2";
+    private static final String BULLET3_KEY = "server.herbarium.ui.intro.bullet3";
+    private static final String OPEN_JOURNAL_KEY = "server.herbarium.ui.intro.openJournal";
 
     public static final class PageEventData {
         public static final BuilderCodec<PageEventData> CODEC =
@@ -92,7 +92,7 @@ public class HerbariumIntroPage extends InteractiveCustomUIPage<HerbariumIntroPa
             FeedbackParticle.spawn(UNLOCK_PARTICLE_SYSTEM, ref, store);
         }
 
-        commands.append("Pages/Herbarium/JournalUnlocked.ui");
+        commands.append("Pages/Herbarium/components/JournalUnlocked.ui");
 
         commands.set("#ModalTitle.Text", Message.translation(TITLE_KEY));
         commands.set("#ModalBullet1.Text", Message.translation(BULLET1_KEY));

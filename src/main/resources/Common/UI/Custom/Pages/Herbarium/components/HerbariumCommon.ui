@@ -1,0 +1,130 @@
+// Shared styles and reusable components for the Herbarium pages.
+// Imported by page orchestrators with: $H = "HerbariumCommon.ui";
+// (from Pages/Herbarium.ui: $H = "Herbarium/HerbariumCommon.ui";)
+
+@JournalTitleStyle = LabelStyle(
+  FontSize: 15,
+  VerticalAlignment: Center,
+  RenderUppercase: true,
+  TextColor: #b4c8c9,
+  FontName: "Default",
+  RenderBold: true,
+  LetterSpacing: 0.5
+);
+
+@PlantNameStyle = LabelStyle(
+  FontSize: 25,
+  VerticalAlignment: Center,
+  HorizontalAlignment: Start,
+  RenderUppercase: true,
+  TextColor: #b4c8c9,
+  FontName: "Secondary",
+  RenderBold: true,
+  LetterSpacing: 0.5,
+  Wrap: true
+);
+
+@PlantIdStyle = LabelStyle(
+  FontSize: 14,
+  VerticalAlignment: Center,
+  HorizontalAlignment: Start,
+  RenderUppercase: false,
+  TextColor: #565a68,
+  FontName: "Secondary",
+  RenderBold: false,
+  LetterSpacing: 0.5,
+  Wrap: true
+);
+
+@PlantStatusStyle = LabelStyle(
+  FontSize: 15,
+  TextColor: #565a68,
+  FontName: "Secondary",
+  HorizontalAlignment: Center,
+  Wrap: true,
+  RenderUppercase: false
+);
+
+@ContainerTitleStyle = LabelStyle(
+  FontSize: 18,
+  TextColor: #b4c8c9,
+  FontName: "Secondary",
+  HorizontalAlignment: Start,
+  Wrap: true,
+  RenderUppercase: true,
+  RenderBold: true,
+  LetterSpacing: 0.5
+);
+
+@SectionTitleStyle = LabelStyle(
+  FontSize: 16,
+  TextColor: #b4c8c9,
+  FontName: "Secondary",
+  HorizontalAlignment: Start,
+  Wrap: true,
+  RenderUppercase: false,
+  RenderBold: true,
+  LetterSpacing: 0.5
+);
+
+@EntryStyle = LabelStyle(
+  FontSize: 14,
+  TextColor: #8a8f9e,
+  FontName: "Secondary",
+  HorizontalAlignment: Start,
+  Wrap: true,
+  RenderBold: false,
+  RenderUppercase: false
+);
+
+// Spacer that absorbs free space (e.g. to center content vertically)
+@FlexSpacer = Group {
+  FlexWeight: 1;
+};
+
+// Fixed empty gap between blocks; override @Pad to change size/direction
+@Spacer = Group {
+  @Pad = Padding(Vertical: 8);
+  Padding: @Pad;
+};
+
+// Titled container: background box with a title label on top.
+// Usage: $H.@TitledContainer #MyContainer { ...content children... }
+// Java addresses the title as "#MyContainer #ContainerTitle".
+@TitledContainer = Group {
+  LayoutMode: Top;
+  Background: (TexturePath: "../textures/ContainerBackgroundSecondary.png", Border: 23);
+  Padding: (Full: 12);
+
+  Label #ContainerTitle {
+    Style: @ContainerTitleStyle;
+    Text: "";
+  }
+
+  @Spacer {
+    @Pad = Padding(Bottom: 8);
+  }
+};
+
+// Titled section: background box with a title label and a list container.
+// Usage: $H.@Section #MySection {}
+// Java addresses "#MySection #SectionTitle" and appends into "#MySection #SectionList".
+@Section = Group {
+  LayoutMode: Top;
+  Background: (TexturePath: "../textures/SectionBackground.png", Border: 8);
+  Padding: (Full: 8);
+
+  Label #SectionTitle {
+    Style: @SectionTitleStyle;
+    Text: "";
+    Visible: false;
+  }
+
+  @Spacer {
+    @Pad = Padding(Vertical: 2);
+  }
+
+  Group #SectionList {
+    LayoutMode: Top;
+  }
+};
