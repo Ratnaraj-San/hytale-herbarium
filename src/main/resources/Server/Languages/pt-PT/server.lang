@@ -1,4 +1,5 @@
 items.Herbarium_Journal.name = Diário do Botânico
+items.Herbarium_Journal_Dev.name = Diário do Botânico (Developer)
 
 herbarium.location.found_in = Encontra-se em:
 herbarium.location.unknown = Localização desconhecida

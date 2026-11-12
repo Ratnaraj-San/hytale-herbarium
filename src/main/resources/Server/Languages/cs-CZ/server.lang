@@ -1,4 +1,5 @@
 items.Herbarium_Journal.name = Botanikův deník
+items.Herbarium_Journal_Dev.name = Botanikův deník (Developer)
 
 herbarium.location.found_in = Lze nalézt v:
 herbarium.location.unknown = Místo výskytu neznámé
