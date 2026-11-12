@@ -1,0 +1,8 @@
+$Herbarium = "HerbariumCommon.ui";
+
+Group {
+  Label #LocationText {
+    Style: $Herbarium.@EntryStyle;
+    Text: "";
+  }
+}

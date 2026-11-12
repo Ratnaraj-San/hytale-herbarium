@@ -92,7 +92,7 @@ public class HerbariumIntroPage extends InteractiveCustomUIPage<HerbariumIntroPa
             FeedbackParticle.spawn(UNLOCK_PARTICLE_SYSTEM, ref, store);
         }
 
-        commands.append("Pages/Herbarium/JournalUnlocked.ui");
+        commands.append("Pages/Herbarium/components/JournalUnlocked.ui");
 
         commands.set("#ModalTitle.Text", Message.translation(TITLE_KEY));
         commands.set("#ModalBullet1.Text", Message.translation(BULLET1_KEY));

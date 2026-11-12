@@ -1,5 +1,6 @@
-$C = "../../Common.ui";
-$Sounds = "../../Sounds.ui";
+$Common = "../../../Common.ui";
+$Sounds = "../../../Sounds.ui";
+$Herbarium = "HerbariumCommon.ui";
 
 @CategoryButtonLabelStyle = LabelStyle(
   Wrap: true,
@@ -26,7 +27,7 @@ Group {
   Padding: (Full: 8);
 
   Group #CompleteCategoryBackground {
-    Background: (TexturePath: "Tiles/TileComplete.png", Border: 8);
+    Background: (TexturePath: "../textures/Tiles/TileComplete.png", Border: 8);
     Visible: false;
   }
 
@@ -58,12 +59,10 @@ Group {
       LayoutMode: Right;
       Visible: false;
 
-      Group {
-        FlexWeight: 1;
-      }
+      $Herbarium.@FlexSpacer {}
 
       Group {
-        Background: "Checkmark.png";
+        Background: "../textures/Checkmark.png";
         Anchor: (Width: 16, Height: 16, Right: 5, Top: 0);
       }
 
@@ -90,11 +89,11 @@ Group {
       Sounds: $Sounds.@ButtonsLight,
       Default: (
         LabelStyle: @CategoryButtonLabelStyle,
-        Background: (TexturePath: "Tiles/TileDefault.png", Border: 8)
+        Background: (TexturePath: "../textures/Tiles/TileDefault.png", Border: 8)
       ),
       Hovered: (
         LabelStyle: @CategoryButtonLabelStyle,
-        Background: (TexturePath: "Tiles/TileHovered.png", Border: 8)
+        Background: (TexturePath: "../textures/Tiles/TileHovered.png", Border: 8)
       )
     );
     FlexWeight: 1;

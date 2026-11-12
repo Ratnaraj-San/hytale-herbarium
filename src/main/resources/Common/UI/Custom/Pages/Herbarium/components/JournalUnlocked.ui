@@ -1,16 +1,6 @@
-$Common = "../../Common.ui";
-$Intro = "../../Common/IntroModal.ui";
+$Common = "../../../Common.ui";
+$Intro = "../../../Common/IntroModal.ui";
 
-// Texts are set at runtime by HerbariumIntroPage: .ui documents cannot
-// reference plugin translation keys with %refs, the client fails to load
-// the document when the key is not resolvable at parse time.
-//
-// The illustration is shown next to the text like the vanilla Memories
-// unlock modal. The @ImageWidth/@ImageHeight are logical (1x) sizes; the
-// asset JournalUnlocked/Herbarium_Journal@2x.png renders at half its
-// pixel size. Override blocks cannot override nested template elements
-// (the template's #TitleLabel), so the texts are plain labels added to
-// the column.
 $Intro.@IntroModal {
   @ImageWidth = 315;
   @ImageHeight = 393;
@@ -42,7 +32,7 @@ $Intro.@IntroModal {
 
   #ContentImage {
     Group {
-      Background: "JournalUnlocked/Herbarium_Journal.png";
+      Background: "../textures/JournalUnlocked/Herbarium_Journal.png";
     }
   }
 

@@ -1,0 +1,50 @@
+$Common = "../../../Common.ui";
+$Herbarium = "HerbariumCommon.ui";
+
+@LeftPanel = Group {
+  LayoutMode: Top;
+  FlexWeight: 1;
+  Padding: (Left: 20, Right: 5, Vertical: 16);
+
+  Group #CategoryHeader {
+    LayoutMode: Left;
+
+    Label #CategoryTitle {
+      Style: (...$Herbarium.@JournalTitleStyle, TextColor: #89899f);
+      Text: "";
+    }
+
+    $Herbarium.@FlexSpacer {}
+
+    Label #CategoryCount {
+      Style: (...$Herbarium.@JournalTitleStyle, TextColor: #89899f);
+      Text: "0/0";
+    }
+  }
+
+  // Plant grid
+  Group {
+    FlexWeight: 1;
+
+    Group {
+      LayoutMode: TopScrolling;
+      Anchor: (Vertical: 16);
+      ScrollbarStyle: $Common.@DefaultScrollbarStyle;
+      FlexWeight: 1;
+
+      Group #IconList {
+        LayoutMode: LeftWrap;
+      }
+    }
+  }
+
+  // Back button
+  Group {
+    LayoutMode: Left;
+
+    $Common.@SecondaryTextButton #BackButton {
+      Anchor: (Width: 150, Height: 42);
+      Text: %client.general.button.back;
+    }
+  }
+};

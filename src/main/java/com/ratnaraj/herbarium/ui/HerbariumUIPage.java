@@ -268,7 +268,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
             }
             boolean complete = !plants.isEmpty() && discovered == plants.size();
 
-            commands.append("#IconList", "Pages/Herbarium/CategoryTile.ui");
+            commands.append("#IconList", "Pages/Herbarium/components/CategoryTile.ui");
             String tile = "#IconList[" + index + "]";
 
             commands.set(tile + " #Button.Text",
@@ -336,7 +336,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
 
         int index = 0;
         for (String plantId : plants) {
-            commands.append("#IconList", "Pages/Herbarium/PlantTile.ui");
+            commands.append("#IconList", "Pages/Herbarium/components/PlantTile.ui");
             String tile = "#IconList[" + index + "]";
 
             boolean isDiscovered = discoveredPlants.contains(plantId);

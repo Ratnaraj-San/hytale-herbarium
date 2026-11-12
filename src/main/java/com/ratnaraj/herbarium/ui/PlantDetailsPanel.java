@@ -13,8 +13,8 @@ import java.util.List;
 
 public class PlantDetailsPanel {
 
-    private static final String LOCATION_ENTRY_UI = "Pages/Herbarium/LocationEntry.ui";
-    private static final String LOCATION_ENTRY_SPACED_UI = "Pages/Herbarium/LocationEntrySpaced.ui";
+    private static final String LOCATION_ENTRY_UI = "Pages/Herbarium/components/LocationEntry.ui";
+    private static final String LOCATION_ENTRY_SPACED_UI = "Pages/Herbarium/components/LocationEntrySpaced.ui";
     private static final String LOCATIONS_FOUND_IN_KEY = "server.herbarium.ui.container.locations.title";
     private static final String LOCATION_UNKNOWN_KEY = "server.herbarium.ui.locations.unknown";
     private static final String ZONES_TITLE_KEY = "server.herbarium.ui.locations.zones";
@@ -76,9 +76,9 @@ public class PlantDetailsPanel {
         commands.set("#PlantContainerLocations.Visible", hasPlant);
 
         if (hasPlant) {
-            commands.set("#PlantContainerLocationsTitle.Text", Message.translation(LOCATIONS_FOUND_IN_KEY));
+            commands.set("#PlantContainerLocations #ContainerTitle.Text", Message.translation(LOCATIONS_FOUND_IN_KEY));
         } else {
-            commands.set("#PlantContainerLocationsTitle.Text", "");
+            commands.set("#PlantContainerLocations #ContainerTitle.Text", "");
         }
 
         commands.set("#PlantLocationUnknown.Visible", hasPlant && !hasLocations);
@@ -89,36 +89,20 @@ public class PlantDetailsPanel {
             commands.set("#PlantLocationUnknown.Text", "");
         }
 
-        setLocationGroup(
-                commands,
-                "#PlantLocationsZones",
-                "#PlantLocationsZonesTitle",
-                "#ZonesList",
-                ZONES_TITLE_KEY,
-                hasPlant ? locations.getZones() : List.of()
-        );
-        setLocationGroup(
-                commands,
-                "#PlantLocationsRegions",
-                "#PlantLocationsRegionsTitle",
-                "#RegionsList",
-                REGIONS_TITLE_KEY,
-                hasPlant ? locations.getRegions() : List.of()
-        );
-        setLocationGroup(
-                commands,
-                "#PlantLocationsPortals",
-                "#PlantLocationsPortalsTitle",
-                "#PortalsList",
-                PORTALS_TITLE_KEY,
-                hasPlant ? locations.getPortals() : List.of()
-        );
+        setLocationGroup(commands, "#PlantLocationsZones", ZONES_TITLE_KEY,
+                hasPlant ? locations.getZones() : List.of());
+        setLocationGroup(commands, "#PlantLocationsRegions", REGIONS_TITLE_KEY,
+                hasPlant ? locations.getRegions() : List.of());
+        setLocationGroup(commands, "#PlantLocationsPortals", PORTALS_TITLE_KEY,
+                hasPlant ? locations.getPortals() : List.of());
     }
 
-    private static void setLocationGroup(UICommandBuilder commands, String group, String title,
-                                         String list, String titleKey, List<String> entries) {
+    private static void setLocationGroup(UICommandBuilder commands, String section,
+                                         String titleKey, List<String> entries) {
+        String title = section + " #SectionTitle";
+        String list = section + " #SectionList";
         boolean visible = !entries.isEmpty();
-        commands.set(group + ".Visible", visible);
+        commands.set(section + ".Visible", visible);
         commands.set(title + ".Visible", visible);
 
         if (visible) {

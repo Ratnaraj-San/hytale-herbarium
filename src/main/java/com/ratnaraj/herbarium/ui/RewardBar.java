@@ -59,7 +59,7 @@ public class RewardBar {
             boolean compensationPending = compensationPendingTiers.contains(tier);
             String marker = "#ChestMarkers[" + (tier - 1) + "]";
 
-            commands.append("#ChestMarkers", "Pages/Herbarium/ChestMarker.ui");
+            commands.append("#ChestMarkers", "Pages/Herbarium/components/ChestMarker.ui");
 
             Anchor anchor = new Anchor();
             anchor.setLeft(Value.of(threshold * CHEST_MARKER_SCALE / totalPlants));

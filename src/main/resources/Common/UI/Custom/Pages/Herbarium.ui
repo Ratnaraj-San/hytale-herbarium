@@ -1,15 +1,6 @@
 $C = "../Common.ui";
 $Sounds = "../Sounds.ui";
-
-@JournalTitleStyle = LabelStyle(
-  FontSize: 15,
-  VerticalAlignment: Center,
-  RenderUppercase: true,
-  TextColor: #b4c8c9,
-  FontName: "Default",
-  RenderBold: true,
-  LetterSpacing: 0.5
-);
+$H = "Herbarium/components/HerbariumCommon.ui";
 
 @progressBarWidth = 1018;
 
@@ -26,8 +17,8 @@ $C.@PageOverlay {
         Button #InfoButton {
           Anchor: (Width: 24, Height: 24, Left: 15);
           Style: (
-            Default: (Background: (TexturePath: "Herbarium/InfoButtonBackground.png", Border: 2)),
-            Hovered: (Background: (TexturePath: "Herbarium/InfoButtonBackgroundHovered.png", Border: 2))
+            Default: (Background: (TexturePath: "Herbarium/textures/InfoButtonBackground.png", Border: 2)),
+            Hovered: (Background: (TexturePath: "Herbarium/textures/InfoButtonBackgroundHovered.png", Border: 2))
           );
 
           Label {
@@ -36,18 +27,14 @@ $C.@PageOverlay {
           }
         }
 
-        Group {
-          FlexWeight: 1;
-        }
+        $H.@FlexSpacer {}
 
         Label #TitleLabel {
-          Style: @JournalTitleStyle;
+          Style: $H.@JournalTitleStyle;
           Text: "Herbarium";
         }
 
-        Group {
-          FlexWeight: 1;
-        }
+        $H.@FlexSpacer {}
 
         Group {
           LayoutMode: Right;
@@ -61,7 +48,7 @@ $C.@PageOverlay {
       Padding: (Full: 9);
 
       Group #Categories {
-        Background: (TexturePath: "Herbarium/MemoriesRunes.png", Border: 15);
+        Background: (TexturePath: "Herbarium/textures/MemoriesRunes.png", Border: 15);
         FlexWeight: 1;
 
         Group {
@@ -79,38 +66,34 @@ $C.@PageOverlay {
       Group #Footer {
         Anchor: (Height: 175);
         LayoutMode: Top;
-        Background: (TexturePath: "Herbarium/ContainerBackground.png", Border: 23);
+        Background: (TexturePath: "Herbarium/textures/ContainerBackground.png", Border: 23);
         Padding: (Horizontal: 20, Vertical: 15);
 
-        Group {
-          FlexWeight: 1;
-        }
+        $H.@FlexSpacer {}
 
         Group #ChestMarkers {
           Anchor: (Bottom: -15, Left: -14);
         }
 
         Group {
-          Background: "Herbarium/MemoriesProgress/MemoriesBarBg.png";
+          Background: "Herbarium/textures/MemoriesProgress/MemoriesBarBg.png";
           Anchor: (Height: 22, Width: @progressBarWidth, Bottom: 30);
           Padding: (Full: 6);
 
           ProgressBar #PlantsProgressBar {
-            BarTexturePath: "Herbarium/MemoriesProgress/MemoriesBarFill.png";
-            EffectTexturePath: "Herbarium/MemoriesProgress/MemoriesBarTipOfTheBar.png";
+            BarTexturePath: "Herbarium/textures/MemoriesProgress/MemoriesBarFill.png";
+            EffectTexturePath: "Herbarium/textures/MemoriesProgress/MemoriesBarTipOfTheBar.png";
             EffectWidth: 114;
             EffectHeight: 32;
             EffectOffset: 104;
           }
 
           ProgressBar #PlantsProgressBarTexture {
-            BarTexturePath: "Herbarium/MemoriesProgress/MemoriesBarTexture.png";
+            BarTexturePath: "Herbarium/textures/MemoriesProgress/MemoriesBarTexture.png";
           }
         }
 
-        Group {
-          FlexWeight: 1;
-        }
+        $H.@FlexSpacer {}
 
         Group {
           LayoutMode: Left;
@@ -120,7 +103,7 @@ $C.@PageOverlay {
             LayoutMode: Left;
 
             Label #TotalCollected {
-              Style: @JournalTitleStyle;
+              Style: $H.@JournalTitleStyle;
               Text: "";
             }
           }
@@ -132,9 +115,7 @@ $C.@PageOverlay {
             Disabled: true;
           }
 
-          Group {
-            FlexWeight: 1;
-          }
+          $H.@FlexSpacer {}
         }
       }
     }
