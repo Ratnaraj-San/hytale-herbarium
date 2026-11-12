@@ -121,7 +121,7 @@
   }
 
   @Spacer {
-    @Pad = Padding(Vertical: 2);
+    @Pad = Padding(Vertical: 4);
   }
 
   Group #SectionList {
