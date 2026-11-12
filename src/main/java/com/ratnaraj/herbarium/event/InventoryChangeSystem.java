@@ -140,44 +140,54 @@ public class InventoryChangeSystem extends EntityEventSystem<EntityStore, Invent
 
         if (!Herbarium.getCatalog().isPlantItem(itemId)) { return; }
 
+        // The event targets one entity's inventory component: only the chunk
+        // entity owning that component is the one that picked the plant up.
+        // Crediting the first player found in the chunk would attribute the
+        // discovery to the wrong player when several players are nearby.
         for (int i = 0; i < chunk.size(); i++) {
+            if (chunk.getComponent(i, event.getComponentType()) != event.getInventory()) {
+                continue;
+            }
+
             Ref<EntityStore> entityRef = chunk.getReferenceTo(i);
 
-                try {
-                    PlayerRef playerRef = store.getComponent(entityRef, PlayerRef.getComponentType());
-                    if (playerRef != null && playerRef.isValid()) {
-                        // Discovery progression stays inactive until the
-                        // player has opened the journal for the first time.
-                        if (!Herbarium.getPlayerStore().hasOpenedJournal(playerRef)) {
-                            return;
-                        }
-
-                        String discoveredDate = Instant.now().toString();
-                        String discoveredPlace = getPlayerPosition(store, entityRef);
-                        boolean isNewDiscovery = Herbarium.getPlayerStore().addPlantMemory(
-                                playerRef, itemId, itemName, discoveredDate, discoveredPlace);
-
-                        if (isNewDiscovery) {
-                            NotificationUtil.sendNotification(
-                                    playerRef.getPacketHandler(),
-                                    Message.translation(DISCOVERY_NOTIFICATION_KEY)
-                                            .insert(" ")
-                                            .insert(PlantAssets.getPlantNameMessage(itemId).color(Color.YELLOW)),
-                                    null,
-                                    "NotificationIcons/PlantIcon.png"
-                            );
-
-                            FeedbackSound.play(playerRef, DISCOVERY_SOUND_EVENT, store, false);
-                        }
-
-                        return;
-                    }
-                } catch (Exception e) {
-                    Herbarium.getInstance().getLogger().at(Level.WARNING).log(
-                            "[Herbarium] Error during processing: " + e.getMessage()
-                    );
+            try {
+                PlayerRef playerRef = store.getComponent(entityRef, PlayerRef.getComponentType());
+                if (playerRef == null || !playerRef.isValid()) {
+                    return;
                 }
 
+                // Discovery progression stays inactive until the
+                // player has opened the journal for the first time.
+                if (!Herbarium.getPlayerStore().hasOpenedJournal(playerRef)) {
+                    return;
+                }
+
+                String discoveredDate = Instant.now().toString();
+                String discoveredPlace = getPlayerPosition(store, entityRef);
+                boolean isNewDiscovery = Herbarium.getPlayerStore().addPlantMemory(
+                        playerRef, itemId, itemName, discoveredDate, discoveredPlace);
+
+                if (isNewDiscovery) {
+                    NotificationUtil.sendNotification(
+                            playerRef.getPacketHandler(),
+                            Message.translation(DISCOVERY_NOTIFICATION_KEY)
+                                    .insert(" ")
+                                    .insert(PlantAssets.getPlantNameMessage(itemId).color(Color.YELLOW)),
+                            null,
+                            "NotificationIcons/PlantIcon.png"
+                    );
+
+                    FeedbackSound.play(playerRef, DISCOVERY_SOUND_EVENT, store, false);
+                }
+
+                return;
+            } catch (Exception e) {
+                Herbarium.getInstance().getLogger().at(Level.WARNING).log(
+                        "[Herbarium] Error during processing: " + e.getMessage()
+                );
+                return;
+            }
         }
     }
 }
