@@ -2,6 +2,9 @@
 // Imported by page orchestrators with: $H = "HerbariumCommon.ui";
 // (from Pages/Herbarium.ui: $H = "Herbarium/HerbariumCommon.ui";)
 
+$Common = "../../../Common.ui";
+$Sounds = "../../../Sounds.ui";
+
 @JournalTitleStyle = LabelStyle(
   FontSize: 15,
   VerticalAlignment: Center,
@@ -126,5 +129,100 @@
 
   Group #SectionList {
     LayoutMode: Top;
+  }
+};
+
+// Small tile for a crafting ingredient: icon + tooltip name (amount sits below the tile).
+// Same structure as PlantTile (centered icon over labels) on a section background.
+// Usage: $H.@IngredientTile #MyTile {}
+// Java addresses "#MyTile #IngredientIcon" (AssetPath), "#IngredientName", "#IngredientAmount".
+@IngredientTile = Group {
+  Anchor: (Width: 96, Height: 124, Right: 8, Bottom: 8);
+  LayoutMode: Top;
+  Background: (TexturePath: "../textures/SectionBackground.png", Border: 8);
+  Padding: (Full: 6);
+  TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+  TooltipText: "";
+
+  Group {
+    LayoutMode: Middle;
+    FlexWeight: 1;
+
+    AssetImage #IngredientIcon {
+      Anchor: (Width: 48, Height: 48);
+      FallbackTexturePath: "UI/Custom/Pages/Memories/MissingIcon.png";
+    }
+  }
+};
+
+// Plant tile, same as the LeftPanel grid tiles (moved here so ingredient lists can
+// reuse it). Java addresses "#Icon", "#ButtonNotSelected"/"#ButtonSelected",
+// "#EmptyBackground" relative to the tile root.
+@PlantTile = Group {
+  @Width = 144;
+  @Height = 176;
+  @IconSize = 112;
+  @Gap = 16;
+
+  Anchor: (Width: @Width, Height: @Height, Right: @Gap, Bottom: @Gap);
+  Padding: (Full: 0);
+
+  Group #EmptyBackground {
+    Visible: false;
+    Background: (TexturePath: "../textures/Tiles/TileEmpty.png", Border: 8);
+    TooltipText: %server.memories.general.undiscovered.tooltipText;
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+  }
+
+  TextButton #ButtonNotSelected {
+    Visible: false;
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+    Style: (
+      Sounds: $Sounds.@ButtonsLight,
+      Default: (
+        LabelStyle: (
+          Wrap: true,
+          HorizontalAlignment: Center,
+          VerticalAlignment: Center
+        ),
+        Background: (TexturePath: "../textures/Tiles/TileDefault.png", Border: 8)
+      ),
+      Hovered: (
+        LabelStyle: (
+          Wrap: true,
+          HorizontalAlignment: Center,
+          VerticalAlignment: Center
+        ),
+        Background: (TexturePath: "../textures/Tiles/TileHovered.png", Border: 8)
+      )
+    );
+    FlexWeight: 1;
+  }
+
+  TextButton #ButtonSelected {
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+    Visible: false;
+    Style: (
+      Sounds: $Sounds.@ButtonsLight,
+      Default: (
+        LabelStyle: (
+          Wrap: true,
+          HorizontalAlignment: Center,
+          VerticalAlignment: Center
+        ),
+        Background: (TexturePath: "../textures/Tiles/TileSelected.png", Border: 8)
+      )
+    );
+    FlexWeight: 1;
+  }
+
+  Group {
+    LayoutMode: Middle;
+    Anchor: (Full: 0);
+
+    AssetImage #Icon {
+      Anchor: (Width: @IconSize, Height: @IconSize);
+      FallbackTexturePath: "UI/Custom/Pages/Memories/MissingIcon.png";
+    }
   }
 };

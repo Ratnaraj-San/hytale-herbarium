@@ -31,6 +31,7 @@ herbarium.ui.locations.zones = Zones
 herbarium.ui.locations.regions = Regions
 herbarium.ui.locations.portals = Portals
 herbarium.ui.obtained_from.interactions = Interactions
+herbarium.ui.obtained_from.crafting = Crafting
 herbarium.ui.interaction.break = Break
 herbarium.ui.interaction.collect = Collect
 herbarium.ui.interaction.shears = Shears

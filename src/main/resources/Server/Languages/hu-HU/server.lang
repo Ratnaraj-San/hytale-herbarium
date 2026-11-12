@@ -33,6 +33,7 @@ herbarium.ui.locations.zones = Zónák
 herbarium.ui.locations.regions = Régiók
 herbarium.ui.locations.portals = Portálok
 herbarium.ui.obtained_from.interactions = Interakciók
+herbarium.ui.obtained_from.crafting = Készítés
 herbarium.ui.interaction.break = Kitörés
 herbarium.ui.interaction.collect = Begyűjtés
 herbarium.ui.interaction.shears = Olló

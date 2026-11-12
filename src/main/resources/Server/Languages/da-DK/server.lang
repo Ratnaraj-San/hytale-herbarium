@@ -33,6 +33,7 @@ herbarium.ui.locations.zones = Zoner
 herbarium.ui.locations.regions = Regioner
 herbarium.ui.locations.portals = Portaler
 herbarium.ui.obtained_from.interactions = Interaktioner
+herbarium.ui.obtained_from.crafting = Fremstilling
 herbarium.ui.interaction.break = Ødelæg
 herbarium.ui.interaction.collect = Saml
 herbarium.ui.interaction.shears = Saks

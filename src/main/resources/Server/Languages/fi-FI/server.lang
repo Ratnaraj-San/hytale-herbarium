@@ -33,6 +33,7 @@ herbarium.ui.locations.zones = Vyöhykkeet
 herbarium.ui.locations.regions = Alueet
 herbarium.ui.locations.portals = Portaalit
 herbarium.ui.obtained_from.interactions = Vuorovaikutukset
+herbarium.ui.obtained_from.crafting = Valmistus
 herbarium.ui.interaction.break = Riko
 herbarium.ui.interaction.collect = Kerää
 herbarium.ui.interaction.shears = Sakset

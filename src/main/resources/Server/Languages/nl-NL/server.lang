@@ -33,6 +33,7 @@ herbarium.ui.locations.zones = Zones
 herbarium.ui.locations.regions = Regio's
 herbarium.ui.locations.portals = Portalen
 herbarium.ui.obtained_from.interactions = Interacties
+herbarium.ui.obtained_from.crafting = Vervaardiging
 herbarium.ui.interaction.break = Breken
 herbarium.ui.interaction.collect = Verzamelen
 herbarium.ui.interaction.shears = Schaar

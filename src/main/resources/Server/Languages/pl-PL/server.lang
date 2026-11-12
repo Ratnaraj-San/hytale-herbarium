@@ -33,6 +33,7 @@ herbarium.ui.locations.zones = Strefy
 herbarium.ui.locations.regions = Regiony
 herbarium.ui.locations.portals = Portale
 herbarium.ui.obtained_from.interactions = Interakcje
+herbarium.ui.obtained_from.crafting = Wytwarzanie
 herbarium.ui.interaction.break = Zniszcz
 herbarium.ui.interaction.collect = Zbierz
 herbarium.ui.interaction.shears = Nożyce

@@ -196,6 +196,44 @@ class ItemChain:
         return "Shears" in self.tools_of(pid)
 
 
+def bench_item_map(az):
+    """Bench type Id (BlockType.Bench.Id of bench items) -> bench item id (file name).
+
+    Recipes reference benches by type id (e.g. "Farmingbench"); icons/names live on
+    the placeable bench item (e.g. "Bench_Farming"). When several items declare the
+    same bench type, prefer the one whose name matches (Farmingbench -> Bench_Farming).
+    """
+    mapping = {}
+    for name in sorted(n for n in az.names
+                       if n.startswith("Server/Item/Items/Bench/") and n.endswith(".json")):
+        data = az.load_json(name)
+        bench = (data.get("BlockType") or {}).get("Bench")
+        bench_id = bench.get("Id") if isinstance(bench, dict) else None
+        if not bench_id:
+            continue
+        item_id = name.rsplit("/", 1)[-1][:-5]
+        norm_bench = bench_id.lower().replace("_bench", "").replace("bench", "")
+        norm_item = item_id.lower().replace("bench_", "").replace("bench", "")
+        if bench_id not in mapping or (norm_bench and norm_bench in norm_item):
+            mapping[bench_id] = item_id
+    return mapping
+
+
+def resolve_bench_items(recipe, bench_items):
+    """Add BenchItemId to each BenchRequirement so the UI can show bench icon/name."""
+    if not recipe:
+        return recipe
+    recipe = dict(recipe)
+    reqs = recipe.get("BenchRequirement")
+    if isinstance(reqs, list):
+        recipe["BenchRequirement"] = [
+            {**r, "BenchItemId": bench_items.get(r.get("Id"), r.get("Id"))}
+            if isinstance(r, dict) else r
+            for r in reqs
+        ]
+    return recipe
+
+
 def sapling_prefab_links(az, item_path):
     """sapling item id -> set of full prefab paths it grows into
     (BlockType.Farming.Stages[*].Prefabs[*].Path)."""

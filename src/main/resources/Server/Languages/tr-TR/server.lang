@@ -33,6 +33,7 @@ herbarium.ui.locations.zones = Bölgeler
 herbarium.ui.locations.regions = Yöreler
 herbarium.ui.locations.portals = Portallar
 herbarium.ui.obtained_from.interactions = Etkileşimler
+herbarium.ui.obtained_from.crafting = Üretim
 herbarium.ui.interaction.break = Kır
 herbarium.ui.interaction.collect = Topla
 herbarium.ui.interaction.shears = Makas

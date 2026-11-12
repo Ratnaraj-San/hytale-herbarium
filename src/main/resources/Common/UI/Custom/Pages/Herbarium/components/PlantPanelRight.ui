@@ -114,7 +114,42 @@ $Herbarium = "HerbariumCommon.ui";
             LayoutMode: Top;
           }
         }
-        // $Herbarium.@Section #PlantContainerObtainedFromCrafting {}
+
+        $Herbarium.@Spacer #SpacerAfterInteractions { Visible: false; }
+
+        Group #PlantContainerObtainedFromCrafting {
+          LayoutMode: Top;
+          Background: (TexturePath: "../textures/SectionBackground.png", Border: 8);
+          Padding: (Full: 8);
+
+          Group #CraftingHeader {
+            LayoutMode: CenterMiddle;
+
+            Label #SectionTitle {
+              Style: (...$Herbarium.@SectionTitleStyle, VerticalAlignment: Center);
+              Text: "";
+              FlexWeight: 1;
+              Visible: false;
+            }
+
+            AssetImage #BenchIcon {
+              Anchor: (Width: 48, Height: 48);
+              FallbackTexturePath: "UI/Custom/Pages/Memories/MissingIcon.png";
+              TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+              TooltipText: "";
+            }
+          }
+
+          $Herbarium.@Spacer {
+            @Pad = Padding(Vertical: 4);
+          }
+
+          Group #SectionList {
+            LayoutMode: LeftCenterWrap;
+            Anchor: (Full: 0);
+          }
+        }
+
         // $Herbarium.@Section #PlantContainerObtainedFromPlants {}
       }
 

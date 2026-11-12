@@ -18,9 +18,11 @@ from common import FINAL_FILE, REGIONS_BY_ZONE_FILE, SCAN_FILE, apply_obtainable
 from locations import is_valid_region, load_lang_keys, make_key_fns, normalize_region, scan_locations, scan_regions_by_zone
 from obtained import (
     ItemChain,
+    bench_item_map,
     build_relations,
     index_drops,
     index_items,
+    resolve_bench_items,
     sapling_prefab_links,
     scan_salvage_relations,
 )
@@ -39,6 +41,7 @@ def main():
     loc, _portals, prefab_plants, _prefab_backed = scan_locations(az)
     _server_key, region_key, zone_key_for_region = make_key_fns(load_lang_keys(az))
     relations = build_relations(az, drop_path, item_path, salvage_rel)
+    bench_items = bench_item_map(az)
 
     # leaves (and any plant inside a tree prefab) are obtainable via the tree grown
     # from a craftable sapling: sapling -> Farming stages -> prefab -> leaves
@@ -76,7 +79,7 @@ def main():
             },
             "obtainedFrom": {
                 "plants": sources,
-                "crafting": chain.own_recipe(pid),
+                "crafting": resolve_bench_items(chain.own_recipe(pid), bench_items),
                 "interactions": {
                     "break": chain.has_break_drop(pid, drop_path),
                     "collect": chain.has_collect_interaction(pid, drop_path),

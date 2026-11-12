@@ -33,6 +33,7 @@ herbarium.ui.locations.zones = Zóny
 herbarium.ui.locations.regions = Regiony
 herbarium.ui.locations.portals = Portály
 herbarium.ui.obtained_from.interactions = Interakce
+herbarium.ui.obtained_from.crafting = Výroba
 herbarium.ui.interaction.break = Rozbít
 herbarium.ui.interaction.collect = Sebrat
 herbarium.ui.interaction.shears = Nůžky

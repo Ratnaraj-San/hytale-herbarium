@@ -33,6 +33,7 @@ herbarium.ui.locations.zones = 区域
 herbarium.ui.locations.regions = 地区
 herbarium.ui.locations.portals = 传送门
 herbarium.ui.obtained_from.interactions = 交互
+herbarium.ui.obtained_from.crafting = 制作
 herbarium.ui.interaction.break = 破坏
 herbarium.ui.interaction.collect = 采集
 herbarium.ui.interaction.shears = 剪刀

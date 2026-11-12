@@ -17,6 +17,7 @@ public final class PlantCatalogV2 {
     private final Map<String, List<String>> plantCategories = new LinkedHashMap<>();
     private final Map<String, PlantLocationsV2> plantLocations = new HashMap<>();
     private final Map<String, PlantInteractions> plantInteractions = new HashMap<>();
+    private final Map<String, PlantCrafting> plantCrafting = new HashMap<>();
 
     public PlantCatalogV2() {
         this.allPlantsFromConfig = loadPlantsFromConfig();
@@ -56,7 +57,16 @@ public final class PlantCatalogV2 {
                                 readStringList(locationsJson, "portals")
                         ));
 
-                        plantInteractions.put(id, readInteractions(item.getAsJsonObject("obtainedFrom")));
+                        JsonObject obtainedFrom = item.getAsJsonObject("obtainedFrom");
+
+                        plantInteractions.put(id, readInteractions(obtainedFrom));
+
+                        if (obtainedFrom != null
+                                && obtainedFrom.has("crafting")
+                                && !obtainedFrom.get("crafting").isJsonNull()
+                        ) {
+                            plantCrafting.put(id, readCrafting(obtainedFrom.getAsJsonObject("crafting")));
+                        }
                     }
 
                     if (!categoryPlants.isEmpty()) {
@@ -86,6 +96,47 @@ public final class PlantCatalogV2 {
 
     public PlantInteractions getPlantInteractions(String plantId) {
         return plantInteractions.getOrDefault(plantId, PlantInteractions.NONE);
+    }
+
+    public PlantCrafting getPlantCrafting(String plantId) {
+        return plantCrafting.get(plantId);
+    }
+
+    private static PlantCrafting readCrafting(JsonObject crafting) {
+        List<PlantCrafting.Ingredient> inputs = new ArrayList<>();
+
+        if (crafting.has("Input") && crafting.get("Input").isJsonArray()) {
+            for (JsonElement e : crafting.getAsJsonArray("Input")) {
+                JsonObject in = e.getAsJsonObject();
+                inputs.add(new PlantCrafting.Ingredient(
+                        in.has("ItemId") ? in.get("ItemId").getAsString() : "",
+                        in.has("Quantity") && !in.get("Quantity").isJsonNull() ? in.get("Quantity").getAsInt() : 1
+                ));
+            }
+        }
+
+        List<PlantCrafting.Bench> benches = new ArrayList<>();
+
+        if (crafting.has("BenchRequirement") && crafting.get("BenchRequirement").isJsonArray()) {
+            for (JsonElement e : crafting.getAsJsonArray("BenchRequirement")) {
+                JsonObject b = e.getAsJsonObject();
+                String benchId = b.has("Id") ? b.get("Id").getAsString() : "";
+                String benchItemId = b.has("BenchItemId") && !b.get("BenchItemId").isJsonNull()
+                        ? b.get("BenchItemId").getAsString() : benchId;
+                benches.add(new PlantCrafting.Bench(
+                        benchId,
+                        benchItemId,
+                        readStringList(b, "Categories"),
+                        b.has("RequiredTierLevel") && !b.get("RequiredTierLevel").isJsonNull()
+                                ? b.get("RequiredTierLevel").getAsInt() : 0
+                ));
+            }
+        }
+
+        int outputQuantity = crafting.has("OutputQuantity") && !crafting.get("OutputQuantity").isJsonNull()
+                ? crafting.get("OutputQuantity").getAsInt() : 1;
+
+        return new PlantCrafting(List.copyOf(inputs), List.copyOf(benches), outputQuantity);
     }
 
     private static PlantInteractions readInteractions(JsonObject obtainedFrom) {
