@@ -77,12 +77,22 @@ herbarium.rewards.collectButton = Ridică recompensa {tier, number}
 herbarium.rewards.allCollected = Toate recompensele au fost ridicate
 
 herbarium.command.desc = Comenzi Herbarium
-herbarium.command.ui.desc = Deschide Jurnalul botanistului.
-herbarium.command.reset.desc = Îți șterge întregul progres.
+herbarium.command.open.desc = Deschide Jurnalul botanistului.
+herbarium.command.resetall.desc = Îți șterge întregul progres.
+herbarium.command.reset.desc = Șterge progresul pentru o anumită categorie.
+herbarium.command.reset.category.desc = Categoria de resetat (ex. Flower).
 herbarium.command.unlockall.desc = Deblochează toate plantele.
+herbarium.command.give.desc = Oferă Jurnalul botanistului.
+herbarium.command.unlock.desc = Deblochează toate plantele unei categorii.
 herbarium.command.playersOnly = Această comandă poate fi executată doar de jucători.
-herbarium.command.reset.done = Progresul tău a fost resetat.
-herbarium.command.unlockall.done = Toate plantele au fost deblocate.
+herbarium.command.resetall.done = Progresul tău a fost resetat pentru {player}.
+herbarium.command.reset.done = Categoria {category} a fost resetată pentru {player}.
+herbarium.command.unlockall.done = Toate plantele au fost deblocate pentru {player}.
+herbarium.command.give.done = {journal} a fost dat lui {player}.
+herbarium.command.unlock.category.desc = Categoria de deblocat (ex. Flower).
+herbarium.command.unlock.done = Categoria {category} a fost deblocată pentru {player}.
+herbarium.command.common.unknownCategory = Categorie necunoscută: {category}.
+herbarium.command.common.player.desc = Jucătorul țintă (implicit tu însuți).
 
 herbarium.progress.recorded = plante înregistrate: {count, number} / {total, number}
 

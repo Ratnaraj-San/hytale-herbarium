@@ -77,12 +77,22 @@ herbarium.rewards.collectButton = Belohnung {tier, number} einsammeln
 herbarium.rewards.allCollected = Alle Belohnungen gesammelt
 
 herbarium.command.desc = Herbarium-Befehle
-herbarium.command.ui.desc = Öffnet das Botaniker-Journal.
-herbarium.command.reset.desc = Löscht deinen gesamten Fortschritt.
+herbarium.command.open.desc = Öffnet das Botaniker-Journal.
+herbarium.command.resetall.desc = Löscht deinen gesamten Fortschritt.
+herbarium.command.reset.desc = Löscht den Fortschritt für eine bestimmte Kategorie.
+herbarium.command.reset.category.desc = Zurückzusetzende Kategorie (z. B. Flower).
 herbarium.command.unlockall.desc = Schaltet alle Pflanzen frei.
+herbarium.command.give.desc = Gibt ein Botaniker-Journal.
+herbarium.command.unlock.desc = Schaltet alle Pflanzen einer Kategorie frei.
 herbarium.command.playersOnly = Dieser Befehl kann nur von Spielern ausgeführt werden.
-herbarium.command.reset.done = Dein Fortschritt wurde zurückgesetzt.
-herbarium.command.unlockall.done = Alle Pflanzen wurden freigeschaltet.
+herbarium.command.resetall.done = Dein Fortschritt wurde für {player} zurückgesetzt.
+herbarium.command.reset.done = Kategorie {category} wurde für {player} zurückgesetzt.
+herbarium.command.unlockall.done = Alle Pflanzen wurden für {player} freigeschaltet.
+herbarium.command.give.done = {journal} wurde {player} gegeben.
+herbarium.command.unlock.category.desc = Freizuschaltende Kategorie (z. B. Flower).
+herbarium.command.unlock.done = Kategorie {category} wurde für {player} freigeschaltet.
+herbarium.command.common.unknownCategory = Unbekannte Kategorie: {category}.
+herbarium.command.common.player.desc = Zielspieler (standardmäßig du selbst).
 
 herbarium.progress.recorded = Pflanzen aufgezeichnet: {count, number} / {total, number}
 

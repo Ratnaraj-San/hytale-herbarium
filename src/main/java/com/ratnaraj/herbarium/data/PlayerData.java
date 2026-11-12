@@ -1,5 +1,6 @@
 package com.ratnaraj.herbarium.data;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -137,5 +138,35 @@ public class PlayerData {
         }
         plants.clear();
         plants.addAll(unlocked);
+    }
+
+    public void unlockCategory(Collection<String> plantIds) {
+        Set<PlantInfo> updated = new HashSet<>();
+
+        for (PlantInfo plant : plants) {
+            if (plantIds.contains(plant.getId())) {
+                updated.add(new PlantInfo(plant.getId(), plant.getPlantName(), true));
+            } else {
+                updated.add(plant);
+            }
+        }
+
+        plants.clear();
+        plants.addAll(updated);
+    }
+
+    public void resetCategory(Collection<String> plantIds) {
+        Set<PlantInfo> updated = new HashSet<>();
+
+        for (PlantInfo plant : plants) {
+            if (plantIds.contains(plant.getId())) {
+                updated.add(new PlantInfo(plant.getId(), plant.getPlantName(), false));
+            } else {
+                updated.add(plant);
+            }
+        }
+
+        plants.clear();
+        plants.addAll(updated);
     }
 }

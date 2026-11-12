@@ -77,12 +77,22 @@ herbarium.rewards.collectButton = Hent belønning {tier, number}
 herbarium.rewards.allCollected = Alle belønninger samlet
 
 herbarium.command.desc = Herbarium-kommandoer
-herbarium.command.ui.desc = Åbner Botanikerens journal.
-herbarium.command.reset.desc = Sletter hele dit fremskridt.
+herbarium.command.open.desc = Åbner Botanikerens journal.
+herbarium.command.resetall.desc = Sletter hele dit fremskridt.
+herbarium.command.reset.desc = Sletter fremskridt for en bestemt kategori.
+herbarium.command.reset.category.desc = Kategori der skal nulstilles (f.eks. Flower).
 herbarium.command.unlockall.desc = Låser op for alle planter.
+herbarium.command.give.desc = Giver en Botanikers journal.
+herbarium.command.unlock.desc = Låser alle planter i en kategori op.
 herbarium.command.playersOnly = Denne kommando kan kun udføres af spillere.
-herbarium.command.reset.done = Dit fremskridt er blevet nulstillet.
-herbarium.command.unlockall.done = Alle planter er blevet låst op.
+herbarium.command.resetall.done = Dit fremskridt er blevet nulstillet for {player}.
+herbarium.command.reset.done = Kategorien {category} er blevet nulstillet for {player}.
+herbarium.command.unlockall.done = Alle planter er blevet låst op for {player}.
+herbarium.command.give.done = {journal} er blevet givet til {player}.
+herbarium.command.unlock.category.desc = Kategori der skal låses op (f.eks. Flower).
+herbarium.command.unlock.done = Kategorien {category} er blevet låst op for {player}.
+herbarium.command.common.unknownCategory = Ukendt kategori: {category}.
+herbarium.command.common.player.desc = Målspiller (som standard dig selv).
 
 herbarium.progress.recorded = planter registreret: {count, number} / {total, number}
 
