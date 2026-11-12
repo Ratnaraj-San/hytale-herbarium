@@ -13,12 +13,24 @@ $C = "../../Common.ui";
 @PlantNameStyle = LabelStyle(
   FontSize: 25,
   VerticalAlignment: Center,
+  HorizontalAlignment: Start,
   RenderUppercase: true,
   TextColor: #b4c8c9,
   FontName: "Secondary",
   RenderBold: true,
   LetterSpacing: 0.5,
-  HorizontalAlignment: Center,
+  Wrap: true
+);
+
+@PlantIdStyle = LabelStyle(
+  FontSize: 14,
+  VerticalAlignment: Center,
+  HorizontalAlignment: Start,
+  RenderUppercase: false,
+  TextColor: #565a68,
+  FontName: "Secondary",
+  RenderBold: false,
+  LetterSpacing: 0.5,
   Wrap: true
 );
 
@@ -31,11 +43,22 @@ $C = "../../Common.ui";
   RenderUppercase: false
 );
 
-@PlantLocationsTitleStyle = LabelStyle(
-  FontSize: 15,
+@PlantContainerTitleStyle = LabelStyle(
+  FontSize: 18,
   TextColor: #b4c8c9,
   FontName: "Secondary",
-  HorizontalAlignment: Center,
+  HorizontalAlignment: Start,
+  Wrap: true,
+  RenderUppercase: true,
+  RenderBold: true,
+  LetterSpacing: 0.5
+);
+
+@PlantLocationsCategoryTitleStyle = LabelStyle(
+  FontSize: 16,
+  TextColor: #b4c8c9,
+  FontName: "Secondary",
+  HorizontalAlignment: Start,
   Wrap: true,
   RenderUppercase: false,
   RenderBold: true,
@@ -46,8 +69,9 @@ $C = "../../Common.ui";
   FontSize: 14,
   TextColor: #8a8f9e,
   FontName: "Secondary",
-  HorizontalAlignment: Center,
+  HorizontalAlignment: Start,
   Wrap: true,
+  RenderBold: false,
   RenderUppercase: false
 );
 
@@ -138,71 +162,121 @@ $C.@PageOverlay {
             LayoutMode: Top;
             FlexWeight: 1;
 
-            Label #PlantName {
-              Style: @PlantNameStyle;
-              Anchor: (Top: 35);
-              Text: "";
-            }
-
-            Group #PlantLocations {
-              LayoutMode: Top;
-              Padding: (Horizontal: 15);
-
-              Label #PlantLocationsTitle {
-                Style: @PlantLocationsTitleStyle;
-                Padding: (Top: 20);
-                Text: "";
-                Visible: false;
-              }
-
-              Label #PlantLocation0 {
-                Style: @PlantLocationStyle;
-                Text: "";
-                Visible: false;
-              }
-
-              Label #PlantLocation1 {
-                Style: @PlantLocationStyle;
-                Text: "";
-                Visible: false;
-              }
-
-              Label #PlantLocation2 {
-                Style: @PlantLocationStyle;
-                Text: "";
-                Visible: false;
-              }
-
-              Label #PlantLocation3 {
-                Style: @PlantLocationStyle;
-                Text: "";
-                Visible: false;
-              }
-
-              Label #PlantLocationUnknown {
-                Style: @PlantLocationStyle;
-                Text: "";
-                Visible: false;
-              }
-            }
-
-            Group {
-              FlexWeight: 1;
-            }
-
-            Group {
-              Anchor: (Height: 216, Width: 216);
-              LayoutMode: Middle;
-              Padding: (Top: 16, Bottom: 16);
+            Group #Header {
+              LayoutMode: Left;
+              Anchor: (Top: 35, Height: 96);
+              Padding: (Horizontal: 20);
 
               AssetImage #PlantIcon {
-                Anchor: (Width: 200, Height: 200);
+                Anchor: (Width: 112, Height: 112);
                 FallbackTexturePath: "UI/Custom/Pages/Memories/MissingIcon.png";
+              }
+
+              Group #HeaderText {
+                LayoutMode: Top;
+                FlexWeight: 1;
+                Padding: (Left: 16);
+
+                Group { FlexWeight: 1; }
+
+                Label #PlantName {
+                  Style: @PlantNameStyle;
+                  Text: "";
+                }
+
+                Label #PlantId {
+                  Style: @PlantIdStyle;
+                  Text: "";
+                }
+
+                Group { FlexWeight: 1; }
               }
             }
 
-            Group {
+            Group #PlantContent {
+              LayoutMode: TopScrolling;
+              Padding: (Horizontal: 20, Vertical: 20);
+              ScrollbarStyle: $C.@DefaultScrollbarStyle;
               FlexWeight: 1;
+
+              Group {
+                Padding: (Bottom: 2);
+              }
+
+              Group #PlantContainerLocations {
+                LayoutMode: Top;
+
+                Label #PlantContainerLocationsTitle {
+                  Style: @PlantContainerTitleStyle;
+                  Text: "";
+                }
+
+                Group { Padding: (Bottom: 8); }
+
+                Group #PlantLocationsZones {
+                  LayoutMode: Top;
+                  Background: (TexturePath: "SectionBackground.png", Border: 8);
+                  Padding: (Full: 8);
+
+                  Label #PlantLocationsZonesTitle {
+                    Style: @PlantLocationsCategoryTitleStyle;
+                    Text: "";
+                    Visible: false;
+                  }
+
+                  Group { Padding: (Vertical: 2); }
+
+                  Group #ZonesList {
+                    LayoutMode: Top;
+                  }
+                }
+
+                Group { Padding: (Vertical: 8); }
+
+                Group #PlantLocationsRegions {
+                  LayoutMode: Top;
+                  Background: (TexturePath: "SectionBackground.png", Border: 8);
+                  Padding: (Full: 8);
+
+                  Label #PlantLocationsRegionsTitle {
+                    Style: @PlantLocationsCategoryTitleStyle;
+                    Text: "";
+                    Visible: false;
+                  }
+
+                  Group { Padding: (Vertical: 2); }
+
+                  Group #RegionsList {
+                    LayoutMode: Top;
+                  }
+                }
+
+                Group { Padding: (Vertical: 8); }
+
+                Group #PlantLocationsPortals {
+                  LayoutMode: Top;
+                  Background: (TexturePath: "SectionBackground.png", Border: 8);
+                  Padding: (Full: 8);
+
+                  Label #PlantLocationsPortalsTitle {
+                    Style: @PlantLocationsCategoryTitleStyle;
+                    Text: "";
+                    Visible: false;
+                  }
+
+                  Group { Padding: (Vertical: 2); }
+
+                  Group #PortalsList {
+                    LayoutMode: Top;
+                  }
+                }
+
+                Label #PlantLocationUnknown {
+                  Style: @PlantLocationStyle;
+                  Text: "";
+                  Visible: false;
+                }
+              }
             }
 
             Label #PlantDiscovery {

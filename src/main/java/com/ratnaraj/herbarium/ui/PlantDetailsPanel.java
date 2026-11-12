@@ -9,19 +9,26 @@ import com.ratnaraj.herbarium.data.PlantInfo;
 import com.ratnaraj.herbarium.data.PlantLocationsV2;
 import com.ratnaraj.herbarium.data.PlayerStore;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PlantDetailsPanel {
 
-    private static final int LOCATION_LABEL_COUNT = 4;
+    private static final String LOCATION_ENTRY_UI = "Pages/Herbarium/LocationEntry.ui";
+    private static final String LOCATION_ENTRY_SPACED_UI = "Pages/Herbarium/LocationEntrySpaced.ui";
     private static final String LOCATIONS_FOUND_IN_KEY = "server.herbarium.location.found_in";
     private static final String LOCATION_UNKNOWN_KEY = "server.herbarium.location.unknown";
+    private static final String ZONES_TITLE_KEY = "server.herbarium.location.zones";
+    private static final String REGIONS_TITLE_KEY = "server.herbarium.location.regions";
+    private static final String PORTALS_TITLE_KEY = "server.herbarium.location.portals";
     private static final String DISCOVERED_ON_KEY = "server.herbarium.plant.discoveredOn";
     private static final String DISCOVERED_AT_KEY = "server.herbarium.plant.discoveredAt";
 
-    public static void buildDetails(PlayerRef playerRef, UICommandBuilder commands,
-                                    String selectedPlant) {
+    public static void buildDetails(
+            PlayerRef playerRef,
+            UICommandBuilder commands,
+            String selectedPlant,
+            boolean devView
+    ) {
         PlayerStore store = Herbarium.getPlayerStore();
 
         if (selectedPlant == null) {
@@ -33,6 +40,7 @@ public class PlantDetailsPanel {
         }
 
         setPlantName(commands, "#PlantName.Text", selectedPlant);
+        setPlantId(commands, "#PlantId.Text", selectedPlant, devView);
 
         setLocationsPanel(commands, Herbarium.getCatalog().getPlantLocations(selectedPlant));
 
@@ -62,40 +70,69 @@ public class PlantDetailsPanel {
     }
 
     public static void setLocationsPanel(UICommandBuilder commands, PlantLocationsV2 locations) {
-        List<String> locationKeys = new ArrayList<>();
         boolean hasPlant = locations != null;
+        boolean hasLocations = hasPlant && !locations.isEmpty();
+
+        commands.set("#PlantContainerLocations.Visible", hasPlant);
 
         if (hasPlant) {
-            locationKeys.addAll(locations.getRegions());
-            locationKeys.addAll(locations.getZones());
-            locationKeys.addAll(locations.getPortals());
-        }
-
-        boolean hasLocations = hasPlant && !locationKeys.isEmpty();
-
-        commands.set("#PlantLocationsTitle.Visible", hasPlant);
-        if (hasPlant) {
-            commands.set("#PlantLocationsTitle.Text", Message.translation(LOCATIONS_FOUND_IN_KEY));
+            commands.set("#PlantContainerLocationsTitle.Text", Message.translation(LOCATIONS_FOUND_IN_KEY));
         } else {
-            commands.set("#PlantLocationsTitle.Text", "");
+            commands.set("#PlantContainerLocationsTitle.Text", "");
         }
 
         commands.set("#PlantLocationUnknown.Visible", hasPlant && !hasLocations);
+
         if (hasPlant && !hasLocations) {
             commands.set("#PlantLocationUnknown.Text", Message.translation(LOCATION_UNKNOWN_KEY));
         } else {
             commands.set("#PlantLocationUnknown.Text", "");
         }
 
-        for (int i = 0; i < LOCATION_LABEL_COUNT; i++) {
-            String label = "#PlantLocation" + i;
-            if (hasLocations && i < locationKeys.size()) {
-                commands.set(label + ".Text", Message.translation(locationKeys.get(i)));
-                commands.set(label + ".Visible", true);
-            } else {
-                commands.set(label + ".Text", "");
-                commands.set(label + ".Visible", false);
-            }
+        setLocationGroup(
+                commands,
+                "#PlantLocationsZones",
+                "#PlantLocationsZonesTitle",
+                "#ZonesList",
+                ZONES_TITLE_KEY,
+                hasPlant ? locations.getZones() : List.of()
+        );
+        setLocationGroup(
+                commands,
+                "#PlantLocationsRegions",
+                "#PlantLocationsRegionsTitle",
+                "#RegionsList",
+                REGIONS_TITLE_KEY,
+                hasPlant ? locations.getRegions() : List.of()
+        );
+        setLocationGroup(
+                commands,
+                "#PlantLocationsPortals",
+                "#PlantLocationsPortalsTitle",
+                "#PortalsList",
+                PORTALS_TITLE_KEY,
+                hasPlant ? locations.getPortals() : List.of()
+        );
+    }
+
+    private static void setLocationGroup(UICommandBuilder commands, String group, String title,
+                                         String list, String titleKey, List<String> entries) {
+        boolean visible = !entries.isEmpty();
+        commands.set(group + ".Visible", visible);
+        commands.set(title + ".Visible", visible);
+
+        if (visible) {
+            commands.set(title + ".Text", Message.translation(titleKey));
+        } else {
+            commands.set(title + ".Text", "");
+        }
+
+        commands.clear(list);
+
+        for (int i = 0; i < entries.size(); i++) {
+            // First entry has no top padding; the rest are spaced.
+            commands.append(list, i == 0 ? LOCATION_ENTRY_UI : LOCATION_ENTRY_SPACED_UI);
+            commands.set(list + "[" + i + "] #LocationText.Text", Message.translation(entries.get(i)));
         }
     }
 
@@ -106,6 +143,7 @@ public class PlantDetailsPanel {
 
     public static void setPlantName(UICommandBuilder commands, String selector, String plantId) {
         String translationKey = PlantAssets.getPlantTranslationKey(plantId);
+
         if (translationKey != null) {
             commands.set(selector, Message.translation(translationKey));
         } else {
@@ -113,5 +151,8 @@ public class PlantDetailsPanel {
         }
     }
 
+    public static void setPlantId(UICommandBuilder commands, String selector, String plantId, boolean devView) {
+        if (devView) { commands.set(selector, plantId); }
+    }
 
 }
