@@ -21,6 +21,7 @@ from obtained import (
     bench_item_map,
     build_relations,
     cleanup_plant_sources,
+    harvest_drop_refs,
     index_drops,
     index_items,
     resolve_bench_items,
@@ -43,6 +44,7 @@ def main():
     _server_key, region_key, zone_key_for_region = make_key_fns(load_lang_keys(az))
     relations = build_relations(az, drop_path, item_path, salvage_rel)
     bench_items = bench_item_map(az)
+    harvest_refs = harvest_drop_refs(item_path, chain)
 
     # leaves (and any plant inside a tree prefab) are obtainable via the tree grown
     # from a craftable sapling: sapling -> Farming stages -> prefab -> leaves
@@ -72,6 +74,7 @@ def main():
         sources = cleanup_plant_sources(
             pid, sources, set(all_plants) | set(item_path),
             magical=chain.uses_crystal_fertilizer(pid),
+            harvest_refs=harvest_refs,
         )
 
         result[item_category.get(pid, "Unknown")].append({

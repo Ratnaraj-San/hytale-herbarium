@@ -10350,19 +10350,25 @@
             "id": "Plant_Crop_Mana1",
             "shears": false,
             "drop": true,
-            "salvage": true
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Crop_Mana2",
             "shears": false,
             "drop": true,
-            "salvage": true
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Crop_Mana3",
             "shears": false,
             "drop": true,
-            "salvage": true
+            "salvage": true,
+            "growth": false,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -10384,16 +10390,12 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Flower_Black_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
             "id": "Plant_Flower_Orchid_Poisoned",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           }
         ],
         "crafting": {
@@ -10440,19 +10442,25 @@
             "id": "Plant_Crop_Health1",
             "shears": false,
             "drop": true,
-            "salvage": true
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Crop_Health2",
             "shears": false,
             "drop": true,
-            "salvage": true
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Crop_Health3",
             "shears": false,
             "drop": true,
-            "salvage": true
+            "salvage": true,
+            "growth": false,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -10474,46 +10482,52 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Flower_Blue_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
             "id": "Plant_Flower_Common_Blue",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Common_Blue2",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Flax_Blue",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Orchid_Blue",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Tall_Blue",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Water_Blue",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           }
         ],
         "crafting": {
@@ -10559,26 +10573,26 @@
           {
             "id": "Plant_Flower_Common_Cyan",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Common_Cyan2",
             "shears": false,
-            "drop": false,
-            "salvage": true
-          },
-          {
-            "id": "Plant_Flower_Cyan_Harvest",
-            "shears": false,
             "drop": true,
-            "salvage": false
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Orchid_Cyan",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           }
         ],
         "crafting": {
@@ -10624,38 +10638,42 @@
           {
             "id": "Plant_Flower_Common_Lime",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Common_Lime2",
             "shears": false,
-            "drop": false,
-            "salvage": true
-          },
-          {
-            "id": "Plant_Flower_Green_Harvest",
-            "shears": false,
             "drop": true,
-            "salvage": false
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Hemlock",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Water_Duckweed",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Water_Green",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           }
         ],
         "crafting": {
@@ -10701,38 +10719,42 @@
           {
             "id": "Plant_Flower_Common_Orange",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Common_Orange2",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Flax_Orange",
             "shears": false,
-            "drop": false,
-            "salvage": true
-          },
-          {
-            "id": "Plant_Flower_Orange_Harvest",
-            "shears": false,
             "drop": true,
-            "salvage": false
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Orchid_Orange",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Poisoned_Orange",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           }
         ],
         "crafting": {
@@ -10778,44 +10800,50 @@
           {
             "id": "Plant_Flower_Common_Pink",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Common_Pink2",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Common_Poisoned2",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Flax_Pink",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Orchid_Pink",
             "shears": false,
-            "drop": false,
-            "salvage": true
-          },
-          {
-            "id": "Plant_Flower_Pink_Harvest",
-            "shears": false,
             "drop": true,
-            "salvage": false
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Tall_Pink",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           }
         ],
         "crafting": {
@@ -10861,56 +10889,74 @@
           {
             "id": "Plant_Flower_Common_Purple",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Common_Purple2",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Common_Violet",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Common_Violet2",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Flax_Purple",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Orchid_Purple",
             "shears": false,
-            "drop": false,
-            "salvage": true
-          },
-          {
-            "id": "Plant_Flower_Purple_Harvest",
-            "shears": false,
             "drop": true,
-            "salvage": false
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Tall_Purple",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
+          },
+          {
+            "id": "Plant_Flower_Tall_Violet",
+            "shears": false,
+            "drop": true,
+            "salvage": false,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Water_Purple",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           }
         ],
         "crafting": {
@@ -10957,49 +11003,57 @@
             "id": "Plant_Flower_Common_Grey2",
             "shears": false,
             "drop": false,
-            "salvage": true
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Common_Poisoned",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Common_Red",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Common_Red2",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Orchid_Red",
             "shears": false,
-            "drop": false,
-            "salvage": true
-          },
-          {
-            "id": "Plant_Flower_Red_Harvest",
-            "shears": false,
             "drop": true,
-            "salvage": false
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Tall_Red",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Water_Red",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           }
         ],
         "crafting": {
@@ -11046,19 +11100,25 @@
             "id": "Plant_Crop_Stamina1",
             "shears": false,
             "drop": true,
-            "salvage": true
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Crop_Stamina2",
             "shears": false,
             "drop": true,
-            "salvage": true
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Crop_Stamina3",
             "shears": false,
             "drop": true,
-            "salvage": true
+            "salvage": true,
+            "growth": false,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -11082,44 +11142,58 @@
           {
             "id": "Plant_Flower_Common_Grey",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Common_White",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Common_White2",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Flax_White",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Orchid_White",
             "shears": false,
             "drop": false,
-            "salvage": true
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Water_White",
             "shears": false,
             "drop": false,
-            "salvage": true
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
-            "id": "Plant_Flower_White_Harvest",
+            "id": "Plant_Flower_Common_Grey2",
             "shears": false,
             "drop": true,
-            "salvage": false
+            "salvage": false,
+            "growth": false,
+            "magical": false
           }
         ],
         "crafting": {
@@ -11165,44 +11239,42 @@
           {
             "id": "Plant_Flower_Common_Yellow",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Common_Yellow2",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Flax_Yellow",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Orchid_Yellow",
             "shears": false,
-            "drop": false,
-            "salvage": true
+            "drop": true,
+            "salvage": true,
+            "growth": false,
+            "magical": false
           },
           {
             "id": "Plant_Flower_Tall_Yellow",
             "shears": false,
             "drop": false,
-            "salvage": true
-          },
-          {
-            "id": "Plant_Flower_Yellow_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Sunflower",
-            "shears": false,
-            "drop": true,
-            "salvage": false
+            "salvage": true,
+            "growth": false,
+            "magical": false
           }
         ],
         "crafting": null,

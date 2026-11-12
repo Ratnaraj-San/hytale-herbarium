@@ -220,22 +220,50 @@ class ItemChain:
         return "Shears" in self.tools_of(pid)
 
 
-def cleanup_plant_sources(pid, sources, known_ids, magical=False):
+def harvest_drop_refs(item_path, chain):
+    """Drop-list stem ending in "_Harvest" -> [(plant item id, gathering key)] for every
+    plant item whose Parent chain sets it as a Gathering DropList
+    (Soft = break, Harvest = collect). E.g. "Plant_Flower_Blue_Harvest" is not an item:
+    it is the drop list used when breaking the blue flowers."""
+    refs = defaultdict(set)
+    for pid in item_path:
+        if not PLANT_ID_RE.match(pid):
+            continue
+        for cur, data in chain._chain(pid):
+            gathering = (data.get("BlockType") or {}).get("Gathering") or {}
+            for key in ("Soft", "Harvest", "Breaking"):
+                entry = gathering.get(key)
+                drop_list = entry.get("DropList") if isinstance(entry, dict) else None
+                if isinstance(drop_list, str) and drop_list.endswith("_Harvest"):
+                    refs[drop_list].add((cur, key))
+    return {k: sorted(v) for k, v in refs.items()}
+
+
+def cleanup_plant_sources(pid, sources, known_ids, magical=False, harvest_refs=None):
     """Clean up obtainedFrom.plants: replace raw crop block-state sources
     (*_StageFinal / *_Harvest / *_StageN) by the growable source, flagged growth=True:
     - crop target  -> seeds bag (Plant_Seeds_<X>, + _Eternal variant when present)
     - fruit target -> sapling (Plant_Sapling_<X>), or keep the bush source
     - leaves       -> sapling source flagged growth
-    Petals and other relations are left unchanged."""
+    - petals       -> "Plant_Flower_<Color>_Harvest" drop lists are resolved to the
+      flowers of that color (breaking them drops the petals)
+    Other relations are left unchanged."""
     if not sources:
         return sources
 
-    out, seen = [], set()
+    out = []
 
     def add(sid, growth=False, shears=False, drop=False, salvage=False):
-        if sid in seen or sid not in known_ids:
+        if sid not in known_ids:
             return
-        seen.add(sid)
+        for e in out:
+            if e["id"] == sid:
+                e["shears"] = e["shears"] or shears
+                e["drop"] = e["drop"] or drop
+                e["salvage"] = e["salvage"] or salvage
+                e["growth"] = e["growth"] or growth
+                e["magical"] = e["magical"] or (magical if growth else False)
+                return
         out.append({"id": sid, "shears": shears, "drop": drop, "salvage": salvage,
                     "growth": growth, "magical": magical if growth else False})
 
@@ -287,6 +315,18 @@ def cleanup_plant_sources(pid, sources, known_ids, magical=False):
             add(sid, growth=sid.startswith("Plant_Sapling_"),
                 shears=s.get("shears", False), drop=s.get("drop", False),
                 salvage=s.get("salvage", False))
+        return out
+
+    if pid.startswith("Plant_Petals_") and harvest_refs:
+        for s in sources:
+            sid = s["id"]
+            if sid.endswith("_Harvest") and sid not in known_ids:
+                # drop list, not an item: resolve to the flowers that drop it (break)
+                for ref_pid, _key in harvest_refs.get(sid, []):
+                    add(ref_pid, shears=s.get("shears", False), drop=s.get("drop", False),
+                        salvage=s.get("salvage", False))
+            else:
+                keep(s)
         return out
 
     return [dict(s) for s in sources]
