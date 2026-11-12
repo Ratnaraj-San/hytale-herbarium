@@ -164,10 +164,14 @@ public class Herbarium extends JavaPlugin {
      * look and sound), the journal itself afterwards.
      */
     public static CustomUIPage createJournalPage(PlayerRef playerRef) {
-        if (playerStore.hasOpenedJournal(playerRef)) {
-            return new HerbariumUIPage(playerRef);
+        return createJournalPage(playerRef, playerRef);
+    }
+
+    public static CustomUIPage createJournalPage(PlayerRef subject, PlayerRef viewer) {
+        if (playerStore.hasOpenedJournal(subject)) {
+            return new HerbariumUIPage(subject, viewer);
         }
-        return new HerbariumIntroPage(playerRef);
+        return new HerbariumIntroPage(subject, viewer);
     }
 
     private void registerCommands() {

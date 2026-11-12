@@ -41,7 +41,7 @@ public class HerbariumCommandOpen extends AbstractPlayerCommand {
     ) {
         PlayerRef targetRef = ctx.provided(playerArg) ? playerArg.get(ctx) : playerRef;
 
-        CustomUIPage page = Herbarium.createJournalPage(targetRef);
+        CustomUIPage page = Herbarium.createJournalPage(targetRef, playerRef);
         Player player = store.getComponent(ref, Player.getComponentType());
 
         if (player == null) {

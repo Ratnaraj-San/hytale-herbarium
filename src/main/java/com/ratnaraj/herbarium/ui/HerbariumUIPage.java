@@ -110,8 +110,16 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         }
     }
 
-    public HerbariumUIPage(PlayerRef playerRef) {
-        super(playerRef, CustomPageLifetime.CanDismissOrCloseThroughInteraction, PageEventData.CODEC);
+    /** Whose journal data is displayed; the page itself belongs to playerRef (the viewer). */
+    private final PlayerRef subjectRef;
+
+    public HerbariumUIPage(PlayerRef subject, PlayerRef viewer) {
+        super(viewer, CustomPageLifetime.CanDismissOrCloseThroughInteraction, PageEventData.CODEC);
+        this.subjectRef = subject;
+    }
+
+    private boolean isOwnJournal() {
+        return playerRef.getUuid().equals(subjectRef.getUuid());
     }
 
     @Override
@@ -122,9 +130,9 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
             Store<EntityStore> store
     ) {
         if (selectedCategory == null) {
-            buildCategoryView(commands, events);
+            buildCategoryView(commands, events, ref);
         } else {
-            buildPlantView(commands, events);
+            buildPlantView(commands, events, ref);
         }
     }
 
@@ -155,7 +163,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                 if (newIndex >= 0) {
                     setTileSelection(commands, newIndex, true);
                 }
-                PlantDetailsPanel.buildDetails(playerRef, commands, selectedPlant);
+                PlantDetailsPanel.buildDetails(subjectRef, commands, selectedPlant);
                 sendUpdate(commands, false);
             }
             case TYPE_BACK -> {
@@ -164,9 +172,13 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                 rebuild();
             }
             case TYPE_COLLECT_REWARD -> {
-                UICommandBuilder update = RewardBar.handleCollectReward(playerRef, ref, store);
-                if (update != null) {
-                    sendUpdate(update, false);
+                // Rewards can only be collected on one's own journal.
+                if (isOwnJournal()) {
+                    UICommandBuilder update = RewardBar.handleCollectReward(subjectRef, ref, store);
+
+                    if (update != null) {
+                        sendUpdate(update, false);
+                    }
                 }
             }
             case TYPE_SHOW_INFO -> handleShowInfo(ref, store);
@@ -180,7 +192,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         FeedbackSound.play(playerRef, CLOSE_SOUND, store, true);
     }
 
-    private void buildCategoryView(UICommandBuilder commands, UIEventBuilder events) {
+    private void buildCategoryView(UICommandBuilder commands, UIEventBuilder events, Ref<EntityStore> ref) {
         Map<String, List<String>> categories = Herbarium.getCatalog().getPlantCategories();
         Set<String> discoveredPlants = getDiscoveredPlantIds();
 
@@ -206,8 +218,12 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                         .param("count", totalDiscovered)
                         .param("total", totalPlants));
 
-        RewardBar.buildChestMarkers(playerRef, commands, totalDiscovered, totalPlants);
-        RewardBar.setRewardsButtonState(playerRef, commands, totalDiscovered, totalPlants);
+        RewardBar.buildChestMarkers(subjectRef, commands, totalDiscovered, totalPlants);
+        RewardBar.setRewardsButtonState(subjectRef, commands, totalDiscovered, totalPlants);
+
+        if (!isOwnJournal()) {
+            commands.set("#RewardsButton.Disabled", true);
+        }
 
         events.addEventBinding(
                 CustomUIEventBindingType.Activating,
@@ -277,12 +293,13 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         }
 
         Player player = store.getComponent(ref, Player.getComponentType());
+
         if (player != null) {
-            player.getPageManager().openCustomPage(ref, store, new HerbariumIntroPage(playerRef));
+            player.getPageManager().openCustomPage(ref, store, new HerbariumIntroPage(subjectRef, playerRef));
         }
     }
 
-    private void buildPlantView(UICommandBuilder commands, UIEventBuilder events) {
+    private void buildPlantView(UICommandBuilder commands, UIEventBuilder events, Ref<EntityStore> ref) {
         List<String> plants = Herbarium.getCatalog().getPlantsInCategory(selectedCategory);
         Set<String> discoveredPlants = getDiscoveredPlantIds();
 
@@ -346,7 +363,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                 new EventData().append("Type", TYPE_BACK)
         );
 
-        PlantDetailsPanel.buildDetails(playerRef, commands, selectedPlant);
+        PlantDetailsPanel.buildDetails(subjectRef, commands, selectedPlant);
     }
 
     private void setTileSelection(UICommandBuilder commands, int index, boolean selected) {
@@ -361,11 +378,13 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
      */
     private Set<String> getDiscoveredPlantIds() {
         Set<String> discovered = new HashSet<>();
-        for (PlantInfo info : Herbarium.getPlayerStore().getPlayerMemories(playerRef)) {
+
+        for (PlantInfo info : Herbarium.getPlayerStore().getPlayerMemories(subjectRef)) {
             if (info.wasDiscovered()) {
                 discovered.add(info.getId());
             }
         }
+
         return discovered;
     }
 

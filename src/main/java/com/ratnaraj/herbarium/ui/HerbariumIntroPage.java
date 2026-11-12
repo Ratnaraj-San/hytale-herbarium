@@ -61,8 +61,12 @@ public class HerbariumIntroPage extends InteractiveCustomUIPage<HerbariumIntroPa
         }
     }
 
-    public HerbariumIntroPage(PlayerRef playerRef) {
-        super(playerRef, CustomPageLifetime.CanDismissOrCloseThroughInteraction, PageEventData.CODEC);
+    /** Whose journal data is displayed; the page itself belongs to playerRef (the viewer). */
+    private final PlayerRef subjectRef;
+
+    public HerbariumIntroPage(PlayerRef subject, PlayerRef viewer) {
+        super(viewer, CustomPageLifetime.CanDismissOrCloseThroughInteraction, PageEventData.CODEC);
+        this.subjectRef = subject;
     }
 
     @Override
@@ -72,14 +76,18 @@ public class HerbariumIntroPage extends InteractiveCustomUIPage<HerbariumIntroPa
             UIEventBuilder events,
             Store<EntityStore> store
     ) {
-        // Remember the player on the very first opening. The modal is also
-        // reopened later through the journal info button, and the vanilla
-        // feature-unlock sound plays only on the first appearance.
-        boolean firstOpening = !Herbarium.getPlayerStore().hasOpenedJournal(playerRef);
+        // Remember the journal opening only when the viewer is the subject:
+        // viewing someone else's journal must not unlock it for them. The
+        // modal is also reopened later through the journal info button, and
+        // the vanilla feature-unlock sound plays only on the first appearance.
+        boolean ownJournal = playerRef.getUuid().equals(subjectRef.getUuid());
+        boolean firstOpening = !Herbarium.getPlayerStore().hasOpenedJournal(subjectRef);
 
-        Herbarium.getPlayerStore().markJournalOpened(playerRef);
+        if (ownJournal) {
+            Herbarium.getPlayerStore().markJournalOpened(subjectRef);
+        }
 
-        if (firstOpening) {
+        if (ownJournal && firstOpening) {
             FeedbackSound.play(playerRef, UNLOCK_SOUND_EVENT, store, false);
             FeedbackParticle.spawn(UNLOCK_PARTICLE_SYSTEM, ref, store);
         }
@@ -104,7 +112,7 @@ public class HerbariumIntroPage extends InteractiveCustomUIPage<HerbariumIntroPa
         if (TYPE_OPEN_JOURNAL.equals(data.getType())) {
             Player player = store.getComponent(ref, Player.getComponentType());
             if (player != null) {
-                player.getPageManager().openCustomPage(ref, store, new HerbariumUIPage(playerRef));
+                player.getPageManager().openCustomPage(ref, store, new HerbariumUIPage(subjectRef, playerRef));
             }
         }
     }
