@@ -51,11 +51,15 @@ $Herbarium = "HerbariumCommon.ui";
       $Herbarium.@TitledContainer #PlantContainerLocations {
         $Herbarium.@Section #PlantLocationsZones {}
 
-        $Herbarium.@Spacer {}
+        $Herbarium.@Spacer #SpacerAfterZones {
+          Visible: false;
+        }
 
         $Herbarium.@Section #PlantLocationsRegions {}
 
-        $Herbarium.@Spacer {}
+        $Herbarium.@Spacer #SpacerAfterRegions {
+          Visible: false;
+        }
 
         $Herbarium.@Section #PlantLocationsPortals {}
 

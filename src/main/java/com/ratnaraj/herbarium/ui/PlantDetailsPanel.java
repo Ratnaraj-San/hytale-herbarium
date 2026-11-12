@@ -89,12 +89,19 @@ public class PlantDetailsPanel {
             commands.set("#PlantLocationUnknown.Text", "");
         }
 
+        boolean zonesVisible = hasPlant && !locations.getZones().isEmpty();
+        boolean regionsVisible = hasPlant && !locations.getRegions().isEmpty();
+        boolean portalsVisible = hasPlant && !locations.getPortals().isEmpty();
+
         setLocationGroup(commands, "#PlantLocationsZones", ZONES_TITLE_KEY,
-                hasPlant ? locations.getZones() : List.of());
+                zonesVisible ? locations.getZones() : List.of());
         setLocationGroup(commands, "#PlantLocationsRegions", REGIONS_TITLE_KEY,
-                hasPlant ? locations.getRegions() : List.of());
+                regionsVisible ? locations.getRegions() : List.of());
         setLocationGroup(commands, "#PlantLocationsPortals", PORTALS_TITLE_KEY,
-                hasPlant ? locations.getPortals() : List.of());
+                portalsVisible ? locations.getPortals() : List.of());
+
+        commands.set("#SpacerAfterZones.Visible", zonesVisible && (regionsVisible || portalsVisible));
+        commands.set("#SpacerAfterRegions.Visible", regionsVisible && portalsVisible);
     }
 
     private static void setLocationGroup(UICommandBuilder commands, String section,
