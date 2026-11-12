@@ -39,6 +39,7 @@ herbarium.ui.interaction.break = Kır
 herbarium.ui.interaction.harvest = Hasat
 herbarium.ui.interaction.shears = Makas
 herbarium.ui.interaction.salvage = Parçala
+herbarium.ui.interaction.growth = Büyüme
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Kilitli</b></color> \n<color is="#888888">Açmak için {count, number} bitki kaydet:</color>

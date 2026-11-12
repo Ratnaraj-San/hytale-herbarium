@@ -123,6 +123,30 @@ class ItemChain:
                 tools += [t.get("Type") for t in g.get("Tools", []) if isinstance(t, dict) and t.get("Type")]
         return tools
 
+    def uses_crystal_fertilizer(self, pid):
+        """True when the plant needs Soil_Dirt_Crystal (drops Tool_Fertilizer_Crystal):
+        either the crop block Support requires it, or the seeds item has the
+        Seed_Condition_Crystal secondary interaction (only needed at stage 0)."""
+        for _, data in self._chain(pid):
+            bt = data.get("BlockType") or {}
+            support = bt.get("Support") or {}
+            for face, blocks in support.items():
+                for b in blocks or []:
+                    if isinstance(b, dict) and b.get("BlockTypeId") == "Soil_Dirt_Crystal":
+                        return True
+        if pid.startswith("Plant_Crop_"):
+            base = pid[len("Plant_Crop_"):]
+            for suffix in ("_Item", "_Block"):
+                if base.endswith(suffix):
+                    base = base[: -len(suffix)]
+                    break
+            seeds = f"Plant_Seeds_{base}"
+            for _, data in self._chain(seeds):
+                interactions = data.get("Interactions") or {}
+                if any("Seed_Condition_Crystal" in str(v) for v in interactions.values()):
+                    return True
+        return False
+
     def drop_lists_of(self, pid):
         out = []
 
@@ -194,6 +218,78 @@ class ItemChain:
     def has_shears(self, pid):
         """Shears = the Gathering.Tools chain includes Shears (shearing yields the item)."""
         return "Shears" in self.tools_of(pid)
+
+
+def cleanup_plant_sources(pid, sources, known_ids, magical=False):
+    """Clean up obtainedFrom.plants: replace raw crop block-state sources
+    (*_StageFinal / *_Harvest / *_StageN) by the growable source, flagged growth=True:
+    - crop target  -> seeds bag (Plant_Seeds_<X>, + _Eternal variant when present)
+    - fruit target -> sapling (Plant_Sapling_<X>), or keep the bush source
+    - leaves       -> sapling source flagged growth
+    Petals and other relations are left unchanged."""
+    if not sources:
+        return sources
+
+    out, seen = [], set()
+
+    def add(sid, growth=False, shears=False, drop=False, salvage=False):
+        if sid in seen or sid not in known_ids:
+            return
+        seen.add(sid)
+        out.append({"id": sid, "shears": shears, "drop": drop, "salvage": salvage,
+                    "growth": growth, "magical": magical if growth else False})
+
+    def keep(s):
+        add(s["id"], shears=s.get("shears", False), drop=s.get("drop", False),
+            salvage=s.get("salvage", False))
+
+    if pid.startswith("Plant_Crop_"):
+        base = pid[len("Plant_Crop_"):]
+        for suffix in ("_Item", "_Block"):
+            if base.endswith(suffix):
+                base = base[: -len(suffix)]
+                break
+        prefix = f"Plant_Crop_{base}_"
+        crop_sources = [s for s in sources if s["id"].startswith(prefix)]
+        seeds = f"Plant_Seeds_{base}"
+        seeds_eternal = f"Plant_Seeds_{base}_Eternal"
+        if crop_sources and seeds in known_ids:
+            add(seeds, growth=True)
+            if any("_Eternal" in s["id"] for s in crop_sources) and seeds_eternal in known_ids:
+                add(seeds_eternal, growth=True)
+            for s in sources:
+                if not s["id"].startswith(prefix):
+                    keep(s)
+            return out
+        return [dict(s) for s in sources]
+
+    if pid.startswith("Plant_Fruit_"):
+        name = pid[len("Plant_Fruit_"):]
+        sapling = f"Plant_Sapling_{name}"
+        if sapling in known_ids:
+            # crop stages -> the sapling that grows the fruit tree
+            add(sapling, growth=True)
+            for s in sources:
+                sid = s["id"]
+                if not (sid.startswith("Plant_Crop_") and "_StageFinal" in sid):
+                    add(sid, growth=sid.startswith(("Plant_Sapling_", "Plant_Bush_")),
+                        shears=s.get("shears", False), drop=s.get("drop", False),
+                        salvage=s.get("salvage", False))
+        else:
+            # no sapling (e.g. berries): keep the raw sources unchanged; the bush
+            # obtainability is a separate known fix (see AGENTS.md Plant data)
+            return [dict(s) for s in sources]
+        return out
+
+    if pid.startswith("Plant_Leaves_"):
+        for s in sources:
+            sid = s["id"]
+            add(sid, growth=sid.startswith("Plant_Sapling_"),
+                shears=s.get("shears", False), drop=s.get("drop", False),
+                salvage=s.get("salvage", False))
+        return out
+
+    return [dict(s) for s in sources]
 
 
 def bench_item_map(az):

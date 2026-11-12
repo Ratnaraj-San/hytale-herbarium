@@ -39,6 +39,7 @@ herbarium.ui.interaction.break = Sparge
 herbarium.ui.interaction.harvest = Recoltă
 herbarium.ui.interaction.shears = Foarfece
 herbarium.ui.interaction.salvage = Dezasambla
+herbarium.ui.interaction.growth = Creștere
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Blocat</b></color> \n<color is="#888888">Înregistrează {count, number} {count, plural, one {plantă} other {plante}} pentru a debloca:</color>

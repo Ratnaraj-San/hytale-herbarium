@@ -34,8 +34,24 @@ Group {
     }
 
     Group #IconSalvage {
-      Anchor: (Width: 40, Height: 40);
+      Anchor: (Width: 40, Height: 40, Right: 4);
       Background: "../textures/InteractionSalvage.png";
+      TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+      TooltipText: "";
+      Visible: false;
+    }
+
+    Group #IconGrowth {
+      Anchor: (Width: 40, Height: 40);
+      Background: "../textures/Growth.png";
+      TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+      TooltipText: "";
+      Visible: false;
+    }
+
+    Group #IconGrowthMagical {
+      Anchor: (Width: 40, Height: 40);
+      Background: "../textures/GrowthMagical.png";
       TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
       TooltipText: "";
       Visible: false;

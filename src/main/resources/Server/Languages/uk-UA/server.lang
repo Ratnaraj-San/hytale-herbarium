@@ -39,6 +39,7 @@ herbarium.ui.interaction.break = Зламати
 herbarium.ui.interaction.harvest = Збір урожая
 herbarium.ui.interaction.shears = Ножиці
 herbarium.ui.interaction.salvage = Розібрати
+herbarium.ui.interaction.growth = Ріст
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Замкнено</b></color> \n<color is="#888888">Запишіть {count, number} {count, plural, one {рослину} few {рослини} many {рослин} other {рослини}}, щоб відкрити:</color>

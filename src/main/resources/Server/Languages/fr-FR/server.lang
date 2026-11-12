@@ -37,6 +37,7 @@ herbarium.ui.interaction.break = Casser
 herbarium.ui.interaction.harvest = Récolte
 herbarium.ui.interaction.shears = Ciseaux
 herbarium.ui.interaction.salvage = Récupérer
+herbarium.ui.interaction.growth = Croissance
 herbarium.ui.plant.discoveredOn = Découverte le {date}
 herbarium.ui.plant.discoveredAt = Découverte le {date} à ({place})
 

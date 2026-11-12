@@ -39,6 +39,7 @@ herbarium.ui.interaction.break = Romper
 herbarium.ui.interaction.harvest = Cosecha
 herbarium.ui.interaction.shears = Tijeras
 herbarium.ui.interaction.salvage = Desguazar
+herbarium.ui.interaction.growth = Crecimiento
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Bloqueado</b></color> \n<color is="#888888">Registra {count, number} {count, plural, one {planta} other {plantas}} para desbloquear:</color>

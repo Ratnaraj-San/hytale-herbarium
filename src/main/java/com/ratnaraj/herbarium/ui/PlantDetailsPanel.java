@@ -36,6 +36,7 @@ public class PlantDetailsPanel {
     private static final String CRAFTING_TITLE_KEY = "server.herbarium.ui.obtained_from.crafting";
     private static final String PLANTS_TITLE_KEY = "server.herbarium.ui.obtained_from.plants";
     private static final String INTERACTION_SALVAGE_KEY = "server.herbarium.ui.interaction.salvage";
+    private static final String INTERACTION_GROWTH_KEY = "server.herbarium.ui.interaction.growth";
 
     public static void buildDetails(
             PlayerRef playerRef,
@@ -212,6 +213,10 @@ public class PlantDetailsPanel {
             commands.set(icons + " #IconShears.TooltipTextSpans", Message.translation(INTERACTION_SHEARS_KEY));
             commands.set(icons + " #IconSalvage.Visible", source.salvage());
             commands.set(icons + " #IconSalvage.TooltipTextSpans", Message.translation(INTERACTION_SALVAGE_KEY));
+            commands.set(icons + " #IconGrowth.Visible", source.growth() && !source.magical());
+            commands.set(icons + " #IconGrowth.TooltipTextSpans", Message.translation(INTERACTION_GROWTH_KEY));
+            commands.set(icons + " #IconGrowthMagical.Visible", source.magical());
+            commands.set(icons + " #IconGrowthMagical.TooltipTextSpans", Message.translation(INTERACTION_GROWTH_KEY));
         }
     }
 

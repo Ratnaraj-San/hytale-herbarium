@@ -39,6 +39,7 @@ herbarium.ui.interaction.break = Riko
 herbarium.ui.interaction.harvest = Sato
 herbarium.ui.interaction.shears = Sakset
 herbarium.ui.interaction.salvage = Romuttaa
+herbarium.ui.interaction.growth = Kasvu
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Lukittu</b></color> \n<color is="#888888">Kirjaa {count, number} {count, plural, one {kasvi} other {kasvia}} avataksesi lukituksen:</color>

@@ -39,6 +39,7 @@ herbarium.ui.interaction.break = Rozbít
 herbarium.ui.interaction.harvest = Sklizeň
 herbarium.ui.interaction.shears = Nůžky
 herbarium.ui.interaction.salvage = Rozebrat
+herbarium.ui.interaction.growth = Růst
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Uzamčeno</b></color> \n<color is="#888888">Zaznamenejte {count, number} {count, plural, one {rostlinu} few {rostliny} many {rostlin} other {rostlin}}, abyste odemkli:</color>

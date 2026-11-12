@@ -20,6 +20,7 @@ from obtained import (
     ItemChain,
     bench_item_map,
     build_relations,
+    cleanup_plant_sources,
     index_drops,
     index_items,
     resolve_bench_items,
@@ -68,6 +69,10 @@ def main():
         sources = []
         for src, flags in sorted(relations.get(pid, {}).items()):
             sources.append({"id": src, **flags, "shears": chain.has_shears(src)})
+        sources = cleanup_plant_sources(
+            pid, sources, set(all_plants) | set(item_path),
+            magical=chain.uses_crystal_fertilizer(pid),
+        )
 
         result[item_category.get(pid, "Unknown")].append({
             "id": pid,

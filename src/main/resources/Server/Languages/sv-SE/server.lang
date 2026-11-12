@@ -39,6 +39,7 @@ herbarium.ui.interaction.break = Förstöra
 herbarium.ui.interaction.harvest = Skörd
 herbarium.ui.interaction.shears = Sax
 herbarium.ui.interaction.salvage = Bärga
+herbarium.ui.interaction.growth = Tillväxt
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Låst</b></color> \n<color is="#888888">Registrera {count, number} {count, plural, one {växt} other {växter}} för att låsa upp:</color>

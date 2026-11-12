@@ -1637,28 +1637,20 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Aubergine_Eternal_StageFinal",
+            "id": "Plant_Seeds_Aubergine",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           },
           {
-            "id": "Plant_Crop_Aubergine_Eternal_StageFinal_Harvest",
+            "id": "Plant_Seeds_Aubergine_Eternal",
             "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Aubergine_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Aubergine_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -1797,28 +1789,20 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Carrot_Eternal_StageFinal",
+            "id": "Plant_Seeds_Carrot",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           },
           {
-            "id": "Plant_Crop_Carrot_Eternal_StageFinal_Harvest",
+            "id": "Plant_Seeds_Carrot_Eternal",
             "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Carrot_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Carrot_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -1840,28 +1824,20 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Cauliflower_Eternal_StageFinal",
+            "id": "Plant_Seeds_Cauliflower",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           },
           {
-            "id": "Plant_Crop_Cauliflower_Eternal_StageFinal_Harvest",
+            "id": "Plant_Seeds_Cauliflower_Eternal",
             "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cauliflower_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cauliflower_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -1883,28 +1859,20 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Chilli_Eternal_StageFinal",
+            "id": "Plant_Seeds_Chilli",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           },
           {
-            "id": "Plant_Crop_Chilli_Eternal_StageFinal_Harvest",
+            "id": "Plant_Seeds_Chilli_Eternal",
             "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Chilli_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Chilli_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -1926,28 +1894,20 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Corn_Eternal_StageFinal",
+            "id": "Plant_Seeds_Corn",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           },
           {
-            "id": "Plant_Crop_Corn_Eternal_StageFinal_Harvest",
+            "id": "Plant_Seeds_Corn_Eternal",
             "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Corn_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Corn_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -1969,28 +1929,20 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Cotton_Eternal_StageFinal",
+            "id": "Plant_Seeds_Cotton",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           },
           {
-            "id": "Plant_Crop_Cotton_Eternal_StageFinal_Harvest",
+            "id": "Plant_Seeds_Cotton_Eternal",
             "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cotton_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cotton_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -2027,10 +1979,12 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Health1_Harvest",
+            "id": "Plant_Seeds_Health1",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": true
           }
         ],
         "crafting": null,
@@ -2067,10 +2021,12 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Health2_Harvest",
+            "id": "Plant_Seeds_Health2",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": true
           }
         ],
         "crafting": null,
@@ -2105,10 +2061,12 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Health3_Harvest",
+            "id": "Plant_Seeds_Health3",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": true
           }
         ],
         "crafting": null,
@@ -2130,28 +2088,20 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Lettuce_Eternal_StageFinal",
+            "id": "Plant_Seeds_Lettuce",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           },
           {
-            "id": "Plant_Crop_Lettuce_Eternal_StageFinal_Harvest",
+            "id": "Plant_Seeds_Lettuce_Eternal",
             "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Lettuce_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Lettuce_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -2186,10 +2136,12 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Mana1_Harvest",
+            "id": "Plant_Seeds_Mana1",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": true
           }
         ],
         "crafting": null,
@@ -2224,10 +2176,12 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Mana2_Harvest",
+            "id": "Plant_Seeds_Mana2",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": true
           }
         ],
         "crafting": null,
@@ -2257,10 +2211,12 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Mana3_Harvest",
+            "id": "Plant_Seeds_Mana3",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": true
           }
         ],
         "crafting": null,
@@ -2282,28 +2238,20 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Onion_Eternal_StageFinal",
+            "id": "Plant_Seeds_Onion",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           },
           {
-            "id": "Plant_Crop_Onion_Eternal_StageFinal_Harvest",
+            "id": "Plant_Seeds_Onion_Eternal",
             "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Onion_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Onion_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -2325,28 +2273,20 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Potato_Eternal_StageFinal",
+            "id": "Plant_Seeds_Potato",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           },
           {
-            "id": "Plant_Crop_Potato_Eternal_StageFinal_Harvest",
+            "id": "Plant_Seeds_Potato_Eternal",
             "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Potato_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Potato_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -2368,28 +2308,20 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Pumpkin_Eternal_StageFinal",
+            "id": "Plant_Seeds_Pumpkin",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           },
           {
-            "id": "Plant_Crop_Pumpkin_Eternal_StageFinal_Harvest",
+            "id": "Plant_Seeds_Pumpkin_Eternal",
             "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Pumpkin_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Pumpkin_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -2411,28 +2343,20 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Rice_Eternal_StageFinal",
+            "id": "Plant_Seeds_Rice",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           },
           {
-            "id": "Plant_Crop_Rice_Eternal_StageFinal_Harvest",
+            "id": "Plant_Seeds_Rice_Eternal",
             "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Rice_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Rice_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -2464,10 +2388,12 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Stamina1_Harvest",
+            "id": "Plant_Seeds_Stamina1",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": true
           }
         ],
         "crafting": null,
@@ -2500,10 +2426,12 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Stamina2_Harvest",
+            "id": "Plant_Seeds_Stamina2",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": true
           }
         ],
         "crafting": null,
@@ -2532,10 +2460,12 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Stamina3_Harvest",
+            "id": "Plant_Seeds_Stamina3",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": true
           }
         ],
         "crafting": null,
@@ -2557,28 +2487,20 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Tomato_Eternal_StageFinal",
+            "id": "Plant_Seeds_Tomato",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           },
           {
-            "id": "Plant_Crop_Tomato_Eternal_StageFinal_Harvest",
+            "id": "Plant_Seeds_Tomato_Eternal",
             "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Tomato_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Tomato_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -2600,28 +2522,20 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Turnip_Eternal_StageFinal",
+            "id": "Plant_Seeds_Turnip",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           },
           {
-            "id": "Plant_Crop_Turnip_Eternal_StageFinal_Harvest",
+            "id": "Plant_Seeds_Turnip_Eternal",
             "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Turnip_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Turnip_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -2643,28 +2557,20 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Wheat_Eternal_StageFinal",
+            "id": "Plant_Seeds_Wheat",
             "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           },
           {
-            "id": "Plant_Crop_Wheat_Eternal_StageFinal_Harvest",
+            "id": "Plant_Seeds_Wheat_Eternal",
             "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Wheat_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Wheat_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -5936,16 +5842,12 @@
       "obtainedFrom": {
         "plants": [
           {
-            "id": "Plant_Crop_Apple_StageFinal",
+            "id": "Plant_Sapling_Apple",
             "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Apple_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
+            "drop": false,
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7244,7 +7146,9 @@
             "id": "Plant_Sapling_Apple",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7281,7 +7185,9 @@
             "id": "Plant_Sapling_Ash",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7316,7 +7222,9 @@
             "id": "Plant_Sapling_Aspen",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7391,7 +7299,9 @@
             "id": "Plant_Sapling_Azure",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7421,7 +7331,9 @@
             "id": "Plant_Sapling_Bamboo",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7453,7 +7365,9 @@
             "id": "Plant_Sapling_Banyan",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7484,7 +7398,9 @@
             "id": "Plant_Sapling_Beech",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7515,7 +7431,9 @@
             "id": "Plant_Sapling_Birch",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7546,13 +7464,17 @@
             "id": "Plant_Sapling_Bottletree",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           },
           {
             "id": "Plant_Sapling_Gumboab",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7605,7 +7527,9 @@
             "id": "Plant_Sapling_Camphor",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7640,7 +7564,9 @@
             "id": "Plant_Sapling_Cedar",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7669,7 +7595,9 @@
             "id": "Plant_Sapling_Crystal",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7727,7 +7655,9 @@
             "id": "Plant_Sapling_Dry",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7757,7 +7687,9 @@
             "id": "Plant_Sapling_Fig_Blue",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7794,7 +7726,9 @@
             "id": "Plant_Sapling_Spruce",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7848,7 +7782,9 @@
             "id": "Plant_Sapling_Spruce_Frozen",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7885,7 +7821,9 @@
             "id": "Plant_Sapling_Spruce",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7916,7 +7854,9 @@
             "id": "Plant_Sapling_Spruce_Frozen",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7945,7 +7885,9 @@
             "id": "Plant_Sapling_Fire",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7970,7 +7912,9 @@
             "id": "Plant_Sapling_Ice",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -7995,7 +7939,9 @@
             "id": "Plant_Sapling_Amber",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -8027,7 +7973,9 @@
             "id": "Plant_Sapling_Jungle",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -8056,7 +8004,9 @@
             "id": "Plant_Sapling_Maple",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -8093,7 +8043,9 @@
             "id": "Plant_Sapling_Oak",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -8150,7 +8102,9 @@
             "id": "Plant_Sapling_Palm",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -8205,7 +8159,9 @@
             "id": "Plant_Sapling_Palo",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -8234,7 +8190,9 @@
             "id": "Plant_Sapling_Petrified",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -8265,7 +8223,9 @@
             "id": "Plant_Sapling_Poisoned",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -8320,7 +8280,9 @@
             "id": "Plant_Sapling_Redwood",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -8349,7 +8311,9 @@
             "id": "Plant_Sapling_Sallow",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -8380,7 +8344,9 @@
             "id": "Plant_Sapling_Spiral",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -8405,7 +8371,9 @@
             "id": "Plant_Sapling_Stormbark",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -8435,7 +8403,9 @@
             "id": "Plant_Sapling_Windwillow",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,
@@ -8460,7 +8430,9 @@
             "id": "Plant_Sapling_Wisteria_Wild",
             "shears": false,
             "drop": false,
-            "salvage": false
+            "salvage": false,
+            "growth": true,
+            "magical": false
           }
         ],
         "crafting": null,

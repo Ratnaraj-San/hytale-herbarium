@@ -119,7 +119,9 @@ public final class PlantCatalogV2 {
                         s.has("id") ? s.get("id").getAsString() : "",
                         readBool(s, "drop"),
                         readBool(s, "shears"),
-                        readBool(s, "salvage")
+                        readBool(s, "salvage"),
+                        readBool(s, "growth"),
+                        readBool(s, "magical")
                 ));
             }
         }

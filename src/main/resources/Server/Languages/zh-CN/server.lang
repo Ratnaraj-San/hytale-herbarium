@@ -39,6 +39,7 @@ herbarium.ui.interaction.break = 破坏
 herbarium.ui.interaction.harvest = 收获
 herbarium.ui.interaction.shears = 剪刀
 herbarium.ui.interaction.salvage = 拆解
+herbarium.ui.interaction.growth = 生长
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>未解锁</b></color> \n<color is="#888888">记录 {count, number} 株植物后解锁：</color>
