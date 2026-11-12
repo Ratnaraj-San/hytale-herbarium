@@ -26,6 +26,7 @@ herbarium.ui.category.vine = Sarmaşıklar
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Şurada bulunur:
 herbarium.ui.container.obtained_from.title = Elde edildi
+herbarium.ui.container.gives.title = Verir
 herbarium.ui.locations.unknown = Konum bilinmiyor
 herbarium.ui.plant.discoveredOn = Keşfedildi: {date}
 herbarium.ui.plant.discoveredAt = Keşfedildi: {date} ({place})

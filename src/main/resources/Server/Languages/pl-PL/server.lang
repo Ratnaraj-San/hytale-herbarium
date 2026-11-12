@@ -26,6 +26,7 @@ herbarium.ui.category.vine = Pnącza
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Występuje w:
 herbarium.ui.container.obtained_from.title = Uzyskano z
+herbarium.ui.container.gives.title = Daje
 herbarium.ui.locations.unknown = Nieznana lokalizacja
 herbarium.ui.plant.discoveredOn = Odkryto {date}
 herbarium.ui.plant.discoveredAt = Odkryto {date} w ({place})

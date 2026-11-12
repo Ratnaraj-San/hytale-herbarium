@@ -26,6 +26,7 @@ herbarium.ui.category.vine = Лианы
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Встречается в:
 herbarium.ui.container.obtained_from.title = Получено из
+herbarium.ui.container.gives.title = Даёт
 herbarium.ui.locations.unknown = Местонахождение неизвестно
 herbarium.ui.plant.discoveredOn = Обнаружено {date}
 herbarium.ui.plant.discoveredAt = Обнаружено {date} в ({place})

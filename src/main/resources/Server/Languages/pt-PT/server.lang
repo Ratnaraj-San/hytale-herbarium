@@ -26,6 +26,7 @@ herbarium.ui.category.vine = Trepadeiras
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Encontra-se em:
 herbarium.ui.container.obtained_from.title = Obtido de
+herbarium.ui.container.gives.title = Dá
 herbarium.ui.locations.unknown = Localização desconhecida
 herbarium.ui.plant.discoveredOn = Descoberta em {date}
 herbarium.ui.plant.discoveredAt = Descoberta em {date} em ({place})

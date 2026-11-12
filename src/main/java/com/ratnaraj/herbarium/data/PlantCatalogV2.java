@@ -19,6 +19,7 @@ public final class PlantCatalogV2 {
     private final Map<String, PlantInteractions> plantInteractions = new HashMap<>();
     private final Map<String, PlantCrafting> plantCrafting = new HashMap<>();
     private final Map<String, List<PlantSource>> plantSources = new HashMap<>();
+    private final Map<String, List<PlantSource>> plantGives = new HashMap<>();
 
     public PlantCatalogV2() {
         this.allPlantsFromConfig = loadPlantsFromConfig();
@@ -70,6 +71,7 @@ public final class PlantCatalogV2 {
                         }
 
                         plantSources.put(id, readSources(obtainedFrom));
+                        plantGives.put(id, readGives(item));
                     }
 
                     if (!categoryPlants.isEmpty()) {
@@ -109,24 +111,46 @@ public final class PlantCatalogV2 {
         return plantSources.getOrDefault(plantId, Collections.emptyList());
     }
 
+    public List<PlantSource> getPlantGives(String plantId) {
+        return plantGives.getOrDefault(plantId, Collections.emptyList());
+    }
+
     private static List<PlantSource> readSources(JsonObject obtainedFrom) {
         List<PlantSource> sources = new ArrayList<>();
 
         if (obtainedFrom != null && obtainedFrom.has("plants") && obtainedFrom.get("plants").isJsonArray()) {
             for (JsonElement e : obtainedFrom.getAsJsonArray("plants")) {
-                JsonObject s = e.getAsJsonObject();
-                sources.add(new PlantSource(
-                        s.has("id") ? s.get("id").getAsString() : "",
-                        readBool(s, "drop"),
-                        readBool(s, "shears"),
-                        readBool(s, "salvage"),
-                        readBool(s, "growth"),
-                        readBool(s, "magical")
-                ));
+                sources.add(readSource(e.getAsJsonObject()));
             }
         }
 
         return List.copyOf(sources);
+    }
+
+    private static List<PlantSource> readGives(JsonObject item) {
+        List<PlantSource> gives = new ArrayList<>();
+
+        if (item.has("gives") && item.get("gives").isJsonArray()) {
+            for (JsonElement e : item.getAsJsonArray("gives")) {
+                gives.add(readSource(e.getAsJsonObject()));
+            }
+        }
+
+        return List.copyOf(gives);
+    }
+
+    private static PlantSource readSource(JsonObject s) {
+        return new PlantSource(
+                s.has("id") ? s.get("id").getAsString() : "",
+                readBool(s, "drop"),
+                readBool(s, "shears"),
+                readBool(s, "salvage"),
+                readBool(s, "growth"),
+                readBool(s, "magical"),
+                readBool(s, "craft"),
+                readBool(s, "collect"),
+                s.has("bench") && !s.get("bench").isJsonNull() ? s.get("bench").getAsString() : ""
+        );
     }
 
     private static PlantCrafting readCrafting(JsonObject crafting) {

@@ -196,6 +196,86 @@ $Sounds = "../../../Sounds.ui";
   }
 };
 
+// Horizontal row of "how" icons shown under a Gives / Plants source tile:
+// break (32), shears (32), salvage (40), growth (40), magical growth (40), craft (40).
+// Java toggles each "#IconX.Visible" and sets its TooltipTextSpans.
+@SourceInteractions = Group {
+  LayoutMode: CenterMiddle;
+  Padding: (Top: 2);
+
+  Group #IconBreak {
+    Anchor: (Width: 32, Height: 32, Right: 4);
+    Background: "../textures/InteractionBreak.png";
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+    TooltipText: "";
+    Visible: false;
+  }
+
+  Group #IconHarvest {
+    Anchor: (Width: 40, Height: 40, Right: 4);
+    Background: "../textures/InteractionHarvest.png";
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+    TooltipText: "";
+    Visible: false;
+  }
+
+  Group #IconShears {
+    Anchor: (Width: 32, Height: 32, Right: 4);
+    Background: "../textures/InteractionShears.png";
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+    TooltipText: "";
+    Visible: false;
+  }
+
+  Group #IconSalvage {
+    Anchor: (Width: 40, Height: 40, Right: 4);
+    Background: "../textures/InteractionSalvage.png";
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+    TooltipText: "";
+    Visible: false;
+  }
+
+  Group #IconGrowth {
+    Anchor: (Width: 40, Height: 40);
+    Background: "../textures/Growth.png";
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+    TooltipText: "";
+    Visible: false;
+  }
+
+  Group #IconGrowthMagical {
+    Anchor: (Width: 40, Height: 40);
+    Background: "../textures/GrowthMagical.png";
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+    TooltipText: "";
+    Visible: false;
+  }
+
+  // Craft icon: falls back to InteractionCraft.png; when the recipe's bench is known,
+  // #CraftBenchIcon shows the bench's own icon on top and the tooltip names the bench.
+  Group #IconCraft {
+    Anchor: (Width: 40, Height: 40);
+    Background: "../textures/InteractionCraft.png";
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+    TooltipText: "";
+    Visible: false;
+
+    AssetImage #CraftBenchIcon {
+      Anchor: (Full: 0);
+      FallbackTexturePath: "UI/Custom/Pages/Memories/MissingIcon.png";
+      Visible: false;
+    }
+  }
+};
+
+// Untitled section body: same background as @Section, wrapping a list directly.
+// Usage: $H.@ListBox { Group #MyList { LayoutMode: LeftCenterWrap; Anchor: (Full: 0); } }
+@ListBox = Group {
+  LayoutMode: Top;
+  Background: (TexturePath: "../textures/SectionBackground.png", Border: 8);
+  Padding: (Full: 8);
+};
+
 // Plant tile, same as the LeftPanel grid tiles (moved here so ingredient lists can
 // reuse it). Java addresses "#Icon", "#ButtonNotSelected"/"#ButtonSelected",
 // "#EmptyBackground" relative to the tile root.

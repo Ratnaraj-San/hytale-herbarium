@@ -26,6 +26,7 @@ herbarium.ui.category.vine = Liane
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Se găsește în:
 herbarium.ui.container.obtained_from.title = Obținut din
+herbarium.ui.container.gives.title = Dă
 herbarium.ui.locations.unknown = Locație necunoscută
 herbarium.ui.plant.discoveredOn = Descoperită pe {date}
 herbarium.ui.plant.discoveredAt = Descoperită pe {date} la ({place})

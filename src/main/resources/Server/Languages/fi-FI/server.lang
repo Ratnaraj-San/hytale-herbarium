@@ -26,6 +26,7 @@ herbarium.ui.category.vine = Köynnökset
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Esiintyy:
 herbarium.ui.container.obtained_from.title = Hankittu kohteesta
+herbarium.ui.container.gives.title = Antaa
 herbarium.ui.locations.unknown = Sijainti tuntematon
 herbarium.ui.plant.discoveredOn = Löydetty {date}
 herbarium.ui.plant.discoveredAt = Löydetty {date} kohdasta ({place})

@@ -26,6 +26,7 @@ herbarium.ui.category.vine = Lianer
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Findes i:
 herbarium.ui.container.obtained_from.title = Opnået fra
+herbarium.ui.container.gives.title = Giver
 herbarium.ui.locations.unknown = Placering ukendt
 herbarium.ui.plant.discoveredOn = Opdaget {date}
 herbarium.ui.plant.discoveredAt = Opdaget {date} på ({place})

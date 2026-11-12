@@ -18,10 +18,12 @@ from common import FINAL_FILE, REGIONS_BY_ZONE_FILE, SCAN_FILE, apply_obtainable
 from locations import is_valid_region, load_lang_keys, make_key_fns, normalize_region, scan_locations, scan_regions_by_zone
 from obtained import (
     ItemChain,
+    bench_info,
     bench_item_map,
     build_relations,
     cleanup_plant_sources,
-    harvest_drop_refs,
+    craftable_bench,
+    drop_list_refs,
     index_drops,
     index_items,
     resolve_bench_items,
@@ -44,7 +46,8 @@ def main():
     _server_key, region_key, zone_key_for_region = make_key_fns(load_lang_keys(az))
     relations = build_relations(az, drop_path, item_path, salvage_rel)
     bench_items = bench_item_map(az)
-    harvest_refs = harvest_drop_refs(item_path, chain)
+    binfo = bench_info(az)
+    harvest_refs = drop_list_refs(item_path, chain)
 
     # leaves (and any plant inside a tree prefab) are obtainable via the tree grown
     # from a craftable sapling: sapling -> Farming stages -> prefab -> leaves
@@ -60,6 +63,10 @@ def main():
     all_plants = sorted(
         {p for p in loc if PLANT_ID_RE.match(p)} | {p for p in item_path if PLANT_ID_RE.match(p)}
     )
+    # Reverse of obtainedFrom.plants + craft inputs: gives[A][B] = how plant A gives plant B
+    gives_map = defaultdict(lambda: defaultdict(
+        lambda: {"shears": False, "drop": False, "salvage": False, "collect": False,
+                 "growth": False, "magical": False, "craft": False, "bench": None}))
     for pid in all_plants:
         own_drops = [p for stem, p in drop_path.items() if stem == pid or stem.startswith(pid + "_")]
         drop = bool(own_drops) or any(dl in drop_path for dl in chain.drop_lists_of(pid))
@@ -76,6 +83,19 @@ def main():
             magical=chain.uses_crystal_fertilizer(pid),
             harvest_refs=harvest_refs,
         )
+        crafting = resolve_bench_items(chain.own_recipe(pid), bench_items)
+
+        for s in sources:
+            g = gives_map[s["id"]][pid]
+            for k in ("shears", "drop", "salvage", "collect", "growth", "magical"):
+                g[k] = g[k] or s.get(k, False)
+
+        # Bushes that grow fruit (e.g. berries) give it on break AND on harvest
+        # (StageFinal state Gathering.Soft / Gathering.Harvest drop lists).
+        for fruit, flags in chain.stage_fruit_drops(pid, drop_path).items():
+            g = gives_map[pid][fruit]
+            g["drop"] = g["drop"] or flags["drop"]
+            g["collect"] = g["collect"] or flags["collect"]
 
         result[item_category.get(pid, "Unknown")].append({
             "id": pid,
@@ -87,7 +107,7 @@ def main():
             },
             "obtainedFrom": {
                 "plants": sources,
-                "crafting": resolve_bench_items(chain.own_recipe(pid), bench_items),
+                "crafting": crafting,
                 "interactions": {
                     "break": chain.has_break_drop(pid, drop_path),
                     "collect": chain.has_collect_interaction(pid, drop_path),
@@ -95,6 +115,53 @@ def main():
                 },
             },
         })
+
+    # Gives, part 2: non-plant child items (a plant can also drop/salvage non-plant
+    # items) and craft relations of ANY item whose recipe uses a plant as ingredient.
+    # Craft relations are listed only when the player can actually perform the recipe
+    # (bench exists and required tier is within the bench's max tier).
+    plant_set = set(all_plants)
+    for out, srcs in relations.items():
+        if PLANT_ID_RE.match(out):
+            continue
+        for src, flags in srcs.items():
+            # src may be a drop-list stem (e.g. "Plant_Fiber_Tall"), not an item:
+            # resolve it to the plant items whose Gathering DropList references it.
+            if src in plant_set:
+                targets = [src]
+            else:
+                targets = [p for p, _key in harvest_refs.get(src, []) if p in plant_set]
+            for t in targets:
+                g = gives_map[t][out]
+                # Soft = break: the drop list contents drop on break (e.g. reeds -> fibre)
+                if flags.get("drop"):
+                    g["drop"] = True
+                if flags.get("salvage"):
+                    g["salvage"] = True
+    # No self entries in Gives: "shears -> itself" is already shown in the
+    # Obtained from / Interactions section of the plant itself.
+    for iid in item_path:
+        recipe = chain.own_recipe(iid)
+        if not recipe:
+            continue
+        doable, bench_item = craftable_bench(recipe, binfo)
+        if not doable:
+            continue
+        for inp in recipe.get("Input") or []:
+            pid = inp.get("ItemId") if isinstance(inp, dict) else None
+            if pid and pid in plant_set:
+                g = gives_map[pid][iid]
+                g["craft"] = True
+                if bench_item:
+                    g["bench"] = bench_item
+
+    for items in result.values():
+        for it in items:
+            g = gives_map.get(it["id"], {})
+            it["gives"] = [
+                {k: v for k, v in {"id": gid, **flags}.items() if v is not None}
+                for gid, flags in sorted(g.items())
+            ]
 
     # "Plant" is the fallback category for items with no proper category (e.g.
     # Plant_Hay_Bundle): excluded for now; add a specific rule in obtained.py

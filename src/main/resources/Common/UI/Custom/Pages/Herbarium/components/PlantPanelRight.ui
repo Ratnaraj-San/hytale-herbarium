@@ -126,6 +126,19 @@ $Herbarium = "HerbariumCommon.ui";
         }
       }
 
+      $Herbarium.@Spacer #SpacerAfterObtainedFrom { Visible: false; }
+
+      // Gives: reverse of Obtained from / Plants. The container holds an untitled
+      // section box (@ListBox) whose content is the wrapping list of tiles.
+      $Herbarium.@TitledContainer #PlantContainerGives {
+        $Herbarium.@ListBox {
+          Group #GivesList {
+            LayoutMode: LeftCenterWrap;
+            Anchor: (Full: 0);
+          }
+        }
+      }
+
     }
 
     Label #PlantDiscovery {

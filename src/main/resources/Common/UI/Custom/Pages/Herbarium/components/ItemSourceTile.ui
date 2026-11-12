@@ -1,0 +1,11 @@
+$Herbarium = "HerbariumCommon.ui";
+
+// Source tile for a non-plant item (Gives section): ingredient tile (icon + tooltip
+// name) with the row of interaction icons below.
+Group {
+  LayoutMode: Top;
+
+  $Herbarium.@IngredientTile #IngredientTile {}
+
+  $Herbarium.@SourceInteractions #SourceInteractions {}
+}

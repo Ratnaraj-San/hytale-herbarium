@@ -123,6 +123,34 @@ class ItemChain:
                 tools += [t.get("Type") for t in g.get("Tools", []) if isinstance(t, dict) and t.get("Type")]
         return tools
 
+    def stage_fruit_drops(self, pid, drop_path):
+        """Plant_Fruit_* items dropped by block STATES (e.g. the berry-laden StageFinal
+        of a bush): returns {item_id: {"drop": via Soft/break, "collect": via Harvest}}.
+        Only fruit outputs are kept — regular crop produce is already covered by the
+        crop-stage relations."""
+        out = {}
+        for _, data in self._chain(pid):
+            bt = data.get("BlockType") or {}
+            states = ((bt.get("State") or {}).get("Definitions")) or {}
+            for sdef in states.values():
+                gathering = (sdef or {}).get("Gathering") or {}
+                for key, flag in (("Soft", "drop"), ("Harvest", "collect")):
+                    entry = gathering.get(key)
+                    drop_list = entry.get("DropList") if isinstance(entry, dict) else None
+                    if not isinstance(drop_list, str):
+                        continue
+                    stem = drop_list[len("Drops_"):] if drop_list.startswith("Drops_") else drop_list
+                    path = drop_path.get(stem)
+                    if not path:
+                        continue
+                    items = set()
+                    collect_item_ids(self.az.load_json(path) or {}, items)
+                    for it in items:
+                        if it.startswith("Plant_Fruit_"):
+                            cur = out.setdefault(it, {"drop": False, "collect": False})
+                            cur[flag] = True
+        return out
+
     def uses_crystal_fertilizer(self, pid):
         """True when the plant needs Soil_Dirt_Crystal (drops Tool_Fertilizer_Crystal):
         either the crop block Support requires it, or the seeds item has the
@@ -220,22 +248,28 @@ class ItemChain:
         return "Shears" in self.tools_of(pid)
 
 
-def harvest_drop_refs(item_path, chain):
-    """Drop-list stem ending in "_Harvest" -> [(plant item id, gathering key)] for every
-    plant item whose Parent chain sets it as a Gathering DropList
-    (Soft = break, Harvest = collect). E.g. "Plant_Flower_Blue_Harvest" is not an item:
-    it is the drop list used when breaking the blue flowers."""
+def drop_list_refs(item_path, chain):
+    """Drop-list stem -> [(plant item id, gathering key)] for every plant item whose
+    Parent chain sets it as a Gathering DropList (Soft = break, Harvest = collect).
+    Stems that are not item ids (e.g. "Plant_Flower_Blue_Harvest", "Plant_Fiber_Tall")
+    are drop lists; this map resolves them back to the real plant items."""
     refs = defaultdict(set)
     for pid in item_path:
         if not PLANT_ID_RE.match(pid):
             continue
-        for cur, data in chain._chain(pid):
+        # per Gathering key (Soft/Harvest/Breaking), the NEAREST chain entry that defines
+        # the key wins — a child overriding Soft must not also inherit the parent's Soft
+        resolved = set()
+        for _cur, data in chain._chain(pid):
             gathering = (data.get("BlockType") or {}).get("Gathering") or {}
             for key in ("Soft", "Harvest", "Breaking"):
-                entry = gathering.get(key)
+                if key in resolved or key not in gathering:
+                    continue
+                resolved.add(key)
+                entry = gathering[key]
                 drop_list = entry.get("DropList") if isinstance(entry, dict) else None
-                if isinstance(drop_list, str) and drop_list.endswith("_Harvest"):
-                    refs[drop_list].add((cur, key))
+                if isinstance(drop_list, str):
+                    refs[drop_list].add((pid, key))
     return {k: sorted(v) for k, v in refs.items()}
 
 
@@ -355,6 +389,57 @@ def bench_item_map(az):
     return mapping
 
 
+# Bench types the player cannot obtain (no placeable bench item in the game).
+UNOBTAINABLE_BENCHES = {"Loombench"}
+
+
+def bench_info(az):
+    """Bench type Id -> (bench item id, max tier level), from Bench items' BlockType.Bench.
+    The in-game displayed tier after all upgrades is len(TierLevels) + 1 (e.g. Alchemy
+    bench: 4 TierLevels entries -> "Tier 5"), so that is the max doable RequiredTierLevel.
+    When several items declare the same bench type (e.g. Farmingbench = Bench_Farming and
+    Bench_Trough), keep the one with the highest max tier (the upgradeable bench)."""
+    info = {}
+    for name in sorted(n for n in az.names
+                       if n.startswith("Server/Item/Items/Bench/") and n.endswith(".json")):
+        data = az.load_json(name)
+        bench = (data.get("BlockType") or {}).get("Bench")
+        bench_id = bench.get("Id") if isinstance(bench, dict) else None
+        if not bench_id:
+            continue
+        item_id = name.rsplit("/", 1)[-1][:-5]
+        tiers = bench.get("TierLevels")
+        max_tier = len(tiers) + 1 if isinstance(tiers, list) else 0
+        prev = info.get(bench_id)
+        if prev is None or max_tier > prev[1]:
+            info[bench_id] = (item_id, max_tier)
+    return info
+
+
+def craftable_bench(recipe, binfo):
+    """(doable, bench_item_id) for a recipe. Not doable when the bench type has no
+    placeable bench item or is not player-obtainable (UNOBTAINABLE_BENCHES), or when a
+    required tier level exceeds the bench's max tier."""
+    reqs = recipe.get("BenchRequirement") if isinstance(recipe, dict) else None
+    if not isinstance(reqs, list) or not reqs:
+        return True, None
+    first = None
+    for r in reqs:
+        if not isinstance(r, dict):
+            continue
+        bench_id = r.get("Id")
+        if bench_id in UNOBTAINABLE_BENCHES:
+            return False, None
+        info = binfo.get(bench_id)
+        if info is None:
+            return False, None
+        if first is None:
+            first = info
+        if (r.get("RequiredTierLevel") or 0) > info[1]:
+            return False, None
+    return True, (first[0] if first else None)
+
+
 def resolve_bench_items(recipe, bench_items):
     """Add BenchItemId to each BenchRequirement so the UI can show bench icon/name."""
     if not recipe:
@@ -396,7 +481,8 @@ def build_relations(az, drop_path, item_path, salvage_rel):
     """obtained plant A -> {source plant B -> {shears, drop, salvage}}"""
     relations = defaultdict(lambda: defaultdict(lambda: {"shears": False, "drop": False, "salvage": False}))
     for src, out in salvage_rel:
-        if src and out and PLANT_ID_RE.match(src) and PLANT_ID_RE.match(out):
+        # source must be a plant; output may be any item (used for the reverse "gives")
+        if src and out and PLANT_ID_RE.match(src) and out in item_path:
             relations[out][src]["salvage"] = True
     plant_ids = sorted((p for p in item_path if PLANT_ID_RE.match(p)), key=len, reverse=True)
     for stem, path in drop_path.items():
@@ -417,6 +503,7 @@ def build_relations(az, drop_path, item_path, salvage_rel):
         outs = set()
         collect_item_ids(data, outs)
         for out in outs:
-            if PLANT_ID_RE.match(out):
+            # keep any known item as output: non-plant outputs feed the reverse "gives"
+            if out in item_path:
                 relations[out][src]["drop"] = True
     return relations
