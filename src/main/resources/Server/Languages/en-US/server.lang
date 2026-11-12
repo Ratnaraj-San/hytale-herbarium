@@ -25,10 +25,15 @@ herbarium.ui.category.vine = Vine
 
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Found in
+herbarium.ui.container.obtained_from.title = Obtained from
 herbarium.ui.locations.unknown = Location unknown
 herbarium.ui.locations.zones = Zones
 herbarium.ui.locations.regions = Regions
 herbarium.ui.locations.portals = Portals
+herbarium.ui.obtained_from.interactions = Interactions
+herbarium.ui.interaction.break = Break
+herbarium.ui.interaction.collect = Collect
+herbarium.ui.interaction.shears = Shears
 herbarium.ui.plant.discoveredOn = Discovered on {date}
 herbarium.ui.plant.discoveredAt = Discovered on {date} at ({place})
 

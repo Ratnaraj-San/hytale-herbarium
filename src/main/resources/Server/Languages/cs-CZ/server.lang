@@ -25,12 +25,17 @@ herbarium.ui.category.vine = Liany
 
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Lze nalézt v:
+herbarium.ui.container.obtained_from.title = Získáno z
 herbarium.ui.locations.unknown = Místo výskytu neznámé
 herbarium.ui.plant.discoveredOn = Nalezeno {date}
 herbarium.ui.plant.discoveredAt = Nalezeno {date} na ({place})
 herbarium.ui.locations.zones = Zóny
 herbarium.ui.locations.regions = Regiony
 herbarium.ui.locations.portals = Portály
+herbarium.ui.obtained_from.interactions = Interakce
+herbarium.ui.interaction.break = Rozbít
+herbarium.ui.interaction.collect = Sebrat
+herbarium.ui.interaction.shears = Nůžky
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Uzamčeno</b></color> \n<color is="#888888">Zaznamenejte {count, number} {count, plural, one {rostlinu} few {rostliny} many {rostlin} other {rostlin}}, abyste odemkli:</color>

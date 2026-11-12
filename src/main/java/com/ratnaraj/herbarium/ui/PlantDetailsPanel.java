@@ -6,6 +6,7 @@ import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.ratnaraj.herbarium.Herbarium;
 import com.ratnaraj.herbarium.data.PlantAssets;
 import com.ratnaraj.herbarium.data.PlantInfo;
+import com.ratnaraj.herbarium.data.PlantInteractions;
 import com.ratnaraj.herbarium.data.PlantLocationsV2;
 import com.ratnaraj.herbarium.data.PlayerStore;
 
@@ -22,6 +23,11 @@ public class PlantDetailsPanel {
     private static final String PORTALS_TITLE_KEY = "server.herbarium.ui.locations.portals";
     private static final String DISCOVERED_ON_KEY = "server.herbarium.ui.plant.discoveredOn";
     private static final String DISCOVERED_AT_KEY = "server.herbarium.ui.plant.discoveredAt";
+    private static final String OBTAINED_FROM_TITLE_KEY = "server.herbarium.ui.container.obtained_from.title";
+    private static final String INTERACTIONS_TITLE_KEY = "server.herbarium.ui.obtained_from.interactions";
+    private static final String INTERACTION_BREAK_KEY = "server.herbarium.ui.interaction.break";
+    private static final String INTERACTION_COLLECT_KEY = "server.herbarium.ui.interaction.collect";
+    private static final String INTERACTION_SHEARS_KEY = "server.herbarium.ui.interaction.shears";
 
     public static void buildDetails(
             PlayerRef playerRef,
@@ -34,6 +40,7 @@ public class PlantDetailsPanel {
         if (selectedPlant == null) {
             commands.set("#PlantName.Text", "");
             setLocationsPanel(commands, null);
+            setObtainedFrom(commands, null);
             commands.set("#PlantDiscovery.Text", "");
             commands.setNull("#PlantIcon.AssetPath");
             return;
@@ -43,6 +50,7 @@ public class PlantDetailsPanel {
         setPlantId(commands, "#PlantId.Text", selectedPlant, devView);
 
         setLocationsPanel(commands, Herbarium.getCatalog().getPlantLocations(selectedPlant));
+        setObtainedFrom(commands, selectedPlant);
 
         PlantInfo plantInfo = store.getPlayerPlantInfo(playerRef, selectedPlant);
         if (plantInfo != null && plantInfo.wasDiscovered() && plantInfo.getDiscoveredDate() != null) {
@@ -139,6 +147,56 @@ public class PlantDetailsPanel {
             // First entry has no top padding; the rest are spaced.
             commands.append(list, i == 0 ? LOCATION_ENTRY_UI : LOCATION_ENTRY_SPACED_UI);
             commands.set(list + "[" + i + "] #LocationText.Text", Message.translation(entries.get(i)));
+        }
+    }
+
+    private static void setObtainedFrom(UICommandBuilder commands, String plantId) {
+        PlantInteractions interactions = plantId != null
+                ? Herbarium.getCatalog().getPlantInteractions(plantId)
+                : PlantInteractions.NONE;
+        boolean showSection = plantId != null && interactions.any();
+
+        commands.set("#PlantContainerObtainedFrom.Visible", showSection);
+
+        if (!showSection) { return; }
+
+        commands.set("#PlantContainerObtainedFrom #ContainerTitle.Text", Message.translation(OBTAINED_FROM_TITLE_KEY));
+
+        String section = "#PlantContainerObtainedFrom #PlantContainerObtainedFromInteractions";
+
+        commands.set(section + ".Visible", true);
+        commands.set(section + " #SectionTitle.Visible", true);
+        commands.set(section + " #SectionTitle.Text", Message.translation(INTERACTIONS_TITLE_KEY));
+
+        String row = section + " #InteractionsHeader #InteractionsRow";
+
+        setInteractionIcon(
+                commands,
+                row + " #InteractionBreak",
+                interactions.canBreak(),
+                INTERACTION_BREAK_KEY
+        );
+        setInteractionIcon(
+                commands,
+                row + " #InteractionCollect",
+                interactions.canCollect(),
+                INTERACTION_COLLECT_KEY
+        );
+        setInteractionIcon(
+                commands,
+                row + " #InteractionShears",
+                interactions.canShear(),
+                INTERACTION_SHEARS_KEY
+        );
+    }
+
+    private static void setInteractionIcon(UICommandBuilder commands, String icon, boolean visible, String tooltipKey) {
+        commands.set(icon + ".Visible", visible);
+
+        if (visible) {
+            commands.set(icon + ".TooltipText", Message.translation(tooltipKey));
+        } else {
+            commands.set(icon + ".TooltipText", "");
         }
     }
 

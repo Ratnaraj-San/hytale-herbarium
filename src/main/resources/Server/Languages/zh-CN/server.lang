@@ -25,12 +25,17 @@ herbarium.ui.category.vine = 藤蔓
 
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = 发现于：
+herbarium.ui.container.obtained_from.title = 获取自
 herbarium.ui.locations.unknown = 位置未知
 herbarium.ui.plant.discoveredOn = 发现于 {date}
 herbarium.ui.plant.discoveredAt = 发现于 {date}，位于 ({place})
 herbarium.ui.locations.zones = 区域
 herbarium.ui.locations.regions = 地区
 herbarium.ui.locations.portals = 传送门
+herbarium.ui.obtained_from.interactions = 交互
+herbarium.ui.interaction.break = 破坏
+herbarium.ui.interaction.collect = 采集
+herbarium.ui.interaction.shears = 剪刀
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>未解锁</b></color> \n<color is="#888888">记录 {count, number} 株植物后解锁：</color>

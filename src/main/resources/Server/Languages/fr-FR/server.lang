@@ -25,10 +25,15 @@ herbarium.ui.category.vine = Lianes
 
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Se trouve dans :
+herbarium.ui.container.obtained_from.title = Obtenu via
 herbarium.ui.locations.unknown = Localisation inconnue
 herbarium.ui.locations.zones = Zones
 herbarium.ui.locations.regions = Régions
 herbarium.ui.locations.portals = Portails
+herbarium.ui.obtained_from.interactions = Interactions
+herbarium.ui.interaction.break = Casser
+herbarium.ui.interaction.collect = Récolter
+herbarium.ui.interaction.shears = Ciseaux
 herbarium.ui.plant.discoveredOn = Découverte le {date}
 herbarium.ui.plant.discoveredAt = Découverte le {date} à ({place})
 

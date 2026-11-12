@@ -25,12 +25,17 @@ herbarium.ui.category.vine = Liane
 
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Si trova in:
+herbarium.ui.container.obtained_from.title = Ottenuto da
 herbarium.ui.locations.unknown = Posizione sconosciuta
 herbarium.ui.plant.discoveredOn = Scoperta il {date}
 herbarium.ui.plant.discoveredAt = Scoperta il {date} in ({place})
 herbarium.ui.locations.zones = Zone
 herbarium.ui.locations.regions = Regioni
 herbarium.ui.locations.portals = Portali
+herbarium.ui.obtained_from.interactions = Interazioni
+herbarium.ui.interaction.break = Rompi
+herbarium.ui.interaction.collect = Raccogli
+herbarium.ui.interaction.shears = Cesoie
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Bloccato</b></color> \n<color is="#888888">Registra {count, number} {count, plural, one {pianta} other {piante}} per sbloccare:</color>

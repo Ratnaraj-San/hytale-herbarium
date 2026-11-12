@@ -25,12 +25,17 @@ herbarium.ui.category.vine = Lianor
 
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Finns i:
+herbarium.ui.container.obtained_from.title = Erhållen från
 herbarium.ui.locations.unknown = Okänd plats
 herbarium.ui.plant.discoveredOn = Upptäckt {date}
 herbarium.ui.plant.discoveredAt = Upptäckt {date} vid ({place})
 herbarium.ui.locations.zones = Zoner
 herbarium.ui.locations.regions = Regioner
 herbarium.ui.locations.portals = Portaler
+herbarium.ui.obtained_from.interactions = Interaktioner
+herbarium.ui.interaction.break = Förstöra
+herbarium.ui.interaction.collect = Samla in
+herbarium.ui.interaction.shears = Sax
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Låst</b></color> \n<color is="#888888">Registrera {count, number} {count, plural, one {växt} other {växter}} för att låsa upp:</color>

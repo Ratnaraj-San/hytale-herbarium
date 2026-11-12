@@ -16,6 +16,7 @@ public final class PlantCatalogV2 {
     private final Map<String, PlantInfo> allPlantsFromConfig;
     private final Map<String, List<String>> plantCategories = new LinkedHashMap<>();
     private final Map<String, PlantLocationsV2> plantLocations = new HashMap<>();
+    private final Map<String, PlantInteractions> plantInteractions = new HashMap<>();
 
     public PlantCatalogV2() {
         this.allPlantsFromConfig = loadPlantsFromConfig();
@@ -54,6 +55,8 @@ public final class PlantCatalogV2 {
                                 readStringList(locationsJson, "zones"),
                                 readStringList(locationsJson, "portals")
                         ));
+
+                        plantInteractions.put(id, readInteractions(item.getAsJsonObject("obtainedFrom")));
                     }
 
                     if (!categoryPlants.isEmpty()) {
@@ -79,6 +82,29 @@ public final class PlantCatalogV2 {
 
     public PlantLocationsV2 getPlantLocations(String plantId) {
         return plantLocations.getOrDefault(plantId, PlantLocationsV2.EMPTY);
+    }
+
+    public PlantInteractions getPlantInteractions(String plantId) {
+        return plantInteractions.getOrDefault(plantId, PlantInteractions.NONE);
+    }
+
+    private static PlantInteractions readInteractions(JsonObject obtainedFrom) {
+        if (obtainedFrom == null || !obtainedFrom.has("interactions")) {
+            return PlantInteractions.NONE;
+        }
+
+        JsonObject interactions = obtainedFrom.getAsJsonObject("interactions");
+
+        return new PlantInteractions(
+                readBool(interactions, "break"),
+                readBool(interactions, "collect"),
+                readBool(interactions, "shears")
+        );
+    }
+
+    private static boolean readBool(JsonObject parent, String key) {
+        return parent != null && parent.has(key) && !parent.get(key).isJsonNull()
+                && parent.get(key).getAsBoolean();
     }
 
     private static List<String> readStringList(JsonObject parent, String key) {

@@ -61,6 +61,63 @@ $Herbarium = "HerbariumCommon.ui";
           Visible: false;
         }
       }
+
+      $Herbarium.@Spacer {
+        @Pad = Padding(Vertical: 12);
+      }
+
+      $Herbarium.@TitledContainer #PlantContainerObtainedFrom {
+        Group #PlantContainerObtainedFromInteractions {
+          LayoutMode: Top;
+          Background: (TexturePath: "../textures/SectionBackground.png", Border: 8);
+          Padding: (Full: 8);
+
+          Group #InteractionsHeader {
+            LayoutMode: CenterMiddle;
+
+            Label #SectionTitle {
+              Style: (...$Herbarium.@SectionTitleStyle, VerticalAlignment: Center);
+              Text: "";
+              FlexWeight: 1;
+              Visible: false;
+            }
+
+            Group #InteractionsRow {
+              LayoutMode: CenterMiddle;
+
+              Group #InteractionBreak {
+                Anchor: (Width: 40, Height: 40);
+                Background: "../textures/InteractionBreak.png";
+                TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+                TooltipText: "";
+              }
+
+              Group #InteractionCollect {
+                Anchor: (Width: 52, Height: 52);
+                Padding: (Left: 12);
+                Background: "../textures/InteractionCollect.png";
+                TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+                TooltipText: "";
+              }
+
+              Group #InteractionShears {
+                Anchor: (Width: 48, Height: 48);
+                Padding: (Left: 12);
+                Background: "../textures/InteractionShears.png";
+                TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+                TooltipText: "";
+              }
+            }
+          }
+
+          Group #SectionList {
+            LayoutMode: Top;
+          }
+        }
+        // $Herbarium.@Section #PlantContainerObtainedFromCrafting {}
+        // $Herbarium.@Section #PlantContainerObtainedFromPlants {}
+      }
+
     }
 
     Label #PlantDiscovery {

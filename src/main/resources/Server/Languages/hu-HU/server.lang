@@ -25,12 +25,17 @@ herbarium.ui.category.vine = Liánok
 
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Megtalálható:
+herbarium.ui.container.obtained_from.title = Megszerezve innen
 herbarium.ui.locations.unknown = Helyszín ismeretlen
 herbarium.ui.plant.discoveredOn = Felfedezve: {date}
 herbarium.ui.plant.discoveredAt = Felfedezve: {date}, itt: ({place})
 herbarium.ui.locations.zones = Zónák
 herbarium.ui.locations.regions = Régiók
 herbarium.ui.locations.portals = Portálok
+herbarium.ui.obtained_from.interactions = Interakciók
+herbarium.ui.interaction.break = Kitörés
+herbarium.ui.interaction.collect = Begyűjtés
+herbarium.ui.interaction.shears = Olló
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Zárolva</b></color> \n<color is="#888888">Rögzíts {count, number} növényt a feloldáshoz:</color>
