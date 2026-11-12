@@ -9,16 +9,16 @@ import com.ratnaraj.herbarium.data.PlantInfo;
 import com.ratnaraj.herbarium.data.PlantLocationsV2;
 import com.ratnaraj.herbarium.data.PlayerStore;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlantDetailsPanel {
 
     private static final String LOCATION_ENTRY_UI = "Pages/Herbarium/components/LocationEntry.ui";
     private static final String LOCATION_ENTRY_SPACED_UI = "Pages/Herbarium/components/LocationEntrySpaced.ui";
+    private static final String ZONE_SECTION_UI = "Pages/Herbarium/components/ZoneSection.ui";
     private static final String LOCATIONS_FOUND_IN_KEY = "server.herbarium.ui.container.locations.title";
     private static final String LOCATION_UNKNOWN_KEY = "server.herbarium.ui.locations.unknown";
-    private static final String ZONES_TITLE_KEY = "server.herbarium.ui.locations.zones";
-    private static final String REGIONS_TITLE_KEY = "server.herbarium.ui.locations.regions";
     private static final String PORTALS_TITLE_KEY = "server.herbarium.ui.locations.portals";
     private static final String DISCOVERED_ON_KEY = "server.herbarium.ui.plant.discoveredOn";
     private static final String DISCOVERED_AT_KEY = "server.herbarium.ui.plant.discoveredAt";
@@ -89,19 +89,34 @@ public class PlantDetailsPanel {
             commands.set("#PlantLocationUnknown.Text", "");
         }
 
-        boolean zonesVisible = hasPlant && !locations.getZones().isEmpty();
-        boolean regionsVisible = hasPlant && !locations.getRegions().isEmpty();
         boolean portalsVisible = hasPlant && !locations.getPortals().isEmpty();
+        boolean unknownVisible = hasPlant && !hasLocations;
 
-        setLocationGroup(commands, "#PlantLocationsZones", ZONES_TITLE_KEY,
-                zonesVisible ? locations.getZones() : List.of());
-        setLocationGroup(commands, "#PlantLocationsRegions", REGIONS_TITLE_KEY,
-                regionsVisible ? locations.getRegions() : List.of());
         setLocationGroup(commands, "#PlantLocationsPortals", PORTALS_TITLE_KEY,
                 portalsVisible ? locations.getPortals() : List.of());
 
-        commands.set("#SpacerAfterZones.Visible", zonesVisible && (regionsVisible || portalsVisible));
-        commands.set("#SpacerAfterRegions.Visible", regionsVisible && portalsVisible);
+        // One appended ZoneSection per zone of the plant, listing that zone's regions (game data).
+        List<String> plantZones = hasPlant ? locations.getZones() : List.of();
+        List<String> visibleZoneKeys = new ArrayList<>();
+        for (String zoneKey : PlantLocationsV2.REGIONS_BY_ZONE.keySet()) {
+            if (plantZones.contains(zoneKey)) {
+                visibleZoneKeys.add(zoneKey);
+            }
+        }
+
+        String zonedList = "#ZonedRegions";
+        commands.clear(zonedList);
+        for (int i = 0; i < visibleZoneKeys.size(); i++) {
+            String zoneKey = visibleZoneKeys.get(i);
+            String entry = zonedList + "[" + i + "]";
+            commands.append(zonedList, ZONE_SECTION_UI);
+            setLocationGroup(commands, entry + " #ZoneSection", zoneKey,
+                    PlantLocationsV2.getRegionsForZone(zoneKey));
+            // Spacer only between two visible blocks: not after the last zone
+            // unless portals or the unknown label follows.
+            boolean last = i == visibleZoneKeys.size() - 1;
+            commands.set(entry + " #ZoneSpacer.Visible", !last || portalsVisible || unknownVisible);
+        }
     }
 
     private static void setLocationGroup(UICommandBuilder commands, String section,

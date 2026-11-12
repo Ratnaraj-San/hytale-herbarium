@@ -1,0 +1,11 @@
+$Herbarium = "HerbariumCommon.ui";
+
+Group {
+  LayoutMode: Top;
+
+  $Herbarium.@Section #ZoneSection {}
+
+  $Herbarium.@Spacer #ZoneSpacer {
+    Visible: false;
+  }
+}

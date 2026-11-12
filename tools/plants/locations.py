@@ -64,6 +64,19 @@ def load_lang_keys(az):
     return keys
 
 
+def load_lang_values(az, lang="en-US"):
+    """lang key (unprefixed) -> display value, e.g. map.region.Zone3_Shore_Tier1 -> "Shore"."""
+    values = {}
+    prefix = f"Server/Languages/{lang}/"
+    for n in az.names:
+        if n.startswith(prefix) and n.endswith(".lang"):
+            for line in az.read_text(n).splitlines():
+                if "=" in line:
+                    k, v = line.split("=", 1)
+                    values[k.strip()] = v.strip()
+    return values
+
+
 def make_key_fns(lang_keys):
     def server_key(lang_key):
         return "server." + lang_key if lang_key in lang_keys else lang_key
@@ -84,8 +97,11 @@ ZONE_JSON_RE = re.compile(r"^Server/World/Default/Zones/([^/]+)/Zone\.json$")
 def scan_regions_by_zone(az):
     """Named zone (server.map.zone.*) -> sorted region keys (server.map.region.*),
     read from Discovery.ZoneName in each region's Zone.json. Regenerated on every
-    scanPlants run, so new zones/regions from game updates are picked up."""
+    scanPlants run, so new zones/regions from game updates are picked up.
+    Regions whose translation is identical within a zone (e.g. Zone3_Shore_Tier1/2/3
+    all display "Shore") are deduplicated by display value, keeping the first key."""
     server_key, region_key, _ = make_key_fns(load_lang_keys(az))
+    lang_values = load_lang_values(az)
     out = defaultdict(list)
     for n in az.names:
         m = ZONE_JSON_RE.match(n)
@@ -96,7 +112,18 @@ def scan_regions_by_zone(az):
         if not zone_name:
             continue
         out[server_key(f"map.zone.{zone_name}")].append(region_key(m.group(1)))
-    return {zone: sorted(regions) for zone, regions in sorted(out.items())}
+    result = {}
+    for zone, regions in sorted(out.items()):
+        seen_values = set()
+        deduped = []
+        for rk in sorted(regions):
+            value = lang_values.get(rk[len("server."):], rk)
+            if value in seen_values:
+                continue
+            seen_values.add(value)
+            deduped.append(rk)
+        result[zone] = deduped
+    return result
 
 
 def load_portals(az):

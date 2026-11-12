@@ -49,16 +49,8 @@ $Herbarium = "HerbariumCommon.ui";
       FlexWeight: 1;
 
       $Herbarium.@TitledContainer #PlantContainerLocations {
-        $Herbarium.@Section #PlantLocationsZones {}
-
-        $Herbarium.@Spacer #SpacerAfterZones {
-          Visible: false;
-        }
-
-        $Herbarium.@Section #PlantLocationsRegions {}
-
-        $Herbarium.@Spacer #SpacerAfterRegions {
-          Visible: false;
+        Group #ZonedRegions {
+          LayoutMode: Top;
         }
 
         $Herbarium.@Section #PlantLocationsPortals {}
