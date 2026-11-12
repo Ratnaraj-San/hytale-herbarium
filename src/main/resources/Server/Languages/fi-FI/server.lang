@@ -1,8 +1,74 @@
+# === Items ===
 items.Herbarium_Journal.name = Botanistin päiväkirja
 items.Herbarium_Journal_Dev.name = Botanistin päiväkirja (Developer)
 
-herbarium.location.found_in = Esiintyy:
-herbarium.location.unknown = Sijainti tuntematon
+# === CustomUI: journal page ===
+herbarium.ui.journal.progress = kirjattuja kasveja: {count, number} / {total, number}
+herbarium.ui.category.bramble = Vatukat
+herbarium.ui.category.bush = Pensaat
+herbarium.ui.category.cactus = Kaktukset
+herbarium.ui.category.coral = Korallit
+herbarium.ui.category.crop = Viljelykset
+herbarium.ui.category.fern = Saniaiset
+herbarium.ui.category.flower = Kukat
+herbarium.ui.category.fruit = Hedelmät
+herbarium.ui.category.grass = Heinät
+herbarium.ui.category.leaves = Lehdet
+herbarium.ui.category.moss = Sammalet
+herbarium.ui.category.mushroom = Sienet
+herbarium.ui.category.petals = Terälehdet
+herbarium.ui.category.reeds = Kaislat
+herbarium.ui.category.sapling = Taimet
+herbarium.ui.category.seaweed = Merilevät
+herbarium.ui.category.seeds = Siemenet
+herbarium.ui.category.vine = Köynnökset
+
+# === CustomUI: plant details containers ===
+herbarium.ui.container.locations.title = Esiintyy:
+herbarium.ui.locations.unknown = Sijainti tuntematon
+herbarium.ui.plant.discoveredOn = Löydetty {date}
+herbarium.ui.plant.discoveredAt = Löydetty {date} kohdasta ({place})
+herbarium.ui.locations.zones = Vyöhykkeet
+herbarium.ui.locations.regions = Alueet
+herbarium.ui.locations.portals = Portaalit
+
+# === CustomUI: rewards bar ===
+herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Lukittu</b></color> \n<color is="#888888">Kirjaa {count, number} {count, plural, one {kasvi} other {kasvia}} avataksesi lukituksen:</color>
+herbarium.ui.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Avattu</b></color> \n<color is="#888888">Kirjattu: {count, number} {count, plural, one {kasvi} other {kasvia}}. Noudettava palkinto:</color>
+herbarium.ui.rewards.chestCollected.tooltipText = <color is="#888888"><b>Noudettu</b></color> \n<color is="#888888">Kirjattu: {count, number} {count, plural, one {kasvi} other {kasvia}}. Noudettu palkinto:</color>
+herbarium.ui.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Päivitys</b></color> \n<color is="#888888">Kirjattu: {count, number} {count, plural, one {kasvi} other {kasvia}}. Noudettu palkintoNoudettava palkinto:</color>
+herbarium.ui.rewards.collectButton = Nouda palkinto {tier, number}
+herbarium.ui.rewards.allCollected = Kaikki palkinnot noudettu
+
+# === CustomUI: intro page ===
+herbarium.ui.intro.title = Olet avannut Botanistin päiväkirjan!
+herbarium.ui.intro.bullet1 = Tämä päiväkirja seuraa sinua koko Orbiksen tutkimisen ajan.
+herbarium.ui.intro.bullet2 = Jokainen poimimasi kasvi kirjataan tänne löytöpäivämäärineen ja -paikkoineen.
+herbarium.ui.intro.bullet3 = Selaa kokoelmaasi kategorioittain, seuraa edistymistäsi, tule aidoksi kasvitieteilijäksi ja tienaa palkintoja!
+herbarium.ui.intro.openJournal = Avaa päiväkirja
+
+# === Chat and commands (not CustomUI) ===
+herbarium.command.desc = Herbarium-komennot
+herbarium.command.open.desc = Avaa Botanistin päiväkirjan.
+herbarium.command.resetall.desc = Poistaa koko edistymisesi.
+herbarium.command.reset.desc = Poistaa kategorian edistymisen.
+herbarium.command.reset.category.desc = Nollattava kategoria (esim. Flower).
+herbarium.command.unlockall.desc = Avaa kaikki kasvit.
+herbarium.command.give.desc = Antaa Botanistin päiväkirjan.
+herbarium.command.unlock.desc = Avaa kaikki kategorian kasvit.
+herbarium.command.playersOnly = Tämän komennon voivat suorittaa vain pelaajat.
+herbarium.command.resetall.done = Edistymisesi on nollattu pelaajalle {player}.
+herbarium.command.reset.done = Kategoria {category} on nollattu pelaajalle {player}.
+herbarium.command.unlockall.done = Kaikki kasvit on avattu pelaajalle {player}.
+herbarium.command.give.done = {journal} on annettu pelaajalle {player}.
+herbarium.command.unlock.category.desc = Avattava kategoria (esim. Flower).
+herbarium.command.unlock.done = Kategoria {category} on avattu pelaajalle {player}.
+herbarium.command.common.unknownCategory = Tuntematon kategoria: {category}.
+herbarium.command.common.player.desc = Kohdepelaaja (oletuksena sinä itse).
+herbarium.command.common.devflag.desc = Antaa sen sijaan kehittäjäpäiväkirjan (kaikki kasvit rekisteröity).
+herbarium.notification.discovered = Uusi kasvi löydetty:
+
+# === Data referenced by plants.json (do not rename) ===
 herbarium.location.cultivated = Viljellyt pellot
 herbarium.location.caves = Luolat
 herbarium.location.chests = Arkut
@@ -27,7 +93,6 @@ herbarium.location.ruined_temples = Raunioituneet temppelit
 herbarium.location.slothian_villages = Slothian-kylät
 herbarium.location.dungeons = Luolastot
 herbarium.location.cursed_crypts = Kirotut kryptat
-
 herbarium.tree.amber = Amberpuut
 herbarium.tree.apple = Omenapuut
 herbarium.tree.ash = Saarnet
@@ -63,60 +128,3 @@ herbarium.tree.spiral = Kierrepuut
 herbarium.tree.stormbark = Myrskypuut
 herbarium.tree.windwillow = Tuulipajut
 herbarium.tree.wisteria_wild = Villit wisteriat
-
-herbarium.unlock.title = Olet avannut Botanistin päiväkirjan!
-herbarium.unlock.bullet1 = Tämä päiväkirja seuraa sinua koko Orbiksen tutkimisen ajan.
-herbarium.unlock.bullet2 = Jokainen poimimasi kasvi kirjataan tänne löytöpäivämäärineen ja -paikkoineen.
-herbarium.unlock.bullet3 = Selaa kokoelmaasi kategorioittain, seuraa edistymistäsi, tule aidoksi kasvitieteilijäksi ja tienaa palkintoja!
-herbarium.unlock.openJournal = Avaa päiväkirja
-
-herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Lukittu</b></color> \n<color is="#888888">Kirjaa {count, number} {count, plural, one {kasvi} other {kasvia}} avataksesi lukituksen:</color>
-herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Avattu</b></color> \n<color is="#888888">Kirjattu: {count, number} {count, plural, one {kasvi} other {kasvia}}. Noudettava palkinto:</color>
-herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Noudettu</b></color> \n<color is="#888888">Kirjattu: {count, number} {count, plural, one {kasvi} other {kasvia}}. Noudettu palkinto:</color>
-herbarium.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Päivitys</b></color> \n<color is="#888888">Kirjattu: {count, number} {count, plural, one {kasvi} other {kasvia}}. Noudettu palkintoNoudettava palkinto:</color>
-herbarium.rewards.collectButton = Nouda palkinto {tier, number}
-herbarium.rewards.allCollected = Kaikki palkinnot noudettu
-
-herbarium.command.desc = Herbarium-komennot
-herbarium.command.open.desc = Avaa Botanistin päiväkirjan.
-herbarium.command.resetall.desc = Poistaa koko edistymisesi.
-herbarium.command.reset.desc = Poistaa kategorian edistymisen.
-herbarium.command.reset.category.desc = Nollattava kategoria (esim. Flower).
-herbarium.command.unlockall.desc = Avaa kaikki kasvit.
-herbarium.command.give.desc = Antaa Botanistin päiväkirjan.
-herbarium.command.unlock.desc = Avaa kaikki kategorian kasvit.
-herbarium.command.playersOnly = Tämän komennon voivat suorittaa vain pelaajat.
-herbarium.command.resetall.done = Edistymisesi on nollattu pelaajalle {player}.
-herbarium.command.reset.done = Kategoria {category} on nollattu pelaajalle {player}.
-herbarium.command.unlockall.done = Kaikki kasvit on avattu pelaajalle {player}.
-herbarium.command.give.done = {journal} on annettu pelaajalle {player}.
-herbarium.command.unlock.category.desc = Avattava kategoria (esim. Flower).
-herbarium.command.unlock.done = Kategoria {category} on avattu pelaajalle {player}.
-herbarium.command.common.unknownCategory = Tuntematon kategoria: {category}.
-herbarium.command.common.player.desc = Kohdepelaaja (oletuksena sinä itse).
-
-herbarium.progress.recorded = kirjattuja kasveja: {count, number} / {total, number}
-
-herbarium.plant.discoveredOn = Löydetty {date}
-herbarium.plant.discoveredAt = Löydetty {date} kohdasta ({place})
-
-herbarium.notification.discovered = Uusi kasvi löydetty:
-
-herbarium.category.bramble = Vatukat
-herbarium.category.bush = Pensaat
-herbarium.category.cactus = Kaktukset
-herbarium.category.coral = Korallit
-herbarium.category.crop = Viljelykset
-herbarium.category.fern = Saniaiset
-herbarium.category.flower = Kukat
-herbarium.category.fruit = Hedelmät
-herbarium.category.grass = Heinät
-herbarium.category.leaves = Lehdet
-herbarium.category.moss = Sammalet
-herbarium.category.mushroom = Sienet
-herbarium.category.petals = Terälehdet
-herbarium.category.reeds = Kaislat
-herbarium.category.sapling = Taimet
-herbarium.category.seaweed = Merilevät
-herbarium.category.seeds = Siemenet
-herbarium.category.vine = Köynnökset

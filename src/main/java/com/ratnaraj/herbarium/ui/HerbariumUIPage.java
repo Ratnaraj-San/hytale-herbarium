@@ -44,8 +44,8 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     
     private static final String JOURNAL_NAME_KEY = "server.items.Herbarium_Journal.name";
     private static final String JOURNAL_DEV_NAME_KEY = "server.items.Herbarium_Journal_Dev.name";
-    private static final String TOTAL_COLLECTED_KEY = "server.herbarium.progress.recorded";
-    private static final String CATEGORY_KEY_PREFIX = "server.herbarium.category.";
+    private static final String TOTAL_COLLECTED_KEY = "server.herbarium.ui.journal.progress";
+    private static final String CATEGORY_KEY_PREFIX = "server.herbarium.ui.category.";
 
     private static final Map<String, String> CATEGORY_ICON_OVERRIDES = Map.ofEntries(
             Map.entry("Bramble", "Icons/ItemsGenerated/Plant_Bramble_Dry.png"),
@@ -171,7 +171,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                 if (newIndex >= 0) {
                     setTileSelection(commands, newIndex, true);
                 }
-                PlantDetailsPanel.buildDetails(subjectRef, commands, selectedPlant);
+                PlantDetailsPanel.buildDetails(subjectRef, commands, selectedPlant, devView);
                 sendUpdate(commands, false);
             }
             case TYPE_BACK -> {
@@ -381,7 +381,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                 new EventData().append("Type", TYPE_BACK)
         );
 
-        PlantDetailsPanel.buildDetails(subjectRef, commands, selectedPlant);
+        PlantDetailsPanel.buildDetails(subjectRef, commands, selectedPlant, devView);
     }
 
     private void setTileSelection(UICommandBuilder commands, int index, boolean selected) {

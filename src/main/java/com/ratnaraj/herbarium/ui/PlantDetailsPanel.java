@@ -15,13 +15,13 @@ public class PlantDetailsPanel {
 
     private static final String LOCATION_ENTRY_UI = "Pages/Herbarium/LocationEntry.ui";
     private static final String LOCATION_ENTRY_SPACED_UI = "Pages/Herbarium/LocationEntrySpaced.ui";
-    private static final String LOCATIONS_FOUND_IN_KEY = "server.herbarium.location.found_in";
-    private static final String LOCATION_UNKNOWN_KEY = "server.herbarium.location.unknown";
-    private static final String ZONES_TITLE_KEY = "server.herbarium.location.zones";
-    private static final String REGIONS_TITLE_KEY = "server.herbarium.location.regions";
-    private static final String PORTALS_TITLE_KEY = "server.herbarium.location.portals";
-    private static final String DISCOVERED_ON_KEY = "server.herbarium.plant.discoveredOn";
-    private static final String DISCOVERED_AT_KEY = "server.herbarium.plant.discoveredAt";
+    private static final String LOCATIONS_FOUND_IN_KEY = "server.herbarium.ui.container.locations.title";
+    private static final String LOCATION_UNKNOWN_KEY = "server.herbarium.ui.locations.unknown";
+    private static final String ZONES_TITLE_KEY = "server.herbarium.ui.locations.zones";
+    private static final String REGIONS_TITLE_KEY = "server.herbarium.ui.locations.regions";
+    private static final String PORTALS_TITLE_KEY = "server.herbarium.ui.locations.portals";
+    private static final String DISCOVERED_ON_KEY = "server.herbarium.ui.plant.discoveredOn";
+    private static final String DISCOVERED_AT_KEY = "server.herbarium.ui.plant.discoveredAt";
 
     public static void buildDetails(
             PlayerRef playerRef,

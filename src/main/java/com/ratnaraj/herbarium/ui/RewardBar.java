@@ -27,17 +27,17 @@ import java.util.Set;
 public class RewardBar {
 
     private static final int CHEST_MARKER_SCALE = 1000;
-    private static final String CHEST_LOCKED_TOOLTIP_KEY = "server.herbarium.rewards.chestLocked.tooltipText";
-    private static final String CHEST_ACTIVE_TOOLTIP_KEY = "server.herbarium.rewards.chestActive.tooltipText";
-    private static final String CHEST_COLLECTED_TOOLTIP_KEY = "server.herbarium.rewards.chestCollected.tooltipText";
-    private static final String CHEST_COMPENSATION_TOOLTIP_KEY = "server.herbarium.rewards.chestCompensation.tooltipText";
+    private static final String CHEST_LOCKED_TOOLTIP_KEY = "server.herbarium.ui.rewards.chestLocked.tooltipText";
+    private static final String CHEST_ACTIVE_TOOLTIP_KEY = "server.herbarium.ui.rewards.chestActive.tooltipText";
+    private static final String CHEST_COLLECTED_TOOLTIP_KEY = "server.herbarium.ui.rewards.chestCollected.tooltipText";
+    private static final String CHEST_COMPENSATION_TOOLTIP_KEY = "server.herbarium.ui.rewards.chestCompensation.tooltipText";
 
     private static final Color REWARD_QUANTITY_COLOR = new Color(0x88, 0x88, 0x88);
     private static final Color REWARD_ITEM_COLOR = Color.WHITE;
     private static final Color REWARD_COLLECTED_COLOR = new Color(0x88, 0x88, 0x88);
 
-    private static final String COLLECT_BUTTON_KEY = "server.herbarium.rewards.collectButton";
-    private static final String ALL_COLLECTED_KEY = "server.herbarium.rewards.allCollected";
+    private static final String COLLECT_BUTTON_KEY = "server.herbarium.ui.rewards.collectButton";
+    private static final String ALL_COLLECTED_KEY = "server.herbarium.ui.rewards.allCollected";
     private static final String COLLECT_SOUND_EVENT = "SFX_MemoryRestored";
 
     public static void buildChestMarkers(PlayerRef playerRef, UICommandBuilder commands, int totalDiscovered, int totalPlants) {

@@ -1,8 +1,74 @@
+# === Items ===
 items.Herbarium_Journal.name = Botanisch journaal
 items.Herbarium_Journal_Dev.name = Botanisch journaal (Developer)
 
-herbarium.location.found_in = Te vinden in:
-herbarium.location.unknown = Locatie onbekend
+# === CustomUI: journal page ===
+herbarium.ui.journal.progress = planten vastgelegd: {count, number} / {total, number}
+herbarium.ui.category.bramble = Braamstruiken
+herbarium.ui.category.bush = Struiken
+herbarium.ui.category.cactus = Cactussen
+herbarium.ui.category.coral = Koraal
+herbarium.ui.category.crop = Gewassen
+herbarium.ui.category.fern = Varens
+herbarium.ui.category.flower = Bloemen
+herbarium.ui.category.fruit = Fruit
+herbarium.ui.category.grass = Grassen
+herbarium.ui.category.leaves = Bladeren
+herbarium.ui.category.moss = Mossen
+herbarium.ui.category.mushroom = Paddenstoelen
+herbarium.ui.category.petals = Bloemblaadjes
+herbarium.ui.category.reeds = Riet
+herbarium.ui.category.sapling = Zaailingen
+herbarium.ui.category.seaweed = Zeewier
+herbarium.ui.category.seeds = Zaden
+herbarium.ui.category.vine = Lianen
+
+# === CustomUI: plant details containers ===
+herbarium.ui.container.locations.title = Te vinden in:
+herbarium.ui.locations.unknown = Locatie onbekend
+herbarium.ui.plant.discoveredOn = Ontdekt op {date}
+herbarium.ui.plant.discoveredAt = Ontdekt op {date} bij ({place})
+herbarium.ui.locations.zones = Zones
+herbarium.ui.locations.regions = Regio's
+herbarium.ui.locations.portals = Portalen
+
+# === CustomUI: rewards bar ===
+herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Vergrendeld</b></color> \n<color is="#888888">Leg {count, number} {count, plural, one {plant} other {planten}} vast om te ontgrendelen:</color>
+herbarium.ui.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Ontgrendeld</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {planten}} vastgelegd. Beloning om op te halen:</color>
+herbarium.ui.rewards.chestCollected.tooltipText = <color is="#888888"><b>Opgehaald</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {planten}} vastgelegd. Opgehaalde beloning:</color>
+herbarium.ui.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Update</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {planten}} vastgelegd. Opgehaalde beloningOp te halen beloning:</color>
+herbarium.ui.rewards.collectButton = Beloning {tier, number} ophalen
+herbarium.ui.rewards.allCollected = Alle beloningen opgehaald
+
+# === CustomUI: intro page ===
+herbarium.ui.intro.title = Je hebt het Botanische journaal ontgrendeld!
+herbarium.ui.intro.bullet1 = Dit journaal volgt je door je hele verkenning van Orbis.
+herbarium.ui.intro.bullet2 = Elke plant die je oppikt wordt hier vastgelegd, samen met de datum en plek van de vondst.
+herbarium.ui.intro.bullet3 = Doorzoek je collectie per categorie, volg je voortgang, word een echte botanicus en verdien beloningen!
+herbarium.ui.intro.openJournal = Open het journaal
+
+# === Chat and commands (not CustomUI) ===
+herbarium.command.desc = Herbarium-commando's
+herbarium.command.open.desc = Opent het Botanische journaal.
+herbarium.command.resetall.desc = Verwijdert al je voortgang.
+herbarium.command.reset.desc = Verwijdert de voortgang van een specifieke categorie.
+herbarium.command.reset.category.desc = Te resetten categorie (bijv. Flower).
+herbarium.command.unlockall.desc = Ontgrendelt alle planten.
+herbarium.command.give.desc = Geeft een Botanisch journaal.
+herbarium.command.unlock.desc = Ontgrendelt alle planten van een categorie.
+herbarium.command.playersOnly = Dit commando kan alleen door spelers worden uitgevoerd.
+herbarium.command.resetall.done = Je voortgang is gereset voor {player}.
+herbarium.command.reset.done = Categorie {category} is gereset voor {player}.
+herbarium.command.unlockall.done = Alle planten zijn ontgrendeld voor {player}.
+herbarium.command.give.done = Een {journal} is aan {player} gegeven.
+herbarium.command.unlock.category.desc = Te ontgrendelen categorie (bijv. Flower).
+herbarium.command.unlock.done = Categorie {category} is ontgrendeld voor {player}.
+herbarium.command.common.unknownCategory = Onbekende categorie: {category}.
+herbarium.command.common.player.desc = Doelspeler (standaard jezelf).
+herbarium.command.common.devflag.desc = Geeft in plaats daarvan het Ontwikkelaarsjournaal (alle planten geregistreerd).
+herbarium.notification.discovered = Nieuwe plant ontdekt:
+
+# === Data referenced by plants.json (do not rename) ===
 herbarium.location.cultivated = Bebouwde velden
 herbarium.location.caves = Grotten
 herbarium.location.chests = Kisten
@@ -27,7 +93,6 @@ herbarium.location.ruined_temples = Vervallen tempels
 herbarium.location.slothian_villages = Slothiadorpen
 herbarium.location.dungeons = Kerkers
 herbarium.location.cursed_crypts = Vervloekte crypten
-
 herbarium.tree.amber = Amberbomen
 herbarium.tree.apple = Appelbomen
 herbarium.tree.ash = Essen
@@ -63,60 +128,3 @@ herbarium.tree.spiral = Spiralbomen
 herbarium.tree.stormbark = Stormschorsbomen
 herbarium.tree.windwillow = Windwilgen
 herbarium.tree.wisteria_wild = Wilde blauwe regen
-
-herbarium.unlock.title = Je hebt het Botanische journaal ontgrendeld!
-herbarium.unlock.bullet1 = Dit journaal volgt je door je hele verkenning van Orbis.
-herbarium.unlock.bullet2 = Elke plant die je oppikt wordt hier vastgelegd, samen met de datum en plek van de vondst.
-herbarium.unlock.bullet3 = Doorzoek je collectie per categorie, volg je voortgang, word een echte botanicus en verdien beloningen!
-herbarium.unlock.openJournal = Open het journaal
-
-herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Vergrendeld</b></color> \n<color is="#888888">Leg {count, number} {count, plural, one {plant} other {planten}} vast om te ontgrendelen:</color>
-herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Ontgrendeld</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {planten}} vastgelegd. Beloning om op te halen:</color>
-herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Opgehaald</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {planten}} vastgelegd. Opgehaalde beloning:</color>
-herbarium.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Update</b></color> \n<color is="#888888">{count, number} {count, plural, one {plant} other {planten}} vastgelegd. Opgehaalde beloningOp te halen beloning:</color>
-herbarium.rewards.collectButton = Beloning {tier, number} ophalen
-herbarium.rewards.allCollected = Alle beloningen opgehaald
-
-herbarium.command.desc = Herbarium-commando's
-herbarium.command.open.desc = Opent het Botanische journaal.
-herbarium.command.resetall.desc = Verwijdert al je voortgang.
-herbarium.command.reset.desc = Verwijdert de voortgang van een specifieke categorie.
-herbarium.command.reset.category.desc = Te resetten categorie (bijv. Flower).
-herbarium.command.unlockall.desc = Ontgrendelt alle planten.
-herbarium.command.give.desc = Geeft een Botanisch journaal.
-herbarium.command.unlock.desc = Ontgrendelt alle planten van een categorie.
-herbarium.command.playersOnly = Dit commando kan alleen door spelers worden uitgevoerd.
-herbarium.command.resetall.done = Je voortgang is gereset voor {player}.
-herbarium.command.reset.done = Categorie {category} is gereset voor {player}.
-herbarium.command.unlockall.done = Alle planten zijn ontgrendeld voor {player}.
-herbarium.command.give.done = Een {journal} is aan {player} gegeven.
-herbarium.command.unlock.category.desc = Te ontgrendelen categorie (bijv. Flower).
-herbarium.command.unlock.done = Categorie {category} is ontgrendeld voor {player}.
-herbarium.command.common.unknownCategory = Onbekende categorie: {category}.
-herbarium.command.common.player.desc = Doelspeler (standaard jezelf).
-
-herbarium.progress.recorded = planten vastgelegd: {count, number} / {total, number}
-
-herbarium.plant.discoveredOn = Ontdekt op {date}
-herbarium.plant.discoveredAt = Ontdekt op {date} bij ({place})
-
-herbarium.notification.discovered = Nieuwe plant ontdekt:
-
-herbarium.category.bramble = Braamstruiken
-herbarium.category.bush = Struiken
-herbarium.category.cactus = Cactussen
-herbarium.category.coral = Koraal
-herbarium.category.crop = Gewassen
-herbarium.category.fern = Varens
-herbarium.category.flower = Bloemen
-herbarium.category.fruit = Fruit
-herbarium.category.grass = Grassen
-herbarium.category.leaves = Bladeren
-herbarium.category.moss = Mossen
-herbarium.category.mushroom = Paddenstoelen
-herbarium.category.petals = Bloemblaadjes
-herbarium.category.reeds = Riet
-herbarium.category.sapling = Zaailingen
-herbarium.category.seaweed = Zeewier
-herbarium.category.seeds = Zaden
-herbarium.category.vine = Lianen
