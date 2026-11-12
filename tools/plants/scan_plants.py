@@ -14,8 +14,8 @@ from collections import defaultdict
 from pathlib import Path
 
 from assets_zip import AssetsZip, PLANT_ID_RE, resolve_assets_zip
-from common import FINAL_FILE, SCAN_FILE, apply_obtainable_rules, recap
-from locations import is_valid_region, load_lang_keys, make_key_fns, normalize_region, scan_locations
+from common import FINAL_FILE, REGIONS_BY_ZONE_FILE, SCAN_FILE, apply_obtainable_rules, recap
+from locations import is_valid_region, load_lang_keys, make_key_fns, normalize_region, scan_locations, scan_regions_by_zone
 from obtained import (
     ItemChain,
     build_relations,
@@ -89,6 +89,10 @@ def main():
     # Plant_Hay_Bundle): excluded for now; add a specific rule in obtained.py
     # (EXACT_TO_CATEGORY / PREFIX_TO_CATEGORY) when such an item matters.
     result.pop("Plant", None)
+
+    regions_by_zone = scan_regions_by_zone(az)
+    REGIONS_BY_ZONE_FILE.write_text(json.dumps(regions_by_zone, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(f"-> {REGIONS_BY_ZONE_FILE} ({len(regions_by_zone)} zones)")
 
     OUT_FILE.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 

@@ -78,6 +78,27 @@ def make_key_fns(lang_keys):
     return server_key, region_key, zone_key_for_region
 
 
+ZONE_JSON_RE = re.compile(r"^Server/World/Default/Zones/([^/]+)/Zone\.json$")
+
+
+def scan_regions_by_zone(az):
+    """Named zone (server.map.zone.*) -> sorted region keys (server.map.region.*),
+    read from Discovery.ZoneName in each region's Zone.json. Regenerated on every
+    scanPlants run, so new zones/regions from game updates are picked up."""
+    server_key, region_key, _ = make_key_fns(load_lang_keys(az))
+    out = defaultdict(list)
+    for n in az.names:
+        m = ZONE_JSON_RE.match(n)
+        if not m:
+            continue
+        data = az.load_json(n) or {}
+        zone_name = (data.get("Discovery") or {}).get("ZoneName")
+        if not zone_name:
+            continue
+        out[server_key(f"map.zone.{zone_name}")].append(region_key(m.group(1)))
+    return {zone: sorted(regions) for zone, regions in sorted(out.items())}
+
+
 def load_portals(az):
     """portal type -> (instance id, translation key from Description.DisplayName)."""
     portals = {}
