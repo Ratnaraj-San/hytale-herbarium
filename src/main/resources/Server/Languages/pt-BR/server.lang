@@ -36,7 +36,7 @@ herbarium.ui.obtained_from.interactions = Interações
 herbarium.ui.obtained_from.crafting = Fabricação
 herbarium.ui.obtained_from.plants = Plantas
 herbarium.ui.interaction.break = Quebrar
-herbarium.ui.interaction.collect = Coletar
+herbarium.ui.interaction.harvest = Colheita
 herbarium.ui.interaction.shears = Tesouras
 herbarium.ui.interaction.salvage = Desmanchar
 

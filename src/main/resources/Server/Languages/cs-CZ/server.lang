@@ -36,7 +36,7 @@ herbarium.ui.obtained_from.interactions = Interakce
 herbarium.ui.obtained_from.crafting = Výroba
 herbarium.ui.obtained_from.plants = Rostliny
 herbarium.ui.interaction.break = Rozbít
-herbarium.ui.interaction.collect = Sebrat
+herbarium.ui.interaction.harvest = Sklizeň
 herbarium.ui.interaction.shears = Nůžky
 herbarium.ui.interaction.salvage = Rozebrat
 

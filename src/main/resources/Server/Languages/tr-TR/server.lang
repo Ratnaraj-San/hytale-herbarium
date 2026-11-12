@@ -36,7 +36,7 @@ herbarium.ui.obtained_from.interactions = Etkileşimler
 herbarium.ui.obtained_from.crafting = Üretim
 herbarium.ui.obtained_from.plants = Bitkiler
 herbarium.ui.interaction.break = Kır
-herbarium.ui.interaction.collect = Topla
+herbarium.ui.interaction.harvest = Hasat
 herbarium.ui.interaction.shears = Makas
 herbarium.ui.interaction.salvage = Parçala
 

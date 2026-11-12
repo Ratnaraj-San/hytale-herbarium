@@ -36,7 +36,7 @@ herbarium.ui.obtained_from.interactions = Vuorovaikutukset
 herbarium.ui.obtained_from.crafting = Valmistus
 herbarium.ui.obtained_from.plants = Kasvit
 herbarium.ui.interaction.break = Riko
-herbarium.ui.interaction.collect = Kerää
+herbarium.ui.interaction.harvest = Sato
 herbarium.ui.interaction.shears = Sakset
 herbarium.ui.interaction.salvage = Romuttaa
 

@@ -36,7 +36,7 @@ herbarium.ui.obtained_from.interactions = Взаимодействия
 herbarium.ui.obtained_from.crafting = Изготовление
 herbarium.ui.obtained_from.plants = Растения
 herbarium.ui.interaction.break = Сломать
-herbarium.ui.interaction.collect = Собрать
+herbarium.ui.interaction.harvest = Сбор урожая
 herbarium.ui.interaction.shears = Ножницы
 herbarium.ui.interaction.salvage = Разобрать
 

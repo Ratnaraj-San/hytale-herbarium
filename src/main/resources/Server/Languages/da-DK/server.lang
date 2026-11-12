@@ -36,7 +36,7 @@ herbarium.ui.obtained_from.interactions = Interaktioner
 herbarium.ui.obtained_from.crafting = Fremstilling
 herbarium.ui.obtained_from.plants = Planter
 herbarium.ui.interaction.break = Ødelæg
-herbarium.ui.interaction.collect = Saml
+herbarium.ui.interaction.harvest = Høst
 herbarium.ui.interaction.shears = Saks
 herbarium.ui.interaction.salvage = Redde
 

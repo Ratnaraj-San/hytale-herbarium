@@ -92,10 +92,10 @@ $Herbarium = "HerbariumCommon.ui";
                 TooltipText: "";
               }
 
-              Group #InteractionCollect {
-                Anchor: (Width: 52, Height: 52);
+              Group #InteractionHarvest {
+                Anchor: (Width: 48, Height: 48);
                 Padding: (Left: 12);
-                Background: "../textures/InteractionCollect.png";
+                Background: "../textures/InteractionHarvest.png";
                 TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
                 TooltipText: "";
               }

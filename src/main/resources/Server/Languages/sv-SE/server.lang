@@ -36,7 +36,7 @@ herbarium.ui.obtained_from.interactions = Interaktioner
 herbarium.ui.obtained_from.crafting = Tillverkning
 herbarium.ui.obtained_from.plants = Växter
 herbarium.ui.interaction.break = Förstöra
-herbarium.ui.interaction.collect = Samla in
+herbarium.ui.interaction.harvest = Skörd
 herbarium.ui.interaction.shears = Sax
 herbarium.ui.interaction.salvage = Bärga
 

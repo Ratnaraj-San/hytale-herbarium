@@ -36,7 +36,7 @@ herbarium.ui.obtained_from.interactions = Interakciók
 herbarium.ui.obtained_from.crafting = Készítés
 herbarium.ui.obtained_from.plants = Növények
 herbarium.ui.interaction.break = Kitörés
-herbarium.ui.interaction.collect = Begyűjtés
+herbarium.ui.interaction.harvest = Aratás
 herbarium.ui.interaction.shears = Olló
 herbarium.ui.interaction.salvage = Kibontás
 

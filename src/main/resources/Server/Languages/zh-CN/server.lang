@@ -36,7 +36,7 @@ herbarium.ui.obtained_from.interactions = 交互
 herbarium.ui.obtained_from.crafting = 制作
 herbarium.ui.obtained_from.plants = 植物
 herbarium.ui.interaction.break = 破坏
-herbarium.ui.interaction.collect = 采集
+herbarium.ui.interaction.harvest = 收获
 herbarium.ui.interaction.shears = 剪刀
 herbarium.ui.interaction.salvage = 拆解
 

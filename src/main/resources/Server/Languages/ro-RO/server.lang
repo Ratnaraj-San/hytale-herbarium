@@ -36,7 +36,7 @@ herbarium.ui.obtained_from.interactions = Interacțiuni
 herbarium.ui.obtained_from.crafting = Fabricare
 herbarium.ui.obtained_from.plants = Plante
 herbarium.ui.interaction.break = Sparge
-herbarium.ui.interaction.collect = Colectează
+herbarium.ui.interaction.harvest = Recoltă
 herbarium.ui.interaction.shears = Foarfece
 herbarium.ui.interaction.salvage = Dezasambla
 

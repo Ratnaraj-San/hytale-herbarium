@@ -31,7 +31,7 @@ public class PlantDetailsPanel {
     private static final String OBTAINED_FROM_TITLE_KEY = "server.herbarium.ui.container.obtained_from.title";
     private static final String INTERACTIONS_TITLE_KEY = "server.herbarium.ui.obtained_from.interactions";
     private static final String INTERACTION_BREAK_KEY = "server.herbarium.ui.interaction.break";
-    private static final String INTERACTION_COLLECT_KEY = "server.herbarium.ui.interaction.collect";
+    private static final String INTERACTION_HARVEST_KEY = "server.herbarium.ui.interaction.harvest";
     private static final String INTERACTION_SHEARS_KEY = "server.herbarium.ui.interaction.shears";
     private static final String CRAFTING_TITLE_KEY = "server.herbarium.ui.obtained_from.crafting";
     private static final String PLANTS_TITLE_KEY = "server.herbarium.ui.obtained_from.plants";
@@ -223,7 +223,7 @@ public class PlantDetailsPanel {
         String row = section + " #InteractionsHeader #InteractionsRow";
 
         setInteractionIcon(commands, row + " #InteractionBreak", interactions.canBreak(), INTERACTION_BREAK_KEY);
-        setInteractionIcon(commands, row + " #InteractionCollect", interactions.canCollect(), INTERACTION_COLLECT_KEY);
+        setInteractionIcon(commands, row + " #InteractionHarvest", interactions.canCollect(), INTERACTION_HARVEST_KEY);
         setInteractionIcon(commands, row + " #InteractionShears", interactions.canShear(), INTERACTION_SHEARS_KEY);
     }
 
