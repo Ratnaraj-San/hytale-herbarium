@@ -34,7 +34,7 @@ public class HerbariumCommandUnlockAll extends AbstractAsyncCommand {
         PlayerRef playerRef = (sender instanceof PlayerRef) ? (PlayerRef) sender : null;
         PlayerRef targetRef = ctx.provided(playerArg) ? playerArg.get(ctx) : playerRef;
 
-        if (playerRef == null) {
+        if (targetRef == null) {
             ctx.sendMessage(Message.translation(HerbariumCommand.PLAYERS_ONLY_KEY));
             return CompletableFuture.completedFuture(null);
         }
