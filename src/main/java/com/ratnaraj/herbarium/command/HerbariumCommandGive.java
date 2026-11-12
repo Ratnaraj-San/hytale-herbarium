@@ -4,6 +4,7 @@ import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.command.system.CommandContext;
+import com.hypixel.hytale.server.core.command.system.arguments.system.FlagArg;
 import com.hypixel.hytale.server.core.command.system.arguments.system.OptionalArg;
 import com.hypixel.hytale.server.core.command.system.arguments.types.ArgTypes;
 import com.hypixel.hytale.server.core.command.system.basecommands.AbstractPlayerCommand;
@@ -25,13 +26,16 @@ public class HerbariumCommandGive extends AbstractPlayerCommand {
     private static final String JOURNAL_NAME_KEY = "server.items.Herbarium_Journal.name";
     private static final String PLAYER_ARG_DESC_KEY = "server.herbarium.command.common.player.desc";
     private static final String PLAYER_NOT_IN_WORLD_KEY = "server.commands.errors.playerNotInWorld";
+    private static final String DEV_FLAG_DESC_KEY = "server.herbarium.command.common.devflag.desc";
 
     private final OptionalArg<PlayerRef> playerArg;
+    private final FlagArg developerFlag;
 
     public HerbariumCommandGive() {
         super("give", GIVE_DESC_KEY);
         requirePermission(HytalePermissions.fromCommand("herbarium", "give"));
         playerArg = withOptionalArg("player", PLAYER_ARG_DESC_KEY, ArgTypes.PLAYER_REF);
+        developerFlag = withFlagArg("developer", DEV_FLAG_DESC_KEY);
     }
 
     @Override
@@ -43,6 +47,7 @@ public class HerbariumCommandGive extends AbstractPlayerCommand {
             @Nonnull World world
     ) {
         PlayerRef target = ctx.provided(playerArg) ? playerArg.get(ctx) : playerRef;
+        Boolean developer = ctx.provided(developerFlag);
 
         Ref<EntityStore> targetRef = target.getReference();
 
@@ -57,7 +62,10 @@ public class HerbariumCommandGive extends AbstractPlayerCommand {
         // The target may be in another world: inventory access must run on that world's thread.
         targetWorld.execute(() -> {
             CombinedItemContainer container = InventoryComponent.getCombined(targetStore, targetRef, InventoryComponent.HOTBAR_FIRST);
-            ItemStack journal = new ItemStack("Herbarium_Journal", 1);
+
+            String journalId = developer ? "Herbarium_Journal_Dev" : "Herbarium_Journal";
+
+            ItemStack journal = new ItemStack(journalId, 1);
 
             SimpleItemContainer.addOrDropItemStack(targetStore, targetRef, container, journal);
 
