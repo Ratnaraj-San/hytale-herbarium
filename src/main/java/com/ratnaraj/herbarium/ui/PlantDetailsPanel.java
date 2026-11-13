@@ -70,12 +70,16 @@ public class PlantDetailsPanel {
             boolean devView) {
         PlayerStore store = Herbarium.getPlayerStore();
         Set<String> discovered = getDiscoveredPlantIds(playerRef, devView);
+        // Dev view: plants the viewer has actually discovered themselves, to highlight their
+        // tiles with the completed look (same as completed category tiles in the LeftPanel).
+        Set<String> viewerDiscovered =
+                devView ? HerbariumUIPage.getOwnedDiscoveredPlantIds(playerRef) : Set.of();
 
         if (selectedPlant == null) {
             commands.set("#PlantName.Text", "");
             setLocationsPanel(commands, null);
-            setObtainedFrom(commands, events, null, discovered);
-            setGives(commands, events, null, discovered);
+            setObtainedFrom(commands, events, null, discovered, viewerDiscovered);
+            setGives(commands, events, null, discovered, viewerDiscovered);
             setPlantId(commands, null, false);
             commands.set("#SpacerAfterObtainedFrom.Visible", false);
             commands.set("#PlantDiscovery.Text", "");
@@ -87,8 +91,9 @@ public class PlantDetailsPanel {
         setPlantId(commands, selectedPlant, devView);
 
         setLocationsPanel(commands, Herbarium.getCatalog().getPlantLocations(selectedPlant));
-        boolean showObtainedFrom = setObtainedFrom(commands, events, selectedPlant, discovered);
-        boolean showGives = setGives(commands, events, selectedPlant, discovered);
+        boolean showObtainedFrom =
+                setObtainedFrom(commands, events, selectedPlant, discovered, viewerDiscovered);
+        boolean showGives = setGives(commands, events, selectedPlant, discovered, viewerDiscovered);
         commands.set("#SpacerAfterObtainedFrom.Visible", showObtainedFrom && showGives);
 
         PlantInfo plantInfo = store.getPlayerPlantInfo(playerRef, selectedPlant);
@@ -253,7 +258,8 @@ public class PlantDetailsPanel {
             UICommandBuilder commands,
             UIEventBuilder events,
             String plantId,
-            Set<String> discovered) {
+            Set<String> discovered,
+            Set<String> viewerDiscovered) {
         PlantInteractions interactions =
                 plantId != null
                         ? Herbarium.getCatalog().getPlantInteractions(plantId)
@@ -283,8 +289,8 @@ public class PlantDetailsPanel {
                 Message.translation(OBTAINED_FROM_TITLE_KEY));
 
         setInteractionsSection(commands, showInteractions, interactions);
-        setCraftingSection(commands, events, showCrafting, crafting, discovered);
-        setPlantsSection(commands, events, showPlants, sources, discovered);
+        setCraftingSection(commands, events, showCrafting, crafting, discovered, viewerDiscovered);
+        setPlantsSection(commands, events, showPlants, sources, discovered, viewerDiscovered);
         setOtherSection(commands, showOther, others);
 
         // Spacers only between two visible sections
@@ -339,7 +345,8 @@ public class PlantDetailsPanel {
             UICommandBuilder commands,
             UIEventBuilder events,
             String plantId,
-            Set<String> discovered) {
+            Set<String> discovered,
+            Set<String> viewerDiscovered) {
         List<PlantSource> gives =
                 plantId != null ? Herbarium.getCatalog().getPlantGives(plantId) : List.of();
         boolean visible = !gives.isEmpty();
@@ -372,7 +379,8 @@ public class PlantDetailsPanel {
                         commands,
                         entry + " #PlantTile",
                         gave.plantId(),
-                        discovered.contains(gave.plantId()));
+                        discovered.contains(gave.plantId()),
+                        viewerDiscovered.contains(gave.plantId()));
                 bindOpenPlantPage(events, entry, gave.plantId());
             } else {
                 // Non-plant child item: ingredient tile, name only as tooltip.
@@ -431,7 +439,8 @@ public class PlantDetailsPanel {
             UIEventBuilder events,
             boolean visible,
             List<PlantSource> sources,
-            Set<String> discovered) {
+            Set<String> discovered,
+            Set<String> viewerDiscovered) {
         String section = "#PlantContainerObtainedFrom #PlantContainerObtainedFromPlants";
         String list = beginSection(commands, section, visible, PLANTS_TITLE_KEY);
 
@@ -447,7 +456,8 @@ public class PlantDetailsPanel {
                     commands,
                     entry + " #PlantTile",
                     source.plantId(),
-                    discovered.contains(source.plantId()));
+                    discovered.contains(source.plantId()),
+                    viewerDiscovered.contains(source.plantId()));
             bindOpenPlantPage(events, entry, source.plantId());
 
             String icons = entry + " #SourceInteractions";
@@ -505,7 +515,8 @@ public class PlantDetailsPanel {
             UIEventBuilder events,
             boolean visible,
             PlantCrafting crafting,
-            Set<String> discovered) {
+            Set<String> discovered,
+            Set<String> viewerDiscovered) {
         String section = "#PlantContainerObtainedFrom #PlantContainerObtainedFromCrafting";
         String body = beginSection(commands, section, visible, CRAFTING_TITLE_KEY);
 
@@ -538,7 +549,8 @@ public class PlantDetailsPanel {
                         commands,
                         entry + " #PlantTile",
                         ingredient.itemId(),
-                        discovered.contains(ingredient.itemId()));
+                        discovered.contains(ingredient.itemId()),
+                        viewerDiscovered.contains(ingredient.itemId()));
                 bindOpenPlantPage(events, entry, ingredient.itemId());
             } else {
                 setAssetTooltip(commands, entry + " #IngredientTile", ingredient.itemId());
@@ -607,12 +619,19 @@ public class PlantDetailsPanel {
 
     /**
      * Plant tile appearance, same as in the LeftPanel: discovered -> button with name tooltip +
-     * icon; undiscovered -> empty background, no icon.
+     * icon; undiscovered -> empty background, no icon. `complete` (dev view only) adds the
+     * completed-tile background for plants the viewer has actually discovered.
      */
     private static void setPlantTileAppearance(
-            UICommandBuilder commands, String tile, String plantId, boolean isDiscovered) {
+            UICommandBuilder commands,
+            String tile,
+            String plantId,
+            boolean isDiscovered,
+            boolean complete) {
         commands.set(tile + " #ButtonNotSelected.Visible", isDiscovered);
         commands.set(tile + " #EmptyBackground.Visible", !isDiscovered);
+        commands.set(tile + " #CompleteBackground.Visible", complete);
+        commands.set(tile + " #CompleteCheck.Visible", complete);
 
         if (isDiscovered) {
             setPlantName(commands, tile + " #ButtonNotSelected.TooltipTextSpans", plantId);

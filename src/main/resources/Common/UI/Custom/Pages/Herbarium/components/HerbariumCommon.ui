@@ -313,6 +313,19 @@ $Sounds = "../../../Sounds.ui";
   Anchor: (Width: @Width, Height: @Height, Right: @Gap, Bottom: @Gap);
   Padding: (Full: 0);
 
+  // Dev journal: shown for plants the viewer has actually discovered (same look as a
+  // completed category tile: complete background + checkmark in the top-right corner).
+  Group #CompleteBackground {
+    Visible: false;
+    Background: (TexturePath: "../textures/Tiles/TileComplete.png", Border: 8);
+  }
+
+  Group #CompleteCheck {
+    Visible: false;
+    Background: "../textures/Checkmark.png";
+    Anchor: (Width: 16, Height: 16, Right: 5, Top: 5);
+  }
+
   Group #EmptyBackground {
     Visible: false;
     Background: (TexturePath: "../textures/Tiles/TileEmpty.png", Border: 8);

@@ -377,6 +377,10 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
             UICommandBuilder commands, UIEventBuilder events, Ref<EntityStore> ref) {
         List<String> plants = Herbarium.getCatalog().getPlantsInCategory(selectedCategory);
         Set<String> discoveredPlants = getDiscoveredPlantIds();
+        // Dev journal: highlight the tiles the viewer has actually discovered themselves
+        // (same TileComplete look as a completed category tile).
+        Set<String> viewerDiscoveredPlants =
+                devView ? getOwnedDiscoveredPlantIds(playerRef) : Set.of();
 
         commands.append("Pages/Herbarium/PlantPanel.ui");
         commands.set("#TitleLabel.Text", buildTitle());
@@ -400,6 +404,11 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
 
             boolean isDiscovered = discoveredPlants.contains(plantId);
             boolean isSelected = plantId.equals(selectedPlant);
+
+            if (devView && viewerDiscoveredPlants.contains(plantId)) {
+                commands.set(tile + " #CompleteBackground.Visible", true);
+                commands.set(tile + " #CompleteCheck.Visible", true);
+            }
 
             if (isDiscovered) {
                 String button = isSelected ? "#ButtonSelected" : "#ButtonNotSelected";
@@ -478,10 +487,14 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         if (devView) {
             return Herbarium.getCatalog().getAllPlants().keySet();
         }
+        return getOwnedDiscoveredPlantIds(subjectRef);
+    }
 
+    /** Plants actually discovered by the given player, regardless of dev view. */
+    static Set<String> getOwnedDiscoveredPlantIds(PlayerRef player) {
         Set<String> discovered = new HashSet<>();
 
-        for (PlantInfo info : Herbarium.getPlayerStore().getPlayerMemories(subjectRef)) {
+        for (PlantInfo info : Herbarium.getPlayerStore().getPlayerMemories(player)) {
             if (info.wasDiscovered()) {
                 discovered.add(info.getId());
             }
