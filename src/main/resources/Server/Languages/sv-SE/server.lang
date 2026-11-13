@@ -30,6 +30,7 @@ herbarium.ui.container.gives.title = Ger
 herbarium.ui.locations.unknown = Okänd plats
 herbarium.ui.plant.discoveredOn = Upptäckt {date}
 herbarium.ui.plant.discoveredAt = Upptäckt {date} vid ({place})
+herbarium.ui.plant.copy_id_tooltip = Klicka för att markera, Ctrl+C för att kopiera
 herbarium.ui.locations.zones = Zoner
 herbarium.ui.locations.regions = Regioner
 herbarium.ui.locations.portals = Portaler

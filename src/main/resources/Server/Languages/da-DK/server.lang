@@ -30,6 +30,7 @@ herbarium.ui.container.gives.title = Giver
 herbarium.ui.locations.unknown = Placering ukendt
 herbarium.ui.plant.discoveredOn = Opdaget {date}
 herbarium.ui.plant.discoveredAt = Opdaget {date} på ({place})
+herbarium.ui.plant.copy_id_tooltip = Klik for at markere, Ctrl+C for at kopiere
 herbarium.ui.locations.zones = Zoner
 herbarium.ui.locations.regions = Regioner
 herbarium.ui.locations.portals = Portaler

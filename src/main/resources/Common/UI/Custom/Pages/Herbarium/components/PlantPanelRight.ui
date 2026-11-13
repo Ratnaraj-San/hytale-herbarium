@@ -33,9 +33,21 @@ $Herbarium = "HerbariumCommon.ui";
           Text: "";
         }
 
-        Label #PlantId {
-          Style: $Herbarium.@PlantIdStyle;
-          Text: "";
+        // Dev view only: plant ID in a borderless text field so it can be
+        // selected and copied (Ctrl+C). Java toggles #PlantIdWrap.Visible and
+        // sets #PlantId.Value + the tooltip.
+        Group #PlantIdWrap {
+          TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+          TooltipText: "";
+          Visible: false;
+
+          TextField #PlantId {
+            Style: (...$Herbarium.@PlantIdFieldStyle, FontSize: 14);
+            Background: (Color: #000000(0));
+            Anchor: (Height: 22);
+            Padding: (Horizontal: 0);
+            Value: "";
+          }
         }
 
         $Herbarium.@FlexSpacer {}

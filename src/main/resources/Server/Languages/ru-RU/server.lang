@@ -30,6 +30,7 @@ herbarium.ui.container.gives.title = Даёт
 herbarium.ui.locations.unknown = Местонахождение неизвестно
 herbarium.ui.plant.discoveredOn = Обнаружено {date}
 herbarium.ui.plant.discoveredAt = Обнаружено {date} в ({place})
+herbarium.ui.plant.copy_id_tooltip = Нажмите, чтобы выделить, Ctrl+C чтобы скопировать
 herbarium.ui.locations.zones = Зоны
 herbarium.ui.locations.regions = Регионы
 herbarium.ui.locations.portals = Порталы

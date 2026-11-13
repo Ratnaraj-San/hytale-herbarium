@@ -39,6 +39,9 @@ $Sounds = "../../../Sounds.ui";
   Wrap: true
 );
 
+// Dev view: the plant ID as a borderless text field (selectable, Ctrl+C copies)
+@PlantIdFieldStyle = InputFieldStyle(TextColor: #565a68);
+
 @PlantStatusStyle = LabelStyle(
   FontSize: 15,
   TextColor: #565a68,

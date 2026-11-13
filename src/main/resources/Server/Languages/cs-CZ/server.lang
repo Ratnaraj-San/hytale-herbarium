@@ -30,6 +30,7 @@ herbarium.ui.container.gives.title = Dává
 herbarium.ui.locations.unknown = Místo výskytu neznámé
 herbarium.ui.plant.discoveredOn = Nalezeno {date}
 herbarium.ui.plant.discoveredAt = Nalezeno {date} na ({place})
+herbarium.ui.plant.copy_id_tooltip = Kliknutím vyberete, Ctrl+C zkopíruje
 herbarium.ui.locations.zones = Zóny
 herbarium.ui.locations.regions = Regiony
 herbarium.ui.locations.portals = Portály

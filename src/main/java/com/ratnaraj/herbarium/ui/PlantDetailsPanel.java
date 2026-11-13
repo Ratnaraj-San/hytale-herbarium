@@ -29,6 +29,7 @@ public class PlantDetailsPanel {
     private static final String PORTALS_TITLE_KEY = "server.herbarium.ui.locations.portals";
     private static final String DISCOVERED_ON_KEY = "server.herbarium.ui.plant.discoveredOn";
     private static final String DISCOVERED_AT_KEY = "server.herbarium.ui.plant.discoveredAt";
+    private static final String COPY_ID_TOOLTIP_KEY = "server.herbarium.ui.plant.copy_id_tooltip";
     private static final String OBTAINED_FROM_TITLE_KEY = "server.herbarium.ui.container.obtained_from.title";
     private static final String GIVES_TITLE_KEY = "server.herbarium.ui.container.gives.title";
     private static final String INTERACTIONS_TITLE_KEY = "server.herbarium.ui.obtained_from.interactions";
@@ -53,6 +54,7 @@ public class PlantDetailsPanel {
             setLocationsPanel(commands, null);
             setObtainedFrom(commands, null);
             setGives(commands, null);
+            setPlantId(commands, null, false);
             commands.set("#SpacerAfterObtainedFrom.Visible", false);
             commands.set("#PlantDiscovery.Text", "");
             commands.setNull("#PlantIcon.AssetPath");
@@ -60,7 +62,7 @@ public class PlantDetailsPanel {
         }
 
         setPlantName(commands, "#PlantName.Text", selectedPlant);
-        setPlantId(commands, "#PlantId.Text", selectedPlant, devView);
+        setPlantId(commands, selectedPlant, devView);
 
         setLocationsPanel(commands, Herbarium.getCatalog().getPlantLocations(selectedPlant));
         boolean showObtainedFrom = setObtainedFrom(commands, selectedPlant);
@@ -418,8 +420,14 @@ public class PlantDetailsPanel {
         commands.set(selector, assetMessage(plantId));
     }
 
-    public static void setPlantId(UICommandBuilder commands, String selector, String plantId, boolean devView) {
-        if (devView) { commands.set(selector, plantId); }
+    public static void setPlantId(UICommandBuilder commands, String plantId, boolean devView) {
+        commands.set("#PlantIdWrap.Visible", devView);
+        if (devView) {
+            commands.set("#PlantId.Value", plantId);
+            commands.set("#PlantIdWrap.TooltipTextSpans", Message.translation(COPY_ID_TOOLTIP_KEY));
+        } else {
+            commands.set("#PlantIdWrap.TooltipTextSpans", Message.raw(""));
+        }
     }
 
 }

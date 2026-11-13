@@ -30,6 +30,7 @@ herbarium.ui.container.gives.title = 给予
 herbarium.ui.locations.unknown = 位置未知
 herbarium.ui.plant.discoveredOn = 发现于 {date}
 herbarium.ui.plant.discoveredAt = 发现于 {date}，位于 ({place})
+herbarium.ui.plant.copy_id_tooltip = 点击选择，Ctrl+C 复制
 herbarium.ui.locations.zones = 区域
 herbarium.ui.locations.regions = 地区
 herbarium.ui.locations.portals = 传送门
