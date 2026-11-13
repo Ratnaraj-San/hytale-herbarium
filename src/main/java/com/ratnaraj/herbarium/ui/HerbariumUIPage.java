@@ -37,7 +37,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     private static final String CLOSE_SOUND = "SFX_Drop_Weapons_Books";
 
     private static final String TYPE_SELECT_CATEGORY = "SelectCategory";
-    private static final String TYPE_SELECT_PLANT = "SelectPlant";
+    private static final String TYPE_SELECT_PLANT = PlantDetailsPanel.TYPE_SELECT_PLANT;
     private static final String TYPE_BACK = "Back";
     private static final String TYPE_COLLECT_REWARD = "CollectReward";
     private static final String TYPE_SHOW_INFO = "ShowInfo";
@@ -161,6 +161,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                 List<String> plants = Herbarium.getCatalog().getPlantsInCategory(selectedCategory);
 
                 UICommandBuilder commands = new UICommandBuilder();
+                UIEventBuilder events = new UIEventBuilder();
                 if (previous != null && !previous.equals(selectedPlant)) {
                     int previousIndex = plants.indexOf(previous);
                     if (previousIndex >= 0) {
@@ -171,8 +172,8 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                 if (newIndex >= 0) {
                     setTileSelection(commands, newIndex, true);
                 }
-                PlantDetailsPanel.buildDetails(subjectRef, commands, selectedPlant, devView);
-                sendUpdate(commands, false);
+                PlantDetailsPanel.buildDetails(subjectRef, commands, events, selectedPlant, devView);
+                sendUpdate(commands, events, false);
             }
             case TYPE_BACK -> {
                 selectedCategory = null;
@@ -381,7 +382,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                 new EventData().append("Type", TYPE_BACK)
         );
 
-        PlantDetailsPanel.buildDetails(subjectRef, commands, selectedPlant, devView);
+        PlantDetailsPanel.buildDetails(subjectRef, commands, events, selectedPlant, devView);
     }
 
     private void setTileSelection(UICommandBuilder commands, int index, boolean selected) {
