@@ -13,7 +13,7 @@ Group {
   $Herbarium.@IngredientTile #MerchantTile {
     @Width = 93;
     @Height = 114;
-    @IconSize = 60;
+    @IconSize = 80;
     @Gap = 0;
   }
 
