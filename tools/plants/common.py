@@ -15,14 +15,14 @@ def flatten(data):
     for cat, items in data.items():
         if cat.startswith("_"):
             continue
-        for it in items:
-            if isinstance(it, dict) and "id" in it:
-                out[it["id"]] = it
+        for entry in items:
+            if isinstance(entry, dict) and "id" in entry:
+                out[entry["id"]] = entry
     return out
 
 
 def recap(label, by_id):
-    obt = sum(1 for it in by_id.values() if it.get("obtainableInExplorationMode"))
+    obt = sum(1 for entry in by_id.values() if entry.get("obtainableInExplorationMode"))
     print(f"[{label}]")
     print(f"  total plants: {len(by_id)}")
     print(f"  total plants obtainable: {obt}")
@@ -54,13 +54,13 @@ def apply_obtainable_rules(by_id):
     Rationale: an item that neither generates in the world, nor is crafted, nor comes
     from another item cannot be obtained.
     """
-    for it in by_id.values():
-        apply_obtainable_rule(it)
-        loc = it.get("locations") or {}
+    for entry in by_id.values():
+        apply_obtainable_rule(entry)
+        loc = entry.get("locations") or {}
         locations_empty = all(not loc.get(k) for k in ("regions", "zones", "portals"))
-        o = it.get("obtainedFrom") or {}
+        o = entry.get("obtainedFrom") or {}
         if locations_empty and not o.get("crafting") and not o.get("plants"):
-            it["obtainableInExplorationMode"] = False
+            entry["obtainableInExplorationMode"] = False
     return by_id
 
 
