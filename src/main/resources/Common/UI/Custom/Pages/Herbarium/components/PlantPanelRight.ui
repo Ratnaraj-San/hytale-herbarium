@@ -112,11 +112,14 @@ $Herbarium = "HerbariumCommon.ui";
 
           $Herbarium.@Spacer #SpacerAfterInteractions { Visible: false; }
 
-          $Herbarium.@SectionBox #PlantContainerObtainedFromCrafting {}
+          $Herbarium.@SectionBox #PlantContainerObtainedFromCrafting {
+            @ListMode = LeftWrap;
+          }
 
           $Herbarium.@Spacer #SpacerAfterCrafting { Visible: false; }
 
           $Herbarium.@SectionBox #PlantContainerObtainedFromPlants {
+            @ListMode = LeftWrap;
             @BoxPad = Padding(Horizontal: 8, Top: 16, Bottom: 8);
           }
         }
@@ -124,13 +127,13 @@ $Herbarium = "HerbariumCommon.ui";
 
       $Herbarium.@Spacer #SpacerAfterObtainedFrom { Visible: false; }
 
-      // Gives: reverse of Obtained from / Plants. The container holds an untitled
-      // section box (@ListBox) whose content is the wrapping list of tiles.
       $Herbarium.@TitledContainer #PlantContainerGives {
         $Herbarium.@ContainerBody #ContainerBody {
           $Herbarium.@ListBox {
+            Padding: (Full: 8);
+
             Group #GivesList {
-              LayoutMode: LeftCenterWrap;
+              LayoutMode: LeftWrap;
               Anchor: (Full: 0);
             }
           }
@@ -141,8 +144,8 @@ $Herbarium = "HerbariumCommon.ui";
 
     Label #PlantDiscovery {
       Style: $Herbarium.@PlantStatusStyle;
-      Anchor: (Bottom: 35);
-      Padding: (Horizontal: 15);
+      Anchor: (Bottom: 32);
+      Padding: (Horizontal: 16);
       Text: "";
     }
   }

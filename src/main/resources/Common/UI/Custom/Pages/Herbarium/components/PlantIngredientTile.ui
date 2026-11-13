@@ -1,19 +1,19 @@
 $Herbarium = "HerbariumCommon.ui";
 
-// Plant ingredient: same tile as the LeftPanel grid but shrunk to the ingredient
-// tile size (96x124, icon 48), with the amount below it.
 Group {
   LayoutMode: Top;
+  Anchor: (Width: 93, Right: 8, Bottom: 16);
 
   $Herbarium.@PlantTile #PlantTile {
-    @Width = 96;
-    @Height = 124;
-    @IconSize = 48;
-    @Gap = 8;
+    @Width = 93;
+    @Height = 114;
+    @IconSize = 60;
+    @Gap = 0;
   }
 
   Label #IngredientAmount {
     Style: (...$Herbarium.@EntryStyle, HorizontalAlignment: Center);
+    Padding: (Top: 2);
     Text: "";
   }
 }

@@ -191,12 +191,15 @@ $Sounds = "../../../Sounds.ui";
   }
 };
 
-// Small tile for a crafting ingredient: icon + tooltip name (amount sits below the tile).
-// Same structure as PlantTile (centered icon over labels) on a section background.
-// Usage: $H.@IngredientTile #MyTile {}
+// Usage: $H.@IngredientTile #MyTile { @Width = 88; @Height = 114; @IconSize = 44; @Gap = 8; }
 // Java addresses "#MyTile #IngredientIcon" (AssetPath), "#IngredientName", "#IngredientAmount".
 @IngredientTile = Group {
-  Anchor: (Width: 96, Height: 124, Right: 8, Bottom: 8);
+  @Width = 95;
+  @Height = 116;
+  @IconSize = 60;
+  @Gap = 8;
+
+  Anchor: (Width: @Width, Height: @Height, Right: @Gap, Bottom: @Gap);
   LayoutMode: Top;
   Background: (TexturePath: "../textures/SectionBackground.png", Border: 8);
   Padding: (Full: 6);
@@ -208,7 +211,7 @@ $Sounds = "../../../Sounds.ui";
     FlexWeight: 1;
 
     AssetImage #IngredientIcon {
-      Anchor: (Width: 48, Height: 48);
+      Anchor: (Width: @IconSize, Height: @IconSize);
       FallbackTexturePath: "UI/Custom/Pages/Memories/MissingIcon.png";
     }
   }
@@ -220,7 +223,7 @@ $Sounds = "../../../Sounds.ui";
 // Usage: $H.@SourceInteractions #SourceInteractions { @Size = 40; @Gap = 12; }
 @SourceInteractions = Group {
   @Size = 32;
-  @Gap = 4;
+  @Gap = 0;
 
   LayoutMode: CenterMiddle;
   Padding: (Top: 2);

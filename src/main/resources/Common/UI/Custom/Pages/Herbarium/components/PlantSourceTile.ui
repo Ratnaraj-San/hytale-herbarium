@@ -1,16 +1,15 @@
 $Herbarium = "HerbariumCommon.ui";
 
-// Source plant tile: same shrunk PlantTile as ingredients, with the row of
-// interaction icons below (how the source gives the plant).
 Group {
   LayoutMode: Top;
+  Anchor: (Width: 93, Right: 8, Bottom: 16);
 
   $Herbarium.@PlantTile #PlantTile {
-    @Width = 96;
-    @Height = 124;
-    @IconSize = 48;
-    @Gap = 16;
+    @Width = 93;
+    @Height = 114;
+    @IconSize = 60;
+    @Gap = 0;
   }
 
-  $Herbarium.@SourceInteractions #SourceInteractions {}
+  $Herbarium.@SourceInteractions #SourceInteractions { @Size = 40; }
 }
