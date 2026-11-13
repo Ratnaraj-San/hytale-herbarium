@@ -15,7 +15,16 @@ from pathlib import Path
 
 from assets_zip import AssetsZip, PLANT_ID_RE, resolve_assets_zip
 from common import FINAL_FILE, REGIONS_BY_ZONE_FILE, SCAN_FILE, apply_obtainable_rules, recap
-from locations import is_valid_region, load_lang_keys, make_key_fns, normalize_region, scan_locations, scan_regions_by_zone
+from locations import (
+    is_valid_region,
+    load_lang_keys,
+    make_key_fns,
+    normalize_region,
+    scan_locations,
+    scan_region_zone_names,
+    scan_regions_by_zone,
+    validate_biome_map,
+)
 from obtained import (
     ItemChain,
     bench_info,
@@ -43,7 +52,10 @@ def main():
     salvage_rel = scan_salvage_relations(az)
     chain = ItemChain(az, item_path)
     loc, _portals, prefab_plants, _prefab_backed = scan_locations(az)
-    _server_key, region_key, zone_key_for_region = make_key_fns(load_lang_keys(az))
+    region_zone_names = scan_region_zone_names(az)
+    validate_biome_map(az, region_zone_names)
+    _server_key, region_key, zone_key_for_region = make_key_fns(
+        load_lang_keys(az), region_zone_names)
     relations = build_relations(az, drop_path, item_path, salvage_rel)
     bench_items = bench_item_map(az)
     binfo = bench_info(az)
@@ -168,7 +180,7 @@ def main():
     # (EXACT_TO_CATEGORY / PREFIX_TO_CATEGORY) when such an item matters.
     result.pop("Plant", None)
 
-    regions_by_zone = scan_regions_by_zone(az)
+    regions_by_zone = scan_regions_by_zone(az, region_zone_names)
     REGIONS_BY_ZONE_FILE.write_text(json.dumps(regions_by_zone, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"-> {REGIONS_BY_ZONE_FILE} ({len(regions_by_zone)} zones)")
 

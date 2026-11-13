@@ -16,8 +16,11 @@ ZONE_ANY_RE = re.compile(r"^Server/World/Default/Zones/([^/]+)/.+\.json$")
 PREFAB_PATTERN_RE = re.compile(r"^Server/World/Default/Zones/([^/]+)/PrefabPatterns/[^/]+\.json$")
 ASSIGNMENT_RE = re.compile(r"^Server/HytaleGenerator/Assignments/([^/]+)/.+\.json$")
 
-# HytaleGenerator biome dir -> world region prefix (verified against Zone.json seeds:
-# Grasslands/Drylands/Firelands biomes). Portal_* dirs map to portals at runtime.
+# HytaleGenerator biome dir -> world region prefix. The biome->zone link lives in the
+# game engine (BiomeGenerator seeds like "Grasslands-Biomes-Distrobution"), not in the
+# assets, so this map stays manual — but validate_biome_map() below fails the scan when
+# it goes stale (unknown biome dir, or prefix with no valid region). Portal_* dirs map
+# to portals at runtime.
 BIOME_DIR_TO_REGION_PREFIX = {
     "Plains1": "Zone1",
     "Desert1": "Zone2",
@@ -28,8 +31,8 @@ BIOME_DIR_TO_REGION_PREFIX = {
 }
 
 # Only real world regions are kept: Oceans and ZoneN_Tier* (which map to the 5 named
-# zones). Drops Masks/, Layers/, Noise/, PrefabPatterns_Shared/, Spawn/Temple...
-# Shallow_Ocean areas belong to the Oceans zone.
+# zones). Drops Masks/, Layers/, Noise/, PrefabPatterns_Shared/, Spawn/Temple/Shore...
+# Shallow_Ocean areas belong to the Oceans zone (aquatic plants).
 REGION_RE = re.compile(r"^(Oceans|Zone[1-4]_Tier\d+)$")
 
 
@@ -42,14 +45,39 @@ def normalize_region(region):
 def is_valid_region(region):
     return bool(REGION_RE.match(normalize_region(region)))
 
-# Named zone (map.zone.*) per region prefix; all keys verified against the game lang files.
-REGION_TO_NAMED_ZONE = {
-    "Zone1": "Emerald_Wilds",
-    "Zone2": "Howling_Sands",
-    "Zone3": "Whisperfrost_Frontiers",
-    "Zone4": "Devastated_Lands",
-    "Oceans": "Oceans",
-}
+
+ZONE_JSON_RE = re.compile(r"^Server/World/Default/Zones/([^/]+)/Zone\.json$")
+
+
+def scan_region_zone_names(az):
+    """region dir -> Discovery.ZoneName, read from Zones/<region>/Zone.json (game data).
+    Replaces the old hard-coded REGION_TO_NAMED_ZONE map; new zones from game updates
+    are picked up automatically."""
+    out = {}
+    for n in az.names:
+        m = ZONE_JSON_RE.match(n)
+        if not m:
+            continue
+        data = az.load_json(n) or {}
+        zone_name = (data.get("Discovery") or {}).get("ZoneName")
+        if zone_name:
+            out[m.group(1)] = zone_name
+    return out
+
+
+def validate_biome_map(az, region_zone_names):
+    """Warns when BIOME_DIR_TO_REGION_PREFIX no longer matches the game data: unknown
+    biome dir (no Assignments/<dir>/), or region prefix with no zone in the game."""
+    assignment_dirs = {
+        n.split("/")[3]
+        for n in az.names
+        if n.startswith("Server/HytaleGenerator/Assignments/") and n.count("/") > 3
+    }
+    for bdir, prefix in sorted(BIOME_DIR_TO_REGION_PREFIX.items()):
+        if bdir not in assignment_dirs:
+            print(f"WARNING: biome dir {bdir!r} not found in HytaleGenerator/Assignments/")
+        if not any(r.startswith(prefix) for r in region_zone_names):
+            print(f"WARNING: no region with prefix {prefix!r} for biome {bdir!r}")
 
 
 def load_lang_keys(az):
@@ -77,7 +105,7 @@ def load_lang_values(az, lang="en-US"):
     return values
 
 
-def make_key_fns(lang_keys):
+def make_key_fns(lang_keys, region_zone_names):
     def server_key(lang_key):
         return "server." + lang_key if lang_key in lang_keys else lang_key
 
@@ -85,33 +113,25 @@ def make_key_fns(lang_keys):
         return server_key(f"map.region.{region}")
 
     def zone_key_for_region(region):
-        named = REGION_TO_NAMED_ZONE.get(region.split("_")[0])
-        return server_key(f"map.zone.{named}") if named else region
+        zone = region_zone_names.get(region) or region_zone_names.get(normalize_region(region))
+        return server_key(f"map.zone.{zone}") if zone else region
 
     return server_key, region_key, zone_key_for_region
 
 
-ZONE_JSON_RE = re.compile(r"^Server/World/Default/Zones/([^/]+)/Zone\.json$")
-
-
-def scan_regions_by_zone(az):
+def scan_regions_by_zone(az, region_zone_names=None):
     """Named zone (server.map.zone.*) -> sorted region keys (server.map.region.*),
     read from Discovery.ZoneName in each region's Zone.json. Regenerated on every
     scanPlants run, so new zones/regions from game updates are picked up.
     Regions whose translation is identical within a zone (e.g. Zone3_Shore_Tier1/2/3
     all display "Shore") are deduplicated by display value, keeping the first key."""
-    server_key, region_key, _ = make_key_fns(load_lang_keys(az))
+    if region_zone_names is None:
+        region_zone_names = scan_region_zone_names(az)
+    server_key, region_key, _ = make_key_fns(load_lang_keys(az), region_zone_names)
     lang_values = load_lang_values(az)
     out = defaultdict(list)
-    for n in az.names:
-        m = ZONE_JSON_RE.match(n)
-        if not m:
-            continue
-        data = az.load_json(n) or {}
-        zone_name = (data.get("Discovery") or {}).get("ZoneName")
-        if not zone_name:
-            continue
-        out[server_key(f"map.zone.{zone_name}")].append(region_key(m.group(1)))
+    for region, zone_name in region_zone_names.items():
+        out[server_key(f"map.zone.{zone_name}")].append(region_key(region))
     result = {}
     for zone, regions in sorted(out.items()):
         seen_values = set()
