@@ -184,7 +184,8 @@ tasks.register('checkLanguages') {
             def entries = new LinkedHashMap()
             langFile.eachLine { raw ->
                 def line = raw.trim()
-                if (line.isEmpty() || line.startsWith('//')) {
+                // .lang files use '#' for comments (vanilla style), not '//'.
+                if (line.isEmpty() || line.startsWith('//') || line.startsWith('#')) {
                     return
                 }
                 def matcher = (line =~ /^([A-Za-z0-9_.]+)\s*=\s*(.*)$/)
@@ -257,7 +258,7 @@ tasks.register('checkLanguages') {
         referenced.removeIf { it.endsWith('.') }
         referenced.removeIf { !(it.startsWith('server.herbarium.') || it == 'server.items.Herbarium_Journal.name') }
         new groovy.json.JsonSlurper().parseText(plantsFile.text).keySet().each { category ->
-            referenced << 'server.herbarium.category.' + category.toLowerCase(Locale.ROOT)
+            referenced << 'server.herbarium.ui.category.' + category.toLowerCase(Locale.ROOT)
         }
 
         referenced.each { ref ->
