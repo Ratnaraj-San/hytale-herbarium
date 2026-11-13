@@ -1,7 +1,89 @@
+# === Items ===
 items.Herbarium_Journal.name = Botanikerens journal
+items.Herbarium_Journal_Dev.name = Botanikerens journal (Developer)
 
-herbarium.location.found_in = Findes i:
-herbarium.location.unknown = Placering ukendt
+# === CustomUI: journal page ===
+herbarium.ui.journal.progress = planter registreret: {count, number} / {total, number}
+herbarium.ui.category.bramble = Brombærkrat
+herbarium.ui.category.bush = Buske
+herbarium.ui.category.cactus = Kaktusser
+herbarium.ui.category.coral = Koraller
+herbarium.ui.category.crop = Afgrøder
+herbarium.ui.category.fern = Bregner
+herbarium.ui.category.flower = Blomster
+herbarium.ui.category.fruit = Frugter
+herbarium.ui.category.grass = Græsser
+herbarium.ui.category.leaves = Blade
+herbarium.ui.category.moss = Moser
+herbarium.ui.category.mushroom = Svampe
+herbarium.ui.category.petals = Kronblade
+herbarium.ui.category.reeds = Rør
+herbarium.ui.category.sapling = Frøplanter
+herbarium.ui.category.seaweed = Tang
+herbarium.ui.category.seeds = Frø
+herbarium.ui.category.vine = Lianer
+
+# === CustomUI: plant details containers ===
+herbarium.ui.container.locations.title = Findes i:
+herbarium.ui.container.obtained_from.title = Opnået fra
+herbarium.ui.container.gives.title = Giver
+herbarium.ui.container.toggleCollapse = Fold sammen / fold ud
+herbarium.ui.locations.unknown = Placering ukendt
+herbarium.ui.plant.discoveredOn = Opdaget {date}
+herbarium.ui.plant.discoveredAt = Opdaget {date} på ({place})
+herbarium.ui.plant.unlockedByCommand = Låst op med kommandoer den {date}
+herbarium.ui.plant.copy_id_tooltip = Klik for at markere, Ctrl+C for at kopiere
+herbarium.ui.locations.zones = Zoner
+herbarium.ui.locations.regions = Regioner
+herbarium.ui.locations.portals = Portaler
+herbarium.ui.obtained_from.interactions = Interaktioner
+herbarium.ui.obtained_from.crafting = Fremstilling
+herbarium.ui.obtained_from.plants = Planter
+herbarium.ui.obtained_from.other = Andet
+herbarium.ui.obtained_from.buy = Køb
+herbarium.ui.interaction.break = Ødelæg
+herbarium.ui.interaction.harvest = Høst
+herbarium.ui.interaction.shears = Saks
+herbarium.ui.interaction.salvage = Redde
+herbarium.ui.interaction.growth = Vækst
+
+# === CustomUI: rewards bar ===
+herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Låst</b></color> \n<color is="#888888">Registrér {count, number} {count, plural, one {plante} other {planter}} for at låse op:</color>
+herbarium.ui.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Låst op</b></color> \n<color is="#888888">{count, number} {count, plural, one {plante} other {planter}} registreret. Belønning at hente:</color>
+herbarium.ui.rewards.chestCollected.tooltipText = <color is="#888888"><b>Samlet</b></color> \n<color is="#888888">{count, number} {count, plural, one {plante} other {planter}} registreret. Belønning samlet:</color>
+herbarium.ui.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Opdatering</b></color> \n<color is="#888888">{count, number} {count, plural, one {plante} other {planter}} registreret. Belønning samletBelønning at samle:</color>
+herbarium.ui.rewards.collectButton = Hent belønning {tier, number}
+herbarium.ui.rewards.allCollected = Alle belønninger samlet
+
+# === CustomUI: intro page ===
+herbarium.ui.intro.title = Du har låst op for Botanikerens journal!
+herbarium.ui.intro.bullet1 = Denne journal følger dig gennem hele din udforskning af Orbis.
+herbarium.ui.intro.bullet2 = Hver plante, du samler op, registreres her sammen med dato og sted for fundet.
+herbarium.ui.intro.bullet3 = Gennemse din samling efter kategorier, følg dit fremskridt, bliv en ægte botaniker, og få belønninger!
+herbarium.ui.intro.openJournal = Åbn journalen
+
+# === Chat and commands (not CustomUI) ===
+herbarium.command.desc = Herbarium-kommandoer
+herbarium.command.open.desc = Åbner Botanikerens journal.
+herbarium.command.resetall.desc = Sletter hele dit fremskridt.
+herbarium.command.reset.desc = Sletter fremskridt for en bestemt kategori.
+herbarium.command.reset.category.desc = Kategori der skal nulstilles (f.eks. Flower).
+herbarium.command.unlockall.desc = Låser op for alle planter.
+herbarium.command.give.desc = Giver en Botanikers journal.
+herbarium.command.unlock.desc = Låser alle planter i en kategori op.
+herbarium.command.playersOnly = Denne kommando kan kun udføres af spillere.
+herbarium.command.resetall.done = Dit fremskridt er blevet nulstillet for {player}.
+herbarium.command.reset.done = Kategorien {category} er blevet nulstillet for {player}.
+herbarium.command.unlockall.done = Alle planter er blevet låst op for {player}.
+herbarium.command.give.done = {journal} er blevet givet til {player}.
+herbarium.command.unlock.category.desc = Kategori der skal låses op (f.eks. Flower).
+herbarium.command.unlock.done = Kategorien {category} er blevet låst op for {player}.
+herbarium.command.common.unknownCategory = Ukendt kategori: {category}.
+herbarium.command.common.player.desc = Målspiller (som standard dig selv).
+herbarium.command.common.devflag.desc = Giver i stedet udviklerjournalen (alle planter registreret).
+herbarium.notification.discovered = Ny plante opdaget:
+
+# === Data referenced by plants.json (do not rename) ===
 herbarium.location.cultivated = Dyrkede marker
 herbarium.location.caves = Huler
 herbarium.location.chests = Kister
@@ -26,7 +108,6 @@ herbarium.location.ruined_temples = Forfaldne templer
 herbarium.location.slothian_villages = Slothian-landsbyer
 herbarium.location.dungeons = Dungeons
 herbarium.location.cursed_crypts = Forbandte krypter
-
 herbarium.tree.amber = Ravtræer
 herbarium.tree.apple = Æbletræer
 herbarium.tree.ash = Asketræer
@@ -62,49 +143,3 @@ herbarium.tree.spiral = Spiraltræer
 herbarium.tree.stormbark = Stormbarkstræer
 herbarium.tree.windwillow = Vindpiletræer
 herbarium.tree.wisteria_wild = Vilde blåregn
-
-herbarium.unlock.title = Du har låst op for Botanikerens journal!
-herbarium.unlock.bullet1 = Denne journal følger dig gennem hele din udforskning af Orbis.
-herbarium.unlock.bullet2 = Hver plante, du samler op, registreres her sammen med dato og sted for fundet.
-herbarium.unlock.bullet3 = Gennemse din samling efter kategorier, følg dit fremskridt, bliv en ægte botaniker, og få belønninger!
-herbarium.unlock.openJournal = Åbn journalen
-
-herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Låst</b></color> \n<color is="#888888">Registrér {count, number} {count, plural, one {plante} other {planter}} for at låse op:</color>
-herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Låst op</b></color> \n<color is="#888888">{count, number} {count, plural, one {plante} other {planter}} registreret. Belønning at hente:</color>
-herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Samlet</b></color> \n<color is="#888888">{count, number} {count, plural, one {plante} other {planter}} registreret. Belønning samlet:</color>
-herbarium.rewards.collectButton = Hent belønning {tier, number}
-herbarium.rewards.allCollected = Alle belønninger samlet
-
-herbarium.command.desc = Herbarium-kommandoer
-herbarium.command.ui.desc = Åbner Botanikerens journal.
-herbarium.command.reset.desc = Sletter hele dit fremskridt.
-herbarium.command.unlockall.desc = Låser op for alle planter.
-herbarium.command.playersOnly = Denne kommando kan kun udføres af spillere.
-herbarium.command.reset.done = Dit fremskridt er blevet nulstillet.
-herbarium.command.unlockall.done = Alle planter er blevet låst op.
-
-herbarium.progress.recorded = planter registreret: {count, number} / {total, number}
-
-herbarium.plant.discoveredOn = Opdaget {date}
-herbarium.plant.discoveredAt = Opdaget {date} på ({place})
-
-herbarium.notification.discovered = Ny plante opdaget:
-
-herbarium.category.bramble = Brombærkrat
-herbarium.category.bush = Buske
-herbarium.category.cactus = Kaktusser
-herbarium.category.coral = Koraller
-herbarium.category.crop = Afgrøder
-herbarium.category.fern = Bregner
-herbarium.category.flower = Blomster
-herbarium.category.fruit = Frugter
-herbarium.category.grass = Græsser
-herbarium.category.leaves = Blade
-herbarium.category.moss = Moser
-herbarium.category.mushroom = Svampe
-herbarium.category.petals = Kronblade
-herbarium.category.reeds = Rør
-herbarium.category.sapling = Frøplanter
-herbarium.category.seaweed = Tang
-herbarium.category.seeds = Frø
-herbarium.category.vine = Lianer

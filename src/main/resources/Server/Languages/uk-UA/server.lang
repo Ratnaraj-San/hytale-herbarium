@@ -1,7 +1,89 @@
+# === Items ===
 items.Herbarium_Journal.name = Щоденник ботаніка
+items.Herbarium_Journal_Dev.name = Щоденник ботаніка (Developer)
 
-herbarium.location.found_in = Зустрічається в:
-herbarium.location.unknown = Місцезнаходження невідоме
+# === CustomUI: journal page ===
+herbarium.ui.journal.progress = рослин записано: {count, number} / {total, number}
+herbarium.ui.category.bramble = Ожини
+herbarium.ui.category.bush = Кущі
+herbarium.ui.category.cactus = Кактуси
+herbarium.ui.category.coral = Корали
+herbarium.ui.category.crop = Посіви
+herbarium.ui.category.fern = Папороті
+herbarium.ui.category.flower = Квіти
+herbarium.ui.category.fruit = Фрукти
+herbarium.ui.category.grass = Трави
+herbarium.ui.category.leaves = Листя
+herbarium.ui.category.moss = Мохи
+herbarium.ui.category.mushroom = Гриби
+herbarium.ui.category.petals = Пелюстки
+herbarium.ui.category.reeds = Очерети
+herbarium.ui.category.sapling = Саджанці
+herbarium.ui.category.seaweed = Морські водорості
+herbarium.ui.category.seeds = Насіння
+herbarium.ui.category.vine = Ліани
+
+# === CustomUI: plant details containers ===
+herbarium.ui.container.locations.title = Зустрічається в:
+herbarium.ui.container.obtained_from.title = Отримано з
+herbarium.ui.container.gives.title = Дає
+herbarium.ui.container.toggleCollapse = Згорнути / розгорнути
+herbarium.ui.locations.unknown = Місцезнаходження невідоме
+herbarium.ui.plant.discoveredOn = Виявлено {date}
+herbarium.ui.plant.discoveredAt = Виявлено {date} біля ({place})
+herbarium.ui.plant.unlockedByCommand = Розблоковано командами {date}
+herbarium.ui.plant.copy_id_tooltip = Натисніть, щоб виділити, Ctrl+C, щоб скопіювати
+herbarium.ui.locations.zones = Зони
+herbarium.ui.locations.regions = Регіони
+herbarium.ui.locations.portals = Портали
+herbarium.ui.obtained_from.interactions = Взаємодії
+herbarium.ui.obtained_from.crafting = Виготовлення
+herbarium.ui.obtained_from.plants = Рослини
+herbarium.ui.obtained_from.other = Інше
+herbarium.ui.obtained_from.buy = Купити
+herbarium.ui.interaction.break = Зламати
+herbarium.ui.interaction.harvest = Збір урожая
+herbarium.ui.interaction.shears = Ножиці
+herbarium.ui.interaction.salvage = Розібрати
+herbarium.ui.interaction.growth = Ріст
+
+# === CustomUI: rewards bar ===
+herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Замкнено</b></color> \n<color is="#888888">Запишіть {count, number} {count, plural, one {рослину} few {рослини} many {рослин} other {рослини}}, щоб відкрити:</color>
+herbarium.ui.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Відкрито</b></color> \n<color is="#888888">Записано: {count, number} {count, plural, one {рослина} few {рослини} many {рослин} other {рослин}}. Винагорода до отримання:</color>
+herbarium.ui.rewards.chestCollected.tooltipText = <color is="#888888"><b>Отримано</b></color> \n<color is="#888888">Записано: {count, number} {count, plural, one {рослина} few {рослини} many {рослин} other {рослин}}. Отримана винагорода:</color>
+herbarium.ui.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Оновлення</b></color> \n<color is="#888888">Записано: {count, number} {count, plural, one {рослина} few {рослини} many {рослин} other {рослин}}. Отримана винагородаВинагорода для отримання:</color>
+herbarium.ui.rewards.collectButton = Отримати винагороду {tier, number}
+herbarium.ui.rewards.allCollected = Усі винагороди отримано
+
+# === CustomUI: intro page ===
+herbarium.ui.intro.title = Ви відкрили Щоденник ботаніка!
+herbarium.ui.intro.bullet1 = Цей щоденник супроводжуватиме вас упродовж усього дослідження Орбіса.
+herbarium.ui.intro.bullet2 = Кожна рослина, яку ви підберете, записується сюди разом із датою та місцем знахідки.
+herbarium.ui.intro.bullet3 = Переглядайте свою колекцію за категоріями, відстежуйте прогрес, станьте справжнім ботаніком і отримуйте винагороди!
+herbarium.ui.intro.openJournal = Відкрити щоденник
+
+# === Chat and commands (not CustomUI) ===
+herbarium.command.desc = Команди Herbarium
+herbarium.command.open.desc = Відкриває Щоденник ботаніка.
+herbarium.command.resetall.desc = Видаляє весь ваш прогрес.
+herbarium.command.reset.desc = Видаляє прогрес певної категорії.
+herbarium.command.reset.category.desc = Категорія для скидання (наприклад, Flower).
+herbarium.command.unlockall.desc = Відкриває всі рослини.
+herbarium.command.give.desc = Видає Щоденник ботаніка.
+herbarium.command.unlock.desc = Відкриває всі рослини категорії.
+herbarium.command.playersOnly = Цю команду можуть виконувати лише гравці.
+herbarium.command.resetall.done = Ваш прогрес скинуто для гравця {player}.
+herbarium.command.reset.done = Категорію {category} скинуто для гравця {player}.
+herbarium.command.unlockall.done = Усі рослини відкрито для гравця {player}.
+herbarium.command.give.done = {journal} видано гравцю {player}.
+herbarium.command.unlock.category.desc = Категорія для відкриття (наприклад, Flower).
+herbarium.command.unlock.done = Категорію {category} відкрито для гравця {player}.
+herbarium.command.common.unknownCategory = Невідома категорія: {category}.
+herbarium.command.common.player.desc = Цільовий гравець (за замовчуванням — ви самі).
+herbarium.command.common.devflag.desc = Натомість цього видає журнал розробника (усі рослини зареєстровано).
+herbarium.notification.discovered = Виявлено нову рослину:
+
+# === Data referenced by plants.json (do not rename) ===
 herbarium.location.cultivated = Оброблені поля
 herbarium.location.caves = Печери
 herbarium.location.chests = Скрині
@@ -26,7 +108,6 @@ herbarium.location.ruined_temples = Зруйновані храми
 herbarium.location.slothian_villages = Села лінивціанців
 herbarium.location.dungeons = Підземелля
 herbarium.location.cursed_crypts = Прокляті крипти
-
 herbarium.tree.amber = Бурштинові дерева
 herbarium.tree.apple = Яблуні
 herbarium.tree.ash = Ясени
@@ -62,49 +143,3 @@ herbarium.tree.spiral = Спіральні дерева
 herbarium.tree.stormbark = Бурекорові дерева
 herbarium.tree.windwillow = Вітроверби
 herbarium.tree.wisteria_wild = Дикі гліцинії
-
-herbarium.unlock.title = Ви відкрили Щоденник ботаніка!
-herbarium.unlock.bullet1 = Цей щоденник супроводжуватиме вас упродовж усього дослідження Орбіса.
-herbarium.unlock.bullet2 = Кожна рослина, яку ви підберете, записується сюди разом із датою та місцем знахідки.
-herbarium.unlock.bullet3 = Переглядайте свою колекцію за категоріями, відстежуйте прогрес, станьте справжнім ботаніком і отримуйте винагороди!
-herbarium.unlock.openJournal = Відкрити щоденник
-
-herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Замкнено</b></color> \n<color is="#888888">Запишіть {count, number} {count, plural, one {рослину} few {рослини} many {рослин} other {рослини}}, щоб відкрити:</color>
-herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Відкрито</b></color> \n<color is="#888888">Записано: {count, number} {count, plural, one {рослина} few {рослини} many {рослин} other {рослин}}. Винагорода до отримання:</color>
-herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Отримано</b></color> \n<color is="#888888">Записано: {count, number} {count, plural, one {рослина} few {рослини} many {рослин} other {рослин}}. Отримана винагорода:</color>
-herbarium.rewards.collectButton = Отримати винагороду {tier, number}
-herbarium.rewards.allCollected = Усі винагороди отримано
-
-herbarium.command.desc = Команди Herbarium
-herbarium.command.ui.desc = Відкриває Щоденник ботаніка.
-herbarium.command.reset.desc = Видаляє весь ваш прогрес.
-herbarium.command.unlockall.desc = Відкриває всі рослини.
-herbarium.command.playersOnly = Цю команду можуть виконувати лише гравці.
-herbarium.command.reset.done = Ваш прогрес скинуто.
-herbarium.command.unlockall.done = Усі рослини відкрито.
-
-herbarium.progress.recorded = рослин записано: {count, number} / {total, number}
-
-herbarium.plant.discoveredOn = Виявлено {date}
-herbarium.plant.discoveredAt = Виявлено {date} біля ({place})
-
-herbarium.notification.discovered = Виявлено нову рослину:
-
-herbarium.category.bramble = Ожини
-herbarium.category.bush = Кущі
-herbarium.category.cactus = Кактуси
-herbarium.category.coral = Корали
-herbarium.category.crop = Посіви
-herbarium.category.fern = Папороті
-herbarium.category.flower = Квіти
-herbarium.category.fruit = Фрукти
-herbarium.category.grass = Трави
-herbarium.category.leaves = Листя
-herbarium.category.moss = Мохи
-herbarium.category.mushroom = Гриби
-herbarium.category.petals = Пелюстки
-herbarium.category.reeds = Очерети
-herbarium.category.sapling = Саджанці
-herbarium.category.seaweed = Морські водорості
-herbarium.category.seeds = Насіння
-herbarium.category.vine = Ліани

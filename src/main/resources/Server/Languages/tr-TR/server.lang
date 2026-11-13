@@ -1,7 +1,89 @@
+# === Items ===
 items.Herbarium_Journal.name = Botanik Günlüğü
+items.Herbarium_Journal_Dev.name = Botanik Günlüğü (Developer)
 
-herbarium.location.found_in = Şurada bulunur:
-herbarium.location.unknown = Konum bilinmiyor
+# === CustomUI: journal page ===
+herbarium.ui.journal.progress = kaydedilen bitkiler: {count, number} / {total, number}
+herbarium.ui.category.bramble = Dikenli çalılar
+herbarium.ui.category.bush = Çalılar
+herbarium.ui.category.cactus = Kaktüsler
+herbarium.ui.category.coral = Mercanlar
+herbarium.ui.category.crop = Ekinler
+herbarium.ui.category.fern = Eğreltiler
+herbarium.ui.category.flower = Çiçekler
+herbarium.ui.category.fruit = Meyveler
+herbarium.ui.category.grass = Çimenler
+herbarium.ui.category.leaves = Yapraklar
+herbarium.ui.category.moss = Yosunlar
+herbarium.ui.category.mushroom = Mantarlar
+herbarium.ui.category.petals = Taç yapraklar
+herbarium.ui.category.reeds = Kamışlar
+herbarium.ui.category.sapling = Fideler
+herbarium.ui.category.seaweed = Deniz otları
+herbarium.ui.category.seeds = Tohumlar
+herbarium.ui.category.vine = Sarmaşıklar
+
+# === CustomUI: plant details containers ===
+herbarium.ui.container.locations.title = Şurada bulunur:
+herbarium.ui.container.obtained_from.title = Elde edildi
+herbarium.ui.container.gives.title = Verir
+herbarium.ui.container.toggleCollapse = Daralt / genislet
+herbarium.ui.locations.unknown = Konum bilinmiyor
+herbarium.ui.plant.discoveredOn = Keşfedildi: {date}
+herbarium.ui.plant.discoveredAt = Keşfedildi: {date} ({place})
+herbarium.ui.plant.unlockedByCommand = Komutlarla açıldı: {date}
+herbarium.ui.plant.copy_id_tooltip = Seçmek için tıklayın, kopyalamak için Ctrl+C
+herbarium.ui.locations.zones = Bölgeler
+herbarium.ui.locations.regions = Yöreler
+herbarium.ui.locations.portals = Portallar
+herbarium.ui.obtained_from.interactions = Etkileşimler
+herbarium.ui.obtained_from.crafting = Üretim
+herbarium.ui.obtained_from.plants = Bitkiler
+herbarium.ui.obtained_from.other = Diğer
+herbarium.ui.obtained_from.buy = Satın al
+herbarium.ui.interaction.break = Kır
+herbarium.ui.interaction.harvest = Hasat
+herbarium.ui.interaction.shears = Makas
+herbarium.ui.interaction.salvage = Parçala
+herbarium.ui.interaction.growth = Büyüme
+
+# === CustomUI: rewards bar ===
+herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Kilitli</b></color> \n<color is="#888888">Açmak için {count, number} bitki kaydet:</color>
+herbarium.ui.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Açıldı</b></color> \n<color is="#888888">{count, number} bitki kaydedildi. Alınacak ödül:</color>
+herbarium.ui.rewards.chestCollected.tooltipText = <color is="#888888"><b>Alındı</b></color> \n<color is="#888888">{count, number} bitki kaydedildi. Alınan ödül:</color>
+herbarium.ui.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Güncelleme</b></color> \n<color is="#888888">{count, number} bitki kaydedildi. Alınan ödülAlınacak ödül:</color>
+herbarium.ui.rewards.collectButton = {tier, number}. ödülü al
+herbarium.ui.rewards.allCollected = Tüm ödüller alındı
+
+# === CustomUI: intro page ===
+herbarium.ui.intro.title = Botanik Günlüğü'nün kilidini açtın!
+herbarium.ui.intro.bullet1 = Bu günlük, Orbis'i keşfederken seni her adımda izleyecek.
+herbarium.ui.intro.bullet2 = Topladığın her bitki, keşif tarihi ve yeriyle birlikte buraya kaydedilir.
+herbarium.ui.intro.bullet3 = Koleksiyonunu kategoriye göre gez, ilerlemeni takip et, gerçek bir botanikçi ol ve ödüller kazan!
+herbarium.ui.intro.openJournal = Günlüğü aç
+
+# === Chat and commands (not CustomUI) ===
+herbarium.command.desc = Herbarium komutları
+herbarium.command.open.desc = Botanik Günlüğü'nü açar.
+herbarium.command.resetall.desc = Tüm ilerlemeni siler.
+herbarium.command.reset.desc = Belirli bir kategorinin ilerlemesini siler.
+herbarium.command.reset.category.desc = Sıfırlanacak kategori (örn. Flower).
+herbarium.command.unlockall.desc = Tüm bitkilerin kilidini açar.
+herbarium.command.give.desc = Bir Botanik Günlüğü verir.
+herbarium.command.unlock.desc = Bir kategorideki tüm bitkilerin kilidini açar.
+herbarium.command.playersOnly = Bu komut yalnızca oyuncular tarafından çalıştırılabilir.
+herbarium.command.resetall.done = İlerlemen {player} için sıfırlandı.
+herbarium.command.reset.done = {category} kategorisi {player} için sıfırlandı.
+herbarium.command.unlockall.done = Tüm bitkilerin kilidi {player} için açıldı.
+herbarium.command.give.done = {player} adlı oyuncuya bir {journal} verildi.
+herbarium.command.unlock.category.desc = Kilidi açılacak kategori (örn. Flower).
+herbarium.command.unlock.done = {category} kategorisinin kilidi {player} için açıldı.
+herbarium.command.common.unknownCategory = Bilinmeyen kategori: {category}.
+herbarium.command.common.player.desc = Hedef oyuncu (varsayılan: kendin).
+herbarium.command.common.devflag.desc = Bunun yerine geliştirici günlüğünü verir (tüm bitkiler kayıtlı).
+herbarium.notification.discovered = Yeni bitki keşfedildi:
+
+# === Data referenced by plants.json (do not rename) ===
 herbarium.location.cultivated = Ekili tarlalar
 herbarium.location.caves = Mağaralar
 herbarium.location.chests = Sandıklar
@@ -26,7 +108,6 @@ herbarium.location.ruined_temples = Harabe tapınaklar
 herbarium.location.slothian_villages = Slothian köyleri
 herbarium.location.dungeons = Zindanlar
 herbarium.location.cursed_crypts = Lanetli kriptalar
-
 herbarium.tree.amber = Amber ağaçları
 herbarium.tree.apple = Elma ağaçları
 herbarium.tree.ash = Dişbudaklar
@@ -62,49 +143,3 @@ herbarium.tree.spiral = Spiral ağaçlar
 herbarium.tree.stormbark = Fırtına kabuğu ağaçları
 herbarium.tree.windwillow = Rüzgâr söğütleri
 herbarium.tree.wisteria_wild = Yabanî mor salkımlar
-
-herbarium.unlock.title = Botanik Günlüğü'nün kilidini açtın!
-herbarium.unlock.bullet1 = Bu günlük, Orbis'i keşfederken seni her adımda izleyecek.
-herbarium.unlock.bullet2 = Topladığın her bitki, keşif tarihi ve yeriyle birlikte buraya kaydedilir.
-herbarium.unlock.bullet3 = Koleksiyonunu kategoriye göre gez, ilerlemeni takip et, gerçek bir botanikçi ol ve ödüller kazan!
-herbarium.unlock.openJournal = Günlüğü aç
-
-herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Kilitli</b></color> \n<color is="#888888">Açmak için {count, number} bitki kaydet:</color>
-herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Açıldı</b></color> \n<color is="#888888">{count, number} bitki kaydedildi. Alınacak ödül:</color>
-herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Alındı</b></color> \n<color is="#888888">{count, number} bitki kaydedildi. Alınan ödül:</color>
-herbarium.rewards.collectButton = {tier, number}. ödülü al
-herbarium.rewards.allCollected = Tüm ödüller alındı
-
-herbarium.command.desc = Herbarium komutları
-herbarium.command.ui.desc = Botanik Günlüğü'nü açar.
-herbarium.command.reset.desc = Tüm ilerlemeni siler.
-herbarium.command.unlockall.desc = Tüm bitkilerin kilidini açar.
-herbarium.command.playersOnly = Bu komut yalnızca oyuncular tarafından çalıştırılabilir.
-herbarium.command.reset.done = İlerlemen sıfırlandı.
-herbarium.command.unlockall.done = Tüm bitkilerin kilidi açıldı.
-
-herbarium.progress.recorded = kaydedilen bitkiler: {count, number} / {total, number}
-
-herbarium.plant.discoveredOn = Keşfedildi: {date}
-herbarium.plant.discoveredAt = Keşfedildi: {date} ({place})
-
-herbarium.notification.discovered = Yeni bitki keşfedildi:
-
-herbarium.category.bramble = Dikenli çalılar
-herbarium.category.bush = Çalılar
-herbarium.category.cactus = Kaktüsler
-herbarium.category.coral = Mercanlar
-herbarium.category.crop = Ekinler
-herbarium.category.fern = Eğreltiler
-herbarium.category.flower = Çiçekler
-herbarium.category.fruit = Meyveler
-herbarium.category.grass = Çimenler
-herbarium.category.leaves = Yapraklar
-herbarium.category.moss = Yosunlar
-herbarium.category.mushroom = Mantarlar
-herbarium.category.petals = Taç yapraklar
-herbarium.category.reeds = Kamışlar
-herbarium.category.sapling = Fideler
-herbarium.category.seaweed = Deniz otları
-herbarium.category.seeds = Tohumlar
-herbarium.category.vine = Sarmaşıklar

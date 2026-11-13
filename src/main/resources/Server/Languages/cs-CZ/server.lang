@@ -1,7 +1,89 @@
+# === Items ===
 items.Herbarium_Journal.name = Botanikův deník
+items.Herbarium_Journal_Dev.name = Botanikův deník (Developer)
 
-herbarium.location.found_in = Lze nalézt v:
-herbarium.location.unknown = Místo výskytu neznámé
+# === CustomUI: journal page ===
+herbarium.ui.journal.progress = zaznamenaných rostlin: {count, number} / {total, number}
+herbarium.ui.category.bramble = Trní
+herbarium.ui.category.bush = Křoviny
+herbarium.ui.category.cactus = Kaktusy
+herbarium.ui.category.coral = Korály
+herbarium.ui.category.crop = Plodiny
+herbarium.ui.category.fern = Kapradí
+herbarium.ui.category.flower = Květiny
+herbarium.ui.category.fruit = Ovoce
+herbarium.ui.category.grass = Trávy
+herbarium.ui.category.leaves = Listy
+herbarium.ui.category.moss = Mechy
+herbarium.ui.category.mushroom = Houby
+herbarium.ui.category.petals = Plátky
+herbarium.ui.category.reeds = Rákosí
+herbarium.ui.category.sapling = Sazenice
+herbarium.ui.category.seaweed = Mořské řasy
+herbarium.ui.category.seeds = Semena
+herbarium.ui.category.vine = Liany
+
+# === CustomUI: plant details containers ===
+herbarium.ui.container.locations.title = Lze nalézt v:
+herbarium.ui.container.obtained_from.title = Získáno z
+herbarium.ui.container.gives.title = Dává
+herbarium.ui.container.toggleCollapse = Sbalit / rozbalit
+herbarium.ui.locations.unknown = Místo výskytu neznámé
+herbarium.ui.plant.discoveredOn = Nalezeno {date}
+herbarium.ui.plant.discoveredAt = Nalezeno {date} na ({place})
+herbarium.ui.plant.unlockedByCommand = Odemčeno příkazy dne {date}
+herbarium.ui.plant.copy_id_tooltip = Kliknutím vyberete, Ctrl+C zkopíruje
+herbarium.ui.locations.zones = Zóny
+herbarium.ui.locations.regions = Regiony
+herbarium.ui.locations.portals = Portály
+herbarium.ui.obtained_from.interactions = Interakce
+herbarium.ui.obtained_from.crafting = Výroba
+herbarium.ui.obtained_from.plants = Rostliny
+herbarium.ui.obtained_from.other = Ostatní
+herbarium.ui.obtained_from.buy = Koupit
+herbarium.ui.interaction.break = Rozbít
+herbarium.ui.interaction.harvest = Sklizeň
+herbarium.ui.interaction.shears = Nůžky
+herbarium.ui.interaction.salvage = Rozebrat
+herbarium.ui.interaction.growth = Růst
+
+# === CustomUI: rewards bar ===
+herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Uzamčeno</b></color> \n<color is="#888888">Zaznamenejte {count, number} {count, plural, one {rostlinu} few {rostliny} many {rostlin} other {rostlin}}, abyste odemkli:</color>
+herbarium.ui.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Odemčeno</b></color> \n<color is="#888888">Zaznamenáno: {count, number} {count, plural, one {rostlina} few {rostliny} many {rostlin} other {rostlin}}. Odměna k vyzvednutí:</color>
+herbarium.ui.rewards.chestCollected.tooltipText = <color is="#888888"><b>Vyzvednuto</b></color> \n<color is="#888888">Zaznamenáno: {count, number} {count, plural, one {rostlina} few {rostliny} many {rostlin} other {rostlin}}. Vyzvednutá odměna:</color>
+herbarium.ui.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Aktualizace</b></color> \n<color is="#888888">Zaznamenáno: {count, number} {count, plural, one {rostlina} few {rostliny} many {rostlin} other {rostlin}}. Vyzvednutá odměnaOdměna k vyzvednutí:</color>
+herbarium.ui.rewards.collectButton = Vyzvednout odměnu {tier, number}
+herbarium.ui.rewards.allCollected = Všechny odměny vyzvednuty
+
+# === CustomUI: intro page ===
+herbarium.ui.intro.title = Odemkli jste Botanikův deník!
+herbarium.ui.intro.bullet1 = Tenhle deník vás doprovodí při celém průzkumu Orbisu.
+herbarium.ui.intro.bullet2 = Každá rostlina, kterou seberete, se zde zaznamená včetně data a místa nálezu.
+herbarium.ui.intro.bullet3 = Procházejte svou sbírku podle kategorií, sledujte svůj pokrok, staňte se skutečným botanikem a získejte odměny!
+herbarium.ui.intro.openJournal = Otevřít deník
+
+# === Chat and commands (not CustomUI) ===
+herbarium.command.desc = Příkazy Herbarium
+herbarium.command.open.desc = Otevře Botanikův deník.
+herbarium.command.resetall.desc = Smaže veškerý váš pokrok.
+herbarium.command.reset.desc = Smaže pokrok pro konkrétní kategorii.
+herbarium.command.reset.category.desc = Kategorie k resetování (např. Flower).
+herbarium.command.unlockall.desc = Odemkne všechny rostliny.
+herbarium.command.give.desc = Daruje Botanikův deník.
+herbarium.command.unlock.desc = Odemkne všechny rostliny jedné kategorie.
+herbarium.command.playersOnly = Tento příkaz mohou spouštět jen hráči.
+herbarium.command.resetall.done = Váš pokrok byl resetován pro hráče {player}.
+herbarium.command.reset.done = Kategorie {category} byla resetována pro hráče {player}.
+herbarium.command.unlockall.done = Všechny rostliny byly odemčeny pro hráče {player}.
+herbarium.command.give.done = {journal} byl dán hráči {player}.
+herbarium.command.unlock.category.desc = Kategorie k odemčení (např. Flower).
+herbarium.command.unlock.done = Kategorie {category} byla odemčena pro hráče {player}.
+herbarium.command.common.unknownCategory = Neznámá kategorie: {category}.
+herbarium.command.common.player.desc = Cílový hráč (výchozí sám sebe).
+herbarium.command.common.devflag.desc = Místo toho dá vývojářský deník (všechny rostliny registrované).
+herbarium.notification.discovered = Objevena nová rostlina:
+
+# === Data referenced by plants.json (do not rename) ===
 herbarium.location.cultivated = Obdělaná pole
 herbarium.location.caves = Jeskyně
 herbarium.location.chests = Truhly
@@ -26,7 +108,6 @@ herbarium.location.ruined_temples = Zřícené chrámy
 herbarium.location.slothian_villages = Vesnice slothianů
 herbarium.location.dungeons = Kobky
 herbarium.location.cursed_crypts = Prokleté krypty
-
 herbarium.tree.amber = Jantarové stromy
 herbarium.tree.apple = Jabloně
 herbarium.tree.ash = Jasany
@@ -62,49 +143,3 @@ herbarium.tree.spiral = Spirálové stromy
 herbarium.tree.stormbark = Bouřkové stromy
 herbarium.tree.windwillow = Větrné vrby
 herbarium.tree.wisteria_wild = Divoké glycínie
-
-herbarium.unlock.title = Odemkli jste Botanikův deník!
-herbarium.unlock.bullet1 = Tenhle deník vás doprovodí při celém průzkumu Orbisu.
-herbarium.unlock.bullet2 = Každá rostlina, kterou seberete, se zde zaznamená včetně data a místa nálezu.
-herbarium.unlock.bullet3 = Procházejte svou sbírku podle kategorií, sledujte svůj pokrok, staňte se skutečným botanikem a získejte odměny!
-herbarium.unlock.openJournal = Otevřít deník
-
-herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Uzamčeno</b></color> \n<color is="#888888">Zaznamenejte {count, number} {count, plural, one {rostlinu} few {rostliny} many {rostlin} other {rostlin}}, abyste odemkli:</color>
-herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Odemčeno</b></color> \n<color is="#888888">Zaznamenáno: {count, number} {count, plural, one {rostlina} few {rostliny} many {rostlin} other {rostlin}}. Odměna k vyzvednutí:</color>
-herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Vyzvednuto</b></color> \n<color is="#888888">Zaznamenáno: {count, number} {count, plural, one {rostlina} few {rostliny} many {rostlin} other {rostlin}}. Vyzvednutá odměna:</color>
-herbarium.rewards.collectButton = Vyzvednout odměnu {tier, number}
-herbarium.rewards.allCollected = Všechny odměny vyzvednuty
-
-herbarium.command.desc = Příkazy Herbarium
-herbarium.command.ui.desc = Otevře Botanikův deník.
-herbarium.command.reset.desc = Smaže veškerý váš pokrok.
-herbarium.command.unlockall.desc = Odemkne všechny rostliny.
-herbarium.command.playersOnly = Tento příkaz mohou spouštět jen hráči.
-herbarium.command.reset.done = Váš pokrok byl resetován.
-herbarium.command.unlockall.done = Všechny rostliny byly odemčeny.
-
-herbarium.progress.recorded = zaznamenaných rostlin: {count, number} / {total, number}
-
-herbarium.plant.discoveredOn = Nalezeno {date}
-herbarium.plant.discoveredAt = Nalezeno {date} na ({place})
-
-herbarium.notification.discovered = Objevena nová rostlina:
-
-herbarium.category.bramble = Trní
-herbarium.category.bush = Křoviny
-herbarium.category.cactus = Kaktusy
-herbarium.category.coral = Korály
-herbarium.category.crop = Plodiny
-herbarium.category.fern = Kapradí
-herbarium.category.flower = Květiny
-herbarium.category.fruit = Ovoce
-herbarium.category.grass = Trávy
-herbarium.category.leaves = Listy
-herbarium.category.moss = Mechy
-herbarium.category.mushroom = Houby
-herbarium.category.petals = Plátky
-herbarium.category.reeds = Rákosí
-herbarium.category.sapling = Sazenice
-herbarium.category.seaweed = Mořské řasy
-herbarium.category.seeds = Semena
-herbarium.category.vine = Liany

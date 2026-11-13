@@ -1,30 +1,30 @@
 package com.ratnaraj.herbarium.data;
 
-import com.hypixel.hytale.server.core.universe.PlayerRef;
-import com.ratnaraj.herbarium.Herbarium;
-
 import java.nio.file.Path;
 import java.time.Instant;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 
+import com.hypixel.hytale.server.core.universe.PlayerRef;
+import com.ratnaraj.herbarium.Herbarium;
+
 /**
- * The progression of every player known to the server, kept in memory as
- * PlayerData entries. The PlayerRef-facing API mutates a player's
- * PlayerData and re-saves it when something changed; the per-player file
- * persistence is delegated to PlayerFileStore.
+ * The progression of every player known to the server, kept in memory as PlayerData entries. The
+ * PlayerRef-facing API mutates a player's PlayerData and re-saves it when something changed; the
+ * per-player file persistence is delegated to PlayerFileStore.
  */
 public class PlayerStore {
 
-    private final PlantCatalog catalog;
+    private final PlantCatalogV2 catalog;
     private final PlayerFileStore fileStore;
     private final Map<UUID, PlayerData> players = new ConcurrentHashMap<>();
 
-    public PlayerStore(PlantCatalog catalog) {
+    public PlayerStore(PlantCatalogV2 catalog) {
         this.catalog = catalog;
         this.fileStore = new PlayerFileStore(catalog);
     }
@@ -36,9 +36,10 @@ public class PlayerStore {
     public void loadAllMemories() {
         players.putAll(fileStore.loadAll());
 
-        Herbarium.getInstance().getLogger().at(Level.INFO).log(
-                "[Herbarium] " + players.size() + " player memories loaded."
-        );
+        Herbarium.getInstance()
+                .getLogger()
+                .at(Level.INFO)
+                .log("[Herbarium] " + players.size() + " player memories loaded.");
     }
 
     public void saveAllMemories() {
@@ -52,9 +53,10 @@ public class PlayerStore {
             savedCount++;
         }
 
-        Herbarium.getInstance().getLogger().at(Level.INFO).log(
-                "[Herbarium] " + savedCount + " player memories saved."
-        );
+        Herbarium.getInstance()
+                .getLogger()
+                .at(Level.INFO)
+                .log("[Herbarium] " + savedCount + " player memories saved.");
     }
 
     private PlayerData getOrCreate(UUID playerId) {
@@ -70,8 +72,7 @@ public class PlayerStore {
     }
 
     /**
-     * Persists the journal-opened flag, so the intro modal is only shown on
-     * the very first opening.
+     * Persists the journal-opened flag, so the intro modal is only shown on the very first opening.
      */
     public void markJournalOpened(PlayerRef playerRef) {
         if (playerRef == null) {
@@ -84,8 +85,12 @@ public class PlayerStore {
         }
     }
 
-    public boolean addPlantMemory(PlayerRef playerRef, String plantId, String plantName,
-                                  String discoveredDate, String discoveredPlace) {
+    public boolean addPlantMemory(
+            PlayerRef playerRef,
+            String plantId,
+            String plantName,
+            String discoveredDate,
+            String discoveredPlace) {
         if (playerRef == null || plantId == null || !catalog.isPlantItem(plantId)) {
             return false;
         }
@@ -94,7 +99,8 @@ public class PlayerStore {
         }
 
         PlayerData data = getOrCreate(playerRef.getUuid());
-        boolean isNew = data.markPlantDiscovered(plantId, plantName, discoveredDate, discoveredPlace);
+        boolean isNew =
+                data.markPlantDiscovered(plantId, plantName, discoveredDate, discoveredPlace);
         if (isNew) {
             fileStore.save(playerRef.getUuid(), data);
         }
@@ -129,7 +135,27 @@ public class PlayerStore {
             return;
         }
         PlayerData data = getOrCreate(playerRef.getUuid());
-        if (data.markRewardTierCollected(tier, Instant.now().toString())) {
+        if (data.markRewardTierCollected(
+                tier, Instant.now().toString(), HerbariumRewards.rewardsVersion())) {
+            fileStore.save(playerRef.getUuid(), data);
+        }
+    }
+
+    public List<HerbariumRewards.CompensationGrant> getPendingCompensations(PlayerRef playerRef) {
+        if (playerRef == null) {
+            return List.of();
+        }
+        PlayerData data = getOrCreate(playerRef.getUuid());
+        return HerbariumRewards.getPendingCompensations(
+                data.getCollectedTierVersions(), data.getClaimedCompensations());
+    }
+
+    public void markCompensationClaimed(PlayerRef playerRef, int tier, String version) {
+        if (playerRef == null) {
+            return;
+        }
+        PlayerData data = getOrCreate(playerRef.getUuid());
+        if (data.markCompensationClaimed(tier, version)) {
             fileStore.save(playerRef.getUuid(), data);
         }
     }
@@ -148,7 +174,41 @@ public class PlayerStore {
             return;
         }
         PlayerData data = getOrCreate(playerRef.getUuid());
-        data.unlockAll();
+        data.unlockAll(Instant.now().toString());
+        fileStore.save(playerRef.getUuid(), data);
+    }
+
+    public void unlockCategoryMemories(PlayerRef playerRef, String category) {
+        if (playerRef == null || category == null) {
+            return;
+        }
+
+        List<String> plantIds = catalog.getPlantsInCategory(category);
+
+        if (plantIds.isEmpty()) {
+            return;
+        }
+
+        PlayerData data = getOrCreate(playerRef.getUuid());
+        data.unlockCategory(plantIds, Instant.now().toString());
+        fileStore.save(playerRef.getUuid(), data);
+    }
+
+    public void resetCategoryMemories(PlayerRef playerRef, String category) {
+        if (playerRef == null || category == null) {
+            return;
+        }
+
+        List<String> plantIds = catalog.getPlantsInCategory(category);
+
+        if (plantIds.isEmpty()) {
+            return;
+        }
+
+        PlayerData data = getOrCreate(playerRef.getUuid());
+
+        data.resetCategory(plantIds);
+
         fileStore.save(playerRef.getUuid(), data);
     }
 }

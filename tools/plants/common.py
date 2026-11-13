@@ -4,8 +4,9 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 SCAN_FILE = HERE / "plants-scan.json"
-FINAL_FILE = HERE / "plants-final.json"
+FINAL_FILE = HERE.parent.parent / "src/main/resources/plants-v2.json"
 PLANTS_JSON = HERE.parent.parent / "src/main/resources/plants.json"
+REGIONS_BY_ZONE_FILE = HERE.parent.parent / "src/main/resources/regions-by-zone.json"
 
 
 def flatten(data):
@@ -14,14 +15,14 @@ def flatten(data):
     for cat, items in data.items():
         if cat.startswith("_"):
             continue
-        for it in items:
-            if isinstance(it, dict) and "id" in it:
-                out[it["id"]] = it
+        for entry in items:
+            if isinstance(entry, dict) and "id" in entry:
+                out[entry["id"]] = entry
     return out
 
 
 def recap(label, by_id):
-    obt = sum(1 for it in by_id.values() if it.get("obtainableInExplorationMode"))
+    obt = sum(1 for entry in by_id.values() if entry.get("obtainableInExplorationMode"))
     print(f"[{label}]")
     print(f"  total plants: {len(by_id)}")
     print(f"  total plants obtainable: {obt}")
@@ -30,7 +31,8 @@ def recap(label, by_id):
 
 def apply_obtainable_rule(entry):
     """obtainableInExplorationMode = true if at least one true signal in obtainedFrom:
-    a source plant, any of interactions.break/collect/shears, or a crafting recipe.
+    a source plant, any of interactions.break/collect/shears, a crafting recipe, or an
+    "other" source (e.g. sold by a merchant/barter shop).
     Fruits are not generated in the world but are collectable from trees (drop/collect)."""
     o = entry.get("obtainedFrom") or {}
     inter = o.get("interactions") or {}
@@ -38,11 +40,12 @@ def apply_obtainable_rule(entry):
         o.get("plants")
         or any(inter.get(k) for k in ("break", "collect", "shears"))
         or o.get("crafting") is not None
+        or o.get("other")
     )
     return entry
 
 
-def apply_obtainable_rules(by_id):
+def apply_obtainable_rules(by_id, force_unobtainable=()):
     """Fixpoint post-processing (see AGENTS.md).
 
     Base rule: apply_obtainable_rule. Then set obtainableInExplorationMode = false
@@ -50,16 +53,23 @@ def apply_obtainable_rules(by_id):
       - every locations list is empty (regions/zones/portals) -> not generated in the world
       - obtainedFrom.crafting is falsy -> not player-craftable
       - obtainedFrom.plants is empty -> does not come from another item
+      - obtainedFrom.other is empty -> not sold by a merchant or other source
     Rationale: an item that neither generates in the world, nor is crafted, nor comes
-    from another item cannot be obtained.
+    from another item, nor is bought from a merchant cannot be obtained.
+
+    force_unobtainable: ids that must stay unobtainable whatever the signals say
+    (e.g. orphan block-state items whose state is not defined on the block).
     """
-    for it in by_id.values():
-        apply_obtainable_rule(it)
-        loc = it.get("locations") or {}
+    for entry in by_id.values():
+        apply_obtainable_rule(entry)
+        loc = entry.get("locations") or {}
         locations_empty = all(not loc.get(k) for k in ("regions", "zones", "portals"))
-        o = it.get("obtainedFrom") or {}
-        if locations_empty and not o.get("crafting") and not o.get("plants"):
-            it["obtainableInExplorationMode"] = False
+        o = entry.get("obtainedFrom") or {}
+        if locations_empty and not o.get("crafting") and not o.get("plants") and not o.get("other"):
+            entry["obtainableInExplorationMode"] = False
+    for plant_id in force_unobtainable:
+        if plant_id in by_id:
+            by_id[plant_id]["obtainableInExplorationMode"] = False
     return by_id
 
 

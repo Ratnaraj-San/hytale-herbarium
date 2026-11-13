@@ -1,4 +1,4 @@
-$C = "../../Common.ui";
+$Common = "../../../Common.ui";
 
 @ChestGroup = Group {
   Anchor: (Left: 0, Bottom: 0, Width: 40, Height: 40);
@@ -6,7 +6,7 @@ $C = "../../Common.ui";
 
   TextTooltipShowDelay: 0.1;
   LayoutMode: Bottom;
-  TextTooltipStyle: $C.@DefaultTextTooltipStyle;
+  TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
 };
 
 Group {
@@ -15,27 +15,34 @@ Group {
 
     @ChestGroup #ChestDisabled {
       Group {
-        Background: "MemoriesProgress/IconChestDisabled.png";
+        Background: "../textures/MemoriesProgress/IconChestDisabled.png";
         Anchor: (Width: 22, Height: 22, Bottom: 10);
       }
     }
 
     @ChestGroup #ChestActive {
       Group {
-        Background: "MemoriesProgress/IconChestActive.png";
+        Background: "../textures/MemoriesProgress/IconChestActive.png";
         Anchor: (Width: 22, Height: 22, Bottom: 10);
       }
     }
 
     @ChestGroup #ChestCollected {
       Group {
-        Background: "MemoriesProgress/IconChestCollected.png";
+        Background: "../textures/MemoriesProgress/IconChestCollected.png";
+        Anchor: (Width: 22, Height: 22, Bottom: 10);
+      }
+    }
+
+    @ChestGroup #ChestClaimedPending {
+      Group {
+        Background: "../textures/MemoriesProgress/IconChestClaimedPending.png";
         Anchor: (Width: 22, Height: 22, Bottom: 10);
       }
     }
 
     Group #Arrow {
-      Background: "MemoriesProgress/MemoriesBarArrow.png";
+      Background: "../textures/MemoriesProgress/MemoriesBarArrow.png";
       Anchor: (Left: 14, Width: 10, Height: 8, Bottom: 0);
       Visible: false;
     }

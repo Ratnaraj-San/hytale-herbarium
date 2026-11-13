@@ -1,10 +1,10 @@
 package com.ratnaraj.herbarium.data;
 
+import java.util.logging.Level;
+
 import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.asset.type.item.config.Item;
 import com.ratnaraj.herbarium.Herbarium;
-
-import java.util.logging.Level;
 
 public final class PlantAssets {
 
@@ -35,11 +35,15 @@ public final class PlantAssets {
                 return item.getTranslationProperties().getName();
             }
         } catch (Exception e) {
-            Herbarium.getInstance().getLogger().at(Level.WARNING).log(
-                    "[Herbarium] Failed to get translation key for " + plantId + ": " + e.getMessage()
-            );
+            Herbarium.getInstance()
+                    .getLogger()
+                    .at(Level.WARNING)
+                    .log(
+                            "[Herbarium] Failed to get translation key for "
+                                    + plantId
+                                    + ": "
+                                    + e.getMessage());
         }
         return null;
     }
-
 }

@@ -1,5 +1,13 @@
 package com.ratnaraj.herbarium.ui;
 
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.Message;
@@ -16,52 +24,74 @@ import com.ratnaraj.herbarium.data.HerbariumRewards;
 import com.ratnaraj.herbarium.data.PlayerStore;
 import com.ratnaraj.herbarium.event.FeedbackSound;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
-
 public class RewardBar {
 
     private static final int CHEST_MARKER_SCALE = 1000;
-    private static final String CHEST_LOCKED_TOOLTIP_KEY = "server.herbarium.rewards.chestLocked.tooltipText";
-    private static final String CHEST_ACTIVE_TOOLTIP_KEY = "server.herbarium.rewards.chestActive.tooltipText";
-    private static final String CHEST_COLLECTED_TOOLTIP_KEY = "server.herbarium.rewards.chestCollected.tooltipText";
+    private static final String CHEST_LOCKED_TOOLTIP_KEY =
+            "server.herbarium.ui.rewards.chestLocked.tooltipText";
+    private static final String CHEST_ACTIVE_TOOLTIP_KEY =
+            "server.herbarium.ui.rewards.chestActive.tooltipText";
+    private static final String CHEST_COLLECTED_TOOLTIP_KEY =
+            "server.herbarium.ui.rewards.chestCollected.tooltipText";
+    private static final String CHEST_COMPENSATION_TOOLTIP_KEY =
+            "server.herbarium.ui.rewards.chestCompensation.tooltipText";
 
     private static final Color REWARD_QUANTITY_COLOR = new Color(0x88, 0x88, 0x88);
     private static final Color REWARD_ITEM_COLOR = Color.WHITE;
     private static final Color REWARD_COLLECTED_COLOR = new Color(0x88, 0x88, 0x88);
 
-    private static final String COLLECT_BUTTON_KEY = "server.herbarium.rewards.collectButton";
-    private static final String ALL_COLLECTED_KEY = "server.herbarium.rewards.allCollected";
+    private static final String COLLECT_BUTTON_KEY = "server.herbarium.ui.rewards.collectButton";
+    private static final String ALL_COLLECTED_KEY = "server.herbarium.ui.rewards.allCollected";
     private static final String COLLECT_SOUND_EVENT = "SFX_MemoryRestored";
 
-    public static void buildChestMarkers(PlayerRef playerRef, UICommandBuilder commands, int totalDiscovered, int totalPlants) {
+    public static void buildChestMarkers(
+            PlayerRef playerRef, UICommandBuilder commands, int totalDiscovered, int totalPlants) {
         PlayerStore store = Herbarium.getPlayerStore();
         int tierCount = HerbariumRewards.getTierCount(totalPlants);
+
+        Set<Integer> compensationPendingTiers = new HashSet<>();
+        Map<Integer, List<HerbariumRewards.Reward>> compensationRewardsByTier = new HashMap<>();
+        for (HerbariumRewards.CompensationGrant grant : store.getPendingCompensations(playerRef)) {
+            compensationPendingTiers.add(grant.tier());
+            compensationRewardsByTier
+                    .computeIfAbsent(grant.tier(), t -> new ArrayList<>())
+                    .addAll(grant.rewards());
+        }
 
         for (int tier = 1; tier <= tierCount; tier++) {
             int threshold = HerbariumRewards.getTierThreshold(tier);
             boolean reached = totalDiscovered >= threshold;
             boolean rewardCollected = store.isRewardTierCollected(playerRef, tier);
+            boolean compensationPending = compensationPendingTiers.contains(tier);
             String marker = "#ChestMarkers[" + (tier - 1) + "]";
 
-            commands.append("#ChestMarkers", "Pages/Herbarium/ChestMarker.ui");
+            commands.append("#ChestMarkers", "Pages/Herbarium/components/ChestMarker.ui");
 
             Anchor anchor = new Anchor();
             anchor.setLeft(Value.of(threshold * CHEST_MARKER_SCALE / totalPlants));
             commands.setObject(marker + ".Anchor", anchor);
 
-            String tooltipKey = rewardCollected
-                    ? CHEST_COLLECTED_TOOLTIP_KEY
-                    : reached ? CHEST_ACTIVE_TOOLTIP_KEY : CHEST_LOCKED_TOOLTIP_KEY;
-            Color itemColor = rewardCollected ? REWARD_COLLECTED_COLOR : REWARD_ITEM_COLOR;
-            Message tooltip = buildChestTooltip(tier, tooltipKey, itemColor);
+            Message tooltip;
+            if (rewardCollected && compensationPending) {
+                tooltip = buildCompensationTooltip(tier, compensationRewardsByTier.get(tier));
+            } else {
+                String tooltipKey =
+                        rewardCollected
+                                ? CHEST_COLLECTED_TOOLTIP_KEY
+                                : reached ? CHEST_ACTIVE_TOOLTIP_KEY : CHEST_LOCKED_TOOLTIP_KEY;
+                Color itemColor = rewardCollected ? REWARD_COLLECTED_COLOR : REWARD_ITEM_COLOR;
+                tooltip = buildChestTooltip(tier, tooltipKey, itemColor);
+            }
 
-            if (reached || rewardCollected) {
-                String chest = rewardCollected ? "#ChestCollected" : "#ChestActive";
+            if (rewardCollected) {
+                String chest = compensationPending ? "#ChestClaimedPending" : "#ChestCollected";
                 commands.set(marker + " " + chest + ".Visible", true);
                 commands.set(marker + " " + chest + ".TooltipTextSpans", tooltip);
-                commands.set(marker + " #Arrow.Visible", reached && !rewardCollected);
+                commands.set(marker + " #Arrow.Visible", compensationPending);
+            } else if (reached) {
+                commands.set(marker + " #ChestActive.Visible", true);
+                commands.set(marker + " #ChestActive.TooltipTextSpans", tooltip);
+                commands.set(marker + " #Arrow.Visible", true);
             } else {
                 commands.set(marker + " #ChestDisabled.Visible", true);
                 commands.set(marker + " #ChestDisabled.TooltipTextSpans", tooltip);
@@ -76,20 +106,35 @@ public class RewardBar {
                 .insert(buildTierRewardsMessage(tier, itemColor));
     }
 
+    public static Message buildCompensationTooltip(
+            int tier, List<HerbariumRewards.Reward> rewards) {
+        return Message.translation(CHEST_COMPENSATION_TOOLTIP_KEY)
+                .param("count", HerbariumRewards.getTierThreshold(tier))
+                .insert("\n\n")
+                .insert(buildRewardsMessage(rewards, REWARD_ITEM_COLOR));
+    }
+
     public static Message buildTierRewardsMessage(int tier, Color itemColor) {
+        return buildRewardsMessage(HerbariumRewards.getTierRewards(tier), itemColor);
+    }
+
+    public static Message buildRewardsMessage(
+            List<HerbariumRewards.Reward> rewards, Color itemColor) {
         Message list = Message.empty();
 
         boolean first = true;
-        for (HerbariumRewards.Reward reward : HerbariumRewards.getTierRewards(tier)) {
+        for (HerbariumRewards.Reward reward : rewards) {
             if (!first) {
                 list = list.insert("\n");
             }
             first = false;
 
-            list = list.insert(Message.join(
-                    Message.raw(reward.quantity() + "x ").color(REWARD_QUANTITY_COLOR),
-                    rewardNameMessage(reward.itemId()).color(itemColor)
-            ));
+            list =
+                    list.insert(
+                            Message.join(
+                                    Message.raw(reward.quantity() + "x ")
+                                            .color(REWARD_QUANTITY_COLOR),
+                                    rewardNameMessage(reward.itemId()).color(itemColor)));
         }
         return list;
     }
@@ -98,16 +143,35 @@ public class RewardBar {
         return Message.translation("server.items." + itemId + ".name");
     }
 
-    public static void setRewardsButtonState(PlayerRef playerRef, UICommandBuilder commands, int totalDiscovered, int totalPlants) {
-        int nextTier = getNextUncollectedTier(playerRef, HerbariumRewards.getTierCount(totalPlants));
+    public static void setRewardsButtonState(
+            PlayerRef playerRef, UICommandBuilder commands, int totalDiscovered, int totalPlants) {
+        List<HerbariumRewards.CompensationGrant> pendingCompensations =
+                Herbarium.getPlayerStore().getPendingCompensations(playerRef);
+
+        if (!pendingCompensations.isEmpty()) {
+            commands.set(
+                    "#RewardsButton.Text",
+                    Message.translation(COLLECT_BUTTON_KEY)
+                            .param(
+                                    "tier",
+                                    HerbariumRewards.getSmallestPendingCompensationTier(
+                                            pendingCompensations)));
+            commands.set("#RewardsButton.Disabled", false);
+            return;
+        }
+
+        int nextTier =
+                getNextUncollectedTier(playerRef, HerbariumRewards.getTierCount(totalPlants));
 
         if (nextTier == 0) {
             commands.set("#RewardsButton.Text", Message.translation(ALL_COLLECTED_KEY));
             commands.set("#RewardsButton.Disabled", true);
         } else {
-            commands.set("#RewardsButton.Text",
+            commands.set(
+                    "#RewardsButton.Text",
                     Message.translation(COLLECT_BUTTON_KEY).param("tier", nextTier));
-            commands.set("#RewardsButton.Disabled",
+            commands.set(
+                    "#RewardsButton.Disabled",
                     totalDiscovered < HerbariumRewards.getTierThreshold(nextTier));
         }
     }
@@ -122,7 +186,8 @@ public class RewardBar {
         return 0;
     }
 
-    public static UICommandBuilder handleCollectReward(PlayerRef playerRef, Ref<EntityStore> ref, Store<EntityStore> store) {
+    public static UICommandBuilder handleCollectReward(
+            PlayerRef playerRef, Ref<EntityStore> ref, Store<EntityStore> store) {
         if (ref == null || store == null) {
             return null;
         }
@@ -130,6 +195,45 @@ public class RewardBar {
         PlayerStore playerStore = Herbarium.getPlayerStore();
         int totalPlants = Herbarium.getCatalog().getTotalPlantCount();
         int totalDiscovered = playerStore.getMemoryCount(playerRef);
+
+        List<HerbariumRewards.CompensationGrant> pendingCompensations =
+                playerStore.getPendingCompensations(playerRef);
+        if (!pendingCompensations.isEmpty()) {
+            int tier = HerbariumRewards.getSmallestPendingCompensationTier(pendingCompensations);
+            List<HerbariumRewards.CompensationGrant> tierGrants =
+                    HerbariumRewards.getPendingCompensationsForTier(pendingCompensations, tier);
+
+            List<ItemStack> compensation = new ArrayList<>();
+            for (HerbariumRewards.CompensationGrant grant : tierGrants) {
+                playerStore.markCompensationClaimed(playerRef, grant.tier(), grant.version());
+                for (HerbariumRewards.Reward reward : grant.rewards()) {
+                    compensation.add(new ItemStack(reward.itemId(), reward.quantity()));
+                }
+            }
+
+            SimpleItemContainer.addOrDropItemStacks(
+                    store,
+                    ref,
+                    InventoryComponent.getCombined(store, ref, InventoryComponent.HOTBAR_FIRST),
+                    compensation);
+
+            FeedbackSound.play(playerRef, COLLECT_SOUND_EVENT, store, true);
+
+            UICommandBuilder commands = new UICommandBuilder();
+
+            String marker = "#ChestMarkers[" + (tier - 1) + "]";
+            commands.set(marker + " #ChestClaimedPending.Visible", false);
+            commands.set(marker + " #ChestCollected.Visible", true);
+            commands.set(marker + " #Arrow.Visible", false);
+            commands.set(
+                    marker + " #ChestCollected.TooltipTextSpans",
+                    buildChestTooltip(tier, CHEST_COLLECTED_TOOLTIP_KEY, REWARD_COLLECTED_COLOR));
+
+            setRewardsButtonState(playerRef, commands, totalDiscovered, totalPlants);
+
+            return commands;
+        }
+
         int tier = getNextUncollectedTier(playerRef, HerbariumRewards.getTierCount(totalPlants));
 
         if (tier == 0 || totalDiscovered < HerbariumRewards.getTierThreshold(tier)) {
@@ -144,8 +248,11 @@ public class RewardBar {
             rewards.add(new ItemStack(reward.itemId(), reward.quantity()));
         }
 
-        SimpleItemContainer.addOrDropItemStacks(store, ref,
-                InventoryComponent.getCombined(store, ref, InventoryComponent.HOTBAR_FIRST), rewards);
+        SimpleItemContainer.addOrDropItemStacks(
+                store,
+                ref,
+                InventoryComponent.getCombined(store, ref, InventoryComponent.HOTBAR_FIRST),
+                rewards);
 
         FeedbackSound.play(playerRef, COLLECT_SOUND_EVENT, store, true);
 
@@ -155,12 +262,12 @@ public class RewardBar {
         commands.set(marker + " #ChestActive.Visible", false);
         commands.set(marker + " #ChestCollected.Visible", true);
         commands.set(marker + " #Arrow.Visible", false);
-        commands.set(marker + " #ChestCollected.TooltipTextSpans",
+        commands.set(
+                marker + " #ChestCollected.TooltipTextSpans",
                 buildChestTooltip(tier, CHEST_COLLECTED_TOOLTIP_KEY, REWARD_COLLECTED_COLOR));
 
         setRewardsButtonState(playerRef, commands, totalDiscovered, totalPlants);
 
         return commands;
     }
-
 }

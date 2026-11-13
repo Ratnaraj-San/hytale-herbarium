@@ -1,0 +1,41 @@
+$Common = "../../../Common.ui";
+$Herbarium = "HerbariumCommon.ui";
+
+// Tile for Obtained from / Other (merchants, trap tools): the source's icon on a
+// section-background tile (source name as tooltip), with the trade cost below the
+// tile for priced sources only (cost item icon + "x<amount>", tooltip "Buy"), and
+// the interaction icons below that (e.g. Harvest for trap tools).
+// Java addresses "#OtherTile #IngredientIcon" (AssetPath), "#OtherTile.TooltipTextSpans",
+// "#CostRow.Visible", "#CostRow #CostIcon" (AssetPath), "#CostRow #CostAmount" (.Text),
+// "#CostRow.TooltipTextSpans", "#SourceInteractions #IconHarvest" (.Visible, .TooltipTextSpans).
+Group {
+  LayoutMode: Top;
+  Anchor: (Width: 93, Right: 8, Bottom: 8);
+
+  $Herbarium.@IngredientTile #OtherTile {
+    @Width = 93;
+    @Height = 114;
+    @IconSize = 80;
+    @Gap = 0;
+  }
+
+  Group #CostRow {
+    LayoutMode: CenterMiddle;
+    Anchor: (Height: 28);
+    Padding: (Top: 2);
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+    TooltipText: "";
+
+    AssetImage #CostIcon {
+      Anchor: (Width: 24, Height: 24, Right: 4);
+      FallbackTexturePath: "UI/Custom/Pages/Memories/MissingIcon.png";
+    }
+
+    Label #CostAmount {
+      Style: (...$Herbarium.@EntryStyle, HorizontalAlignment: Start);
+      Text: "";
+    }
+  }
+
+  $Herbarium.@SourceInteractions #SourceInteractions { @Size = 40; }
+}

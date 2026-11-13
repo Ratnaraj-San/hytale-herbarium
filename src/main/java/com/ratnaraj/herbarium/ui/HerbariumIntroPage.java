@@ -7,9 +7,9 @@ import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.protocol.packets.interface_.CustomPageLifetime;
 import com.hypixel.hytale.protocol.packets.interface_.CustomUIEventBindingType;
+import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.entity.entities.player.pages.InteractiveCustomUIPage;
-import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.ui.builder.EventData;
 import com.hypixel.hytale.server.core.ui.builder.UICommandBuilder;
 import com.hypixel.hytale.server.core.ui.builder.UIEventBuilder;
@@ -20,8 +20,8 @@ import com.ratnaraj.herbarium.event.FeedbackParticle;
 import com.ratnaraj.herbarium.event.FeedbackSound;
 
 /**
- * Intro modal shown the first time a player opens the journal, mirroring
- * the vanilla Memories feature unlock page.
+ * Intro modal shown the first time a player opens the journal, mirroring the vanilla Memories
+ * feature unlock page.
  */
 public class HerbariumIntroPage extends InteractiveCustomUIPage<HerbariumIntroPage.PageEventData> {
 
@@ -32,22 +32,25 @@ public class HerbariumIntroPage extends InteractiveCustomUIPage<HerbariumIntroPa
     private static final String UNLOCK_PARTICLE_SYSTEM = "MemoryUnlock";
 
     /**
-     * Translation keys of the modal texts. They are set at runtime with
-     * Message.translation: .ui documents cannot reference plugin
-     * translation keys with %refs, the client fails to load the document
-     * when the key is not resolvable at parse time.
+     * Translation keys of the modal texts. They are set at runtime with Message.translation: .ui
+     * documents cannot reference plugin translation keys with %refs, the client fails to load the
+     * document when the key is not resolvable at parse time.
      */
-    private static final String TITLE_KEY = "server.herbarium.unlock.title";
-    private static final String BULLET1_KEY = "server.herbarium.unlock.bullet1";
-    private static final String BULLET2_KEY = "server.herbarium.unlock.bullet2";
-    private static final String BULLET3_KEY = "server.herbarium.unlock.bullet3";
-    private static final String OPEN_JOURNAL_KEY = "server.herbarium.unlock.openJournal";
+    private static final String TITLE_KEY = "server.herbarium.ui.intro.title";
+
+    private static final String BULLET1_KEY = "server.herbarium.ui.intro.bullet1";
+    private static final String BULLET2_KEY = "server.herbarium.ui.intro.bullet2";
+    private static final String BULLET3_KEY = "server.herbarium.ui.intro.bullet3";
+    private static final String OPEN_JOURNAL_KEY = "server.herbarium.ui.intro.openJournal";
 
     public static final class PageEventData {
         public static final BuilderCodec<PageEventData> CODEC =
                 BuilderCodec.builder(PageEventData.class, PageEventData::new)
-                        .append(new KeyedCodec<>("Type", Codec.STRING),
-                                PageEventData::setType, PageEventData::getType).add()
+                        .append(
+                                new KeyedCodec<>("Type", Codec.STRING),
+                                PageEventData::setType,
+                                PageEventData::getType)
+                        .add()
                         .build();
 
         private String type;
@@ -61,8 +64,12 @@ public class HerbariumIntroPage extends InteractiveCustomUIPage<HerbariumIntroPa
         }
     }
 
-    public HerbariumIntroPage(PlayerRef playerRef) {
-        super(playerRef, CustomPageLifetime.CanDismissOrCloseThroughInteraction, PageEventData.CODEC);
+    /** Whose journal data is displayed; the page itself belongs to playerRef (the viewer). */
+    private final PlayerRef subjectRef;
+
+    public HerbariumIntroPage(PlayerRef subject, PlayerRef viewer) {
+        super(viewer, CustomPageLifetime.CanDismissOrCloseThroughInteraction, PageEventData.CODEC);
+        this.subjectRef = subject;
     }
 
     @Override
@@ -70,21 +77,24 @@ public class HerbariumIntroPage extends InteractiveCustomUIPage<HerbariumIntroPa
             Ref<EntityStore> ref,
             UICommandBuilder commands,
             UIEventBuilder events,
-            Store<EntityStore> store
-    ) {
-        // Remember the player on the very first opening. The modal is also
-        // reopened later through the journal info button, and the vanilla
-        // feature-unlock sound plays only on the first appearance.
-        boolean firstOpening = !Herbarium.getPlayerStore().hasOpenedJournal(playerRef);
+            Store<EntityStore> store) {
+        // Remember the journal opening only when the viewer is the subject:
+        // viewing someone else's journal must not unlock it for them. The
+        // modal is also reopened later through the journal info button, and
+        // the vanilla feature-unlock sound plays only on the first appearance.
+        boolean ownJournal = playerRef.getUuid().equals(subjectRef.getUuid());
+        boolean firstOpening = !Herbarium.getPlayerStore().hasOpenedJournal(subjectRef);
 
-        Herbarium.getPlayerStore().markJournalOpened(playerRef);
+        if (ownJournal) {
+            Herbarium.getPlayerStore().markJournalOpened(subjectRef);
+        }
 
-        if (firstOpening) {
+        if (ownJournal && firstOpening) {
             FeedbackSound.play(playerRef, UNLOCK_SOUND_EVENT, store, false);
             FeedbackParticle.spawn(UNLOCK_PARTICLE_SYSTEM, ref, store);
         }
 
-        commands.append("Pages/Herbarium/JournalUnlocked.ui");
+        commands.append("Pages/Herbarium/components/JournalUnlocked.ui");
 
         commands.set("#ModalTitle.Text", Message.translation(TITLE_KEY));
         commands.set("#ModalBullet1.Text", Message.translation(BULLET1_KEY));
@@ -95,16 +105,18 @@ public class HerbariumIntroPage extends InteractiveCustomUIPage<HerbariumIntroPa
         events.addEventBinding(
                 CustomUIEventBindingType.Activating,
                 "#OpenJournalButton",
-                new EventData().append("Type", TYPE_OPEN_JOURNAL)
-        );
+                new EventData().append("Type", TYPE_OPEN_JOURNAL));
     }
 
     @Override
-    public void handleDataEvent(Ref<EntityStore> ref, Store<EntityStore> store, PageEventData data) {
+    public void handleDataEvent(
+            Ref<EntityStore> ref, Store<EntityStore> store, PageEventData data) {
         if (TYPE_OPEN_JOURNAL.equals(data.getType())) {
             Player player = store.getComponent(ref, Player.getComponentType());
+
             if (player != null) {
-                player.getPageManager().openCustomPage(ref, store, new HerbariumUIPage(playerRef));
+                HerbariumUIPage page = new HerbariumUIPage(subjectRef, playerRef, false);
+                player.getPageManager().openCustomPage(ref, store, page);
             }
         }
     }

@@ -1,0 +1,15 @@
+$Herbarium = "HerbariumCommon.ui";
+
+Group {
+  LayoutMode: Top;
+  Anchor: (Width: 93, Right: 8, Bottom: 16);
+
+  $Herbarium.@IngredientTile #IngredientTile {
+    @Width = 93;
+    @Height = 114;
+    @IconSize = 60;
+    @Gap = 0;
+  }
+
+  $Herbarium.@SourceInteractions #SourceInteractions { @Size = 40; }
+}

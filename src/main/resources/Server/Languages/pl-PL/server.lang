@@ -1,7 +1,89 @@
+# === Items ===
 items.Herbarium_Journal.name = Dziennik botanika
+items.Herbarium_Journal_Dev.name = Dziennik botanika (Developer)
 
-herbarium.location.found_in = Występuje w:
-herbarium.location.unknown = Nieznana lokalizacja
+# === CustomUI: journal page ===
+herbarium.ui.journal.progress = zapisanych roślin: {count, number} / {total, number}
+herbarium.ui.category.bramble = Jeżyny
+herbarium.ui.category.bush = Krzewy
+herbarium.ui.category.cactus = Kaktusy
+herbarium.ui.category.coral = Koralowce
+herbarium.ui.category.crop = Uprawy
+herbarium.ui.category.fern = Paprocie
+herbarium.ui.category.flower = Kwiaty
+herbarium.ui.category.fruit = Owoce
+herbarium.ui.category.grass = Trawy
+herbarium.ui.category.leaves = Liście
+herbarium.ui.category.moss = Mchy
+herbarium.ui.category.mushroom = Grzyby
+herbarium.ui.category.petals = Płatki
+herbarium.ui.category.reeds = Trzciny
+herbarium.ui.category.sapling = Sadzonki
+herbarium.ui.category.seaweed = Wodorosty
+herbarium.ui.category.seeds = Nasiona
+herbarium.ui.category.vine = Pnącza
+
+# === CustomUI: plant details containers ===
+herbarium.ui.container.locations.title = Występuje w:
+herbarium.ui.container.obtained_from.title = Uzyskano z
+herbarium.ui.container.gives.title = Daje
+herbarium.ui.container.toggleCollapse = Zwiń / rozwiń
+herbarium.ui.locations.unknown = Nieznana lokalizacja
+herbarium.ui.plant.discoveredOn = Odkryto {date}
+herbarium.ui.plant.discoveredAt = Odkryto {date} w ({place})
+herbarium.ui.plant.unlockedByCommand = Odblokowano komendami dnia {date}
+herbarium.ui.plant.copy_id_tooltip = Kliknij, aby zaznaczyć, Ctrl+C aby skopiować
+herbarium.ui.locations.zones = Strefy
+herbarium.ui.locations.regions = Regiony
+herbarium.ui.locations.portals = Portale
+herbarium.ui.obtained_from.interactions = Interakcje
+herbarium.ui.obtained_from.crafting = Wytwarzanie
+herbarium.ui.obtained_from.plants = Rośliny
+herbarium.ui.obtained_from.other = Inne
+herbarium.ui.obtained_from.buy = Kup
+herbarium.ui.interaction.break = Zniszcz
+herbarium.ui.interaction.harvest = Zbiór
+herbarium.ui.interaction.shears = Nożyce
+herbarium.ui.interaction.salvage = Odzysk
+herbarium.ui.interaction.growth = Wzrost
+
+# === CustomUI: rewards bar ===
+herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Zablokowane</b></color> \n<color is="#888888">Zapisz {count, number} {count, plural, one {roślinę} few {rośliny} many {roślin} other {roślin}}, aby odblokować:</color>
+herbarium.ui.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Odblokowane</b></color> \n<color is="#888888">Zapisano: {count, number} {count, plural, one {roślina} few {rośliny} many {roślin} other {roślin}}. Nagroda do odebrania:</color>
+herbarium.ui.rewards.chestCollected.tooltipText = <color is="#888888"><b>Odebrane</b></color> \n<color is="#888888">Zapisano: {count, number} {count, plural, one {roślina} few {rośliny} many {roślin} other {roślin}}. Odebrana nagroda:</color>
+herbarium.ui.rewards.chestCompensation.tooltipText = <color is="#C7984B"><b>Aktualizacja</b></color> \n<color is="#888888">Zapisano: {count, number} {count, plural, one {roślina} few {rośliny} many {roślin} other {roślin}}. Odebrana nagrodaNagroda do odebrania:</color>
+herbarium.ui.rewards.collectButton = Odbierz nagrodę {tier, number}
+herbarium.ui.rewards.allCollected = Wszystkie nagrody odebrane
+
+# === CustomUI: intro page ===
+herbarium.ui.intro.title = Odblokowano Dziennik botanika!
+herbarium.ui.intro.bullet1 = Ten dziennik będzie towarzyszył ci podczas całej eksploracji Orbisu.
+herbarium.ui.intro.bullet2 = Każda roślina, którą podniesiesz, zostanie tu zapisana wraz z datą i miejscem odkrycia.
+herbarium.ui.intro.bullet3 = Przeglądaj swoją kolekcję według kategorii, śledź postępy, zostań prawdziwym botanikiem i zbieraj nagrody!
+herbarium.ui.intro.openJournal = Otwórz dziennik
+
+# === Chat and commands (not CustomUI) ===
+herbarium.command.desc = Komendy Herbarium
+herbarium.command.open.desc = Otwiera Dziennik botanika.
+herbarium.command.resetall.desc = Usuwa cały twój postęp.
+herbarium.command.reset.desc = Usuwa postęp dla określonej kategorii.
+herbarium.command.reset.category.desc = Kategoria do zresetowania (np. Flower).
+herbarium.command.unlockall.desc = Odblokowuje wszystkie rośliny.
+herbarium.command.give.desc = Daje Dziennik botanika.
+herbarium.command.unlock.desc = Odblokowuje wszystkie rośliny danej kategorii.
+herbarium.command.playersOnly = To polecenie mogą wykonywać tylko gracze.
+herbarium.command.resetall.done = Twój postęp został zresetowany dla gracza {player}.
+herbarium.command.reset.done = Kategoria {category} została zresetowana dla gracza {player}.
+herbarium.command.unlockall.done = Odblokowano wszystkie rośliny dla gracza {player}.
+herbarium.command.give.done = {journal} został nadany graczowi {player}.
+herbarium.command.unlock.category.desc = Kategoria do odblokowania (np. Flower).
+herbarium.command.unlock.done = Kategoria {category} została odblokowana dla gracza {player}.
+herbarium.command.common.unknownCategory = Nieznana kategoria: {category}.
+herbarium.command.common.player.desc = Gracz docelowy (domyślnie ty sam).
+herbarium.command.common.devflag.desc = Zamiast tego daje dziennik deweloperski (wszystkie rośliny zarejestrowane).
+herbarium.notification.discovered = Odkryto nową roślinę:
+
+# === Data referenced by plants.json (do not rename) ===
 herbarium.location.cultivated = Uprawne pola
 herbarium.location.caves = Jaskinie
 herbarium.location.chests = Skrzynie
@@ -26,7 +108,6 @@ herbarium.location.ruined_temples = Zrujnowane świątynie
 herbarium.location.slothian_villages = Wioski slothianów
 herbarium.location.dungeons = Podziemia
 herbarium.location.cursed_crypts = Przeklęte krypty
-
 herbarium.tree.amber = Bursztynowe drzewa
 herbarium.tree.apple = Jabłonie
 herbarium.tree.ash = Jesiony
@@ -62,49 +143,3 @@ herbarium.tree.spiral = Spiralne drzewa
 herbarium.tree.stormbark = Drzewa o burzowej korze
 herbarium.tree.windwillow = Wierzby wiatrowe
 herbarium.tree.wisteria_wild = Dzikie glicynie
-
-herbarium.unlock.title = Odblokowano Dziennik botanika!
-herbarium.unlock.bullet1 = Ten dziennik będzie towarzyszył ci podczas całej eksploracji Orbisu.
-herbarium.unlock.bullet2 = Każda roślina, którą podniesiesz, zostanie tu zapisana wraz z datą i miejscem odkrycia.
-herbarium.unlock.bullet3 = Przeglądaj swoją kolekcję według kategorii, śledź postępy, zostań prawdziwym botanikiem i zbieraj nagrody!
-herbarium.unlock.openJournal = Otwórz dziennik
-
-herbarium.rewards.chestLocked.tooltipText = <color is="#990000"><b>Zablokowane</b></color> \n<color is="#888888">Zapisz {count, number} {count, plural, one {roślinę} few {rośliny} many {roślin} other {roślin}}, aby odblokować:</color>
-herbarium.rewards.chestActive.tooltipText = <color is="#1eab1e"><b>Odblokowane</b></color> \n<color is="#888888">Zapisano: {count, number} {count, plural, one {roślina} few {rośliny} many {roślin} other {roślin}}. Nagroda do odebrania:</color>
-herbarium.rewards.chestCollected.tooltipText = <color is="#888888"><b>Odebrane</b></color> \n<color is="#888888">Zapisano: {count, number} {count, plural, one {roślina} few {rośliny} many {roślin} other {roślin}}. Odebrana nagroda:</color>
-herbarium.rewards.collectButton = Odbierz nagrodę {tier, number}
-herbarium.rewards.allCollected = Wszystkie nagrody odebrane
-
-herbarium.command.desc = Komendy Herbarium
-herbarium.command.ui.desc = Otwiera Dziennik botanika.
-herbarium.command.reset.desc = Usuwa cały twój postęp.
-herbarium.command.unlockall.desc = Odblokowuje wszystkie rośliny.
-herbarium.command.playersOnly = To polecenie mogą wykonywać tylko gracze.
-herbarium.command.reset.done = Twój postęp został zresetowany.
-herbarium.command.unlockall.done = Odblokowano wszystkie rośliny.
-
-herbarium.progress.recorded = zapisanych roślin: {count, number} / {total, number}
-
-herbarium.plant.discoveredOn = Odkryto {date}
-herbarium.plant.discoveredAt = Odkryto {date} w ({place})
-
-herbarium.notification.discovered = Odkryto nową roślinę:
-
-herbarium.category.bramble = Jeżyny
-herbarium.category.bush = Krzewy
-herbarium.category.cactus = Kaktusy
-herbarium.category.coral = Koralowce
-herbarium.category.crop = Uprawy
-herbarium.category.fern = Paprocie
-herbarium.category.flower = Kwiaty
-herbarium.category.fruit = Owoce
-herbarium.category.grass = Trawy
-herbarium.category.leaves = Liście
-herbarium.category.moss = Mchy
-herbarium.category.mushroom = Grzyby
-herbarium.category.petals = Płatki
-herbarium.category.reeds = Trzciny
-herbarium.category.sapling = Sadzonki
-herbarium.category.seaweed = Wodorosty
-herbarium.category.seeds = Nasiona
-herbarium.category.vine = Pnącza
