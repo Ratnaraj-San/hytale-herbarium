@@ -199,6 +199,14 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                 UICommandBuilder commands = new UICommandBuilder();
                 UIEventBuilder events = new UIEventBuilder();
                 if (previous != null && !previous.equals(selectedPlant)) {
+                    // Opening another plant rebuilds the RightPanel, which resets its
+                    // scroll to the top (recreating #PlantContent instead of setting a
+                    // scroll property: the client crashes on unknown property paths).
+                    // PlantPanelRight.ui only defines @RightPanel, so append the
+                    // instantiable wrapper RightPanelInstance.ui.
+                    commands.clear("#RightPanel");
+                    commands.append(
+                            "#RightPanel", "Pages/Herbarium/components/RightPanelInstance.ui");
                     int previousIndex = plants.indexOf(previous);
                     if (previousIndex >= 0) {
                         setTileSelection(commands, previousIndex, false);

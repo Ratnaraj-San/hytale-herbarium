@@ -1,0 +1,5 @@
+$Right = "PlantPanelRight.ui";
+
+// Instantiable wrapper around @RightPanel, so Java can re-append the right panel
+// (e.g. to reset its scroll) via commands.append("#RightPanel", ".../RightPanelInstance.ui").
+$Right.@RightPanel {}
