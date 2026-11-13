@@ -31,6 +31,7 @@ herbarium.ui.container.toggleCollapse = Összecsukás / kibontás
 herbarium.ui.locations.unknown = Helyszín ismeretlen
 herbarium.ui.plant.discoveredOn = Felfedezve: {date}
 herbarium.ui.plant.discoveredAt = Felfedezve: {date}, itt: ({place})
+herbarium.ui.plant.unlockedByCommand = Paranccsal feloldva ekkor: {date}
 herbarium.ui.plant.copy_id_tooltip = Kattintson a kijelöléshez, Ctrl+C a másoláshoz
 herbarium.ui.locations.zones = Zónák
 herbarium.ui.locations.regions = Régiók

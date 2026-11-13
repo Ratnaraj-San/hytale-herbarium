@@ -31,6 +31,7 @@ herbarium.ui.container.toggleCollapse = Restrânge / extinde
 herbarium.ui.locations.unknown = Locație necunoscută
 herbarium.ui.plant.discoveredOn = Descoperită pe {date}
 herbarium.ui.plant.discoveredAt = Descoperită pe {date} la ({place})
+herbarium.ui.plant.unlockedByCommand = Deblocat prin comenzi pe {date}
 herbarium.ui.plant.copy_id_tooltip = Clic pentru a selecta, Ctrl+C pentru a copia
 herbarium.ui.locations.zones = Zone
 herbarium.ui.locations.regions = Regiuni

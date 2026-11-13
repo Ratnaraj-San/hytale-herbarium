@@ -31,6 +31,7 @@ herbarium.ui.container.toggleCollapse = Fold sammen / fold ud
 herbarium.ui.locations.unknown = Placering ukendt
 herbarium.ui.plant.discoveredOn = Opdaget {date}
 herbarium.ui.plant.discoveredAt = Opdaget {date} på ({place})
+herbarium.ui.plant.unlockedByCommand = Låst op med kommandoer den {date}
 herbarium.ui.plant.copy_id_tooltip = Klik for at markere, Ctrl+C for at kopiere
 herbarium.ui.locations.zones = Zoner
 herbarium.ui.locations.regions = Regioner

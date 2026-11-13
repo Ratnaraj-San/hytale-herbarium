@@ -31,6 +31,7 @@ herbarium.ui.container.toggleCollapse = Sbalit / rozbalit
 herbarium.ui.locations.unknown = Místo výskytu neznámé
 herbarium.ui.plant.discoveredOn = Nalezeno {date}
 herbarium.ui.plant.discoveredAt = Nalezeno {date} na ({place})
+herbarium.ui.plant.unlockedByCommand = Odemčeno příkazy dne {date}
 herbarium.ui.plant.copy_id_tooltip = Kliknutím vyberete, Ctrl+C zkopíruje
 herbarium.ui.locations.zones = Zóny
 herbarium.ui.locations.regions = Regiony

@@ -31,6 +31,7 @@ herbarium.ui.container.toggleCollapse = Contraer / expandir
 herbarium.ui.locations.unknown = Ubicación desconocida
 herbarium.ui.plant.discoveredOn = Descubierta el {date}
 herbarium.ui.plant.discoveredAt = Descubierta el {date} en ({place})
+herbarium.ui.plant.unlockedByCommand = Desbloqueado con comandos el {date}
 herbarium.ui.plant.copy_id_tooltip = Clic para seleccionar, Ctrl+C para copiar
 herbarium.ui.locations.zones = Zonas
 herbarium.ui.locations.regions = Regiones

@@ -174,7 +174,7 @@ public class PlayerStore {
             return;
         }
         PlayerData data = getOrCreate(playerRef.getUuid());
-        data.unlockAll();
+        data.unlockAll(Instant.now().toString());
         fileStore.save(playerRef.getUuid(), data);
     }
 
@@ -190,7 +190,7 @@ public class PlayerStore {
         }
 
         PlayerData data = getOrCreate(playerRef.getUuid());
-        data.unlockCategory(plantIds);
+        data.unlockCategory(plantIds, Instant.now().toString());
         fileStore.save(playerRef.getUuid(), data);
     }
 

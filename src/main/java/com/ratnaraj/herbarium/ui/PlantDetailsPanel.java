@@ -40,6 +40,8 @@ public class PlantDetailsPanel {
     private static final String PORTALS_TITLE_KEY = "server.herbarium.ui.locations.portals";
     private static final String DISCOVERED_ON_KEY = "server.herbarium.ui.plant.discoveredOn";
     private static final String DISCOVERED_AT_KEY = "server.herbarium.ui.plant.discoveredAt";
+    private static final String UNLOCKED_BY_COMMAND_KEY =
+            "server.herbarium.ui.plant.unlockedByCommand";
     private static final String COPY_ID_TOOLTIP_KEY = "server.herbarium.ui.plant.copy_id_tooltip";
     private static final String OBTAINED_FROM_TITLE_KEY =
             "server.herbarium.ui.container.obtained_from.title";
@@ -84,21 +86,31 @@ public class PlantDetailsPanel {
         commands.set("#SpacerAfterObtainedFrom.Visible", showObtainedFrom && showGives);
 
         PlantInfo plantInfo = store.getPlayerPlantInfo(playerRef, selectedPlant);
-        if (plantInfo != null
-                && plantInfo.wasDiscovered()
-                && plantInfo.getDiscoveredDate() != null) {
-            String date = plantInfo.getDiscoveredDate();
-            String place = plantInfo.getDiscoveredPlace();
-            Message text;
-            if (place != null) {
-                text =
-                        Message.translation(DISCOVERED_AT_KEY)
-                                .param("date", formatDate(date))
-                                .param("place", place);
-            } else {
-                text = Message.translation(DISCOVERED_ON_KEY).param("date", formatDate(date));
+        Message discoveryText = null;
+
+        if (plantInfo != null && plantInfo.wasDiscovered()) {
+            if (plantInfo.getDiscoveredDate() != null) {
+                String date = plantInfo.getDiscoveredDate();
+                String place = plantInfo.getDiscoveredPlace();
+
+                if (place != null) {
+                    discoveryText =
+                            Message.translation(DISCOVERED_AT_KEY)
+                                    .param("date", formatDate(date))
+                                    .param("place", place);
+                } else {
+                    discoveryText =
+                            Message.translation(DISCOVERED_ON_KEY).param("date", formatDate(date));
+                }
+            } else if (plantInfo.getUnlockedByCommandDate() != null) {
+                discoveryText =
+                        Message.translation(UNLOCKED_BY_COMMAND_KEY)
+                                .param("date", formatDate(plantInfo.getUnlockedByCommandDate()));
             }
-            commands.set("#PlantDiscovery.Text", text);
+        }
+
+        if (discoveryText != null) {
+            commands.set("#PlantDiscovery.Text", discoveryText);
         } else {
             commands.set("#PlantDiscovery.Text", "");
         }

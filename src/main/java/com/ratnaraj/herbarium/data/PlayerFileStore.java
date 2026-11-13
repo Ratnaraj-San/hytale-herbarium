@@ -280,6 +280,7 @@ public class PlayerFileStore {
                 jsonObject.addProperty("wasDiscovered", plant.wasDiscovered());
                 jsonObject.addProperty("discoveredDate", plant.getDiscoveredDate());
                 jsonObject.addProperty("discoveredPlace", plant.getDiscoveredPlace());
+                jsonObject.addProperty("unlockedByCommandDate", plant.getUnlockedByCommandDate());
                 jsonArray.add(jsonObject);
             }
             root.add("plants", jsonArray);
@@ -350,6 +351,13 @@ public class PlayerFileStore {
                 jsonObject.has("discoveredPlace") && !jsonObject.get("discoveredPlace").isJsonNull()
                         ? jsonObject.get("discoveredPlace").getAsString()
                         : null;
-        return new PlantInfo(id, "", wasDiscovered, discoveredDate, discoveredPlace);
+        String unlockedByCommandDate =
+                jsonObject.has("unlockedByCommandDate")
+                                && !jsonObject.get("unlockedByCommandDate").isJsonNull()
+                        ? jsonObject.get("unlockedByCommandDate").getAsString()
+                        : null;
+
+        return new PlantInfo(
+                id, "", wasDiscovered, discoveredDate, discoveredPlace, unlockedByCommandDate);
     }
 }

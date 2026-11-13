@@ -31,6 +31,7 @@ herbarium.ui.container.toggleCollapse = Daralt / genislet
 herbarium.ui.locations.unknown = Konum bilinmiyor
 herbarium.ui.plant.discoveredOn = Keşfedildi: {date}
 herbarium.ui.plant.discoveredAt = Keşfedildi: {date} ({place})
+herbarium.ui.plant.unlockedByCommand = Komutlarla açıldı: {date}
 herbarium.ui.plant.copy_id_tooltip = Seçmek için tıklayın, kopyalamak için Ctrl+C
 herbarium.ui.locations.zones = Bölgeler
 herbarium.ui.locations.regions = Yöreler

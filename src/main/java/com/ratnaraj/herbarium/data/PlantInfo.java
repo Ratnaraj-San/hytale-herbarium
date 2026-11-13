@@ -6,9 +6,10 @@ public class PlantInfo {
     private final boolean wasDiscovered;
     private final String discoveredDate;
     private final String discoveredPlace;
+    private final String unlockedByCommandDate;
 
     public PlantInfo(String id, String plantName, boolean wasDiscovered) {
-        this(id, plantName, wasDiscovered, null, null);
+        this(id, plantName, wasDiscovered, null, null, null);
     }
 
     public PlantInfo(
@@ -17,11 +18,22 @@ public class PlantInfo {
             boolean wasDiscovered,
             String discoveredDate,
             String discoveredPlace) {
+        this(id, plantName, wasDiscovered, discoveredDate, discoveredPlace, null);
+    }
+
+    public PlantInfo(
+            String id,
+            String plantName,
+            boolean wasDiscovered,
+            String discoveredDate,
+            String discoveredPlace,
+            String unlockedByCommandDate) {
         this.id = id;
         this.plantName = plantName;
         this.wasDiscovered = wasDiscovered;
         this.discoveredDate = discoveredDate;
         this.discoveredPlace = discoveredPlace;
+        this.unlockedByCommandDate = unlockedByCommandDate;
     }
 
     public String getId() {
@@ -44,6 +56,10 @@ public class PlantInfo {
     /** Human-readable coordinates of the discovery, or null if unknown. */
     public String getDiscoveredPlace() {
         return discoveredPlace;
+    }
+
+    public String getUnlockedByCommandDate() {
+        return unlockedByCommandDate;
     }
 
     @Override

@@ -43,10 +43,12 @@ public class PlayerData {
     public boolean markPlantDiscovered(
             String plantId, String plantName, String discoveredDate, String discoveredPlace) {
         PlantInfo existing = getPlantInfo(plantId);
+
         if (existing != null) {
-            if (existing.wasDiscovered()) {
+            if (existing.wasDiscovered() && existing.getDiscoveredDate() != null) {
                 return false;
             }
+
             plants.remove(existing);
         }
 
@@ -133,21 +135,23 @@ public class PlayerData {
         journalOpened = false;
     }
 
-    public void unlockAll() {
+    public void unlockAll(String unlockedByCommandDate) {
         Set<PlantInfo> unlocked = new HashSet<>();
+
         for (PlantInfo plant : plants) {
-            unlocked.add(new PlantInfo(plant.getId(), plant.getPlantName(), true));
+            unlocked.add(unlockPlant(plant, unlockedByCommandDate));
         }
+
         plants.clear();
         plants.addAll(unlocked);
     }
 
-    public void unlockCategory(Collection<String> plantIds) {
+    public void unlockCategory(Collection<String> plantIds, String unlockedByCommandDate) {
         Set<PlantInfo> updated = new HashSet<>();
 
         for (PlantInfo plant : plants) {
             if (plantIds.contains(plant.getId())) {
-                updated.add(new PlantInfo(plant.getId(), plant.getPlantName(), true));
+                updated.add(unlockPlant(plant, unlockedByCommandDate));
             } else {
                 updated.add(plant);
             }
@@ -155,6 +159,14 @@ public class PlayerData {
 
         plants.clear();
         plants.addAll(updated);
+    }
+
+    private static PlantInfo unlockPlant(PlantInfo plant, String unlockedByCommandDate) {
+        if (plant.wasDiscovered()) {
+            return plant;
+        }
+        return new PlantInfo(
+                plant.getId(), plant.getPlantName(), true, null, null, unlockedByCommandDate);
     }
 
     public void resetCategory(Collection<String> plantIds) {
