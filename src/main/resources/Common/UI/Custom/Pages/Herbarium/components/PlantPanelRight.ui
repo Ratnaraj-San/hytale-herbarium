@@ -66,7 +66,9 @@ $Herbarium = "HerbariumCommon.ui";
             LayoutMode: Top;
           }
 
-          $Herbarium.@Section #PlantLocationsPortals {}
+          $Herbarium.@SectionBox #PlantLocationsPortals {
+            @ListMode = Top;
+          }
 
           Label #PlantLocationUnknown {
             Style: $Herbarium.@EntryStyle;
@@ -97,31 +99,9 @@ $Herbarium = "HerbariumCommon.ui";
                 Visible: false;
               }
 
-              Group #InteractionsRow {
-                LayoutMode: CenterMiddle;
-
-                Group #InteractionBreak {
-                  Anchor: (Width: 40, Height: 40);
-                  Background: "../textures/InteractionBreak.png";
-                  TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
-                  TooltipText: "";
-                }
-
-                Group #InteractionHarvest {
-                  Anchor: (Width: 48, Height: 48);
-                  Padding: (Left: 12);
-                  Background: "../textures/InteractionHarvest.png";
-                  TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
-                  TooltipText: "";
-                }
-
-                Group #InteractionShears {
-                  Anchor: (Width: 48, Height: 48);
-                  Padding: (Left: 12);
-                  Background: "../textures/InteractionShears.png";
-                  TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
-                  TooltipText: "";
-                }
+              $Herbarium.@SourceInteractions #SourceInteractions {
+                @Size = 40;
+                @Gap = 12;
               }
             }
 

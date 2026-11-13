@@ -147,36 +147,16 @@ $Sounds = "../../../Sounds.ui";
   }
 };
 
-// Titled section: background box with a title label and a list container.
-// Usage: $H.@Section #MySection {}
-// Java addresses "#MySection #SectionTitle" and appends into "#MySection #SectionList".
-@Section = Group {
-  LayoutMode: Top;
-  Background: (TexturePath: "../textures/SectionBackground.png", Border: 8);
-  Padding: (Full: 8);
-
-  Label #SectionTitle {
-    Style: @SectionTitleStyle;
-    Text: "";
-    Visible: false;
-  }
-
-  @Spacer {
-    @Pad = Padding(Vertical: 4);
-  }
-
-  Group #SectionList {
-    LayoutMode: Top;
-  }
-};
-
 // Section box with a header row: title left (#SectionTitle, FlexWeight 1), optional
-// icon right (#HeaderIcon, 48px, hidden by default), then a wrapping list.
-// Usage: $H.@SectionBox #MySection { @BoxPad = ...; }   (override @BoxPad to change padding)
+// icon right (#HeaderIcon, 48px, hidden by default), then a list.
+// Usage: $H.@SectionBox #MySection { @BoxPad = ...; @ListMode = Top; }
+//   - override @BoxPad to change padding, @ListMode for the list layout
+//     (LeftCenterWrap = wrapping grid, Top = vertical list)
 // Java addresses "#MySection #SectionTitle", "#MySection #HeaderIcon",
 // and appends into "#MySection #SectionList".
 @SectionBox = Group {
   @BoxPad = Padding(Full: 8);
+  @ListMode = LeftCenterWrap;
 
   LayoutMode: Top;
   Background: (TexturePath: "../textures/SectionBackground.png", Border: 8);
@@ -206,7 +186,7 @@ $Sounds = "../../../Sounds.ui";
   }
 
   Group #SectionList {
-    LayoutMode: LeftCenterWrap;
+    LayoutMode: @ListMode;
     Anchor: (Full: 0);
   }
 };
@@ -234,15 +214,19 @@ $Sounds = "../../../Sounds.ui";
   }
 };
 
-// Horizontal row of "how" icons shown under a Gives / Plants source tile:
-// break (32), shears (32), salvage (40), growth (40), magical growth (40), craft (40).
+// Horizontal row of "how" icons: break, harvest, shears, salvage, growth, magical
+// growth, craft. Override @Size (icon edge) and @Gap (space between icons).
 // Java toggles each "#IconX.Visible" and sets its TooltipTextSpans.
+// Usage: $H.@SourceInteractions #SourceInteractions { @Size = 40; @Gap = 12; }
 @SourceInteractions = Group {
+  @Size = 32;
+  @Gap = 4;
+
   LayoutMode: CenterMiddle;
   Padding: (Top: 2);
 
   Group #IconBreak {
-    Anchor: (Width: 32, Height: 32, Right: 4);
+    Anchor: (Width: @Size, Height: @Size, Right: @Gap);
     Background: "../textures/InteractionBreak.png";
     TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
     TooltipText: "";
@@ -250,7 +234,7 @@ $Sounds = "../../../Sounds.ui";
   }
 
   Group #IconHarvest {
-    Anchor: (Width: 40, Height: 40, Right: 4);
+    Anchor: (Width: @Size, Height: @Size, Right: @Gap);
     Background: "../textures/InteractionHarvest.png";
     TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
     TooltipText: "";
@@ -258,7 +242,7 @@ $Sounds = "../../../Sounds.ui";
   }
 
   Group #IconShears {
-    Anchor: (Width: 32, Height: 32, Right: 4);
+    Anchor: (Width: @Size, Height: @Size, Right: @Gap);
     Background: "../textures/InteractionShears.png";
     TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
     TooltipText: "";
@@ -266,7 +250,7 @@ $Sounds = "../../../Sounds.ui";
   }
 
   Group #IconSalvage {
-    Anchor: (Width: 40, Height: 40, Right: 4);
+    Anchor: (Width: @Size, Height: @Size, Right: @Gap);
     Background: "../textures/InteractionSalvage.png";
     TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
     TooltipText: "";
@@ -274,7 +258,7 @@ $Sounds = "../../../Sounds.ui";
   }
 
   Group #IconGrowth {
-    Anchor: (Width: 40, Height: 40);
+    Anchor: (Width: @Size, Height: @Size, Right: @Gap);
     Background: "../textures/Growth.png";
     TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
     TooltipText: "";
@@ -282,7 +266,7 @@ $Sounds = "../../../Sounds.ui";
   }
 
   Group #IconGrowthMagical {
-    Anchor: (Width: 40, Height: 40);
+    Anchor: (Width: @Size, Height: @Size, Right: @Gap);
     Background: "../textures/GrowthMagical.png";
     TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
     TooltipText: "";
@@ -292,7 +276,7 @@ $Sounds = "../../../Sounds.ui";
   // Craft icon: falls back to InteractionCraft.png; when the recipe's bench is known,
   // #CraftBenchIcon shows the bench's own icon on top and the tooltip names the bench.
   Group #IconCraft {
-    Anchor: (Width: 40, Height: 40);
+    Anchor: (Width: @Size, Height: @Size);
     Background: "../textures/InteractionCraft.png";
     TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
     TooltipText: "";

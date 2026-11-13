@@ -26,8 +26,6 @@ public class PlantDetailsPanel {
     public static final String TYPE_SELECT_PLANT = "SelectPlant";
 
     private static final String LOCATION_ENTRY_UI = "Pages/Herbarium/components/LocationEntry.ui";
-    private static final String LOCATION_ENTRY_SPACED_UI =
-            "Pages/Herbarium/components/LocationEntrySpaced.ui";
     private static final String ZONE_SECTION_UI = "Pages/Herbarium/components/ZoneSection.ui";
     private static final String INGREDIENT_TILE_UI = "Pages/Herbarium/components/IngredientTile.ui";
     private static final String PLANT_INGREDIENT_TILE_UI =
@@ -188,8 +186,9 @@ public class PlantDetailsPanel {
         commands.clear(list);
 
         for (int i = 0; i < entries.size(); i++) {
-            // First entry has no top padding; the rest are spaced.
-            commands.append(list, i == 0 ? LOCATION_ENTRY_UI : LOCATION_ENTRY_SPACED_UI);
+            // First entry has no top spacer; the rest are spaced.
+            commands.append(list, LOCATION_ENTRY_UI);
+            commands.set(list + "[" + i + "] #TopSpacer.Visible", i > 0);
             commands.set(
                     list + "[" + i + "] #LocationText.Text", Message.translation(entries.get(i)));
         }
@@ -406,23 +405,17 @@ public class PlantDetailsPanel {
             return;
         }
 
-        String row = section + " #InteractionsHeader #InteractionsRow";
+        String row = section + " #InteractionsHeader #SourceInteractions";
 
         setInteractionIcon(
-                commands,
-                row + " #InteractionBreak",
-                interactions.canBreak(),
-                INTERACTION_BREAK_KEY);
+                commands, row + " #IconBreak", interactions.canBreak(), INTERACTION_BREAK_KEY);
         setInteractionIcon(
                 commands,
-                row + " #InteractionHarvest",
+                row + " #IconHarvest",
                 interactions.canCollect(),
                 INTERACTION_HARVEST_KEY);
         setInteractionIcon(
-                commands,
-                row + " #InteractionShears",
-                interactions.canShear(),
-                INTERACTION_SHEARS_KEY);
+                commands, row + " #IconShears", interactions.canShear(), INTERACTION_SHEARS_KEY);
     }
 
     private static void setCraftingSection(
