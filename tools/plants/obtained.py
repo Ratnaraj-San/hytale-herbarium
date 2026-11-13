@@ -304,6 +304,50 @@ def scan_crop_and_stage_ids(assets, item_path):
     return crops, stages
 
 
+# Item name fragments that mark block/item variants, not block states.
+VARIANT_SUFFIX_MARKERS = ("Block", "Item", "Eternal")
+
+
+def scan_block_states(assets, item_path):
+    """block base id -> set of state names, from BlockType.State.Definitions."""
+    block_states = {}
+    for item_id, path in item_path.items():
+        if not PLANT_ID_RE.match(item_id):
+            continue
+        data = assets.load_json(path) or {}
+        states = ((data.get("BlockType") or {}).get("State") or {}).get("Definitions") or {}
+        if states:
+            base = item_id
+            for suffix in ("_Item", "_Block"):
+                if item_id.endswith(suffix):
+                    base = item_id[: -len(suffix)]
+                    break
+            block_states.setdefault(base, set()).update(states.keys())
+    return block_states
+
+
+def find_orphan_state_items(item_path, block_states):
+    """Items named like a block state (base + "_" + rest) whose state is not defined on
+    the block — e.g. Plant_Crop_Wheat_Stage_4_Burnt: the wheat block only defines
+    Stage1/2/3/StageFinal, so the Burnt item can neither grow nor be harvested and is
+    not obtainable. Variant fragments (Block/Item/Eternal) are not states."""
+    orphans = set()
+    for item_id in item_path:
+        if not PLANT_ID_RE.match(item_id):
+            continue
+        for base, states in block_states.items():
+            if item_id.startswith(base + "_"):
+                rest = item_id[len(base) + 1:]
+                if (
+                    rest
+                    and rest not in states
+                    and not any(marker in rest for marker in VARIANT_SUFFIX_MARKERS)
+                ):
+                    orphans.add(item_id)
+                break
+    return orphans
+
+
 def is_crop(plant_id, crop_ids):
     return plant_id in crop_ids if crop_ids is not None else plant_id.startswith("Plant_Crop_")
 

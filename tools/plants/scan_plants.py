@@ -37,9 +37,11 @@ from obtained import (
     index_items,
     resolve_bench_items,
     sapling_prefab_links,
+    scan_block_states,
     scan_crop_and_stage_ids,
     scan_salvage_relations,
 )
+from obtained import find_orphan_state_items
 
 OUT_FILE = SCAN_FILE
 
@@ -62,6 +64,12 @@ def main():
     bench_info_map = bench_info(assets)
     harvest_refs = drop_list_refs(item_path, item_chain)
     crop_ids, stage_suffixes = scan_crop_and_stage_ids(assets, item_path)
+    block_states = scan_block_states(assets, item_path)
+    orphan_state_items = find_orphan_state_items(item_path, block_states)
+    if orphan_state_items:
+        print("ORPHAN STATE items (state not defined on the block, not obtainable):")
+        for plant_id in sorted(orphan_state_items):
+            print("   ", plant_id)
 
     # leaves (and any plant inside a tree prefab) are obtainable via the tree grown
     # from a craftable sapling: sapling -> Farming stages -> prefab -> leaves
@@ -85,8 +93,15 @@ def main():
         own_drops = [p for stem, p in drop_path.items() if stem == plant_id or stem.startswith(plant_id + "_")]
         drop = bool(own_drops) or any(dl in drop_path for dl in item_chain.drop_lists_of(plant_id))
         has_location = any(locations[plant_id][k] for k in ("regions", "zones", "portals"))
-        obtainable = has_location and plant_id in item_path and (
-            drop or item_chain.has_shears(plant_id) or any(src == plant_id for src, _ in salvage_rel)
+        obtainable = (
+            has_location
+            and plant_id in item_path
+            and plant_id not in orphan_state_items
+            and (
+                drop
+                or item_chain.has_shears(plant_id)
+                or any(src == plant_id for src, _ in salvage_rel)
+            )
         )
 
         sources = []
@@ -196,7 +211,7 @@ def main():
 
     # temporary final file: only player-obtainable plants (not versioned)
     by_id = {entry["id"]: entry for items in result.values() for entry in items}
-    apply_obtainable_rules(by_id)
+    apply_obtainable_rules(by_id, force_unobtainable=orphan_state_items)
     final = {}
     for cat, items in result.items():
         kept = [entry for entry in items if by_id[entry["id"]]["obtainableInExplorationMode"]]

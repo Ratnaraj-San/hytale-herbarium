@@ -43,7 +43,7 @@ def apply_obtainable_rule(entry):
     return entry
 
 
-def apply_obtainable_rules(by_id):
+def apply_obtainable_rules(by_id, force_unobtainable=()):
     """Fixpoint post-processing (see AGENTS.md).
 
     Base rule: apply_obtainable_rule. Then set obtainableInExplorationMode = false
@@ -53,6 +53,9 @@ def apply_obtainable_rules(by_id):
       - obtainedFrom.plants is empty -> does not come from another item
     Rationale: an item that neither generates in the world, nor is crafted, nor comes
     from another item cannot be obtained.
+
+    force_unobtainable: ids that must stay unobtainable whatever the signals say
+    (e.g. orphan block-state items whose state is not defined on the block).
     """
     for entry in by_id.values():
         apply_obtainable_rule(entry)
@@ -61,6 +64,9 @@ def apply_obtainable_rules(by_id):
         o = entry.get("obtainedFrom") or {}
         if locations_empty and not o.get("crafting") and not o.get("plants"):
             entry["obtainableInExplorationMode"] = False
+    for plant_id in force_unobtainable:
+        if plant_id in by_id:
+            by_id[plant_id]["obtainableInExplorationMode"] = False
     return by_id
 
 

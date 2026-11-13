@@ -3689,30 +3689,6 @@
           "bench": "Bench_Farming"
         }
       ]
-    },
-    {
-      "id": "Plant_Crop_Wheat_Stage_4_Burnt",
-      "obtainableInExplorationMode": true,
-      "locations": {
-        "regions": [
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
-        ],
-        "zones": [
-          "server.map.zone.Devastated_Lands"
-        ],
-        "portals": []
-      },
-      "obtainedFrom": {
-        "plants": [],
-        "crafting": null,
-        "interactions": {
-          "break": false,
-          "collect": true,
-          "shears": false
-        }
-      },
-      "gives": []
     }
   ],
   "Mushroom": [
