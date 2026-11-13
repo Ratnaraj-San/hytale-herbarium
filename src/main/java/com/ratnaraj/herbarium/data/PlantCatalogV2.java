@@ -16,6 +16,10 @@ public final class PlantCatalogV2 {
     private final Map<String, PlantInfo> allPlantsFromConfig;
     private final Map<String, List<String>> plantCategories = new LinkedHashMap<>();
     private final Map<String, PlantLocationsV2> plantLocations = new HashMap<>();
+    private final Map<String, PlantInteractions> plantInteractions = new HashMap<>();
+    private final Map<String, PlantCrafting> plantCrafting = new HashMap<>();
+    private final Map<String, List<PlantSource>> plantSources = new HashMap<>();
+    private final Map<String, List<PlantSource>> plantGives = new HashMap<>();
 
     public PlantCatalogV2() {
         this.allPlantsFromConfig = loadPlantsFromConfig();
@@ -54,6 +58,20 @@ public final class PlantCatalogV2 {
                                 readStringList(locationsJson, "zones"),
                                 readStringList(locationsJson, "portals")
                         ));
+
+                        JsonObject obtainedFrom = item.getAsJsonObject("obtainedFrom");
+
+                        plantInteractions.put(id, readInteractions(obtainedFrom));
+
+                        if (obtainedFrom != null
+                                && obtainedFrom.has("crafting")
+                                && !obtainedFrom.get("crafting").isJsonNull()
+                        ) {
+                            plantCrafting.put(id, readCrafting(obtainedFrom.getAsJsonObject("crafting")));
+                        }
+
+                        plantSources.put(id, readSources(obtainedFrom));
+                        plantGives.put(id, readGives(item));
                     }
 
                     if (!categoryPlants.isEmpty()) {
@@ -79,6 +97,116 @@ public final class PlantCatalogV2 {
 
     public PlantLocationsV2 getPlantLocations(String plantId) {
         return plantLocations.getOrDefault(plantId, PlantLocationsV2.EMPTY);
+    }
+
+    public PlantInteractions getPlantInteractions(String plantId) {
+        return plantInteractions.getOrDefault(plantId, PlantInteractions.NONE);
+    }
+
+    public PlantCrafting getPlantCrafting(String plantId) {
+        return plantCrafting.get(plantId);
+    }
+
+    public List<PlantSource> getPlantSources(String plantId) {
+        return plantSources.getOrDefault(plantId, Collections.emptyList());
+    }
+
+    public List<PlantSource> getPlantGives(String plantId) {
+        return plantGives.getOrDefault(plantId, Collections.emptyList());
+    }
+
+    private static List<PlantSource> readSources(JsonObject obtainedFrom) {
+        List<PlantSource> sources = new ArrayList<>();
+
+        if (obtainedFrom != null && obtainedFrom.has("plants") && obtainedFrom.get("plants").isJsonArray()) {
+            for (JsonElement e : obtainedFrom.getAsJsonArray("plants")) {
+                sources.add(readSource(e.getAsJsonObject()));
+            }
+        }
+
+        return List.copyOf(sources);
+    }
+
+    private static List<PlantSource> readGives(JsonObject item) {
+        List<PlantSource> gives = new ArrayList<>();
+
+        if (item.has("gives") && item.get("gives").isJsonArray()) {
+            for (JsonElement e : item.getAsJsonArray("gives")) {
+                gives.add(readSource(e.getAsJsonObject()));
+            }
+        }
+
+        return List.copyOf(gives);
+    }
+
+    private static PlantSource readSource(JsonObject s) {
+        return new PlantSource(
+                s.has("id") ? s.get("id").getAsString() : "",
+                readBool(s, "drop"),
+                readBool(s, "shears"),
+                readBool(s, "salvage"),
+                readBool(s, "growth"),
+                readBool(s, "magical"),
+                readBool(s, "craft"),
+                readBool(s, "collect"),
+                s.has("bench") && !s.get("bench").isJsonNull() ? s.get("bench").getAsString() : ""
+        );
+    }
+
+    private static PlantCrafting readCrafting(JsonObject crafting) {
+        List<PlantCrafting.Ingredient> inputs = new ArrayList<>();
+
+        if (crafting.has("Input") && crafting.get("Input").isJsonArray()) {
+            for (JsonElement e : crafting.getAsJsonArray("Input")) {
+                JsonObject in = e.getAsJsonObject();
+                inputs.add(new PlantCrafting.Ingredient(
+                        in.has("ItemId") ? in.get("ItemId").getAsString() : "",
+                        in.has("Quantity") && !in.get("Quantity").isJsonNull() ? in.get("Quantity").getAsInt() : 1
+                ));
+            }
+        }
+
+        List<PlantCrafting.Bench> benches = new ArrayList<>();
+
+        if (crafting.has("BenchRequirement") && crafting.get("BenchRequirement").isJsonArray()) {
+            for (JsonElement e : crafting.getAsJsonArray("BenchRequirement")) {
+                JsonObject b = e.getAsJsonObject();
+                String benchId = b.has("Id") ? b.get("Id").getAsString() : "";
+                String benchItemId = b.has("BenchItemId") && !b.get("BenchItemId").isJsonNull()
+                        ? b.get("BenchItemId").getAsString() : benchId;
+                benches.add(new PlantCrafting.Bench(
+                        benchId,
+                        benchItemId,
+                        readStringList(b, "Categories"),
+                        b.has("RequiredTierLevel") && !b.get("RequiredTierLevel").isJsonNull()
+                                ? b.get("RequiredTierLevel").getAsInt() : 0
+                ));
+            }
+        }
+
+        int outputQuantity = crafting.has("OutputQuantity") && !crafting.get("OutputQuantity").isJsonNull()
+                ? crafting.get("OutputQuantity").getAsInt() : 1;
+
+        return new PlantCrafting(List.copyOf(inputs), List.copyOf(benches), outputQuantity);
+    }
+
+    private static PlantInteractions readInteractions(JsonObject obtainedFrom) {
+        if (obtainedFrom == null || !obtainedFrom.has("interactions")) {
+            return PlantInteractions.NONE;
+        }
+
+        JsonObject interactions = obtainedFrom.getAsJsonObject("interactions");
+
+        return new PlantInteractions(
+                readBool(interactions, "break"),
+                readBool(interactions, "collect"),
+                readBool(interactions, "shears")
+        );
+    }
+
+    private static boolean readBool(JsonObject parent, String key) {
+        return parent != null && parent.has(key) && !parent.get(key).isJsonNull()
+                && parent.get(key).getAsBoolean();
     }
 
     private static List<String> readStringList(JsonObject parent, String key) {

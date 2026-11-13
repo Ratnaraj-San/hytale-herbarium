@@ -33,9 +33,21 @@ $Herbarium = "HerbariumCommon.ui";
           Text: "";
         }
 
-        Label #PlantId {
-          Style: $Herbarium.@PlantIdStyle;
-          Text: "";
+        // Dev view only: plant ID in a borderless text field so it can be
+        // selected and copied (Ctrl+C). Java toggles #PlantIdWrap.Visible and
+        // sets #PlantId.Value + the tooltip.
+        Group #PlantIdWrap {
+          TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+          TooltipText: "";
+          Visible: false;
+
+          TextField #PlantId {
+            Style: (...$Herbarium.@PlantIdFieldStyle, FontSize: 14);
+            Background: (Color: #000000(0));
+            Anchor: (Height: 22);
+            Padding: (Horizontal: 0);
+            Value: "";
+          }
         }
 
         $Herbarium.@FlexSpacer {}
@@ -49,26 +61,102 @@ $Herbarium = "HerbariumCommon.ui";
       FlexWeight: 1;
 
       $Herbarium.@TitledContainer #PlantContainerLocations {
-        $Herbarium.@Section #PlantLocationsZones {}
+        $Herbarium.@ContainerBody #ContainerBody {
+          Group #ZonedRegions {
+            LayoutMode: Top;
+          }
 
-        $Herbarium.@Spacer #SpacerAfterZones {
-          Visible: false;
-        }
+          $Herbarium.@Section #PlantLocationsPortals {}
 
-        $Herbarium.@Section #PlantLocationsRegions {}
-
-        $Herbarium.@Spacer #SpacerAfterRegions {
-          Visible: false;
-        }
-
-        $Herbarium.@Section #PlantLocationsPortals {}
-
-        Label #PlantLocationUnknown {
-          Style: $Herbarium.@EntryStyle;
-          Text: "";
-          Visible: false;
+          Label #PlantLocationUnknown {
+            Style: $Herbarium.@EntryStyle;
+            Text: "";
+            Visible: false;
+          }
         }
       }
+
+      $Herbarium.@Spacer {
+        @Pad = Padding(Vertical: 12);
+      }
+
+      $Herbarium.@TitledContainer #PlantContainerObtainedFrom {
+        $Herbarium.@ContainerBody #ContainerBody {
+          Group #PlantContainerObtainedFromInteractions {
+            LayoutMode: Top;
+            Background: (TexturePath: "../textures/SectionBackground.png", Border: 8);
+            Padding: (Full: 8);
+
+            Group #InteractionsHeader {
+              LayoutMode: CenterMiddle;
+
+              Label #SectionTitle {
+                Style: (...$Herbarium.@SectionTitleStyle, VerticalAlignment: Center);
+                Text: "";
+                FlexWeight: 1;
+                Visible: false;
+              }
+
+              Group #InteractionsRow {
+                LayoutMode: CenterMiddle;
+
+                Group #InteractionBreak {
+                  Anchor: (Width: 40, Height: 40);
+                  Background: "../textures/InteractionBreak.png";
+                  TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+                  TooltipText: "";
+                }
+
+                Group #InteractionHarvest {
+                  Anchor: (Width: 48, Height: 48);
+                  Padding: (Left: 12);
+                  Background: "../textures/InteractionHarvest.png";
+                  TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+                  TooltipText: "";
+                }
+
+                Group #InteractionShears {
+                  Anchor: (Width: 48, Height: 48);
+                  Padding: (Left: 12);
+                  Background: "../textures/InteractionShears.png";
+                  TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+                  TooltipText: "";
+                }
+              }
+            }
+
+            Group #SectionList {
+              LayoutMode: Top;
+            }
+          }
+
+          $Herbarium.@Spacer #SpacerAfterInteractions { Visible: false; }
+
+          $Herbarium.@SectionBox #PlantContainerObtainedFromCrafting {}
+
+          $Herbarium.@Spacer #SpacerAfterCrafting { Visible: false; }
+
+          $Herbarium.@SectionBox #PlantContainerObtainedFromPlants {
+            @BoxPad = Padding(Horizontal: 8, Top: 16, Bottom: 8);
+          }
+        }
+      }
+
+      $Herbarium.@Spacer #SpacerAfterObtainedFrom { Visible: false; }
+
+      // Gives: reverse of Obtained from / Plants. The container holds an untitled
+      // section box (@ListBox) whose content is the wrapping list of tiles.
+      $Herbarium.@TitledContainer #PlantContainerGives {
+        $Herbarium.@ContainerBody #ContainerBody {
+          $Herbarium.@ListBox {
+            Group #GivesList {
+              LayoutMode: LeftCenterWrap;
+              Anchor: (Full: 0);
+            }
+          }
+        }
+      }
+
     }
 
     Label #PlantDiscovery {

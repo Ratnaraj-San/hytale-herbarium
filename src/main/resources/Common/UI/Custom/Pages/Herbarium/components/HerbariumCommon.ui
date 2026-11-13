@@ -2,6 +2,9 @@
 // Imported by page orchestrators with: $H = "HerbariumCommon.ui";
 // (from Pages/Herbarium.ui: $H = "Herbarium/HerbariumCommon.ui";)
 
+$Common = "../../../Common.ui";
+$Sounds = "../../../Sounds.ui";
+
 @JournalTitleStyle = LabelStyle(
   FontSize: 15,
   VerticalAlignment: Center,
@@ -35,6 +38,9 @@
   LetterSpacing: 0.5,
   Wrap: true
 );
+
+// Dev view: the plant ID as a borderless text field (selectable, Ctrl+C copies)
+@PlantIdFieldStyle = InputFieldStyle(TextColor: #565a68);
 
 @PlantStatusStyle = LabelStyle(
   FontSize: 15,
@@ -88,18 +94,53 @@
   Padding: @Pad;
 };
 
-// Titled container: background box with a title label on top.
-// Usage: $H.@TitledContainer #MyContainer { ...content children... }
-// Java addresses the title as "#MyContainer #ContainerTitle".
+// Titled, collapsible container: background box with a header row (title left,
+// collapse toggle right). Content goes inside a @ContainerBody so the server can
+// hide it as a whole when the container is collapsed.
+// Usage: $H.@TitledContainer #MyContainer { $H.@ContainerBody #ContainerBody { ... } }
+// Java addresses "#MyContainer #ContainerTitle", "#MyContainer #CollapseButton",
+// "#MyContainer #CollapseArrow" (.AssetPath swaps the arrow) and
+// "#MyContainer #ContainerBody" (.Visible toggles the content).
 @TitledContainer = Group {
   LayoutMode: Top;
   Background: (TexturePath: "../textures/ContainerBackgroundSecondary.png", Border: 23);
   Padding: (Full: 12);
 
-  Label #ContainerTitle {
-    Style: @ContainerTitleStyle;
-    Text: "";
+  Group #ContainerHeader {
+    LayoutMode: CenterMiddle;
+    Anchor: (Height: 24);
+
+    Label #ContainerTitle {
+      Style: (...@ContainerTitleStyle, VerticalAlignment: Center);
+      Text: "";
+      FlexWeight: 1;
+    }
+
+    Button #CollapseButton {
+      Anchor: (Width: 24, Height: 24);
+      LayoutMode: CenterMiddle;
+      Style: (
+        Default: (Background: (Color: #000000(0))),
+        Hovered: (Background: (Color: #ffffff(0.1))),
+        Pressed: (Background: (Color: #ffffff(0.2))),
+        Sounds: $Sounds.@ButtonsLight
+      );
+      TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+      TooltipText: %server.herbarium.ui.container.toggleCollapse;
+
+      // Image set at runtime by Java (#CollapseArrow.AssetPath): down arrow when
+      // expanded, right arrow when collapsed.
+      AssetImage #CollapseArrow {
+        Anchor: (Width: 12, Height: 16);
+        FallbackTexturePath: "UI/Custom/Pages/Memories/MissingIcon.png";
+      }
+    }
   }
+};
+
+// Body of a @TitledContainer: everything in here is hidden when collapsed.
+@ContainerBody = Group {
+  LayoutMode: Top;
 
   @Spacer {
     @Pad = Padding(Bottom: 8);
@@ -121,10 +162,226 @@
   }
 
   @Spacer {
-    @Pad = Padding(Vertical: 2);
+    @Pad = Padding(Vertical: 4);
   }
 
   Group #SectionList {
     LayoutMode: Top;
+  }
+};
+
+// Section box with a header row: title left (#SectionTitle, FlexWeight 1), optional
+// icon right (#HeaderIcon, 48px, hidden by default), then a wrapping list.
+// Usage: $H.@SectionBox #MySection { @BoxPad = ...; }   (override @BoxPad to change padding)
+// Java addresses "#MySection #SectionTitle", "#MySection #HeaderIcon",
+// and appends into "#MySection #SectionList".
+@SectionBox = Group {
+  @BoxPad = Padding(Full: 8);
+
+  LayoutMode: Top;
+  Background: (TexturePath: "../textures/SectionBackground.png", Border: 8);
+  Padding: @BoxPad;
+
+  Group #SectionHeader {
+    LayoutMode: CenterMiddle;
+
+    Label #SectionTitle {
+      Style: (...@SectionTitleStyle, VerticalAlignment: Center);
+      Text: "";
+      FlexWeight: 1;
+      Visible: false;
+    }
+
+    AssetImage #HeaderIcon {
+      Anchor: (Width: 48, Height: 48);
+      FallbackTexturePath: "UI/Custom/Pages/Memories/MissingIcon.png";
+      TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+      TooltipText: "";
+      Visible: false;
+    }
+  }
+
+  @Spacer {
+    @Pad = Padding(Vertical: 4);
+  }
+
+  Group #SectionList {
+    LayoutMode: LeftCenterWrap;
+    Anchor: (Full: 0);
+  }
+};
+
+// Small tile for a crafting ingredient: icon + tooltip name (amount sits below the tile).
+// Same structure as PlantTile (centered icon over labels) on a section background.
+// Usage: $H.@IngredientTile #MyTile {}
+// Java addresses "#MyTile #IngredientIcon" (AssetPath), "#IngredientName", "#IngredientAmount".
+@IngredientTile = Group {
+  Anchor: (Width: 96, Height: 124, Right: 8, Bottom: 8);
+  LayoutMode: Top;
+  Background: (TexturePath: "../textures/SectionBackground.png", Border: 8);
+  Padding: (Full: 6);
+  TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+  TooltipText: "";
+
+  Group {
+    LayoutMode: Middle;
+    FlexWeight: 1;
+
+    AssetImage #IngredientIcon {
+      Anchor: (Width: 48, Height: 48);
+      FallbackTexturePath: "UI/Custom/Pages/Memories/MissingIcon.png";
+    }
+  }
+};
+
+// Horizontal row of "how" icons shown under a Gives / Plants source tile:
+// break (32), shears (32), salvage (40), growth (40), magical growth (40), craft (40).
+// Java toggles each "#IconX.Visible" and sets its TooltipTextSpans.
+@SourceInteractions = Group {
+  LayoutMode: CenterMiddle;
+  Padding: (Top: 2);
+
+  Group #IconBreak {
+    Anchor: (Width: 32, Height: 32, Right: 4);
+    Background: "../textures/InteractionBreak.png";
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+    TooltipText: "";
+    Visible: false;
+  }
+
+  Group #IconHarvest {
+    Anchor: (Width: 40, Height: 40, Right: 4);
+    Background: "../textures/InteractionHarvest.png";
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+    TooltipText: "";
+    Visible: false;
+  }
+
+  Group #IconShears {
+    Anchor: (Width: 32, Height: 32, Right: 4);
+    Background: "../textures/InteractionShears.png";
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+    TooltipText: "";
+    Visible: false;
+  }
+
+  Group #IconSalvage {
+    Anchor: (Width: 40, Height: 40, Right: 4);
+    Background: "../textures/InteractionSalvage.png";
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+    TooltipText: "";
+    Visible: false;
+  }
+
+  Group #IconGrowth {
+    Anchor: (Width: 40, Height: 40);
+    Background: "../textures/Growth.png";
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+    TooltipText: "";
+    Visible: false;
+  }
+
+  Group #IconGrowthMagical {
+    Anchor: (Width: 40, Height: 40);
+    Background: "../textures/GrowthMagical.png";
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+    TooltipText: "";
+    Visible: false;
+  }
+
+  // Craft icon: falls back to InteractionCraft.png; when the recipe's bench is known,
+  // #CraftBenchIcon shows the bench's own icon on top and the tooltip names the bench.
+  Group #IconCraft {
+    Anchor: (Width: 40, Height: 40);
+    Background: "../textures/InteractionCraft.png";
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+    TooltipText: "";
+    Visible: false;
+
+    AssetImage #CraftBenchIcon {
+      Anchor: (Full: 0);
+      FallbackTexturePath: "UI/Custom/Pages/Memories/MissingIcon.png";
+      Visible: false;
+    }
+  }
+};
+
+// Untitled section body: same background as @Section, wrapping a list directly.
+// Usage: $H.@ListBox { Group #MyList { LayoutMode: LeftCenterWrap; Anchor: (Full: 0); } }
+@ListBox = Group {
+  LayoutMode: Top;
+  Background: (TexturePath: "../textures/SectionBackground.png", Border: 8);
+  Padding: (Full: 8);
+};
+
+// Plant tile, same as the LeftPanel grid tiles (moved here so ingredient lists can
+// reuse it). Java addresses "#Icon", "#ButtonNotSelected"/"#ButtonSelected",
+// "#EmptyBackground" relative to the tile root.
+@PlantTile = Group {
+  @Width = 144;
+  @Height = 176;
+  @IconSize = 112;
+  @Gap = 16;
+
+  Anchor: (Width: @Width, Height: @Height, Right: @Gap, Bottom: @Gap);
+  Padding: (Full: 0);
+
+  Group #EmptyBackground {
+    Visible: false;
+    Background: (TexturePath: "../textures/Tiles/TileEmpty.png", Border: 8);
+    TooltipText: %server.memories.general.undiscovered.tooltipText;
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+  }
+
+  TextButton #ButtonNotSelected {
+    Visible: false;
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+    Style: (
+      Sounds: $Sounds.@ButtonsLight,
+      Default: (
+        LabelStyle: (
+          Wrap: true,
+          HorizontalAlignment: Center,
+          VerticalAlignment: Center
+        ),
+        Background: (TexturePath: "../textures/Tiles/TileDefault.png", Border: 8)
+      ),
+      Hovered: (
+        LabelStyle: (
+          Wrap: true,
+          HorizontalAlignment: Center,
+          VerticalAlignment: Center
+        ),
+        Background: (TexturePath: "../textures/Tiles/TileHovered.png", Border: 8)
+      )
+    );
+    FlexWeight: 1;
+  }
+
+  TextButton #ButtonSelected {
+    TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+    Visible: false;
+    Style: (
+      Sounds: $Sounds.@ButtonsLight,
+      Default: (
+        LabelStyle: (
+          Wrap: true,
+          HorizontalAlignment: Center,
+          VerticalAlignment: Center
+        ),
+        Background: (TexturePath: "../textures/Tiles/TileSelected.png", Border: 8)
+      )
+    );
+    FlexWeight: 1;
+  }
+
+  Group {
+    LayoutMode: Middle;
+    Anchor: (Full: 0);
+
+    AssetImage #Icon {
+      Anchor: (Width: @IconSize, Height: @IconSize);
+      FallbackTexturePath: "UI/Custom/Pages/Memories/MissingIcon.png";
+    }
   }
 };

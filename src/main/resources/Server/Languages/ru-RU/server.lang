@@ -25,12 +25,24 @@ herbarium.ui.category.vine = Лианы
 
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Встречается в:
+herbarium.ui.container.obtained_from.title = Получено из
+herbarium.ui.container.gives.title = Даёт
+herbarium.ui.container.toggleCollapse = Свернуть / развернуть
 herbarium.ui.locations.unknown = Местонахождение неизвестно
 herbarium.ui.plant.discoveredOn = Обнаружено {date}
 herbarium.ui.plant.discoveredAt = Обнаружено {date} в ({place})
+herbarium.ui.plant.copy_id_tooltip = Нажмите, чтобы выделить, Ctrl+C чтобы скопировать
 herbarium.ui.locations.zones = Зоны
 herbarium.ui.locations.regions = Регионы
 herbarium.ui.locations.portals = Порталы
+herbarium.ui.obtained_from.interactions = Взаимодействия
+herbarium.ui.obtained_from.crafting = Изготовление
+herbarium.ui.obtained_from.plants = Растения
+herbarium.ui.interaction.break = Сломать
+herbarium.ui.interaction.harvest = Сбор урожая
+herbarium.ui.interaction.shears = Ножницы
+herbarium.ui.interaction.salvage = Разобрать
+herbarium.ui.interaction.growth = Рост
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Закрыто</b></color> \n<color is="#888888">Запишите {count, number} {count, plural, one {растение} few {растения} many {растений} other {растения}}, чтобы открыть:</color>

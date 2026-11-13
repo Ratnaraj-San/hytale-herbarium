@@ -25,12 +25,24 @@ herbarium.ui.category.vine = Lianer
 
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Findes i:
+herbarium.ui.container.obtained_from.title = Opnået fra
+herbarium.ui.container.gives.title = Giver
+herbarium.ui.container.toggleCollapse = Fold sammen / fold ud
 herbarium.ui.locations.unknown = Placering ukendt
 herbarium.ui.plant.discoveredOn = Opdaget {date}
 herbarium.ui.plant.discoveredAt = Opdaget {date} på ({place})
+herbarium.ui.plant.copy_id_tooltip = Klik for at markere, Ctrl+C for at kopiere
 herbarium.ui.locations.zones = Zoner
 herbarium.ui.locations.regions = Regioner
 herbarium.ui.locations.portals = Portaler
+herbarium.ui.obtained_from.interactions = Interaktioner
+herbarium.ui.obtained_from.crafting = Fremstilling
+herbarium.ui.obtained_from.plants = Planter
+herbarium.ui.interaction.break = Ødelæg
+herbarium.ui.interaction.harvest = Høst
+herbarium.ui.interaction.shears = Saks
+herbarium.ui.interaction.salvage = Redde
+herbarium.ui.interaction.growth = Vækst
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Låst</b></color> \n<color is="#888888">Registrér {count, number} {count, plural, one {plante} other {planter}} for at låse op:</color>

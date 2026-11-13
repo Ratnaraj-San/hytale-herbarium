@@ -25,12 +25,24 @@ herbarium.ui.category.vine = Vine
 
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Found in
+herbarium.ui.container.obtained_from.title = Obtained from
+herbarium.ui.container.gives.title = Gives
+herbarium.ui.container.toggleCollapse = Collapse / expand
 herbarium.ui.locations.unknown = Location unknown
 herbarium.ui.locations.zones = Zones
 herbarium.ui.locations.regions = Regions
 herbarium.ui.locations.portals = Portals
+herbarium.ui.obtained_from.interactions = Interactions
+herbarium.ui.obtained_from.crafting = Crafting
+herbarium.ui.obtained_from.plants = Plants
+herbarium.ui.interaction.break = Break
+herbarium.ui.interaction.harvest = Harvest
+herbarium.ui.interaction.shears = Shears
+herbarium.ui.interaction.salvage = Salvage
+herbarium.ui.interaction.growth = Growth
 herbarium.ui.plant.discoveredOn = Discovered on {date}
 herbarium.ui.plant.discoveredAt = Discovered on {date} at ({place})
+herbarium.ui.plant.copy_id_tooltip = Click to select, Ctrl+C to copy
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Locked</b></color> \n<color is="#888888">Record {count, number} {count, plural, one {plant} other {plants}} to unlock:</color>

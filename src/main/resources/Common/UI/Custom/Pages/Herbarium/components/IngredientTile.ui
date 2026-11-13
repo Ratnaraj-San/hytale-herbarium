@@ -1,0 +1,12 @@
+$Herbarium = "HerbariumCommon.ui";
+
+Group {
+  LayoutMode: Top;
+
+  $Herbarium.@IngredientTile #IngredientTile {}
+
+  Label #IngredientAmount {
+    Style: (...$Herbarium.@EntryStyle, HorizontalAlignment: Center);
+    Text: "";
+  }
+}

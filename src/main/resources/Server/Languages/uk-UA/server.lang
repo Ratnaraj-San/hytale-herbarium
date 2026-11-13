@@ -25,12 +25,24 @@ herbarium.ui.category.vine = Ліани
 
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Зустрічається в:
+herbarium.ui.container.obtained_from.title = Отримано з
+herbarium.ui.container.gives.title = Дає
+herbarium.ui.container.toggleCollapse = Згорнути / розгорнути
 herbarium.ui.locations.unknown = Місцезнаходження невідоме
 herbarium.ui.plant.discoveredOn = Виявлено {date}
 herbarium.ui.plant.discoveredAt = Виявлено {date} біля ({place})
+herbarium.ui.plant.copy_id_tooltip = Натисніть, щоб виділити, Ctrl+C, щоб скопіювати
 herbarium.ui.locations.zones = Зони
 herbarium.ui.locations.regions = Регіони
 herbarium.ui.locations.portals = Портали
+herbarium.ui.obtained_from.interactions = Взаємодії
+herbarium.ui.obtained_from.crafting = Виготовлення
+herbarium.ui.obtained_from.plants = Рослини
+herbarium.ui.interaction.break = Зламати
+herbarium.ui.interaction.harvest = Збір урожая
+herbarium.ui.interaction.shears = Ножиці
+herbarium.ui.interaction.salvage = Розібрати
+herbarium.ui.interaction.growth = Ріст
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Замкнено</b></color> \n<color is="#888888">Запишіть {count, number} {count, plural, one {рослину} few {рослини} many {рослин} other {рослини}}, щоб відкрити:</color>

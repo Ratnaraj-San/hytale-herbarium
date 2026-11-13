@@ -25,12 +25,24 @@ herbarium.ui.category.vine = Köynnökset
 
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Esiintyy:
+herbarium.ui.container.obtained_from.title = Hankittu kohteesta
+herbarium.ui.container.gives.title = Antaa
+herbarium.ui.container.toggleCollapse = Tiivistä / laajenna
 herbarium.ui.locations.unknown = Sijainti tuntematon
 herbarium.ui.plant.discoveredOn = Löydetty {date}
 herbarium.ui.plant.discoveredAt = Löydetty {date} kohdasta ({place})
+herbarium.ui.plant.copy_id_tooltip = Napsauta valitaksesi, Ctrl+C kopioi
 herbarium.ui.locations.zones = Vyöhykkeet
 herbarium.ui.locations.regions = Alueet
 herbarium.ui.locations.portals = Portaalit
+herbarium.ui.obtained_from.interactions = Vuorovaikutukset
+herbarium.ui.obtained_from.crafting = Valmistus
+herbarium.ui.obtained_from.plants = Kasvit
+herbarium.ui.interaction.break = Riko
+herbarium.ui.interaction.harvest = Sato
+herbarium.ui.interaction.shears = Sakset
+herbarium.ui.interaction.salvage = Romuttaa
+herbarium.ui.interaction.growth = Kasvu
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Lukittu</b></color> \n<color is="#888888">Kirjaa {count, number} {count, plural, one {kasvi} other {kasvia}} avataksesi lukituksen:</color>

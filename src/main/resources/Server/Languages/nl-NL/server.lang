@@ -25,12 +25,24 @@ herbarium.ui.category.vine = Lianen
 
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Te vinden in:
+herbarium.ui.container.obtained_from.title = Verkregen via
+herbarium.ui.container.gives.title = Geeft
+herbarium.ui.container.toggleCollapse = Inklappen / uitklappen
 herbarium.ui.locations.unknown = Locatie onbekend
 herbarium.ui.plant.discoveredOn = Ontdekt op {date}
 herbarium.ui.plant.discoveredAt = Ontdekt op {date} bij ({place})
+herbarium.ui.plant.copy_id_tooltip = Klik om te selecteren, Ctrl+C om te kopiëren
 herbarium.ui.locations.zones = Zones
 herbarium.ui.locations.regions = Regio's
 herbarium.ui.locations.portals = Portalen
+herbarium.ui.obtained_from.interactions = Interacties
+herbarium.ui.obtained_from.crafting = Vervaardiging
+herbarium.ui.obtained_from.plants = Planten
+herbarium.ui.interaction.break = Breken
+herbarium.ui.interaction.harvest = Oogst
+herbarium.ui.interaction.shears = Schaar
+herbarium.ui.interaction.salvage = Bergen
+herbarium.ui.interaction.growth = Groei
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Vergrendeld</b></color> \n<color is="#888888">Leg {count, number} {count, plural, one {plant} other {planten}} vast om te ontgrendelen:</color>

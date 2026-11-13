@@ -25,12 +25,24 @@ herbarium.ui.category.vine = Liane
 
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Se găsește în:
+herbarium.ui.container.obtained_from.title = Obținut din
+herbarium.ui.container.gives.title = Dă
+herbarium.ui.container.toggleCollapse = Restrânge / extinde
 herbarium.ui.locations.unknown = Locație necunoscută
 herbarium.ui.plant.discoveredOn = Descoperită pe {date}
 herbarium.ui.plant.discoveredAt = Descoperită pe {date} la ({place})
+herbarium.ui.plant.copy_id_tooltip = Clic pentru a selecta, Ctrl+C pentru a copia
 herbarium.ui.locations.zones = Zone
 herbarium.ui.locations.regions = Regiuni
 herbarium.ui.locations.portals = Portale
+herbarium.ui.obtained_from.interactions = Interacțiuni
+herbarium.ui.obtained_from.crafting = Fabricare
+herbarium.ui.obtained_from.plants = Plante
+herbarium.ui.interaction.break = Sparge
+herbarium.ui.interaction.harvest = Recoltă
+herbarium.ui.interaction.shears = Foarfece
+herbarium.ui.interaction.salvage = Dezasambla
+herbarium.ui.interaction.growth = Creștere
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Blocat</b></color> \n<color is="#888888">Înregistrează {count, number} {count, plural, one {plantă} other {plante}} pentru a debloca:</color>

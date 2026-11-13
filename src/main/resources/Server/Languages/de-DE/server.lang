@@ -25,12 +25,24 @@ herbarium.ui.category.vine = Lianen
 
 # === CustomUI: plant details containers ===
 herbarium.ui.container.locations.title = Zu finden in:
+herbarium.ui.container.obtained_from.title = Erhalten durch
+herbarium.ui.container.gives.title = Gibt
+herbarium.ui.container.toggleCollapse = Einklappen / ausklappen
 herbarium.ui.locations.unknown = Fundort unbekannt
 herbarium.ui.plant.discoveredOn = Entdeckt am {date}
 herbarium.ui.plant.discoveredAt = Entdeckt am {date} bei ({place})
+herbarium.ui.plant.copy_id_tooltip = Klicken zum Auswählen, Strg+C zum Kopieren
 herbarium.ui.locations.zones = Zonen
 herbarium.ui.locations.regions = Regionen
 herbarium.ui.locations.portals = Portale
+herbarium.ui.obtained_from.interactions = Interaktionen
+herbarium.ui.obtained_from.crafting = Herstellung
+herbarium.ui.obtained_from.plants = Pflanzen
+herbarium.ui.interaction.break = Zerstören
+herbarium.ui.interaction.harvest = Ernte
+herbarium.ui.interaction.shears = Schere
+herbarium.ui.interaction.salvage = Ausschlachten
+herbarium.ui.interaction.growth = Wachstum
 
 # === CustomUI: rewards bar ===
 herbarium.ui.rewards.chestLocked.tooltipText = <color is="#990000"><b>Gesperrt</b></color> \n<color is="#888888">Zeichne {count, number} {count, plural, one {Pflanze} other {Pflanzen}} auf, um freizuschalten:</color>
