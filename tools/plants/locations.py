@@ -20,8 +20,10 @@ WORLD_EVENT_RE = re.compile(r"^Server/WorldEvent/.+\.json$")
 # HytaleGenerator biome dir -> world region prefix. The biome->zone link lives in the
 # game engine (BiomeGenerator seeds like "Grasslands-Biomes-Distrobution"), not in the
 # assets, so this map stays manual — but validate_biome_map() below warns when it goes
-# stale (unknown biome dir, or prefix with no valid region). Portal_* dirs map to
-# portals at runtime.
+# stale (unknown biome dir, or prefix with no valid region). Portal_* dirs and
+# "<biome>_<Portal>_*.json" files map to player portals at runtime (see
+# is_player_portal_instance: only InstanceId "Portals/..." worlds count — The_Deepworks
+# is a main-world dungeon and is excluded).
 BIOME_DIR_TO_REGION_PREFIX = {
     "Plains1": "Zone1",
     "Desert1": "Zone2",
@@ -168,6 +170,40 @@ def load_portals(assets):
     return portals
 
 
+def is_player_portal_instance(instance_id):
+    """Only real portal worlds (Server/Instances/Portals/*, InstanceId "Portals/...") are
+    player-reachable portals. Others — e.g. The_Deepworks, a main-world dungeon where blocks
+    cannot be interacted with — must NOT count as locations."""
+    return bool(instance_id) and instance_id.startswith("Portals/")
+
+
+def player_portal_keys(portals):
+    """portal world suffix -> translation key, for player-reachable portals only.
+    InstanceId "Portals/Portals_Hedera" -> suffix "hedera" -> server.portals.hederas_lair."""
+    out = {}
+    for _portal_type, (instance_id, key) in portals.items():
+        if not is_player_portal_instance(instance_id):
+            continue
+        name = instance_id[len("Portals/"):].lower().replace("portals_", "")
+        out[name] = key
+    return out
+
+
+def match_portal_file_stem(file_stem, biome_dir, portal_keys):
+    """An Assignments/Biomes file named "<biome_dir>_<PortalSuffix>_...json" (e.g.
+    Boreal1_Hedera_Mosses.json) belongs to that portal world, not to the main-world
+    region of biome_dir. Returns the portal translation key, or None."""
+    prefix = biome_dir + "_"
+    if not file_stem.startswith(prefix):
+        return None
+    for seg in file_stem[len(prefix):].split("_"):
+        seg_lower = seg.lower()
+        for name, key in portal_keys.items():
+            if seg_lower == name or name.startswith(seg_lower):
+                return key
+    return None
+
+
 def _prefab_prefixes(custom_data):
     """Server/Prefabs/... prefixes referenced by a Custom file's Prefabs.Entries."""
     entries = ((custom_data.get("Prefabs") or {}).get("Entries")) or []
@@ -308,6 +344,7 @@ def scan_locations(assets):
                 plant_locations[plant_id]["regions"].add(region)
 
     # pass 1c: HytaleGenerator Assignments/<biome_dir>/ and Biomes/<biome_dir>/ -> region/portal
+    portal_keys = player_portal_keys(portals)
     for entry_name in assets.entry_names:
         match = ASSIGNMENT_RE.match(entry_name) or re.match(
             r"^Server/HytaleGenerator/Biomes/([^/]+)/.+\.json$", entry_name
@@ -327,7 +364,8 @@ def scan_locations(assets):
                 (
                     display_name_key
                     for instance_id, display_name_key in portals.values()
-                    if instance_id and suffix in instance_id.lower().replace("portals_", "")
+                    if is_player_portal_instance(instance_id)
+                    and suffix in instance_id.lower().replace("portals_", "")
                 ),
                 None,
             )
@@ -337,6 +375,16 @@ def scan_locations(assets):
                 for plant_id in prefab_ids:
                     prefab_locations[plant_id]["portals"].add(portal_key)
         else:
+            # portal-world file inside a main biome dir (e.g. Boreal1_Hedera_Mosses.json):
+            # attribute to the portal, NOT to the main-world region
+            file_stem = entry_name.rsplit("/", 1)[-1][:-5]
+            portal_key = match_portal_file_stem(file_stem, biome_dir, portal_keys)
+            if portal_key:
+                for plant_id in plant_ids:
+                    plant_locations[plant_id]["portals"].add(portal_key)
+                for plant_id in prefab_ids:
+                    prefab_locations[plant_id]["portals"].add(portal_key)
+                continue
             prefix = BIOME_DIR_TO_REGION_PREFIX.get(biome_dir)
             if prefix:
                 regions = {region for region in all_regions if region.startswith(prefix)}
@@ -372,7 +420,8 @@ def scan_locations(assets):
             (
                 display_name_key
                 for portal_type, (instance_id, display_name_key) in portals.items()
-                if all(part in lower_path for part in portal_type.lower().split("_"))
+                if is_player_portal_instance(instance_id)
+                and all(part in lower_path for part in portal_type.lower().split("_"))
             ),
             None,
         )
@@ -406,7 +455,8 @@ def scan_locations(assets):
                 (
                     display_name_key
                     for instance_id, display_name_key in portals.values()
-                    if instance_id and instance_id.lower() in lower_path
+                    if is_player_portal_instance(instance_id)
+                    and instance_id.lower() in lower_path
                 ),
                 entry_name.split("/")[2],
             )

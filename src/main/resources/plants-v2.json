@@ -24,7 +24,8 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -74,7 +75,9 @@
           "server.map.zone.Howling_Sands",
           "server.map.zone.Oceans"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.oasis"
+        ]
       },
       "obtainedFrom": {
         "plants": [],
@@ -156,7 +159,9 @@
         "zones": [
           "server.map.zone.Howling_Sands"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.oasis"
+        ]
       },
       "obtainedFrom": {
         "plants": [],
@@ -297,7 +302,9 @@
           "server.map.zone.Emerald_Wilds",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.jungles"
+        ]
       },
       "obtainedFrom": {
         "plants": [],
@@ -388,7 +395,10 @@
           "server.map.zone.Howling_Sands",
           "server.map.zone.Oceans"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.jungles",
+          "server.portals.oasis"
+        ]
       },
       "obtainedFrom": {
         "plants": [],
@@ -419,7 +429,8 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.hederas_lair"
         ]
       },
       "obtainedFrom": {
@@ -504,7 +515,9 @@
         "zones": [
           "server.map.zone.Whisperfrost_Frontiers"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.henges"
+        ]
       },
       "obtainedFrom": {
         "plants": [],
@@ -530,7 +543,9 @@
         "zones": [
           "server.map.zone.Whisperfrost_Frontiers"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.henges"
+        ]
       },
       "obtainedFrom": {
         "plants": [],
@@ -3843,17 +3858,14 @@
         "regions": [
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3"
+          "server.map.region.Zone1_Tier3"
         ],
         "zones": [
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Emerald_Wilds"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.hederas_lair"
         ]
       },
       "obtainedFrom": {
@@ -3875,16 +3887,14 @@
         "regions": [
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3"
+          "server.map.region.Zone1_Tier3"
         ],
         "zones": [
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Emerald_Wilds"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.hederas_lair"
+        ]
       },
       "obtainedFrom": {
         "plants": [],
@@ -3932,19 +3942,16 @@
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
           "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
           "server.map.region.Zone4_Tier4",
           "server.map.region.Zone4_Tier5"
         ],
         "zones": [
           "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Emerald_Wilds"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.hederas_lair"
         ]
       },
       "obtainedFrom": {
@@ -3994,17 +4001,14 @@
         "regions": [
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3"
+          "server.map.region.Zone1_Tier3"
         ],
         "zones": [
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Emerald_Wilds"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.hederas_lair"
         ]
       },
       "obtainedFrom": {
@@ -4642,7 +4646,8 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -4959,7 +4964,8 @@
           "server.map.zone.Howling_Sands"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -5045,7 +5051,8 @@
           "server.map.zone.Oceans"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.jungles"
         ]
       },
       "obtainedFrom": {
@@ -5074,7 +5081,8 @@
           "server.map.zone.Oceans"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.jungles"
         ]
       },
       "obtainedFrom": {
@@ -5096,17 +5104,15 @@
         "regions": [
           "server.map.region.Oceans",
           "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
+          "server.map.region.Zone1_Tier3"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
           "server.map.zone.Emerald_Wilds",
           "server.map.zone.Oceans"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.jungles"
         ]
       },
       "obtainedFrom": {
@@ -5128,17 +5134,14 @@
         "regions": [
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3"
+          "server.map.region.Zone1_Tier3"
         ],
         "zones": [
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands"
+          "server.map.zone.Emerald_Wilds"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -5277,8 +5280,6 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3",
           "server.map.region.Zone4_Tier4"
         ],
@@ -5287,7 +5288,8 @@
           "server.map.zone.Howling_Sands"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -5311,7 +5313,6 @@
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
           "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
@@ -5325,7 +5326,8 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -5403,7 +5405,6 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
@@ -5417,7 +5418,8 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -5577,7 +5579,6 @@
       "locations": {
         "regions": [
           "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
           "server.map.region.Zone3_Tier2",
@@ -5588,7 +5589,8 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -5666,7 +5668,8 @@
           "server.map.zone.Howling_Sands"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -5901,8 +5904,6 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1"
         ],
@@ -5911,7 +5912,8 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -6021,8 +6023,6 @@
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
           "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3"
         ],
         "zones": [
@@ -6030,7 +6030,8 @@
           "server.map.zone.Howling_Sands"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -6142,7 +6143,6 @@
       "locations": {
         "regions": [
           "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
           "server.map.region.Zone3_Tier2",
@@ -6153,7 +6153,8 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -6268,8 +6269,6 @@
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
           "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3"
         ],
         "zones": [
@@ -6277,7 +6276,8 @@
           "server.map.zone.Howling_Sands"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -6311,20 +6311,17 @@
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
           "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
           "server.map.region.Zone3_Tier2",
           "server.map.region.Zone3_Tier3"
         ],
         "zones": [
           "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -6561,8 +6558,6 @@
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
           "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
           "server.map.region.Zone3_Tier2",
@@ -6574,7 +6569,8 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -6615,7 +6611,8 @@
           "server.map.zone.Howling_Sands"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -6654,7 +6651,8 @@
           "server.map.zone.Howling_Sands"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -6693,7 +6691,8 @@
           "server.map.zone.Howling_Sands"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -7036,7 +7035,6 @@
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
           "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier3",
@@ -7050,7 +7048,8 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -7159,7 +7158,8 @@
           "server.map.zone.Howling_Sands"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -7228,7 +7228,6 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3",
           "server.map.region.Zone4_Tier4"
@@ -7238,7 +7237,8 @@
           "server.map.zone.Howling_Sands"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -7385,7 +7385,6 @@
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
           "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
@@ -7400,7 +7399,8 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -7665,8 +7665,6 @@
           "server.map.region.Zone1_Tier3",
           "server.map.region.Zone2_Tier2",
           "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
           "server.map.region.Zone4_Tier5"
         ],
         "zones": [
@@ -7676,7 +7674,8 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.hederas_lair"
         ]
       },
       "obtainedFrom": {
@@ -8094,7 +8093,9 @@
           "server.map.zone.Oceans",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.oasis"
+        ]
       },
       "obtainedFrom": {
         "plants": [],
@@ -8162,15 +8163,15 @@
       "locations": {
         "regions": [
           "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
           "server.map.region.Zone4_Tier4"
         ],
         "zones": [
           "server.map.zone.Devastated_Lands",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.hederas_lair"
+        ]
       },
       "obtainedFrom": {
         "plants": [],
@@ -8251,7 +8252,8 @@
           "server.map.zone.Oceans"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -8279,7 +8281,8 @@
           "server.map.zone.Howling_Sands"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -8309,7 +8312,8 @@
           "server.map.zone.Oceans"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -8376,7 +8380,8 @@
           "server.map.zone.Oceans"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -8406,7 +8411,8 @@
           "server.map.zone.Oceans"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -8428,19 +8434,16 @@
         "regions": [
           "server.map.region.Zone1_Tier2",
           "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
           "server.map.region.Zone4_Tier4",
           "server.map.region.Zone4_Tier5"
         ],
         "zones": [
           "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Emerald_Wilds"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.hederas_lair"
         ]
       },
       "obtainedFrom": {
@@ -8618,7 +8621,6 @@
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
           "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
@@ -8635,7 +8637,8 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -8659,7 +8662,6 @@
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
           "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
@@ -8676,7 +8678,9 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.jungles",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -8811,7 +8815,8 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -8843,7 +8848,8 @@
           "server.map.zone.Howling_Sands"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -8889,7 +8895,6 @@
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
           "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
@@ -8906,7 +8911,9 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.jungles",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -8996,7 +9003,8 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.jungles"
         ]
       },
       "obtainedFrom": {
@@ -9021,17 +9029,15 @@
           "server.map.region.Zone1_Tier3",
           "server.map.region.Zone3_Tier1",
           "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
+          "server.map.region.Zone3_Tier3"
         ],
         "zones": [
-          "server.map.zone.Devastated_Lands",
           "server.map.zone.Emerald_Wilds",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.jungles"
         ]
       },
       "obtainedFrom": {
@@ -9059,7 +9065,8 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.henges"
         ]
       },
       "obtainedFrom": {
@@ -9087,7 +9094,8 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.henges"
         ]
       },
       "obtainedFrom": {
@@ -9592,7 +9600,9 @@
           "server.map.zone.Devastated_Lands",
           "server.map.zone.Oceans"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.jungles"
+        ]
       },
       "obtainedFrom": {
         "plants": [
@@ -9691,13 +9701,14 @@
       "locations": {
         "regions": [
           "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3"
+          "server.map.region.Zone2_Tier2"
         ],
         "zones": [
           "server.map.zone.Howling_Sands"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.oasis"
+        ]
       },
       "obtainedFrom": {
         "plants": [
@@ -9792,18 +9803,16 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
           "server.map.region.Zone3_Tier2",
           "server.map.region.Zone3_Tier3"
         ],
         "zones": [
-          "server.map.zone.Howling_Sands",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.oasis"
+        ]
       },
       "obtainedFrom": {
         "plants": [
@@ -9900,7 +9909,9 @@
         "zones": [
           "server.map.zone.Howling_Sands"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.oasis"
+        ]
       },
       "obtainedFrom": {
         "plants": [
@@ -9928,13 +9939,14 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Zone4_Tier4",
           "server.map.region.Zone4_Tier5"
         ],
         "zones": [
           "server.map.zone.Devastated_Lands"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.jungles"
+        ]
       },
       "obtainedFrom": {
         "plants": [
@@ -9963,19 +9975,18 @@
       "locations": {
         "regions": [
           "server.map.region.Oceans",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
           "server.map.region.Zone3_Tier2",
           "server.map.region.Zone3_Tier3"
         ],
         "zones": [
-          "server.map.zone.Howling_Sands",
           "server.map.zone.Oceans",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.hederas_lair",
+          "server.portals.oasis"
+        ]
       },
       "obtainedFrom": {
         "plants": [
@@ -10028,14 +10039,14 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
           "server.map.region.Zone3_Tier3"
         ],
         "zones": [
           "server.map.zone.Whisperfrost_Frontiers"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.henges"
+        ]
       },
       "obtainedFrom": {
         "plants": [
@@ -10064,19 +10075,18 @@
       "locations": {
         "regions": [
           "server.map.region.Oceans",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
           "server.map.region.Zone3_Tier2",
           "server.map.region.Zone3_Tier3"
         ],
         "zones": [
-          "server.map.zone.Howling_Sands",
           "server.map.zone.Oceans",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.hederas_lair",
+          "server.portals.oasis"
+        ]
       },
       "obtainedFrom": {
         "plants": [
@@ -10104,14 +10114,14 @@
       "obtainableInExplorationMode": true,
       "locations": {
         "regions": [
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
           "server.map.region.Zone3_Tier3"
         ],
         "zones": [
           "server.map.zone.Whisperfrost_Frontiers"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.henges"
+        ]
       },
       "obtainedFrom": {
         "plants": [
@@ -10231,14 +10241,15 @@
       "locations": {
         "regions": [
           "server.map.region.Oceans",
-          "server.map.region.Zone4_Tier4",
           "server.map.region.Zone4_Tier5"
         ],
         "zones": [
           "server.map.zone.Devastated_Lands",
           "server.map.zone.Oceans"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.jungles"
+        ]
       },
       "obtainedFrom": {
         "plants": [
@@ -10402,15 +10413,11 @@
       "id": "Plant_Leaves_Palm_Oasis",
       "obtainableInExplorationMode": true,
       "locations": {
-        "regions": [
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3"
-        ],
-        "zones": [
-          "server.map.zone.Howling_Sands"
-        ],
-        "portals": []
+        "regions": [],
+        "zones": [],
+        "portals": [
+          "server.portals.oasis"
+        ]
       },
       "obtainedFrom": {
         "plants": [],
@@ -10771,7 +10778,6 @@
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
           "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
@@ -10787,7 +10793,8 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -11099,7 +11106,6 @@
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
           "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3",
           "server.map.region.Zone3_Tier1",
@@ -11115,7 +11121,8 @@
           "server.map.zone.Whisperfrost_Frontiers"
         ],
         "portals": [
-          "server.portals.goblinBreach"
+          "server.portals.goblinBreach",
+          "server.portals.oasis"
         ]
       },
       "obtainedFrom": {
@@ -11215,7 +11222,9 @@
         "zones": [
           "server.map.zone.Howling_Sands"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.oasis"
+        ]
       },
       "obtainedFrom": {
         "plants": [],
@@ -11396,7 +11405,9 @@
           "server.map.zone.Emerald_Wilds",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.hederas_lair"
+        ]
       },
       "obtainedFrom": {
         "plants": [],
@@ -11754,16 +11765,14 @@
         "regions": [
           "server.map.region.Zone1_Tier1",
           "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3"
+          "server.map.region.Zone1_Tier3"
         ],
         "zones": [
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Emerald_Wilds"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.hederas_lair"
+        ]
       },
       "obtainedFrom": {
         "plants": [
@@ -12711,7 +12720,9 @@
           "server.map.zone.Emerald_Wilds",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.hederas_lair"
+        ]
       },
       "obtainedFrom": {
         "plants": [],
@@ -14976,7 +14987,9 @@
         "zones": [
           "server.map.zone.Howling_Sands"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.oasis"
+        ]
       },
       "obtainedFrom": {
         "plants": [],
@@ -15122,18 +15135,16 @@
           "server.map.region.Zone2_Tier1",
           "server.map.region.Zone2_Tier2",
           "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone3_Tier1",
-          "server.map.region.Zone3_Tier2",
-          "server.map.region.Zone3_Tier3",
           "server.map.region.Zone4_Tier4",
           "server.map.region.Zone4_Tier5"
         ],
         "zones": [
           "server.map.zone.Devastated_Lands",
-          "server.map.zone.Howling_Sands",
-          "server.map.zone.Whisperfrost_Frontiers"
+          "server.map.zone.Howling_Sands"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.hederas_lair"
+        ]
       },
       "obtainedFrom": {
         "plants": [],
@@ -15162,15 +15173,11 @@
       "id": "Plant_Reeds_Wet",
       "obtainableInExplorationMode": true,
       "locations": {
-        "regions": [
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3"
-        ],
-        "zones": [
-          "server.map.zone.Howling_Sands"
-        ],
-        "portals": []
+        "regions": [],
+        "zones": [],
+        "portals": [
+          "server.portals.oasis"
+        ]
       },
       "obtainedFrom": {
         "plants": [],
@@ -17308,7 +17315,9 @@
           "server.map.zone.Oceans",
           "server.map.zone.Whisperfrost_Frontiers"
         ],
-        "portals": []
+        "portals": [
+          "server.portals.jungles"
+        ]
       },
       "obtainedFrom": {
         "plants": [],
