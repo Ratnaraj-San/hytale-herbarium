@@ -1,12 +1,20 @@
 $Common = "../../../Common.ui";
 
+// One chest state icon (40x40, hidden by default). Set @Tex to the state texture.
+// Java addresses the instance IDs (#ChestDisabled, ...) for .Visible + tooltips.
 @ChestGroup = Group {
+  @Tex = "";
+
   Anchor: (Left: 0, Bottom: 0, Width: 40, Height: 40);
   Visible: false;
-
   TextTooltipShowDelay: 0.1;
   LayoutMode: Bottom;
   TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+
+  Group {
+    Background: @Tex;
+    Anchor: (Width: 22, Height: 22, Bottom: 10);
+  }
 };
 
 Group {
@@ -14,31 +22,19 @@ Group {
     Anchor: (Bottom: 18, Left: -2);
 
     @ChestGroup #ChestDisabled {
-      Group {
-        Background: "../textures/MemoriesProgress/IconChestDisabled.png";
-        Anchor: (Width: 22, Height: 22, Bottom: 10);
-      }
+      @Tex = "../textures/MemoriesProgress/IconChestDisabled.png";
     }
 
     @ChestGroup #ChestActive {
-      Group {
-        Background: "../textures/MemoriesProgress/IconChestActive.png";
-        Anchor: (Width: 22, Height: 22, Bottom: 10);
-      }
+      @Tex = "../textures/MemoriesProgress/IconChestActive.png";
     }
 
     @ChestGroup #ChestCollected {
-      Group {
-        Background: "../textures/MemoriesProgress/IconChestCollected.png";
-        Anchor: (Width: 22, Height: 22, Bottom: 10);
-      }
+      @Tex = "../textures/MemoriesProgress/IconChestCollected.png";
     }
 
     @ChestGroup #ChestClaimedPending {
-      Group {
-        Background: "../textures/MemoriesProgress/IconChestClaimedPending.png";
-        Anchor: (Width: 22, Height: 22, Bottom: 10);
-      }
+      @Tex = "../textures/MemoriesProgress/IconChestClaimedPending.png";
     }
 
     Group #Arrow {

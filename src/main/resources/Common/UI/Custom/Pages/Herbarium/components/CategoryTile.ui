@@ -22,6 +22,29 @@ $Herbarium = "HerbariumCommon.ui";
   HorizontalAlignment: End
 );
 
+// "current/total" counter labels; override @C for the text color.
+// Java addresses "#Current.Text" and "#Total.Text" under the parent counter group.
+@CounterLabels = Group {
+  @C = #b4c8c9;
+
+  LayoutMode: Right;
+
+  Label #Current {
+    Text: "0";
+    Style: (...@CategoryCounterStyle, TextColor: @C);
+  }
+
+  Label {
+    Text: "/";
+    Style: (...@CategoryCounterStyle, TextColor: @C);
+  }
+
+  Label #Total {
+    Text: "0";
+    Style: (...@CategoryCounterStyle, TextColor: @C);
+  }
+};
+
 Group {
   Anchor: (Width: 144, Height: 176, Right: 16, Bottom: 16);
   Padding: (Full: 8);
@@ -35,24 +58,9 @@ Group {
     LayoutMode: Right;
     Anchor: (Right: 5, Top: 5);
 
-    Group #NotCompleteCategoryCounter {
-      LayoutMode: Right;
+    @CounterLabels #NotCompleteCategoryCounter {
       Visible: false;
-
-      Label #CurrentCategoryCountNotComplete {
-        Text: "0";
-        Style: @CategoryCounterStyle;
-      }
-
-      Label {
-        Text: "/";
-        Style: @CategoryCounterStyle;
-      }
-
-      Label #TotalCategoryCountNotComplete {
-        Text: "0";
-        Style: @CategoryCounterStyle;
-      }
+      @C = #b4c8c9;
     }
 
     Group #CompleteCategoryCounter {
@@ -66,19 +74,8 @@ Group {
         Anchor: (Width: 16, Height: 16, Right: 5, Top: 0);
       }
 
-      Label #CurrentCategoryCountComplete {
-        Text: "0";
-        Style: (...@CategoryCounterStyle, TextColor: #39f493);
-      }
-
-      Label {
-        Text: "/";
-        Style: (...@CategoryCounterStyle, TextColor: #39f493);
-      }
-
-      Label #TotalCategoryCountComplete {
-        Text: "0";
-        Style: (...@CategoryCounterStyle, TextColor: #39f493);
+      @CounterLabels {
+        @C = #39f493;
       }
     }
   }
