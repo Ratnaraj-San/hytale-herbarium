@@ -17,6 +17,7 @@ import com.ratnaraj.herbarium.data.PlantCrafting;
 import com.ratnaraj.herbarium.data.PlantInfo;
 import com.ratnaraj.herbarium.data.PlantInteractions;
 import com.ratnaraj.herbarium.data.PlantLocationsV2;
+import com.ratnaraj.herbarium.data.PlantOther;
 import com.ratnaraj.herbarium.data.PlantSource;
 import com.ratnaraj.herbarium.data.PlayerStore;
 
@@ -34,6 +35,8 @@ public class PlantDetailsPanel {
             "Pages/Herbarium/components/PlantSourceTile.ui";
     private static final String ITEM_SOURCE_TILE_UI =
             "Pages/Herbarium/components/ItemSourceTile.ui";
+    private static final String MERCHANT_TILE_UI =
+            "Pages/Herbarium/components/MerchantTile.ui";
     private static final String LOCATIONS_FOUND_IN_KEY =
             "server.herbarium.ui.container.locations.title";
     private static final String LOCATION_UNKNOWN_KEY = "server.herbarium.ui.locations.unknown";
@@ -53,6 +56,8 @@ public class PlantDetailsPanel {
     private static final String INTERACTION_SHEARS_KEY = "server.herbarium.ui.interaction.shears";
     private static final String CRAFTING_TITLE_KEY = "server.herbarium.ui.obtained_from.crafting";
     private static final String PLANTS_TITLE_KEY = "server.herbarium.ui.obtained_from.plants";
+    private static final String OTHER_TITLE_KEY = "server.herbarium.ui.obtained_from.other";
+    private static final String BUY_TOOLTIP_KEY = "server.herbarium.ui.obtained_from.buy";
     private static final String INTERACTION_SALVAGE_KEY = "server.herbarium.ui.interaction.salvage";
     private static final String INTERACTION_GROWTH_KEY = "server.herbarium.ui.interaction.growth";
 
@@ -237,11 +242,14 @@ public class PlantDetailsPanel {
         List<PlantSource> sources =
                 plantId != null ? Herbarium.getCatalog().getPlantSources(plantId) : List.of();
 
+        List<PlantOther> others =
+                plantId != null ? Herbarium.getCatalog().getPlantOthers(plantId) : List.of();
         boolean showInteractions = plantId != null && interactions.any();
         boolean showCrafting =
                 crafting != null && !crafting.benches().isEmpty() && !crafting.inputs().isEmpty();
         boolean showPlants = plantId != null && !sources.isEmpty();
-        boolean showContainer = showInteractions || showCrafting || showPlants;
+        boolean showOther = !others.isEmpty();
+        boolean showContainer = showInteractions || showCrafting || showPlants || showOther;
 
         commands.set("#PlantContainerObtainedFrom.Visible", showContainer);
 
@@ -256,13 +264,49 @@ public class PlantDetailsPanel {
         setInteractionsSection(commands, showInteractions, interactions);
         setCraftingSection(commands, events, showCrafting, crafting, discovered);
         setPlantsSection(commands, events, showPlants, sources, discovered);
+        setOtherSection(commands, showOther, others);
 
         // Spacers only between two visible sections
         commands.set(
                 "#SpacerAfterInteractions.Visible",
-                showInteractions && (showCrafting || showPlants));
-        commands.set("#SpacerAfterCrafting.Visible", showCrafting && showPlants);
+                showInteractions && (showCrafting || showPlants || showOther));
+        commands.set("#SpacerAfterCrafting.Visible", showCrafting && (showPlants || showOther));
+        commands.set("#SpacerAfterPlants.Visible", showPlants && showOther);
         return true;
+    }
+
+    /**
+     * Other sources (e.g. merchants/barter shops, like the Kweebec Rootling Merchant selling
+     * berry bushes): one MerchantTile per entry — the merchant's generated model icon on the
+     * tile (name as tooltip), and below it the trade cost: cost item icon + "x<amount>" with
+     * a "Buy" tooltip.
+     */
+    private static void setOtherSection(
+            UICommandBuilder commands, boolean visible, List<PlantOther> others) {
+        String section = "#PlantContainerObtainedFrom #PlantContainerObtainedFromOther";
+        String list = beginSection(commands, section, visible, OTHER_TITLE_KEY);
+
+        if (list == null) {
+            return;
+        }
+
+        for (int i = 0; i < others.size(); i++) {
+            PlantOther other = others.get(i);
+            String entry = appendEntry(commands, list, MERCHANT_TILE_UI, i);
+
+            String tile = entry + " #MerchantTile";
+            if (other.icon() != null && !other.icon().isEmpty()) {
+                commands.set(tile + " #IngredientIcon.AssetPath", other.icon());
+            } else {
+                commands.setNull(tile + " #IngredientIcon.AssetPath");
+            }
+            commands.set(tile + ".TooltipTextSpans", Message.translation(other.nameKey()));
+
+            String costRow = entry + " #CostRow";
+            setAssetIcon(commands, costRow + " #CostIcon", other.costItem());
+            commands.set(costRow + " #CostAmount.Text", "x" + other.costAmount());
+            commands.set(costRow + ".TooltipTextSpans", Message.translation(BUY_TOOLTIP_KEY));
+        }
     }
 
     /**
@@ -390,6 +434,11 @@ public class PlantDetailsPanel {
             commands.set(
                     icons + " #IconBreak.TooltipTextSpans",
                     Message.translation(INTERACTION_BREAK_KEY));
+            // Harvest (collect): harvesting the source yields this plant (e.g. berries on a bush)
+            commands.set(icons + " #IconHarvest.Visible", source.collect());
+            commands.set(
+                    icons + " #IconHarvest.TooltipTextSpans",
+                    Message.translation(INTERACTION_HARVEST_KEY));
             commands.set(icons + " #IconShears.Visible", source.shears());
             commands.set(
                     icons + " #IconShears.TooltipTextSpans",

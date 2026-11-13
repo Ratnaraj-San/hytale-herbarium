@@ -37,6 +37,7 @@ from obtained import (
     index_items,
     resolve_bench_items,
     sapling_prefab_links,
+    scan_barter_shops,
     scan_block_states,
     scan_crop_and_stage_ids,
     scan_salvage_relations,
@@ -60,6 +61,7 @@ def main():
     _server_key, region_key, zone_key_for_region = make_key_fns(
         load_lang_keys(assets), region_zone_names)
     relations = build_relations(assets, drop_path, item_path, salvage_rel)
+    barter_shops = scan_barter_shops(assets)
     bench_items = bench_item_map(assets)
     bench_info_map = bench_info(assets)
     harvest_refs = drop_list_refs(item_path, item_chain)
@@ -117,6 +119,8 @@ def main():
             "salvage": any(src == plant_id for src, _ in salvage_rel),
             "crafting": item_chain.own_recipe(plant_id) is not None,
             "has_location": any(locations[plant_id][k] for k in ("regions", "zones", "portals")),
+            # merchant/barter shops selling this item (Server/BarterShops/*.json)
+            "other": barter_shops.get(plant_id, []),
         }
 
     # Pass 2: fixpoint — a source is listed only if the source itself is obtainable, and a
@@ -136,8 +140,8 @@ def main():
             value = (
                 plant_id in item_path
                 and plant_id not in orphan_state_items
-                and (bool(kept) or info["break"] or info["collect"] or info["shears"] or info["salvage"] or info["crafting"])
-                and (info["has_location"] or info["crafting"] or bool(kept))
+                and (bool(kept) or info["break"] or info["collect"] or info["shears"] or info["salvage"] or info["crafting"] or bool(info["other"]))
+                and (info["has_location"] or info["crafting"] or bool(kept) or bool(info["other"]))
             )
             if obtainable[plant_id] != value:
                 obtainable[plant_id] = value
@@ -155,6 +159,12 @@ def main():
         print(f"Dropped {sum(len(v) for v in dropped.values())} unobtainable sources, e.g.:")
         for pid, ids in list(dropped.items())[:10]:
             print(f"  {pid} <- {ids}")
+
+    merchant_sold = sorted(pid for pid in all_plants if raw[pid]["other"])
+    if merchant_sold:
+        print(f"Merchant/barter-sold plants ({len(merchant_sold)}):")
+        for pid in merchant_sold:
+            print(f"   {pid} <- {[o['nameKey'] for o in raw[pid]['other']]}")
 
     for plant_id in all_plants:
         obtainable_flag = obtainable[plant_id]
@@ -190,6 +200,7 @@ def main():
                     "collect": info["collect"],
                     "shears": info["shears"],
                 },
+                "other": info["other"],
             },
         })
 

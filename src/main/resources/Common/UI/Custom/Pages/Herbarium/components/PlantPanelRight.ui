@@ -122,6 +122,15 @@ $Herbarium = "HerbariumCommon.ui";
             @ListMode = LeftWrap;
             @BoxPad = Padding(Horizontal: 8, Top: 16, Bottom: 8);
           }
+
+          $Herbarium.@Spacer #SpacerAfterPlants { Visible: false; }
+
+          // Other sources (e.g. merchants): one MerchantTile per entry, appended by
+          // Java into #SectionList.
+          $Herbarium.@SectionBox #PlantContainerObtainedFromOther {
+            @ListMode = LeftWrap;
+            @BoxPad = Padding(Horizontal: 8, Top: 16, Bottom: 8);
+          }
         }
       }
 

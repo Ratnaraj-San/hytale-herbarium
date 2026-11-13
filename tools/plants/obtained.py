@@ -79,6 +79,104 @@ def index_drops(names):
     return outputs
 
 
+def scan_barter_shops(assets):
+    """item id -> sorted [{"type","shop","nameKey","icon","costItem","costAmount"}] from
+    Server/BarterShops/*.json (merchant / barter shops): every Trade output item is sold
+    by that shop. nameKey is the shop's DisplayNameKey (a vanilla translation key, e.g.
+    server.barter.kweebec_merchant.title); shop is the file stem (e.g. "Kweebec_Merchant").
+    icon is the merchant NPC's generated model icon (Icons/ModelsGenerated/<Appearance>.png),
+    found via NPC role files (Server/NPC/Roles/**) whose interaction actions set
+    "Shop": "<shop stem>"; costItem/costAmount are the trade's first Input."""
+    shops = {}
+    for entry_name in sorted(assets.entry_names):
+        if not entry_name.startswith("Server/BarterShops/") or not entry_name.endswith(".json"):
+            continue
+        data = assets.load_json(entry_name)
+        if not data:
+            continue
+        name_key = data.get("DisplayNameKey")
+        if not name_key:
+            continue
+        shop = entry_name.rsplit("/", 1)[-1][:-5]
+        trades = []
+        for slot in data.get("TradeSlots") or []:
+            if not isinstance(slot, dict):
+                continue
+            slot_trades = []
+            if slot.get("Type") == "Fixed":
+                slot_trades = [slot.get("Trade") or {}]
+            elif slot.get("Type") == "Pool":
+                slot_trades = slot.get("Trades") or []
+            for trade in slot_trades:
+                if not isinstance(trade, dict):
+                    continue
+                output = trade.get("Output") or {}
+                item_id = output.get("ItemId") if isinstance(output, dict) else None
+                if not item_id:
+                    continue
+                cost_item, cost_amount = "", 0
+                for inp in trade.get("Input") or []:
+                    if isinstance(inp, dict) and inp.get("ItemId"):
+                        cost_item = inp["ItemId"]
+                        cost_amount = inp.get("Quantity") or 1
+                        break
+                trades.append((item_id, cost_item, cost_amount))
+        shops[shop] = (name_key, trades)
+
+    # shop stem -> generated model icon of the NPC role that opens this shop
+    model_icons = {
+        name[len("Common/"):]
+        for name in assets.entry_names
+        if name.startswith("Common/Icons/ModelsGenerated/") and name.endswith(".png")
+    }
+    shop_icons = {}
+
+    def find_shop_refs(obj, found):
+        if isinstance(obj, dict):
+            for key, value in obj.items():
+                if key == "Shop" and isinstance(value, str):
+                    found.add(value)
+                else:
+                    find_shop_refs(value, found)
+        elif isinstance(obj, list):
+            for item in obj:
+                find_shop_refs(item, found)
+
+    for entry_name in sorted(assets.entry_names):
+        if not entry_name.startswith("Server/NPC/Roles/") or not entry_name.endswith(".json"):
+            continue
+        data = assets.load_json(entry_name)
+        if not data:
+            continue
+        found = set()
+        find_shop_refs(data, found)
+        appearance = data.get("Appearance")
+        if not appearance:
+            continue
+        icon = f"Icons/ModelsGenerated/{appearance}.png"
+        if icon not in model_icons:
+            continue
+        for stem in found:
+            if stem in shops and stem not in shop_icons:
+                shop_icons[stem] = icon
+
+    outputs = defaultdict(list)
+    for shop, (name_key, trades) in sorted(shops.items()):
+        icon = shop_icons.get(shop, "")
+        for item_id, cost_item, cost_amount in trades:
+            entry = {
+                "type": "merchant",
+                "shop": shop,
+                "nameKey": name_key,
+                "icon": icon,
+                "costItem": cost_item,
+                "costAmount": cost_amount,
+            }
+            outputs[item_id].append(entry)
+    return {item_id: sorted(entries, key=lambda e: (e["shop"], e["nameKey"]))
+            for item_id, entries in outputs.items()}
+
+
 def scan_salvage_relations(assets):
     """List of (source item, obtained item) from Salvage recipes."""
     salvage_relations = []
@@ -210,19 +308,60 @@ class ItemChain:
         return (data or {}).get("Recipe")
 
     def has_collect_interaction(self, plant_id, drop_path):
-        """Collect = block-state Interactions (e.gathering. HarvestCrop), a Gathering.Harvest
-        key, or a *_Harvest drop list, anywhere in the Parent chain."""
-        if any(source.endswith("_Harvest") for source in drop_path if source == plant_id or source.startswith(plant_id + "_")):
-            return True
+        """Collect = harvesting yields the plant item ITSELF. A harvest signal (a
+        Gathering.Harvest key, a block-state Interactions e.g. HarvestCrop, or a *_Harvest
+        drops file, anywhere in the Parent chain) only counts when the harvest actually
+        drops the plant: a Harvest key without DropList drops the block itself, and a
+        Harvest DropList must contain the plant id. A harvest that drops only other items
+        (e.g. a berry bush whose StageFinal_Harvest drops fruit, not the bush) does NOT
+        make the plant collectable. Fallback: a harvest signal with no drop list to check
+        against keeps the old behavior (collect)."""
+        saw_signal = False
+        saw_list = False
+        for stem, path in drop_path.items():
+            if (stem == plant_id or stem.startswith(plant_id + "_")) and stem.endswith("_Harvest"):
+                saw_signal = True
+                data = self.assets.load_json(path)
+                if data:
+                    saw_list = True
+                    ids = set()
+                    collect_item_ids(data, ids)
+                    if plant_id in ids:
+                        return True
         for _, data in self._chain(plant_id):
             block_type = data.get("BlockType") or {}
+            gatherings = []
             gathering = block_type.get("Gathering")
-            if isinstance(gathering, dict) and "Harvest" in gathering:
-                return True
+            if isinstance(gathering, dict):
+                gatherings.append(gathering)
             for stage in (block_type.get("State") or {}).get("Definitions", {}).values():
-                if isinstance(stage, dict) and stage.get("Interactions"):
+                if not isinstance(stage, dict):
+                    continue
+                if stage.get("Interactions"):
+                    saw_signal = True
+                stage_gathering = stage.get("Gathering")
+                if isinstance(stage_gathering, dict):
+                    gatherings.append(stage_gathering)
+            for g in gatherings:
+                if "Harvest" not in g:
+                    continue
+                saw_signal = True
+                entry = g["Harvest"]
+                if not isinstance(entry, dict):
+                    continue
+                drop_list = entry.get("DropList")
+                if not drop_list:
+                    return True  # harvest drops the block itself
+                saw_list = True
+                stem = drop_list[len("Drops_"):] if drop_list.startswith("Drops_") else drop_list
+                path = drop_path.get(stem)
+                if not path:
+                    continue
+                ids = set()
+                collect_item_ids(self.assets.load_json(path) or {}, ids)
+                if plant_id in ids:
                     return True
-        return False
+        return saw_signal and not saw_list
 
     def has_break_drop(self, plant_id, drop_path):
         """Break = breaking drops the item itself, either via:
@@ -386,7 +525,7 @@ def cleanup_plant_sources(plant_id, sources, known_ids, magical=False, harvest_r
 
     outputs = []
 
-    def add(source_id, growth=False, shears=False, drop=False, salvage=False):
+    def add(source_id, growth=False, shears=False, drop=False, salvage=False, collect=False):
         if source_id not in known_ids:
             return
         for e in outputs:
@@ -395,10 +534,15 @@ def cleanup_plant_sources(plant_id, sources, known_ids, magical=False, harvest_r
                 e["drop"] = e["drop"] or drop
                 e["salvage"] = e["salvage"] or salvage
                 e["growth"] = e["growth"] or growth
+                if collect:
+                    e["collect"] = True
                 e["magical"] = e["magical"] or (magical if growth else False)
                 return
-        outputs.append({"id": source_id, "shears": shears, "drop": drop, "salvage": salvage,
-                    "growth": growth, "magical": magical if growth else False})
+        entry = {"id": source_id, "shears": shears, "drop": drop, "salvage": salvage,
+                 "growth": growth, "magical": magical if growth else False}
+        if collect:
+            entry["collect"] = True
+        outputs.append(entry)
 
     def keep(source):
         add(source["id"], shears=source.get("shears", False), drop=source.get("drop", False),
@@ -437,9 +581,38 @@ def cleanup_plant_sources(plant_id, sources, known_ids, magical=False, harvest_r
                         shears=source.get("shears", False), drop=source.get("drop", False),
                         salvage=source.get("salvage", False))
         else:
-            # no sapling (e.gathering. berries): keep the raw sources unchanged; the bush
-            # obtainability is a separate known fix (see AGENTS.md Plant data)
-            return [dict(source) for source in sources]
+            # no sapling (e.g. berries): crop-stage sources resolve to the crop's block
+            # item (the bush itself, e.g. Plant_Crop_Berry_StageFinal -> Plant_Crop_Berry_Block).
+            # A *_Harvest stem means the fruit is also obtained by harvesting (collect),
+            # not only by breaking (drop).
+            by_block = {}
+            for source in sources:
+                source_id = source["id"]
+                harvest = source_id.endswith("_Harvest")
+                stage_id = source_id[: -len("_Harvest")] if harvest else source_id
+                base = None
+                if is_crop_stage(stage_id, crop_ids, stage_suffixes):
+                    for suffix in sorted(stage_suffixes or (), key=len, reverse=True):
+                        if stage_id.endswith("_" + suffix):
+                            base = stage_id[: -(len(suffix) + 1)]
+                            break
+                if base is None:
+                    keep(source)
+                    continue
+                block = next(
+                    (c for c in (base + "_Block", base + "_Item", base) if c in known_ids), None)
+                if block is None:
+                    continue
+                entry = by_block.setdefault(
+                    block, {"drop": False, "collect": False, "shears": False, "salvage": False})
+                entry["drop"] = entry["drop"] or source.get("drop", False)
+                entry["collect"] = entry["collect"] or harvest
+                entry["shears"] = entry["shears"] or source.get("shears", False)
+                entry["salvage"] = entry["salvage"] or source.get("salvage", False)
+            for block, flags in sorted(by_block.items()):
+                add(block, drop=flags["drop"], shears=flags["shears"], salvage=flags["salvage"],
+                    collect=flags["collect"])
+            return outputs
         return outputs
 
     if plant_id.startswith("Plant_Leaves_"):

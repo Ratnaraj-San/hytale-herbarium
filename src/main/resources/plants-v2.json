@@ -34,7 +34,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -82,7 +83,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -109,7 +111,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -136,7 +139,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -161,7 +165,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -185,7 +190,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -209,7 +215,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -237,7 +244,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -267,7 +275,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -297,7 +306,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -324,7 +334,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -351,7 +362,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -385,7 +397,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -416,7 +429,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -445,7 +459,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -472,7 +487,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -497,7 +513,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -522,7 +539,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -545,9 +563,139 @@
         "crafting": null,
         "interactions": {
           "break": false,
-          "collect": true,
+          "collect": false,
           "shears": false
+        },
+        "other": [
+          {
+            "type": "merchant",
+            "shop": "Kweebec_Merchant",
+            "nameKey": "server.barter.kweebec_merchant.title",
+            "icon": "Icons/ModelsGenerated/Kweebec_Rootling.png",
+            "costItem": "Ingredient_Life_Essence",
+            "costAmount": 30
+          }
+        ]
+      },
+      "gives": [
+        {
+          "id": "Ingredient_Fibre",
+          "shears": false,
+          "drop": true,
+          "salvage": false,
+          "collect": false,
+          "growth": false,
+          "magical": false,
+          "craft": false
+        },
+        {
+          "id": "Ingredient_Stick",
+          "shears": false,
+          "drop": true,
+          "salvage": false,
+          "collect": false,
+          "growth": false,
+          "magical": false,
+          "craft": false
+        },
+        {
+          "id": "Plant_Fruit_Berries_Red",
+          "shears": false,
+          "drop": true,
+          "salvage": false,
+          "collect": true,
+          "growth": false,
+          "magical": false,
+          "craft": false
         }
+      ]
+    },
+    {
+      "id": "Plant_Crop_Berry_Wet_Block",
+      "obtainableInExplorationMode": true,
+      "locations": {
+        "regions": [],
+        "zones": [],
+        "portals": []
+      },
+      "obtainedFrom": {
+        "plants": [],
+        "crafting": null,
+        "interactions": {
+          "break": false,
+          "collect": false,
+          "shears": false
+        },
+        "other": [
+          {
+            "type": "merchant",
+            "shop": "Kweebec_Merchant",
+            "nameKey": "server.barter.kweebec_merchant.title",
+            "icon": "Icons/ModelsGenerated/Kweebec_Rootling.png",
+            "costItem": "Ingredient_Life_Essence",
+            "costAmount": 50
+          }
+        ]
+      },
+      "gives": [
+        {
+          "id": "Ingredient_Fibre",
+          "shears": false,
+          "drop": true,
+          "salvage": false,
+          "collect": false,
+          "growth": false,
+          "magical": false,
+          "craft": false
+        },
+        {
+          "id": "Ingredient_Stick",
+          "shears": false,
+          "drop": true,
+          "salvage": false,
+          "collect": false,
+          "growth": false,
+          "magical": false,
+          "craft": false
+        },
+        {
+          "id": "Plant_Fruit_Berries_Red",
+          "shears": false,
+          "drop": true,
+          "salvage": false,
+          "collect": true,
+          "growth": false,
+          "magical": false,
+          "craft": false
+        }
+      ]
+    },
+    {
+      "id": "Plant_Crop_Berry_Winter_Block",
+      "obtainableInExplorationMode": true,
+      "locations": {
+        "regions": [],
+        "zones": [],
+        "portals": []
+      },
+      "obtainedFrom": {
+        "plants": [],
+        "crafting": null,
+        "interactions": {
+          "break": false,
+          "collect": false,
+          "shears": false
+        },
+        "other": [
+          {
+            "type": "merchant",
+            "shop": "Kweebec_Merchant",
+            "nameKey": "server.barter.kweebec_merchant.title",
+            "icon": "Icons/ModelsGenerated/Kweebec_Rootling.png",
+            "costItem": "Ingredient_Life_Essence",
+            "costAmount": 50
+          }
+        ]
       },
       "gives": [
         {
@@ -603,7 +751,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -628,7 +777,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     }
@@ -655,7 +805,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -680,7 +831,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -705,7 +857,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -734,7 +887,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -757,7 +911,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -780,7 +935,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -805,7 +961,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -834,7 +991,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     }
@@ -859,7 +1017,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -882,7 +1041,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -905,7 +1065,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -928,7 +1089,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -951,7 +1113,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -974,7 +1137,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -998,7 +1162,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1024,7 +1189,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1047,7 +1213,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1070,7 +1237,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1093,7 +1261,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1116,7 +1285,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1143,7 +1313,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1173,7 +1344,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1196,7 +1368,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1222,7 +1395,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1245,7 +1419,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1272,7 +1447,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1295,7 +1471,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1321,7 +1498,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1347,7 +1525,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1374,7 +1553,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1397,7 +1577,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1420,7 +1601,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1447,7 +1629,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1481,7 +1664,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1504,7 +1688,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1537,7 +1722,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1564,7 +1750,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1597,7 +1784,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1623,7 +1811,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1649,7 +1838,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1676,7 +1866,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1699,7 +1890,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1732,7 +1924,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -1761,7 +1954,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     }
@@ -1799,7 +1993,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -1880,7 +2075,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -1961,7 +2157,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -2031,7 +2228,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -2101,7 +2299,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -2182,7 +2381,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -2270,7 +2470,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -2335,7 +2536,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -2398,7 +2600,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -2456,7 +2659,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -2575,7 +2779,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -2638,7 +2843,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -2696,7 +2902,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -2765,7 +2972,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -2835,7 +3043,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -2905,7 +3114,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -3063,7 +3273,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -3135,7 +3346,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -3196,7 +3408,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -3253,7 +3466,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -3311,7 +3525,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -3381,7 +3596,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -3462,7 +3678,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -3558,7 +3775,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -3585,7 +3803,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -3612,7 +3831,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -3643,7 +3863,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -3672,7 +3893,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -3697,7 +3919,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -3731,7 +3954,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -3758,7 +3982,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -3789,7 +4014,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -3816,7 +4042,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -3842,7 +4069,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -3867,7 +4095,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -3888,7 +4117,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -3914,7 +4144,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -3935,7 +4166,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -3963,7 +4195,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -3988,41 +4221,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
-      },
-      "gives": []
-    },
-    {
-      "id": "Plant_Crop_Mushroom_Boomshroom_Large",
-      "obtainableInExplorationMode": true,
-      "locations": {
-        "regions": [
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3",
-          "server.map.region.Zone2_Tier1",
-          "server.map.region.Zone2_Tier2",
-          "server.map.region.Zone2_Tier3",
-          "server.map.region.Zone4_Tier4",
-          "server.map.region.Zone4_Tier5"
-        ],
-        "zones": [
-          "server.map.zone.Devastated_Lands",
-          "server.map.zone.Emerald_Wilds",
-          "server.map.zone.Howling_Sands"
-        ],
-        "portals": [
-          "server.portals.goblinBreach"
-        ]
-      },
-      "obtainedFrom": {
-        "plants": [],
-        "crafting": null,
-        "interactions": {
-          "break": false,
-          "collect": true,
-          "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4055,7 +4255,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4090,7 +4291,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4126,7 +4328,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4152,7 +4355,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4183,7 +4387,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4216,7 +4421,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4249,7 +4455,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -4297,7 +4504,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4324,7 +4532,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4357,7 +4566,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -4402,7 +4612,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4441,7 +4652,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4471,7 +4683,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4507,7 +4720,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4540,7 +4754,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4575,7 +4790,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4606,7 +4822,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4635,7 +4852,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4665,7 +4883,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4698,7 +4917,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     }
@@ -4721,7 +4941,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4748,7 +4969,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4782,7 +5004,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4803,7 +5026,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4831,7 +5055,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4859,7 +5084,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4890,7 +5116,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4921,7 +5148,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4942,7 +5170,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -4963,7 +5192,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -5002,7 +5232,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     }
@@ -5036,7 +5267,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -5065,7 +5297,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -5102,7 +5335,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -5132,7 +5366,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -5158,7 +5393,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -5191,7 +5427,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -5217,7 +5454,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -5251,7 +5489,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -5272,7 +5511,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -5298,7 +5538,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -5325,7 +5566,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -5356,7 +5598,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -5394,7 +5637,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -5432,7 +5676,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -5473,7 +5718,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -5511,7 +5757,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -5548,7 +5795,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -5594,7 +5842,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -5631,7 +5880,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -5671,7 +5921,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -5708,7 +5959,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -5745,7 +5997,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -5787,7 +6040,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -5825,7 +6079,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -5865,7 +6120,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -5907,7 +6163,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -5948,7 +6205,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -5986,7 +6244,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6028,7 +6287,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6074,7 +6334,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6106,7 +6367,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6150,7 +6412,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6192,7 +6455,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6234,7 +6498,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6272,7 +6537,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6318,7 +6584,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6358,7 +6625,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6396,7 +6664,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6434,7 +6703,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6466,7 +6736,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6502,7 +6773,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6544,7 +6816,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6590,7 +6863,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6626,7 +6900,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6662,7 +6937,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6694,7 +6970,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6735,7 +7012,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6782,7 +7060,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6814,7 +7093,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6846,7 +7126,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6888,7 +7169,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6925,7 +7207,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6965,7 +7248,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -6997,7 +7281,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -7033,7 +7318,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -7075,7 +7361,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -7123,7 +7410,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -7160,7 +7448,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -7192,7 +7481,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -7234,7 +7524,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -7309,7 +7600,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -7347,7 +7639,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -7393,7 +7686,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -7444,7 +7738,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -7476,7 +7771,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -7518,7 +7814,8 @@
           "break": false,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -7569,7 +7866,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -7642,7 +7940,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -7658,6 +7957,110 @@
         },
         {
           "id": "Potion_Signature_Lesser",
+          "shears": false,
+          "drop": false,
+          "salvage": false,
+          "collect": false,
+          "growth": false,
+          "magical": false,
+          "craft": true,
+          "bench": "Bench_Alchemy"
+        }
+      ]
+    },
+    {
+      "id": "Plant_Fruit_Berries_Red",
+      "obtainableInExplorationMode": true,
+      "locations": {
+        "regions": [],
+        "zones": [],
+        "portals": []
+      },
+      "obtainedFrom": {
+        "plants": [
+          {
+            "id": "Plant_Crop_Berry_Block",
+            "shears": false,
+            "drop": true,
+            "salvage": false,
+            "growth": false,
+            "magical": false,
+            "collect": true
+          },
+          {
+            "id": "Plant_Crop_Berry_Wet_Block",
+            "shears": false,
+            "drop": true,
+            "salvage": false,
+            "growth": false,
+            "magical": false,
+            "collect": true
+          },
+          {
+            "id": "Plant_Crop_Berry_Winter_Block",
+            "shears": false,
+            "drop": true,
+            "salvage": false,
+            "growth": false,
+            "magical": false,
+            "collect": true
+          }
+        ],
+        "crafting": null,
+        "interactions": {
+          "break": true,
+          "collect": true,
+          "shears": false
+        },
+        "other": []
+      },
+      "gives": [
+        {
+          "id": "Deco_Trophy_Harvest",
+          "shears": false,
+          "drop": false,
+          "salvage": false,
+          "collect": false,
+          "growth": false,
+          "magical": false,
+          "craft": true,
+          "bench": "Bench_Farming"
+        },
+        {
+          "id": "Food_Salad_Berry",
+          "shears": false,
+          "drop": false,
+          "salvage": false,
+          "collect": false,
+          "growth": false,
+          "magical": false,
+          "craft": true,
+          "bench": "Bench_Cooking"
+        },
+        {
+          "id": "Potion_Health",
+          "shears": false,
+          "drop": false,
+          "salvage": false,
+          "collect": false,
+          "growth": false,
+          "magical": false,
+          "craft": true,
+          "bench": "Bench_Alchemy"
+        },
+        {
+          "id": "Potion_Health_Lesser",
+          "shears": false,
+          "drop": false,
+          "salvage": false,
+          "collect": false,
+          "growth": false,
+          "magical": false,
+          "craft": true,
+          "bench": "Bench_Alchemy"
+        },
+        {
+          "id": "Weapon_Bomb_Popberry",
           "shears": false,
           "drop": false,
           "salvage": false,
@@ -7700,7 +8103,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -7723,7 +8127,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -7746,7 +8151,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -7773,7 +8179,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -7798,7 +8205,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -7821,7 +8229,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     }
@@ -7852,7 +8261,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -7879,7 +8289,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -7908,7 +8319,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -7944,7 +8356,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -7973,7 +8386,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8002,7 +8416,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8035,7 +8450,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8069,7 +8485,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8098,7 +8515,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8129,7 +8547,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8158,7 +8577,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8184,7 +8604,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8224,7 +8645,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8264,7 +8686,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8296,7 +8719,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8328,7 +8752,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8360,7 +8785,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8395,7 +8821,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8426,7 +8853,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8447,7 +8875,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8487,7 +8916,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8508,7 +8938,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8535,7 +8966,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8574,7 +9006,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8608,7 +9041,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8635,7 +9069,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8662,7 +9097,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8683,7 +9119,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8710,7 +9147,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8731,7 +9169,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8758,7 +9197,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8785,7 +9225,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8806,7 +9247,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8835,7 +9277,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8862,7 +9305,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8891,7 +9335,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     }
@@ -8921,7 +9366,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8961,7 +9407,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -8999,7 +9446,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9022,7 +9470,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9047,7 +9496,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -9090,7 +9540,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9123,7 +9574,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9158,7 +9610,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9192,7 +9645,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9226,7 +9680,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9268,7 +9723,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9292,7 +9748,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9325,7 +9782,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9363,7 +9821,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9395,7 +9854,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9423,7 +9883,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9457,7 +9918,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9490,7 +9952,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9530,7 +9993,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9554,7 +10018,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9588,7 +10053,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9628,7 +10094,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9662,7 +10129,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9694,7 +10162,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9722,7 +10191,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9750,7 +10220,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9785,7 +10256,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9817,7 +10289,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9857,7 +10330,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9882,7 +10356,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9918,7 +10393,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9943,7 +10419,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -9977,7 +10454,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -10009,7 +10487,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -10034,7 +10513,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -10059,7 +10539,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -10093,7 +10574,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -10125,7 +10607,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -10159,7 +10642,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -10187,7 +10671,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -10220,7 +10705,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -10248,7 +10734,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     }
@@ -10271,7 +10758,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -10331,7 +10819,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -10371,7 +10860,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -10406,7 +10896,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -10472,7 +10963,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -10534,7 +11026,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -10563,7 +11056,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -10592,7 +11086,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -10652,7 +11147,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -10691,7 +11187,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -10749,7 +11246,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -10809,7 +11307,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -10861,7 +11360,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -10927,7 +11427,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -11003,7 +11504,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -11075,7 +11577,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -11143,7 +11646,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -11217,7 +11721,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -11274,7 +11779,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -11372,7 +11878,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -11428,7 +11935,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -11479,7 +11987,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -11520,7 +12029,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -11573,7 +12083,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -11616,7 +12127,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -11708,7 +12220,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -11779,7 +12292,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -11880,7 +12394,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -11938,7 +12453,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -11989,7 +12505,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -12043,7 +12560,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -12069,7 +12587,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -12110,7 +12629,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -12168,7 +12688,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -12221,7 +12742,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -12279,7 +12801,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -12328,7 +12851,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -12369,7 +12893,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -12418,7 +12943,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -12449,7 +12975,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -12483,7 +13010,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -12512,7 +13040,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -12546,7 +13075,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -12578,7 +13108,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -12669,7 +13200,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -12775,7 +13307,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -12886,7 +13419,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -12999,7 +13533,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -13088,7 +13623,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -13193,7 +13729,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -13353,7 +13890,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -13455,7 +13993,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -13592,7 +14131,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -13713,7 +14253,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -13879,7 +14420,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -14000,7 +14542,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -14303,7 +14846,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -14441,7 +14985,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -14480,7 +15025,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -14516,7 +15062,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -14551,7 +15098,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -14594,7 +15142,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -14630,7 +15179,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -14666,7 +15216,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -14718,7 +15269,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -14772,7 +15324,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -14832,7 +15385,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -14882,7 +15436,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -14932,7 +15487,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -14982,7 +15538,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15032,7 +15589,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15082,7 +15640,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15132,7 +15691,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15182,7 +15742,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15232,7 +15793,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15282,7 +15844,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15318,7 +15881,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15368,7 +15932,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15418,7 +15983,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15468,7 +16034,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15518,7 +16085,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15568,7 +16136,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15618,7 +16187,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15668,7 +16238,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15718,7 +16289,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15768,7 +16340,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15818,7 +16391,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15868,7 +16442,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15918,7 +16493,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -15968,7 +16544,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -16007,7 +16584,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16057,7 +16635,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16107,7 +16686,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16167,7 +16747,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16227,7 +16808,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16277,7 +16859,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16327,7 +16910,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16363,7 +16947,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16401,7 +16986,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16437,7 +17023,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -16464,7 +17051,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16500,7 +17088,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16535,7 +17124,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16575,7 +17165,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16609,7 +17200,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16646,7 +17238,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -16679,7 +17272,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16723,7 +17317,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16766,7 +17361,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16808,7 +17404,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16849,7 +17446,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -16881,7 +17479,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16922,7 +17521,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16960,7 +17560,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -16998,7 +17599,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -17032,7 +17634,8 @@
           "break": true,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -17059,7 +17662,8 @@
           "break": false,
           "collect": false,
           "shears": true
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -17116,7 +17720,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -17191,7 +17796,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -17246,7 +17852,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -17321,7 +17928,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -17376,7 +17984,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -17451,7 +18060,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -17506,7 +18116,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -17581,7 +18192,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -17636,7 +18248,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -17711,7 +18324,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -17766,7 +18380,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -17841,7 +18456,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -17891,7 +18507,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -17940,7 +18557,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -17988,7 +18606,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -18042,7 +18661,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -18117,7 +18737,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -18166,7 +18787,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -18215,7 +18837,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -18263,7 +18886,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -18318,7 +18942,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -18393,7 +19018,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -18437,7 +19063,8 @@
           "break": true,
           "collect": true,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -18504,7 +19131,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -18579,7 +19207,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -18633,7 +19262,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -18708,7 +19338,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -18763,7 +19394,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -18838,7 +19470,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -18888,7 +19521,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -18937,7 +19571,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -18986,7 +19621,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -19045,7 +19681,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": []
     },
@@ -19089,7 +19726,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -19164,7 +19802,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -19219,7 +19858,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -19294,7 +19934,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -19348,7 +19989,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {
@@ -19423,7 +20065,8 @@
           "break": false,
           "collect": false,
           "shears": false
-        }
+        },
+        "other": []
       },
       "gives": [
         {

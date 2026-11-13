@@ -26,6 +26,7 @@ public final class PlantCatalogV2 {
     private final Map<String, PlantCrafting> plantCrafting = new HashMap<>();
     private final Map<String, List<PlantSource>> plantSources = new HashMap<>();
     private final Map<String, List<PlantSource>> plantGives = new HashMap<>();
+    private final Map<String, List<PlantOther>> plantOthers = new HashMap<>();
 
     public PlantCatalogV2() {
         this.allPlantsFromConfig = loadPlantsFromConfig();
@@ -81,6 +82,7 @@ public final class PlantCatalogV2 {
 
                         plantSources.put(id, readSources(obtainedFrom));
                         plantGives.put(id, readGives(item));
+                        plantOthers.put(id, readOthers(obtainedFrom));
                     }
 
                     if (!categoryPlants.isEmpty()) {
@@ -129,6 +131,10 @@ public final class PlantCatalogV2 {
         return plantGives.getOrDefault(plantId, Collections.emptyList());
     }
 
+    public List<PlantOther> getPlantOthers(String plantId) {
+        return plantOthers.getOrDefault(plantId, Collections.emptyList());
+    }
+
     private static List<PlantSource> readSources(JsonObject obtainedFrom) {
         List<PlantSource> sources = new ArrayList<>();
 
@@ -141,6 +147,38 @@ public final class PlantCatalogV2 {
         }
 
         return List.copyOf(sources);
+    }
+
+    private static List<PlantOther> readOthers(JsonObject obtainedFrom) {
+        List<PlantOther> others = new ArrayList<>();
+
+        if (obtainedFrom != null
+                && obtainedFrom.has("other")
+                && obtainedFrom.get("other").isJsonArray()) {
+            for (JsonElement e : obtainedFrom.getAsJsonArray("other")) {
+                JsonObject o = e.getAsJsonObject();
+                others.add(
+                        new PlantOther(
+                                o.has("type") ? o.get("type").getAsString() : "",
+                                o.has("nameKey") && !o.get("nameKey").isJsonNull()
+                                        ? o.get("nameKey").getAsString()
+                                        : "",
+                                o.has("shop") && !o.get("shop").isJsonNull()
+                                        ? o.get("shop").getAsString()
+                                        : "",
+                                o.has("icon") && !o.get("icon").isJsonNull()
+                                        ? o.get("icon").getAsString()
+                                        : "",
+                                o.has("costItem") && !o.get("costItem").isJsonNull()
+                                        ? o.get("costItem").getAsString()
+                                        : "",
+                                o.has("costAmount") && !o.get("costAmount").isJsonNull()
+                                        ? o.get("costAmount").getAsInt()
+                                        : 0));
+            }
+        }
+
+        return List.copyOf(others);
     }
 
     private static List<PlantSource> readGives(JsonObject item) {

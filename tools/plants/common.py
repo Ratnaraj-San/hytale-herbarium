@@ -31,7 +31,8 @@ def recap(label, by_id):
 
 def apply_obtainable_rule(entry):
     """obtainableInExplorationMode = true if at least one true signal in obtainedFrom:
-    a source plant, any of interactions.break/collect/shears, or a crafting recipe.
+    a source plant, any of interactions.break/collect/shears, a crafting recipe, or an
+    "other" source (e.g. sold by a merchant/barter shop).
     Fruits are not generated in the world but are collectable from trees (drop/collect)."""
     o = entry.get("obtainedFrom") or {}
     inter = o.get("interactions") or {}
@@ -39,6 +40,7 @@ def apply_obtainable_rule(entry):
         o.get("plants")
         or any(inter.get(k) for k in ("break", "collect", "shears"))
         or o.get("crafting") is not None
+        or o.get("other")
     )
     return entry
 
@@ -51,8 +53,9 @@ def apply_obtainable_rules(by_id, force_unobtainable=()):
       - every locations list is empty (regions/zones/portals) -> not generated in the world
       - obtainedFrom.crafting is falsy -> not player-craftable
       - obtainedFrom.plants is empty -> does not come from another item
+      - obtainedFrom.other is empty -> not sold by a merchant or other source
     Rationale: an item that neither generates in the world, nor is crafted, nor comes
-    from another item cannot be obtained.
+    from another item, nor is bought from a merchant cannot be obtained.
 
     force_unobtainable: ids that must stay unobtainable whatever the signals say
     (e.g. orphan block-state items whose state is not defined on the block).
@@ -62,7 +65,7 @@ def apply_obtainable_rules(by_id, force_unobtainable=()):
         loc = entry.get("locations") or {}
         locations_empty = all(not loc.get(k) for k in ("regions", "zones", "portals"))
         o = entry.get("obtainedFrom") or {}
-        if locations_empty and not o.get("crafting") and not o.get("plants"):
+        if locations_empty and not o.get("crafting") and not o.get("plants") and not o.get("other"):
             entry["obtainableInExplorationMode"] = False
     for plant_id in force_unobtainable:
         if plant_id in by_id:
