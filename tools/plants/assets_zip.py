@@ -20,7 +20,18 @@ def resolve_assets_zip(cli_arg=None):
 
 # (?<!\*) excludes block-state patterns like "*Plant_Crop_..._StageFinal" (not player items)
 PLANT_RE = re.compile(r"(?<!\*)Plant_[A-Za-z0-9_]+")
+# "*<BlockId>_State_Definitions_<State>" scatter patterns (zone covers/masks): the base
+# block id is a real plant block (e.g. *Plant_Crop_Wheat_Block_State_Definitions_StageFinal
+# -> Plant_Crop_Wheat_Block), so it is kept; the state id itself is not a player item.
+WILDCARD_STATE_RE = re.compile(r"\*(Plant_[A-Za-z0-9_]+)_State_Definitions_[A-Za-z0-9_]+")
 PLANT_ID_RE = re.compile(r"^Plant_[A-Za-z0-9_]+$")
+
+
+def plant_ids_in_text(text):
+    """Plant ids in raw text: plain ids plus base block ids from wildcard state patterns."""
+    found = set(PLANT_RE.findall(text))
+    found.update(WILDCARD_STATE_RE.findall(text))
+    return found
 ZONE_FILE_RE = re.compile(
     r"^Server/World/Default/Zones/([^/]+)/(Custom\.[^/]+\.json|Cave/Covers/[^/]+\.json)$"
 )
@@ -70,7 +81,7 @@ def find_plant_ids(obj):
                 values = value if isinstance(value, list) else [value]
                 for item in values:
                     if isinstance(item, str):
-                        found.update(PLANT_RE.findall(item))
+                        found.update(plant_ids_in_text(item))
                     else:
                         found |= find_plant_ids(item)  # e.g. Type: [{Block: "Plant_..."}]
             else:

@@ -5,10 +5,10 @@ from collections import defaultdict
 
 from assets_zip import (
     INSTANCE_SCAN_RE,
-    PLANT_RE,
     PORTAL_TYPE_RE,
     PREFAB_DEF_RE,
     find_plant_ids,
+    plant_ids_in_text,
 )
 
 ZONE_ANY_RE = re.compile(r"^Server/World/Default/Zones/([^/]+)/.+\.json$")
@@ -33,15 +33,19 @@ BIOME_DIR_TO_REGION_PREFIX = {
     "Ocean1": "Oceans",
 }
 
-# Only real world regions are kept: Oceans and ZoneN_Tier* (which map to the 5 named
-# zones). Drops Masks/, Layers/, Noise/, PrefabPatterns_Shared/, Spawn/Temple/Shore...
-# Shallow_Ocean areas belong to the Oceans zone (aquatic plants).
-REGION_RE = re.compile(r"^(Oceans|Zone[1-4]_Tier\d+)$")
+# Only real world regions are kept: Oceans (displays "Crystalline Depths"), ZoneN_Tier*,
+# ZoneN_Shallow_Ocean* ("Shallow Ocean"), ZoneN_Shore* ("Shore") and Zone1_Spawn ("First
+# Gate of the Echo"). Shallow_Ocean/Shore are NOT merged into Oceans: their Zone.json
+# Discovery.ZoneName points at the adjacent land zone, so plants generating there show
+# under that land zone with their own "Shallow Ocean"/"Shore" region tile — only the deep
+# Oceans region maps to the Oceans zone. Drops Masks/, Layers/, Noise/,
+# PrefabPatterns_Shared/, Temple...
+REGION_RE = re.compile(
+    r"^(Oceans|Zone[1-4]_Tier\d+|Zone[1-4]_Shallow_Ocean(_Tier\d+)?|Zone[1-4]_Shore(_Tier\d+)?|Zone1_Spawn)$"
+)
 
 
 def normalize_region(region):
-    if "_Shallow_Ocean" in region:
-        return "Oceans"
     return region
 
 
@@ -225,7 +229,7 @@ def _pattern_files(custom_data):
             yield "Server/World/Default/" + pattern_file_ref.replace(".", "/") + ".json"
 
 
-def scan_locations(assets):
+def scan_locations(assets, known_ids=None):
     """Returns (plant_locations, portals, prefab_plants, prefab_backed):
     plant_locations[plant_id] = {"regions": set, "zones": set, "portals": set} (raw keys;
     converted to translation keys at output).
@@ -247,7 +251,7 @@ def scan_locations(assets):
     # pass 0: prefab contents (needed to resolve prefab references in zone/assignment files)
     for entry_name in assets.entry_names:
         if PREFAB_DEF_RE.match(entry_name):
-            found_ids = set(PLANT_RE.findall(assets.read_text(entry_name)))
+            found_ids = plant_ids_in_text(assets.read_text(entry_name))
             if found_ids:
                 prefab_plants[entry_name].update(found_ids)
 
@@ -401,7 +405,7 @@ def scan_locations(assets):
         match = re.match(r"^Server/BlockTypeList/([^/]+)\.json$", entry_name)
         if match:
             # BlockTypeList files are {"Blocks": ["Plant_...", ...]} plain string lists
-            block_type_lists[match.group(1)] = set(PLANT_RE.findall(assets.read_text(entry_name)))
+            block_type_lists[match.group(1)] = plant_ids_in_text(assets.read_text(entry_name))
     for entry_name in assets.entry_names:
         if not WORLD_EVENT_RE.match(entry_name):
             continue
@@ -434,7 +438,7 @@ def scan_locations(assets):
     for entry_name in assets.entry_names:
         if PREFAB_DEF_RE.match(entry_name):
             text = assets.read_text(entry_name)
-            found_ids = set(PLANT_RE.findall(text))
+            found_ids = plant_ids_in_text(text)
             if not found_ids:
                 continue
             prefab_plants[entry_name].update(found_ids)
@@ -495,5 +499,19 @@ def scan_locations(assets):
                 "zones": set(),
                 "portals": set(backed["portals"]),
             }
+
+    # Crop items (Plant_Crop_<X>_Item) are never scattered themselves: they inherit the
+    # locations of their crop block (Plant_Crop_<X>_Block), which wildcard state patterns
+    # (*<Block>_State_Definitions_StageFinal / *_Harvest / ...) attribute to the block.
+    # Only real item ids (known_ids) get the inherited entry, so non-existent
+    # Plant_Crop_<X>_Item variants don't pollute the plant list.
+    for block_id in list(plant_locations):
+        if not block_id.startswith("Plant_Crop_") or not block_id.endswith("_Block"):
+            continue
+        item_id = block_id[: -len("_Block")] + "_Item"
+        if known_ids is not None and item_id not in known_ids:
+            continue
+        for key in ("regions", "zones", "portals"):
+            plant_locations[item_id][key] |= plant_locations[block_id][key]
 
     return plant_locations, portals, prefab_plants, prefab_locations

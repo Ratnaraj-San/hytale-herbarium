@@ -55,7 +55,7 @@ def main():
     drop_path = index_drops(assets.entry_names)
     salvage_rel = scan_salvage_relations(assets)
     item_chain = ItemChain(assets, item_path)
-    locations, _portals, prefab_plants, _prefab_backed = scan_locations(assets)
+    locations, _portals, prefab_plants, _prefab_backed = scan_locations(assets, known_ids=set(item_path))
     region_zone_names = scan_region_zone_names(assets)
     validate_biome_map(assets, region_zone_names)
     _server_key, region_key, zone_key_for_region = make_key_fns(
