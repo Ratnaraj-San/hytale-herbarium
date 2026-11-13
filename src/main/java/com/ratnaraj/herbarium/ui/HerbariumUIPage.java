@@ -327,15 +327,11 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                     tile + " #Button.Text",
                     Message.translation(CATEGORY_KEY_PREFIX + category.toLowerCase(Locale.ROOT)));
             commands.set(
-                    tile + " #NotCompleteCategoryCounter #Current.Text",
-                    String.valueOf(discovered));
+                    tile + " #CurrentCategoryCountNotComplete.Text", String.valueOf(discovered));
+            commands.set(tile + " #CurrentCategoryCountComplete.Text", String.valueOf(discovered));
             commands.set(
-                    tile + " #CompleteCategoryCounter #Current.Text", String.valueOf(discovered));
-            commands.set(
-                    tile + " #NotCompleteCategoryCounter #Total.Text",
-                    String.valueOf(plants.size()));
-            commands.set(
-                    tile + " #CompleteCategoryCounter #Total.Text", String.valueOf(plants.size()));
+                    tile + " #TotalCategoryCountNotComplete.Text", String.valueOf(plants.size()));
+            commands.set(tile + " #TotalCategoryCountComplete.Text", String.valueOf(plants.size()));
 
             String icon =
                     CATEGORY_ICON_OVERRIDES.containsKey(category)
