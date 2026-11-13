@@ -263,7 +263,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         Set<String> discoveredPlants = getDiscoveredPlantIds();
 
         commands.append("Pages/Herbarium.ui");
-        commands.set("#TitleLabel.Text", Message.translation(JOURNAL_NAME_KEY));
+        commands.set("#TitleLabel.Text", buildTitle());
 
         int totalDiscovered = 0;
         int totalPlants = 0;
@@ -379,7 +379,7 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         Set<String> discoveredPlants = getDiscoveredPlantIds();
 
         commands.append("Pages/Herbarium/PlantPanel.ui");
-        commands.set("#TitleLabel.Text", Message.translation(JOURNAL_NAME_KEY));
+        commands.set("#TitleLabel.Text", buildTitle());
 
         int discovered = 0;
         for (String plantId : plants) {
