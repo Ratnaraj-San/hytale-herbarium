@@ -39,23 +39,23 @@ class AssetsZip:
 
     def __init__(self, path=None):
         path = Path(path) if path else DEFAULT_ASSETS_ZIP
-        self.zf = zipfile.ZipFile(path)
-        self.names = self.zf.namelist()
-        self._cache = {}
+        self.zip_file = zipfile.ZipFile(path)
+        self.entry_names = self.zip_file.namelist()
+        self._json_cache = {}
 
-    def load_json(self, name):
-        if name not in self._cache:
+    def load_json(self, entry_name):
+        if entry_name not in self._json_cache:
             try:
-                with self.zf.open(name) as f:
-                    self._cache[name] = json.loads(f.read().decode("utf-8-sig"))
+                with self.zip_file.open(entry_name) as file:
+                    self._json_cache[entry_name] = json.loads(file.read().decode("utf-8-sig"))
             except Exception:
-                self._cache[name] = None
-        return self._cache[name]
+                self._json_cache[entry_name] = None
+        return self._json_cache[entry_name]
 
-    def read_text(self, name):
+    def read_text(self, entry_name):
         try:
-            with self.zf.open(name) as f:
-                return f.read().decode("utf-8", "replace")
+            with self.zip_file.open(entry_name) as file:
+                return file.read().decode("utf-8", "replace")
         except Exception:
             return ""
 
@@ -65,30 +65,30 @@ def find_plant_ids(obj):
     (Type/Solid in covers/assignments, Block in tile/mask files, name in prefabs)."""
     found = set()
     if isinstance(obj, dict):
-        for k, v in obj.items():
-            if k in ("Type", "Solid", "Block", "name"):
-                vals = v if isinstance(v, list) else [v]
-                for x in vals:
-                    if isinstance(x, str):
-                        found.update(PLANT_RE.findall(x))
+        for key, value in obj.items():
+            if key in ("Type", "Solid", "Block", "name"):
+                values = value if isinstance(value, list) else [value]
+                for item in values:
+                    if isinstance(item, str):
+                        found.update(PLANT_RE.findall(item))
                     else:
-                        found |= find_plant_ids(x)  # e.g. Type: [{Block: "Plant_..."}]
+                        found |= find_plant_ids(item)  # e.g. Type: [{Block: "Plant_..."}]
             else:
-                found |= find_plant_ids(v)
+                found |= find_plant_ids(value)
     elif isinstance(obj, list):
-        for x in obj:
-            found |= find_plant_ids(x)
+        for item in obj:
+            found |= find_plant_ids(item)
     return found
 
 
 def collect_item_ids(obj, out):
     """Recursively collect ItemId values into `out`."""
     if isinstance(obj, dict):
-        for k, v in obj.items():
-            if k == "ItemId" and isinstance(v, str):
-                out.add(v)
+        for key, value in obj.items():
+            if key == "ItemId" and isinstance(value, str):
+                out.add(value)
             else:
-                collect_item_ids(v, out)
+                collect_item_ids(value, out)
     elif isinstance(obj, list):
-        for x in obj:
-            collect_item_ids(x, out)
+        for item in obj:
+            collect_item_ids(item, out)

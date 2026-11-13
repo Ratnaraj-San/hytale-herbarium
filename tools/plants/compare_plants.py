@@ -23,8 +23,8 @@ def main():
     only_scan = sorted(set(scan) - set(curated))
     only_curated = sorted(set(curated) - set(scan))
     flag_diff = sorted(
-        pid for pid in set(scan) & set(curated)
-        if bool(scan[pid].get("obtainableInExplorationMode")) != bool(curated[pid].get("obtainableInExplorationMode"))
+        plant_id for plant_id in set(scan) & set(curated)
+        if bool(scan[plant_id].get("obtainableInExplorationMode")) != bool(curated[plant_id].get("obtainableInExplorationMode"))
     )
 
     print("[diff]")

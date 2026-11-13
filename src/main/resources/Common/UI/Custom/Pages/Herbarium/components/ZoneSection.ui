@@ -3,7 +3,9 @@ $Herbarium = "HerbariumCommon.ui";
 Group {
   LayoutMode: Top;
 
-  $Herbarium.@Section #ZoneSection {}
+  $Herbarium.@SectionBox #ZoneSection {
+    @ListMode = Top;
+  }
 
   $Herbarium.@Spacer #ZoneSpacer {
     Visible: false;

@@ -1,7 +1,12 @@
 package com.ratnaraj.herbarium.ui;
 
-import com.hypixel.hytale.server.core.Message;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import com.hypixel.hytale.protocol.packets.interface_.CustomUIEventBindingType;
+import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.ui.builder.EventData;
 import com.hypixel.hytale.server.core.ui.builder.UICommandBuilder;
 import com.hypixel.hytale.server.core.ui.builder.UIEventBuilder;
@@ -15,32 +20,34 @@ import com.ratnaraj.herbarium.data.PlantLocationsV2;
 import com.ratnaraj.herbarium.data.PlantSource;
 import com.ratnaraj.herbarium.data.PlayerStore;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 public class PlantDetailsPanel {
 
     /** Same event as the LeftPanel tiles: opens that plant's page. */
     public static final String TYPE_SELECT_PLANT = "SelectPlant";
 
     private static final String LOCATION_ENTRY_UI = "Pages/Herbarium/components/LocationEntry.ui";
-    private static final String LOCATION_ENTRY_SPACED_UI = "Pages/Herbarium/components/LocationEntrySpaced.ui";
     private static final String ZONE_SECTION_UI = "Pages/Herbarium/components/ZoneSection.ui";
     private static final String INGREDIENT_TILE_UI = "Pages/Herbarium/components/IngredientTile.ui";
-    private static final String PLANT_INGREDIENT_TILE_UI = "Pages/Herbarium/components/PlantIngredientTile.ui";
-    private static final String PLANT_SOURCE_TILE_UI = "Pages/Herbarium/components/PlantSourceTile.ui";
-    private static final String ITEM_SOURCE_TILE_UI = "Pages/Herbarium/components/ItemSourceTile.ui";
-    private static final String LOCATIONS_FOUND_IN_KEY = "server.herbarium.ui.container.locations.title";
+    private static final String PLANT_INGREDIENT_TILE_UI =
+            "Pages/Herbarium/components/PlantIngredientTile.ui";
+    private static final String PLANT_SOURCE_TILE_UI =
+            "Pages/Herbarium/components/PlantSourceTile.ui";
+    private static final String ITEM_SOURCE_TILE_UI =
+            "Pages/Herbarium/components/ItemSourceTile.ui";
+    private static final String LOCATIONS_FOUND_IN_KEY =
+            "server.herbarium.ui.container.locations.title";
     private static final String LOCATION_UNKNOWN_KEY = "server.herbarium.ui.locations.unknown";
     private static final String PORTALS_TITLE_KEY = "server.herbarium.ui.locations.portals";
     private static final String DISCOVERED_ON_KEY = "server.herbarium.ui.plant.discoveredOn";
     private static final String DISCOVERED_AT_KEY = "server.herbarium.ui.plant.discoveredAt";
+    private static final String UNLOCKED_BY_COMMAND_KEY =
+            "server.herbarium.ui.plant.unlockedByCommand";
     private static final String COPY_ID_TOOLTIP_KEY = "server.herbarium.ui.plant.copy_id_tooltip";
-    private static final String OBTAINED_FROM_TITLE_KEY = "server.herbarium.ui.container.obtained_from.title";
+    private static final String OBTAINED_FROM_TITLE_KEY =
+            "server.herbarium.ui.container.obtained_from.title";
     private static final String GIVES_TITLE_KEY = "server.herbarium.ui.container.gives.title";
-    private static final String INTERACTIONS_TITLE_KEY = "server.herbarium.ui.obtained_from.interactions";
+    private static final String INTERACTIONS_TITLE_KEY =
+            "server.herbarium.ui.obtained_from.interactions";
     private static final String INTERACTION_BREAK_KEY = "server.herbarium.ui.interaction.break";
     private static final String INTERACTION_HARVEST_KEY = "server.herbarium.ui.interaction.harvest";
     private static final String INTERACTION_SHEARS_KEY = "server.herbarium.ui.interaction.shears";
@@ -54,8 +61,7 @@ public class PlantDetailsPanel {
             UICommandBuilder commands,
             UIEventBuilder events,
             String selectedPlant,
-            boolean devView
-    ) {
+            boolean devView) {
         PlayerStore store = Herbarium.getPlayerStore();
         Set<String> discovered = getDiscoveredPlantIds(playerRef, devView);
 
@@ -80,18 +86,31 @@ public class PlantDetailsPanel {
         commands.set("#SpacerAfterObtainedFrom.Visible", showObtainedFrom && showGives);
 
         PlantInfo plantInfo = store.getPlayerPlantInfo(playerRef, selectedPlant);
-        if (plantInfo != null && plantInfo.wasDiscovered() && plantInfo.getDiscoveredDate() != null) {
-            String date = plantInfo.getDiscoveredDate();
-            String place = plantInfo.getDiscoveredPlace();
-            Message text;
-            if (place != null) {
-                text = Message.translation(DISCOVERED_AT_KEY)
-                        .param("date", formatDate(date))
-                        .param("place", place);
-            } else {
-                text = Message.translation(DISCOVERED_ON_KEY).param("date", formatDate(date));
+        Message discoveryText = null;
+
+        if (plantInfo != null && plantInfo.wasDiscovered()) {
+            if (plantInfo.getDiscoveredDate() != null) {
+                String date = plantInfo.getDiscoveredDate();
+                String place = plantInfo.getDiscoveredPlace();
+
+                if (place != null) {
+                    discoveryText =
+                            Message.translation(DISCOVERED_AT_KEY)
+                                    .param("date", formatDate(date))
+                                    .param("place", place);
+                } else {
+                    discoveryText =
+                            Message.translation(DISCOVERED_ON_KEY).param("date", formatDate(date));
+                }
+            } else if (plantInfo.getUnlockedByCommandDate() != null) {
+                discoveryText =
+                        Message.translation(UNLOCKED_BY_COMMAND_KEY)
+                                .param("date", formatDate(plantInfo.getUnlockedByCommandDate()));
             }
-            commands.set("#PlantDiscovery.Text", text);
+        }
+
+        if (discoveryText != null) {
+            commands.set("#PlantDiscovery.Text", discoveryText);
         } else {
             commands.set("#PlantDiscovery.Text", "");
         }
@@ -111,7 +130,9 @@ public class PlantDetailsPanel {
         commands.set("#PlantContainerLocations.Visible", hasPlant);
 
         if (hasPlant) {
-            commands.set("#PlantContainerLocations #ContainerTitle.Text", Message.translation(LOCATIONS_FOUND_IN_KEY));
+            commands.set(
+                    "#PlantContainerLocations #ContainerTitle.Text",
+                    Message.translation(LOCATIONS_FOUND_IN_KEY));
         } else {
             commands.set("#PlantContainerLocations #ContainerTitle.Text", "");
         }
@@ -127,7 +148,10 @@ public class PlantDetailsPanel {
         boolean portalsVisible = hasPlant && !locations.getPortals().isEmpty();
         boolean unknownVisible = hasPlant && !hasLocations;
 
-        setLocationGroup(commands, "#PlantLocationsPortals", PORTALS_TITLE_KEY,
+        setLocationGroup(
+                commands,
+                "#PlantLocationsPortals",
+                PORTALS_TITLE_KEY,
                 portalsVisible ? locations.getPortals() : List.of());
 
         // One appended ZoneSection per zone of the plant, listing that zone's regions (game data).
@@ -145,7 +169,10 @@ public class PlantDetailsPanel {
             String zoneKey = visibleZoneKeys.get(i);
             String entry = zonedList + "[" + i + "]";
             commands.append(zonedList, ZONE_SECTION_UI);
-            setLocationGroup(commands, entry + " #ZoneSection", zoneKey,
+            setLocationGroup(
+                    commands,
+                    entry + " #ZoneSection",
+                    zoneKey,
                     PlantLocationsV2.getRegionsForZone(zoneKey));
             // Spacer only between two visible blocks: not after the last zone
             // unless portals or the unknown label follows.
@@ -154,8 +181,8 @@ public class PlantDetailsPanel {
         }
     }
 
-    private static void setLocationGroup(UICommandBuilder commands, String section,
-                                         String titleKey, List<String> entries) {
+    private static void setLocationGroup(
+            UICommandBuilder commands, String section, String titleKey, List<String> entries) {
         String title = section + " #SectionTitle";
         String list = section + " #SectionList";
         boolean visible = !entries.isEmpty();
@@ -171,9 +198,11 @@ public class PlantDetailsPanel {
         commands.clear(list);
 
         for (int i = 0; i < entries.size(); i++) {
-            // First entry has no top padding; the rest are spaced.
-            commands.append(list, i == 0 ? LOCATION_ENTRY_UI : LOCATION_ENTRY_SPACED_UI);
-            commands.set(list + "[" + i + "] #LocationText.Text", Message.translation(entries.get(i)));
+            // First entry has no top spacer; the rest are spaced.
+            commands.append(list, LOCATION_ENTRY_UI);
+            commands.set(list + "[" + i + "] #TopSpacer.Visible", i > 0);
+            commands.set(
+                    list + "[" + i + "] #LocationText.Text", Message.translation(entries.get(i)));
         }
     }
 
@@ -194,49 +223,60 @@ public class PlantDetailsPanel {
         return discovered;
     }
 
-    private static boolean setObtainedFrom(UICommandBuilder commands, UIEventBuilder events, String plantId, Set<String> discovered) {
-        PlantInteractions interactions = plantId != null
-                ? Herbarium.getCatalog().getPlantInteractions(plantId)
-                : PlantInteractions.NONE;
-        PlantCrafting crafting = plantId != null
-                ? Herbarium.getCatalog().getPlantCrafting(plantId)
-                : null;
-        List<PlantSource> sources = plantId != null
-                ? Herbarium.getCatalog().getPlantSources(plantId)
-                : List.of();
+    private static boolean setObtainedFrom(
+            UICommandBuilder commands,
+            UIEventBuilder events,
+            String plantId,
+            Set<String> discovered) {
+        PlantInteractions interactions =
+                plantId != null
+                        ? Herbarium.getCatalog().getPlantInteractions(plantId)
+                        : PlantInteractions.NONE;
+        PlantCrafting crafting =
+                plantId != null ? Herbarium.getCatalog().getPlantCrafting(plantId) : null;
+        List<PlantSource> sources =
+                plantId != null ? Herbarium.getCatalog().getPlantSources(plantId) : List.of();
 
         boolean showInteractions = plantId != null && interactions.any();
-        boolean showCrafting = crafting != null
-                && !crafting.benches().isEmpty()
-                && !crafting.inputs().isEmpty();
+        boolean showCrafting =
+                crafting != null && !crafting.benches().isEmpty() && !crafting.inputs().isEmpty();
         boolean showPlants = plantId != null && !sources.isEmpty();
         boolean showContainer = showInteractions || showCrafting || showPlants;
 
         commands.set("#PlantContainerObtainedFrom.Visible", showContainer);
 
-        if (!showContainer) { return false; }
+        if (!showContainer) {
+            return false;
+        }
 
-        commands.set("#PlantContainerObtainedFrom #ContainerTitle.Text", Message.translation(OBTAINED_FROM_TITLE_KEY));
+        commands.set(
+                "#PlantContainerObtainedFrom #ContainerTitle.Text",
+                Message.translation(OBTAINED_FROM_TITLE_KEY));
 
         setInteractionsSection(commands, showInteractions, interactions);
         setCraftingSection(commands, events, showCrafting, crafting, discovered);
         setPlantsSection(commands, events, showPlants, sources, discovered);
 
         // Spacers only between two visible sections
-        commands.set("#SpacerAfterInteractions.Visible", showInteractions && (showCrafting || showPlants));
+        commands.set(
+                "#SpacerAfterInteractions.Visible",
+                showInteractions && (showCrafting || showPlants));
         commands.set("#SpacerAfterCrafting.Visible", showCrafting && showPlants);
         return true;
     }
 
     /**
-     * Gives section: reverse of Obtained from / Plants — one PlantSourceTile per plant
-     * this plant gives, with the interaction icons below (craft icon for craft relations).
-     * Returns whether the container is visible.
+     * Gives section: reverse of Obtained from / Plants — one PlantSourceTile per plant this plant
+     * gives, with the interaction icons below (craft icon for craft relations). Returns whether the
+     * container is visible.
      */
-    private static boolean setGives(UICommandBuilder commands, UIEventBuilder events, String plantId, Set<String> discovered) {
-        List<PlantSource> gives = plantId != null
-                ? Herbarium.getCatalog().getPlantGives(plantId)
-                : List.of();
+    private static boolean setGives(
+            UICommandBuilder commands,
+            UIEventBuilder events,
+            String plantId,
+            Set<String> discovered) {
+        List<PlantSource> gives =
+                plantId != null ? Herbarium.getCatalog().getPlantGives(plantId) : List.of();
         boolean visible = !gives.isEmpty();
 
         String container = "#PlantContainerGives";
@@ -255,30 +295,54 @@ public class PlantDetailsPanel {
         for (int i = 0; i < gives.size(); i++) {
             PlantSource gave = gives.get(i);
             boolean isPlant = Herbarium.getCatalog().isPlantItem(gave.plantId());
-            String entry = appendEntry(commands, list, isPlant ? PLANT_SOURCE_TILE_UI : ITEM_SOURCE_TILE_UI, i);
+            String entry =
+                    appendEntry(
+                            commands,
+                            list,
+                            isPlant ? PLANT_SOURCE_TILE_UI : ITEM_SOURCE_TILE_UI,
+                            i);
 
             if (isPlant) {
-                setPlantTileAppearance(commands, entry + " #PlantTile", gave.plantId(), discovered.contains(gave.plantId()));
+                setPlantTileAppearance(
+                        commands,
+                        entry + " #PlantTile",
+                        gave.plantId(),
+                        discovered.contains(gave.plantId()));
                 bindOpenPlantPage(events, entry, gave.plantId());
             } else {
                 // Non-plant child item: ingredient tile, name only as tooltip.
                 setAssetTooltip(commands, entry + " #IngredientTile", gave.plantId());
-                setAssetIcon(commands, entry + " #IngredientTile #IngredientIcon", iconOverride(gave.plantId()));
+                setAssetIcon(
+                        commands,
+                        entry + " #IngredientTile #IngredientIcon",
+                        iconOverride(gave.plantId()));
             }
 
             String icons = entry + " #SourceInteractions";
             commands.set(icons + " #IconBreak.Visible", gave.drop());
-            commands.set(icons + " #IconBreak.TooltipTextSpans", Message.translation(INTERACTION_BREAK_KEY));
+            commands.set(
+                    icons + " #IconBreak.TooltipTextSpans",
+                    Message.translation(INTERACTION_BREAK_KEY));
             commands.set(icons + " #IconHarvest.Visible", gave.collect());
-            commands.set(icons + " #IconHarvest.TooltipTextSpans", Message.translation(INTERACTION_HARVEST_KEY));
+            commands.set(
+                    icons + " #IconHarvest.TooltipTextSpans",
+                    Message.translation(INTERACTION_HARVEST_KEY));
             commands.set(icons + " #IconShears.Visible", gave.shears());
-            commands.set(icons + " #IconShears.TooltipTextSpans", Message.translation(INTERACTION_SHEARS_KEY));
+            commands.set(
+                    icons + " #IconShears.TooltipTextSpans",
+                    Message.translation(INTERACTION_SHEARS_KEY));
             commands.set(icons + " #IconSalvage.Visible", gave.salvage());
-            commands.set(icons + " #IconSalvage.TooltipTextSpans", Message.translation(INTERACTION_SALVAGE_KEY));
+            commands.set(
+                    icons + " #IconSalvage.TooltipTextSpans",
+                    Message.translation(INTERACTION_SALVAGE_KEY));
             commands.set(icons + " #IconGrowth.Visible", gave.growth() && !gave.magical());
-            commands.set(icons + " #IconGrowth.TooltipTextSpans", Message.translation(INTERACTION_GROWTH_KEY));
+            commands.set(
+                    icons + " #IconGrowth.TooltipTextSpans",
+                    Message.translation(INTERACTION_GROWTH_KEY));
             commands.set(icons + " #IconGrowthMagical.Visible", gave.magical());
-            commands.set(icons + " #IconGrowthMagical.TooltipTextSpans", Message.translation(INTERACTION_GROWTH_KEY));
+            commands.set(
+                    icons + " #IconGrowthMagical.TooltipTextSpans",
+                    Message.translation(INTERACTION_GROWTH_KEY));
             // Craft: bench icon on top of the CraftFarming fallback when the recipe's
             // bench is known; tooltip names the bench, else generic "Crafting".
             boolean hasBench = gave.craft() && gave.bench() != null && !gave.bench().isEmpty();
@@ -288,57 +352,96 @@ public class PlantDetailsPanel {
                 setAssetIcon(commands, icons + " #CraftBenchIcon", gave.bench());
                 commands.set(icons + " #IconCraft.TooltipTextSpans", assetMessage(gave.bench()));
             } else {
-                commands.set(icons + " #IconCraft.TooltipTextSpans", Message.translation(CRAFTING_TITLE_KEY));
+                commands.set(
+                        icons + " #IconCraft.TooltipTextSpans",
+                        Message.translation(CRAFTING_TITLE_KEY));
             }
         }
 
         return true;
     }
 
-    private static void setPlantsSection(UICommandBuilder commands, UIEventBuilder events, boolean visible, List<PlantSource> sources, Set<String> discovered) {
+    private static void setPlantsSection(
+            UICommandBuilder commands,
+            UIEventBuilder events,
+            boolean visible,
+            List<PlantSource> sources,
+            Set<String> discovered) {
         String section = "#PlantContainerObtainedFrom #PlantContainerObtainedFromPlants";
         String list = beginSection(commands, section, visible, PLANTS_TITLE_KEY);
 
-        if (list == null) { return; }
+        if (list == null) {
+            return;
+        }
 
         for (int j = 0; j < sources.size(); j++) {
             PlantSource source = sources.get(j);
             String entry = appendEntry(commands, list, PLANT_SOURCE_TILE_UI, j);
 
-            setPlantTileAppearance(commands, entry + " #PlantTile", source.plantId(), discovered.contains(source.plantId()));
+            setPlantTileAppearance(
+                    commands,
+                    entry + " #PlantTile",
+                    source.plantId(),
+                    discovered.contains(source.plantId()));
             bindOpenPlantPage(events, entry, source.plantId());
 
             String icons = entry + " #SourceInteractions";
             commands.set(icons + " #IconBreak.Visible", source.drop());
-            commands.set(icons + " #IconBreak.TooltipTextSpans", Message.translation(INTERACTION_BREAK_KEY));
+            commands.set(
+                    icons + " #IconBreak.TooltipTextSpans",
+                    Message.translation(INTERACTION_BREAK_KEY));
             commands.set(icons + " #IconShears.Visible", source.shears());
-            commands.set(icons + " #IconShears.TooltipTextSpans", Message.translation(INTERACTION_SHEARS_KEY));
+            commands.set(
+                    icons + " #IconShears.TooltipTextSpans",
+                    Message.translation(INTERACTION_SHEARS_KEY));
             commands.set(icons + " #IconSalvage.Visible", source.salvage());
-            commands.set(icons + " #IconSalvage.TooltipTextSpans", Message.translation(INTERACTION_SALVAGE_KEY));
+            commands.set(
+                    icons + " #IconSalvage.TooltipTextSpans",
+                    Message.translation(INTERACTION_SALVAGE_KEY));
             commands.set(icons + " #IconGrowth.Visible", source.growth() && !source.magical());
-            commands.set(icons + " #IconGrowth.TooltipTextSpans", Message.translation(INTERACTION_GROWTH_KEY));
+            commands.set(
+                    icons + " #IconGrowth.TooltipTextSpans",
+                    Message.translation(INTERACTION_GROWTH_KEY));
             commands.set(icons + " #IconGrowthMagical.Visible", source.magical());
-            commands.set(icons + " #IconGrowthMagical.TooltipTextSpans", Message.translation(INTERACTION_GROWTH_KEY));
+            commands.set(
+                    icons + " #IconGrowthMagical.TooltipTextSpans",
+                    Message.translation(INTERACTION_GROWTH_KEY));
         }
     }
 
-    private static void setInteractionsSection(UICommandBuilder commands, boolean visible, PlantInteractions interactions) {
+    private static void setInteractionsSection(
+            UICommandBuilder commands, boolean visible, PlantInteractions interactions) {
         String section = "#PlantContainerObtainedFrom #PlantContainerObtainedFromInteractions";
 
-        if (beginSection(commands, section, visible, INTERACTIONS_TITLE_KEY) == null) { return; }
+        if (beginSection(commands, section, visible, INTERACTIONS_TITLE_KEY) == null) {
+            return;
+        }
 
-        String row = section + " #InteractionsHeader #InteractionsRow";
+        String row = section + " #InteractionsHeader #SourceInteractions";
 
-        setInteractionIcon(commands, row + " #InteractionBreak", interactions.canBreak(), INTERACTION_BREAK_KEY);
-        setInteractionIcon(commands, row + " #InteractionHarvest", interactions.canCollect(), INTERACTION_HARVEST_KEY);
-        setInteractionIcon(commands, row + " #InteractionShears", interactions.canShear(), INTERACTION_SHEARS_KEY);
+        setInteractionIcon(
+                commands, row + " #IconBreak", interactions.canBreak(), INTERACTION_BREAK_KEY);
+        setInteractionIcon(
+                commands,
+                row + " #IconHarvest",
+                interactions.canCollect(),
+                INTERACTION_HARVEST_KEY);
+        setInteractionIcon(
+                commands, row + " #IconShears", interactions.canShear(), INTERACTION_SHEARS_KEY);
     }
 
-    private static void setCraftingSection(UICommandBuilder commands, UIEventBuilder events, boolean visible, PlantCrafting crafting, Set<String> discovered) {
+    private static void setCraftingSection(
+            UICommandBuilder commands,
+            UIEventBuilder events,
+            boolean visible,
+            PlantCrafting crafting,
+            Set<String> discovered) {
         String section = "#PlantContainerObtainedFrom #PlantContainerObtainedFromCrafting";
         String body = beginSection(commands, section, visible, CRAFTING_TITLE_KEY);
 
-        if (body == null || crafting == null) { return; }
+        if (body == null || crafting == null) {
+            return;
+        }
 
         // A recipe has a single bench requirement (verified in plants-v2.json).
         // Its icon sits in the section header (48px, right side); name only as tooltip.
@@ -351,16 +454,26 @@ public class PlantDetailsPanel {
         for (int j = 0; j < crafting.inputs().size(); j++) {
             PlantCrafting.Ingredient ingredient = crafting.inputs().get(j);
             boolean isPlant = Herbarium.getCatalog().isPlantItem(ingredient.itemId());
-            String entry = appendEntry(commands, body, isPlant ? PLANT_INGREDIENT_TILE_UI : INGREDIENT_TILE_UI, j);
+            String entry =
+                    appendEntry(
+                            commands,
+                            body,
+                            isPlant ? PLANT_INGREDIENT_TILE_UI : INGREDIENT_TILE_UI,
+                            j);
 
             if (isPlant) {
                 // Plant ingredient: PlantTile shrunk to the ingredient tile size,
                 // rendered like in the LeftPanel (empty tile when undiscovered).
-                setPlantTileAppearance(commands, entry + " #PlantTile", ingredient.itemId(), discovered.contains(ingredient.itemId()));
+                setPlantTileAppearance(
+                        commands,
+                        entry + " #PlantTile",
+                        ingredient.itemId(),
+                        discovered.contains(ingredient.itemId()));
                 bindOpenPlantPage(events, entry, ingredient.itemId());
             } else {
                 setAssetTooltip(commands, entry + " #IngredientTile", ingredient.itemId());
-                setAssetIcon(commands, entry + " #IngredientTile #IngredientIcon", ingredient.itemId());
+                setAssetIcon(
+                        commands, entry + " #IngredientTile #IngredientIcon", ingredient.itemId());
             }
 
             commands.set(entry + " #IngredientAmount.Text", "x" + ingredient.quantity());
@@ -368,10 +481,11 @@ public class PlantDetailsPanel {
     }
 
     /**
-     * Common section setup: visibility, title, cleared list. Returns the list selector,
-     * or null when the section is hidden.
+     * Common section setup: visibility, title, cleared list. Returns the list selector, or null
+     * when the section is hidden.
      */
-    private static String beginSection(UICommandBuilder commands, String section, boolean visible, String titleKey) {
+    private static String beginSection(
+            UICommandBuilder commands, String section, boolean visible, String titleKey) {
         String list = section + " #SectionList";
 
         commands.set(section + ".Visible", visible);
@@ -387,17 +501,19 @@ public class PlantDetailsPanel {
         return list;
     }
 
-    private static String appendEntry(UICommandBuilder commands, String list, String uiFile, int index) {
+    private static String appendEntry(
+            UICommandBuilder commands, String list, String uiFile, int index) {
         commands.append(list, uiFile);
         return list + "[" + index + "]";
     }
 
     /**
-     * Crop-specific life essences (Ingredient_Life_Essence_<Crop>) all use the generic
-     * Essence of Life icon; the tooltip still names the specific essence.
+     * Crop-specific life essences (Ingredient_Life_Essence_<Crop>) all use the generic Essence of
+     * Life icon; the tooltip still names the specific essence.
      */
     private static String iconOverride(String assetId) {
-        if (assetId != null && assetId.startsWith("Ingredient_Life_Essence_")
+        if (assetId != null
+                && assetId.startsWith("Ingredient_Life_Essence_")
                 && !assetId.equals("Ingredient_Life_Essence_Concentrated")
                 && !assetId.equals("Ingredient_Life_Essence_100")) {
             return "Ingredient_Life_Essence";
@@ -406,25 +522,25 @@ public class PlantDetailsPanel {
     }
 
     /**
-     * Makes a plant tile clickable: clicking it opens that plant's page (same event as
-     * the LeftPanel tiles). The plant id is embedded literally in the binding; bindings
-     * are re-sent with every sendUpdate, so they stay correct when the list is rebuilt
-     * for another plant. (A "#… #IdValue.TooltipText" reference is NOT resolved — the
-     * client sends the selector string itself.)
+     * Makes a plant tile clickable: clicking it opens that plant's page (same event as the
+     * LeftPanel tiles). The plant id is embedded literally in the binding; bindings are re-sent
+     * with every sendUpdate, so they stay correct when the list is rebuilt for another plant. (A
+     * "#… #IdValue.TooltipText" reference is NOT resolved — the client sends the selector string
+     * itself.)
      */
     private static void bindOpenPlantPage(UIEventBuilder events, String entry, String plantId) {
         events.addEventBinding(
                 CustomUIEventBindingType.Activating,
                 entry + " #PlantTile #ButtonNotSelected",
-                EventData.of("Type", TYPE_SELECT_PLANT).append("Plant", plantId)
-        );
+                EventData.of("Type", TYPE_SELECT_PLANT).append("Plant", plantId));
     }
 
     /**
-     * Plant tile appearance, same as in the LeftPanel: discovered -> button with name
-     * tooltip + icon; undiscovered -> empty background, no icon.
+     * Plant tile appearance, same as in the LeftPanel: discovered -> button with name tooltip +
+     * icon; undiscovered -> empty background, no icon.
      */
-    private static void setPlantTileAppearance(UICommandBuilder commands, String tile, String plantId, boolean isDiscovered) {
+    private static void setPlantTileAppearance(
+            UICommandBuilder commands, String tile, String plantId, boolean isDiscovered) {
         commands.set(tile + " #ButtonNotSelected.Visible", isDiscovered);
         commands.set(tile + " #EmptyBackground.Visible", !isDiscovered);
 
@@ -442,9 +558,9 @@ public class PlantDetailsPanel {
     }
 
     /**
-     * Label.Text is String-typed on the client: Message.translation is accepted, but
-     * Message.raw is not ("No parameterless constructor for System.String"). Fall back
-     * to the raw id string when the asset has no translation key.
+     * Label.Text is String-typed on the client: Message.translation is accepted, but Message.raw is
+     * not ("No parameterless constructor for System.String"). Fall back to the raw id string when
+     * the asset has no translation key.
      */
     private static void setAssetText(UICommandBuilder commands, String selector, String assetId) {
         String translationKey = PlantAssets.getPlantTranslationKey(assetId);
@@ -455,15 +571,18 @@ public class PlantDetailsPanel {
         }
     }
 
-    private static void setAssetLabel(UICommandBuilder commands, String labelSelector, String assetId) {
+    private static void setAssetLabel(
+            UICommandBuilder commands, String labelSelector, String assetId) {
         setAssetText(commands, labelSelector + ".Text", assetId);
     }
 
-    private static void setAssetTooltip(UICommandBuilder commands, String selector, String assetId) {
+    private static void setAssetTooltip(
+            UICommandBuilder commands, String selector, String assetId) {
         commands.set(selector + ".TooltipTextSpans", assetMessage(assetId));
     }
 
-    private static void setAssetIcon(UICommandBuilder commands, String iconSelector, String assetId) {
+    private static void setAssetIcon(
+            UICommandBuilder commands, String iconSelector, String assetId) {
         String icon = PlantAssets.getPlantIcon(assetId);
 
         if (icon != null) {
@@ -473,11 +592,13 @@ public class PlantDetailsPanel {
         }
     }
 
-    private static void setInteractionIcon(UICommandBuilder commands, String icon, boolean visible, String tooltipKey) {
+    private static void setInteractionIcon(
+            UICommandBuilder commands, String icon, boolean visible, String tooltipKey) {
         commands.set(icon + ".Visible", visible);
 
         // TooltipTextSpans rejects null; clear with an empty message instead.
-        commands.set(icon + ".TooltipTextSpans",
+        commands.set(
+                icon + ".TooltipTextSpans",
                 visible ? Message.translation(tooltipKey) : Message.raw(""));
     }
 
@@ -492,7 +613,8 @@ public class PlantDetailsPanel {
     }
 
     /** For String-typed Label.Text targets. */
-    public static void setPlantNameText(UICommandBuilder commands, String selector, String plantId) {
+    public static void setPlantNameText(
+            UICommandBuilder commands, String selector, String plantId) {
         setAssetText(commands, selector, plantId);
     }
 
@@ -505,5 +627,4 @@ public class PlantDetailsPanel {
             commands.set("#PlantIdWrap.TooltipTextSpans", Message.raw(""));
         }
     }
-
 }

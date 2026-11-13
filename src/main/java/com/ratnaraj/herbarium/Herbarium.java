@@ -1,5 +1,14 @@
 package com.ratnaraj.herbarium;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.logging.Level;
+
+import javax.annotation.Nonnull;
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.hypixel.hytale.server.core.entity.entities.player.pages.CustomUIPage;
@@ -13,14 +22,6 @@ import com.ratnaraj.herbarium.data.PlayerStore;
 import com.ratnaraj.herbarium.event.InventoryChangeSystem;
 import com.ratnaraj.herbarium.ui.HerbariumIntroPage;
 import com.ratnaraj.herbarium.ui.HerbariumUIPage;
-
-import javax.annotation.Nonnull;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.logging.Level;
 
 public class Herbarium extends JavaPlugin {
 
@@ -59,15 +60,18 @@ public class Herbarium extends JavaPlugin {
     private static String readPluginVersion() {
         try (InputStream is = Herbarium.class.getResourceAsStream("/manifest.json")) {
             if (is != null) {
-                JsonObject manifest = JsonParser.parseReader(new InputStreamReader(is)).getAsJsonObject();
+                JsonObject manifest =
+                        JsonParser.parseReader(new InputStreamReader(is)).getAsJsonObject();
                 if (manifest.has("Version")) {
                     return manifest.get("Version").getAsString();
                 }
             }
         } catch (Exception e) {
-            instance.getLogger().at(Level.WARNING).log(
-                "[Herbarium] Unable to read plugin version from manifest.json: " + e.getMessage()
-            );
+            instance.getLogger()
+                    .at(Level.WARNING)
+                    .log(
+                            "[Herbarium] Unable to read plugin version from manifest.json: "
+                                    + e.getMessage());
         }
         return "unknown";
     }
@@ -85,20 +89,22 @@ public class Herbarium extends JavaPlugin {
 
     private Path getPluginDataDirectory() {
         try {
-            Path codeSourcePath = Paths.get(
-                Herbarium.class.getProtectionDomain()
-                    .getCodeSource()
-                    .getLocation()
-                    .toURI()
-            ).getParent();
+            Path codeSourcePath =
+                    Paths.get(
+                                    Herbarium.class
+                                            .getProtectionDomain()
+                                            .getCodeSource()
+                                            .getLocation()
+                                            .toURI())
+                            .getParent();
 
             Path dataDir = codeSourcePath.resolve("Herbarium");
             Files.createDirectories(dataDir);
             return dataDir;
         } catch (Exception e) {
-            getLogger().at(Level.WARNING).log(
-                "[Herbarium] Unable to get directory via CodeSource: " + e.getMessage()
-            );
+            getLogger()
+                    .at(Level.WARNING)
+                    .log("[Herbarium] Unable to get directory via CodeSource: " + e.getMessage());
         }
 
         try {
@@ -110,9 +116,9 @@ public class Herbarium extends JavaPlugin {
                 return dataDir;
             }
         } catch (Exception e) {
-            getLogger().at(Level.WARNING).log(
-                "[Herbarium] Unable to get directory via working dir: " + e.getMessage()
-            );
+            getLogger()
+                    .at(Level.WARNING)
+                    .log("[Herbarium] Unable to get directory via working dir: " + e.getMessage());
         }
 
         try {
@@ -121,9 +127,9 @@ public class Herbarium extends JavaPlugin {
             Files.createDirectories(dataDir);
             return dataDir;
         } catch (Exception e) {
-            getLogger().at(Level.SEVERE).log(
-                "[Herbarium] Unable to determine data directory: " + e.getMessage()
-            );
+            getLogger()
+                    .at(Level.SEVERE)
+                    .log("[Herbarium] Unable to determine data directory: " + e.getMessage());
         }
 
         return Paths.get("Herbarium");
@@ -139,7 +145,7 @@ public class Herbarium extends JavaPlugin {
         getLogger().at(Level.INFO).log("[Herbarium] Plugin disabled!");
 
         playerStore.saveAllMemories();
-        
+
         getLogger().at(Level.INFO).log("[Herbarium] All memories saved!");
     }
 
@@ -155,31 +161,20 @@ public class Herbarium extends JavaPlugin {
                 this,
                 HerbariumUIPage.class,
                 JOURNAL_PAGE_KEY,
-                (
-                        ref,
-                        componentAccessor,
-                        playerRef,
-                        interactionContext
-                ) -> createJournalPage(playerRef)
-        );
+                (ref, componentAccessor, playerRef, interactionContext) ->
+                        createJournalPage(playerRef));
 
         OpenCustomUIInteraction.registerCustomPageSupplier(
                 this,
                 HerbariumUIPage.class,
                 JOURNAL_DEV_PAGE_KEY,
-                (
-                        ref,
-                        componentAccessor,
-                        playerRef,
-                        interactionContext
-                ) -> HerbariumUIPage.devJournal(playerRef)
-        );
+                (ref, componentAccessor, playerRef, interactionContext) ->
+                        HerbariumUIPage.devJournal(playerRef));
     }
 
     /**
-     * Creates the page to open when the player opens the journal: the intro
-     * modal on the very first opening (with the vanilla Memories unlock
-     * look and sound), the journal itself afterwards.
+     * Creates the page to open when the player opens the journal: the intro modal on the very first
+     * opening (with the vanilla Memories unlock look and sound), the journal itself afterwards.
      */
     public static CustomUIPage createJournalPage(PlayerRef playerRef) {
         return createJournalPage(playerRef, playerRef);
@@ -195,5 +190,4 @@ public class Herbarium extends JavaPlugin {
     private void registerCommands() {
         this.getCommandRegistry().registerCommand(new HerbariumCommand());
     }
-
 }

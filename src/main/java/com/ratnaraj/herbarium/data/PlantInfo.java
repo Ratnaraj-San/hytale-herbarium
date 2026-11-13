@@ -6,18 +6,34 @@ public class PlantInfo {
     private final boolean wasDiscovered;
     private final String discoveredDate;
     private final String discoveredPlace;
+    private final String unlockedByCommandDate;
 
     public PlantInfo(String id, String plantName, boolean wasDiscovered) {
-        this(id, plantName, wasDiscovered, null, null);
+        this(id, plantName, wasDiscovered, null, null, null);
     }
 
-    public PlantInfo(String id, String plantName, boolean wasDiscovered,
-                     String discoveredDate, String discoveredPlace) {
+    public PlantInfo(
+            String id,
+            String plantName,
+            boolean wasDiscovered,
+            String discoveredDate,
+            String discoveredPlace) {
+        this(id, plantName, wasDiscovered, discoveredDate, discoveredPlace, null);
+    }
+
+    public PlantInfo(
+            String id,
+            String plantName,
+            boolean wasDiscovered,
+            String discoveredDate,
+            String discoveredPlace,
+            String unlockedByCommandDate) {
         this.id = id;
         this.plantName = plantName;
         this.wasDiscovered = wasDiscovered;
         this.discoveredDate = discoveredDate;
         this.discoveredPlace = discoveredPlace;
+        this.unlockedByCommandDate = unlockedByCommandDate;
     }
 
     public String getId() {
@@ -32,24 +48,28 @@ public class PlantInfo {
         return wasDiscovered;
     }
 
-    /**
-     * ISO-8601 instant of the discovery, or null if unknown or not discovered.
-     */
+    /** ISO-8601 instant of the discovery, or null if unknown or not discovered. */
     public String getDiscoveredDate() {
         return discoveredDate;
     }
 
-    /**
-     * Human-readable coordinates of the discovery, or null if unknown.
-     */
+    /** Human-readable coordinates of the discovery, or null if unknown. */
     public String getDiscoveredPlace() {
         return discoveredPlace;
     }
 
+    public String getUnlockedByCommandDate() {
+        return unlockedByCommandDate;
+    }
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         PlantInfo that = (PlantInfo) o;
         return id.equals(that.id);
     }

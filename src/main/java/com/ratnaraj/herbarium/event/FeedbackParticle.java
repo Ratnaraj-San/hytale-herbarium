@@ -11,11 +11,11 @@ public class FeedbackParticle {
     private FeedbackParticle() {}
 
     public static void spawn(String particle, Ref<EntityStore> ref, Store<EntityStore> store) {
-        TransformComponent transform = store.getComponent(ref, TransformComponent.getComponentType());
+        TransformComponent transform =
+                store.getComponent(ref, TransformComponent.getComponentType());
 
         if (transform != null) {
             ParticleUtil.spawnParticleEffect(particle, transform.getPosition(), store);
         }
     }
-
 }

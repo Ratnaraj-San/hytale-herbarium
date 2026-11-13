@@ -42,6 +42,7 @@ herbarium.ui.interaction.salvage = Récupérer
 herbarium.ui.interaction.growth = Croissance
 herbarium.ui.plant.discoveredOn = Découverte le {date}
 herbarium.ui.plant.discoveredAt = Découverte le {date} à ({place})
+herbarium.ui.plant.unlockedByCommand = Débloqué par commande le {date}
 herbarium.ui.plant.copy_id_tooltip = Cliquez pour sélectionner, Ctrl+C pour copier
 
 # === CustomUI: rewards bar ===

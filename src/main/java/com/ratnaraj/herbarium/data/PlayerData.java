@@ -8,26 +8,28 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * All progression state of a single player: the plants they discovered,
- * the reward tiers they collected, and whether they already opened the
- * journal. Pure state: no player identity, no catalog, no persistence.
+ * All progression state of a single player: the plants they discovered, the reward tiers they
+ * collected, and whether they already opened the journal. Pure state: no player identity, no
+ * catalog, no persistence.
  */
 public class PlayerData {
 
     /**
-     * A collected reward tier: when it was collected and at which rewards
-     * definition version (used to know which compensation grants apply).
+     * A collected reward tier: when it was collected and at which rewards definition version (used
+     * to know which compensation grants apply).
      */
-    public record CollectedTier(String collectedDate, String rewardsVersion) {
-    }
+    public record CollectedTier(String collectedDate, String rewardsVersion) {}
 
     private final Set<PlantInfo> plants;
     private final Map<Integer, CollectedTier> collectedRewardTiers;
     private final Map<Integer, Set<String>> claimedCompensations;
     private boolean journalOpened;
 
-    public PlayerData(Set<PlantInfo> plants, Map<Integer, CollectedTier> collectedRewardTiers,
-                      Map<Integer, Set<String>> claimedCompensations, boolean journalOpened) {
+    public PlayerData(
+            Set<PlantInfo> plants,
+            Map<Integer, CollectedTier> collectedRewardTiers,
+            Map<Integer, Set<String>> claimedCompensations,
+            boolean journalOpened) {
         this.plants = plants;
         this.collectedRewardTiers = collectedRewardTiers;
         this.claimedCompensations = claimedCompensations;
@@ -38,13 +40,15 @@ public class PlayerData {
         return Collections.unmodifiableSet(plants);
     }
 
-    public boolean markPlantDiscovered(String plantId, String plantName,
-                                       String discoveredDate, String discoveredPlace) {
+    public boolean markPlantDiscovered(
+            String plantId, String plantName, String discoveredDate, String discoveredPlace) {
         PlantInfo existing = getPlantInfo(plantId);
+
         if (existing != null) {
-            if (existing.wasDiscovered()) {
+            if (existing.wasDiscovered() && existing.getDiscoveredDate() != null) {
                 return false;
             }
+
             plants.remove(existing);
         }
 
@@ -93,16 +97,16 @@ public class PlayerData {
     }
 
     public boolean markRewardTierCollected(int tier, String collectedDate, String rewardsVersion) {
-        return collectedRewardTiers.putIfAbsent(tier, new CollectedTier(collectedDate, rewardsVersion)) == null;
+        return collectedRewardTiers.putIfAbsent(
+                        tier, new CollectedTier(collectedDate, rewardsVersion))
+                == null;
     }
 
     public Map<Integer, CollectedTier> getCollectedRewardTiers() {
         return Collections.unmodifiableMap(collectedRewardTiers);
     }
 
-    /**
-     * Tier -> rewards definition version at the time the tier was collected.
-     */
+    /** Tier -> rewards definition version at the time the tier was collected. */
     public Map<Integer, String> getCollectedTierVersions() {
         Map<Integer, String> versions = new HashMap<>();
         for (Map.Entry<Integer, CollectedTier> entry : collectedRewardTiers.entrySet()) {
@@ -131,21 +135,23 @@ public class PlayerData {
         journalOpened = false;
     }
 
-    public void unlockAll() {
+    public void unlockAll(String unlockedByCommandDate) {
         Set<PlantInfo> unlocked = new HashSet<>();
+
         for (PlantInfo plant : plants) {
-            unlocked.add(new PlantInfo(plant.getId(), plant.getPlantName(), true));
+            unlocked.add(unlockPlant(plant, unlockedByCommandDate));
         }
+
         plants.clear();
         plants.addAll(unlocked);
     }
 
-    public void unlockCategory(Collection<String> plantIds) {
+    public void unlockCategory(Collection<String> plantIds, String unlockedByCommandDate) {
         Set<PlantInfo> updated = new HashSet<>();
 
         for (PlantInfo plant : plants) {
             if (plantIds.contains(plant.getId())) {
-                updated.add(new PlantInfo(plant.getId(), plant.getPlantName(), true));
+                updated.add(unlockPlant(plant, unlockedByCommandDate));
             } else {
                 updated.add(plant);
             }
@@ -153,6 +159,14 @@ public class PlayerData {
 
         plants.clear();
         plants.addAll(updated);
+    }
+
+    private static PlantInfo unlockPlant(PlantInfo plant, String unlockedByCommandDate) {
+        if (plant.wasDiscovered()) {
+            return plant;
+        }
+        return new PlantInfo(
+                plant.getId(), plant.getPlantName(), true, null, null, unlockedByCommandDate);
     }
 
     public void resetCategory(Collection<String> plantIds) {

@@ -31,6 +31,7 @@ herbarium.ui.container.toggleCollapse = Fäll in / fäll ut
 herbarium.ui.locations.unknown = Okänd plats
 herbarium.ui.plant.discoveredOn = Upptäckt {date}
 herbarium.ui.plant.discoveredAt = Upptäckt {date} vid ({place})
+herbarium.ui.plant.unlockedByCommand = Upplåst med kommandon {date}
 herbarium.ui.plant.copy_id_tooltip = Klicka för att markera, Ctrl+C för att kopiera
 herbarium.ui.locations.zones = Zoner
 herbarium.ui.locations.regions = Regioner

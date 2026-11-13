@@ -31,6 +31,7 @@ herbarium.ui.container.toggleCollapse = Tiivistä / laajenna
 herbarium.ui.locations.unknown = Sijainti tuntematon
 herbarium.ui.plant.discoveredOn = Löydetty {date}
 herbarium.ui.plant.discoveredAt = Löydetty {date} kohdasta ({place})
+herbarium.ui.plant.unlockedByCommand = Avattu komennoilla {date}
 herbarium.ui.plant.copy_id_tooltip = Napsauta valitaksesi, Ctrl+C kopioi
 herbarium.ui.locations.zones = Vyöhykkeet
 herbarium.ui.locations.regions = Alueet
