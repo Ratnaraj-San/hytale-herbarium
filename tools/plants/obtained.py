@@ -177,6 +177,61 @@ def scan_barter_shops(assets):
             for item_id, entries in outputs.items()}
 
 
+def scan_trap_sources(assets):
+    """item id -> [other entry] for trap tools: items whose BlockType Gathering.Harvest
+    (any state) has a DropList resolving to a Server/Drops/Traps/ list — the drop list's
+    Plant_* outputs are obtained with that tool (e.g. Tool_Fishing_Trap's crude trap can
+    catch Plant_Flower_Water_*). Entry reuses the merchant schema: type "trap", nameKey
+    and icon from the tool item itself, empty costItem (the UI hides the cost row)."""
+    trap_drop_stems = {
+        entry_name.rsplit("/", 1)[-1][:-5]
+        for entry_name in assets.entry_names
+        if entry_name.startswith("Server/Drops/Traps/") and entry_name.endswith(".json")
+    }
+    outputs = defaultdict(list)
+    for entry_name in assets.entry_names:
+        if not ITEM_RE.match(entry_name):
+            continue
+        data = assets.load_json(entry_name)
+        if not data:
+            continue
+        block_type = data.get("BlockType") or {}
+        gatherings = [block_type.get("Gathering") or {}]
+        states = (block_type.get("State") or {}).get("Definitions") or {}
+        for state in states.values():
+            if isinstance(state, dict):
+                gatherings.append(state.get("Gathering") or {})
+        drop_lists = set()
+        for gathering in gatherings:
+            harvest = gathering.get("Harvest") or {}
+            drop_list = harvest.get("DropList") if isinstance(harvest, dict) else None
+            if isinstance(drop_list, str) and drop_list in trap_drop_stems:
+                drop_lists.add(drop_list)
+        if not drop_lists:
+            continue
+        plants = set()
+        for drop_list in sorted(drop_lists):
+            drop_data = assets.load_json(f"Server/Drops/Traps/{drop_list}.json")
+            if not drop_data:
+                continue
+            item_ids = set()
+            collect_item_ids(drop_data, item_ids)
+            plants |= {item_id for item_id in item_ids if PLANT_ID_RE.match(item_id)}
+        if not plants:
+            continue
+        entry = {
+            "type": "trap",
+            "shop": "",
+            "nameKey": (data.get("TranslationProperties") or {}).get("Name") or "",
+            "icon": data.get("Icon") or "",
+            "costItem": "",
+            "costAmount": 0,
+        }
+        for plant_id in sorted(plants):
+            outputs[plant_id].append(entry)
+    return {item_id: sorted(entries, key=lambda e: e["nameKey"]) for item_id, entries in outputs.items()}
+
+
 def scan_salvage_relations(assets):
     """List of (source item, obtained item) from Salvage recipes."""
     salvage_relations = []

@@ -7950,7 +7950,16 @@
           "collect": true,
           "shears": false
         },
-        "other": []
+        "other": [
+          {
+            "type": "trap",
+            "shop": "",
+            "nameKey": "server.items.Tool_Fishing_Trap.name",
+            "icon": "Icons/ItemsGenerated/Tool_Fishing_Trap.png",
+            "costItem": "",
+            "costAmount": 0
+          }
+        ]
       },
       "gives": [
         {
@@ -7992,7 +8001,16 @@
           "collect": true,
           "shears": false
         },
-        "other": []
+        "other": [
+          {
+            "type": "trap",
+            "shop": "",
+            "nameKey": "server.items.Tool_Fishing_Trap.name",
+            "icon": "Icons/ItemsGenerated/Tool_Fishing_Trap.png",
+            "costItem": "",
+            "costAmount": 0
+          }
+        ]
       },
       "gives": [
         {
@@ -8038,7 +8056,16 @@
           "collect": true,
           "shears": false
         },
-        "other": []
+        "other": [
+          {
+            "type": "trap",
+            "shop": "",
+            "nameKey": "server.items.Tool_Fishing_Trap.name",
+            "icon": "Icons/ItemsGenerated/Tool_Fishing_Trap.png",
+            "costItem": "",
+            "costAmount": 0
+          }
+        ]
       },
       "gives": [
         {
@@ -8090,7 +8117,16 @@
           "collect": true,
           "shears": false
         },
-        "other": []
+        "other": [
+          {
+            "type": "trap",
+            "shop": "",
+            "nameKey": "server.items.Tool_Fishing_Trap.name",
+            "icon": "Icons/ItemsGenerated/Tool_Fishing_Trap.png",
+            "costItem": "",
+            "costAmount": 0
+          }
+        ]
       },
       "gives": [
         {
@@ -8123,7 +8159,16 @@
           "collect": true,
           "shears": false
         },
-        "other": []
+        "other": [
+          {
+            "type": "trap",
+            "shop": "",
+            "nameKey": "server.items.Tool_Fishing_Trap.name",
+            "icon": "Icons/ItemsGenerated/Tool_Fishing_Trap.png",
+            "costItem": "",
+            "costAmount": 0
+          }
+        ]
       },
       "gives": [
         {
@@ -8166,7 +8211,16 @@
           "collect": true,
           "shears": false
         },
-        "other": []
+        "other": [
+          {
+            "type": "trap",
+            "shop": "",
+            "nameKey": "server.items.Tool_Fishing_Trap.name",
+            "icon": "Icons/ItemsGenerated/Tool_Fishing_Trap.png",
+            "costItem": "",
+            "costAmount": 0
+          }
+        ]
       },
       "gives": [
         {

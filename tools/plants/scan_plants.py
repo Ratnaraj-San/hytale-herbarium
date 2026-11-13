@@ -38,6 +38,7 @@ from obtained import (
     resolve_bench_items,
     sapling_prefab_links,
     scan_barter_shops,
+    scan_trap_sources,
     scan_block_states,
     scan_crop_and_stage_ids,
     scan_salvage_relations,
@@ -62,6 +63,7 @@ def main():
         load_lang_keys(assets), region_zone_names)
     relations = build_relations(assets, drop_path, item_path, salvage_rel)
     barter_shops = scan_barter_shops(assets)
+    trap_sources = scan_trap_sources(assets)
     bench_items = bench_item_map(assets)
     bench_info_map = bench_info(assets)
     harvest_refs = drop_list_refs(item_path, item_chain)
@@ -128,7 +130,10 @@ def main():
             "crafting": item_chain.own_recipe(plant_id) is not None,
             "has_location": any(locations[plant_id][k] for k in ("regions", "zones", "portals")),
             # merchant/barter shops selling this item (Server/BarterShops/*.json)
-            "other": barter_shops.get(plant_id, []),
+            "other": sorted(
+                barter_shops.get(plant_id, []) + trap_sources.get(plant_id, []),
+                key=lambda e: (e.get("type", ""), e.get("shop", ""), e.get("nameKey", "")),
+            ),
         }
 
     # Pass 2: fixpoint — a source is listed only if the source itself is obtainable, and a
@@ -170,7 +175,7 @@ def main():
 
     merchant_sold = sorted(pid for pid in all_plants if raw[pid]["other"])
     if merchant_sold:
-        print(f"Merchant/barter-sold plants ({len(merchant_sold)}):")
+        print(f"Other-source plants (merchant/trap, {len(merchant_sold)}):")
         for pid in merchant_sold:
             print(f"   {pid} <- {[o['nameKey'] for o in raw[pid]['other']]}")
 

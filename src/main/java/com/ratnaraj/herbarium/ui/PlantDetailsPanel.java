@@ -36,8 +36,8 @@ public class PlantDetailsPanel {
             "Pages/Herbarium/components/PlantSourceTile.ui";
     private static final String ITEM_SOURCE_TILE_UI =
             "Pages/Herbarium/components/ItemSourceTile.ui";
-    private static final String MERCHANT_TILE_UI =
-            "Pages/Herbarium/components/MerchantTile.ui";
+    private static final String OTHER_SOURCE_TILE_UI =
+            "Pages/Herbarium/components/OtherSourceTile.ui";
     private static final String LOCATIONS_FOUND_IN_KEY =
             "server.herbarium.ui.container.locations.title";
     private static final String LOCATION_UNKNOWN_KEY = "server.herbarium.ui.locations.unknown";
@@ -303,10 +303,11 @@ public class PlantDetailsPanel {
     }
 
     /**
-     * Other sources (e.g. merchants/barter shops, like the Kweebec Rootling Merchant selling
-     * berry bushes): one MerchantTile per entry — the merchant's generated model icon on the
-     * tile (name as tooltip), and below it the trade cost: cost item icon + "x<amount>" with
-     * a "Buy" tooltip.
+     * Other sources (merchants/barter shops like the Kweebec Rootling Merchant selling berry
+     * bushes, or trap tools like the Fishing Trap catching water flowers): one OtherSourceTile
+     * per entry — the source's icon on the tile (name as tooltip), below it the trade cost
+     * for priced sources (cost item icon + "x<amount>", "Buy" tooltip), and the interaction
+     * icons (Harvest for trap tools, whose drops come from Gathering.Harvest).
      */
     private static void setOtherSection(
             UICommandBuilder commands, boolean visible, List<PlantOther> others) {
@@ -319,9 +320,9 @@ public class PlantDetailsPanel {
 
         for (int i = 0; i < others.size(); i++) {
             PlantOther other = others.get(i);
-            String entry = appendEntry(commands, list, MERCHANT_TILE_UI, i);
+            String entry = appendEntry(commands, list, OTHER_SOURCE_TILE_UI, i);
 
-            String tile = entry + " #MerchantTile";
+            String tile = entry + " #OtherTile";
             if (other.icon() != null && !other.icon().isEmpty()) {
                 commands.set(tile + " #IngredientIcon.AssetPath", other.icon());
             } else {
@@ -329,10 +330,23 @@ public class PlantDetailsPanel {
             }
             commands.set(tile + ".TooltipTextSpans", Message.translation(other.nameKey()));
 
+            // Cost row only for priced sources (merchants); trap tools have no cost.
             String costRow = entry + " #CostRow";
-            setAssetIcon(commands, costRow + " #CostIcon", other.costItem());
-            commands.set(costRow + " #CostAmount.Text", "x" + other.costAmount());
-            commands.set(costRow + ".TooltipTextSpans", Message.translation(BUY_TOOLTIP_KEY));
+            boolean hasCost = other.costItem() != null && !other.costItem().isEmpty();
+            commands.set(costRow + ".Visible", hasCost);
+            if (hasCost) {
+                setAssetIcon(commands, costRow + " #CostIcon", other.costItem());
+                commands.set(costRow + " #CostAmount.Text", "x" + other.costAmount());
+                commands.set(costRow + ".TooltipTextSpans", Message.translation(BUY_TOOLTIP_KEY));
+            }
+
+            // Trap tools yield their plants through the Harvest interaction.
+            String icons = entry + " #SourceInteractions";
+            boolean harvest = "trap".equals(other.type());
+            commands.set(icons + " #IconHarvest.Visible", harvest);
+            commands.set(
+                    icons + " #IconHarvest.TooltipTextSpans",
+                    Message.translation(INTERACTION_HARVEST_KEY));
         }
     }
 
