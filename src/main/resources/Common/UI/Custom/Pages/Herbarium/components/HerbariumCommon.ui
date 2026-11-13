@@ -226,7 +226,7 @@ $Sounds = "../../../Sounds.ui";
   @Gap = 0;
 
   LayoutMode: CenterMiddle;
-  Padding: (Top: 2);
+  Padding: (Top: 4);
 
   Group #IconBreak {
     Anchor: (Width: @Size, Height: @Size, Right: @Gap);
