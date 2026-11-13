@@ -27,6 +27,7 @@ herbarium.ui.category.vine = Лианы
 herbarium.ui.container.locations.title = Встречается в:
 herbarium.ui.container.obtained_from.title = Получено из
 herbarium.ui.container.gives.title = Даёт
+herbarium.ui.container.toggleCollapse = Свернуть / развернуть
 herbarium.ui.locations.unknown = Местонахождение неизвестно
 herbarium.ui.plant.discoveredOn = Обнаружено {date}
 herbarium.ui.plant.discoveredAt = Обнаружено {date} в ({place})

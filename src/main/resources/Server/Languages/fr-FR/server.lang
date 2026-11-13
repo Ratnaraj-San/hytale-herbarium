@@ -27,6 +27,7 @@ herbarium.ui.category.vine = Lianes
 herbarium.ui.container.locations.title = Se trouve dans :
 herbarium.ui.container.obtained_from.title = Obtenu via
 herbarium.ui.container.gives.title = Donne
+herbarium.ui.container.toggleCollapse = Replier / déplier
 herbarium.ui.locations.unknown = Localisation inconnue
 herbarium.ui.locations.zones = Zones
 herbarium.ui.locations.regions = Régions

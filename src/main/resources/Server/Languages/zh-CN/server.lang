@@ -27,6 +27,7 @@ herbarium.ui.category.vine = 藤蔓
 herbarium.ui.container.locations.title = 发现于：
 herbarium.ui.container.obtained_from.title = 获取自
 herbarium.ui.container.gives.title = 给予
+herbarium.ui.container.toggleCollapse = 折叠 / 展开
 herbarium.ui.locations.unknown = 位置未知
 herbarium.ui.plant.discoveredOn = 发现于 {date}
 herbarium.ui.plant.discoveredAt = 发现于 {date}，位于 ({place})

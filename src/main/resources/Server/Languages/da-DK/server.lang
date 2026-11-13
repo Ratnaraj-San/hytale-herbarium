@@ -27,6 +27,7 @@ herbarium.ui.category.vine = Lianer
 herbarium.ui.container.locations.title = Findes i:
 herbarium.ui.container.obtained_from.title = Opnået fra
 herbarium.ui.container.gives.title = Giver
+herbarium.ui.container.toggleCollapse = Fold sammen / fold ud
 herbarium.ui.locations.unknown = Placering ukendt
 herbarium.ui.plant.discoveredOn = Opdaget {date}
 herbarium.ui.plant.discoveredAt = Opdaget {date} på ({place})

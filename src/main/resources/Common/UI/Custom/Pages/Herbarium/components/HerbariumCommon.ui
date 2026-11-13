@@ -94,18 +94,53 @@ $Sounds = "../../../Sounds.ui";
   Padding: @Pad;
 };
 
-// Titled container: background box with a title label on top.
-// Usage: $H.@TitledContainer #MyContainer { ...content children... }
-// Java addresses the title as "#MyContainer #ContainerTitle".
+// Titled, collapsible container: background box with a header row (title left,
+// collapse toggle right). Content goes inside a @ContainerBody so the server can
+// hide it as a whole when the container is collapsed.
+// Usage: $H.@TitledContainer #MyContainer { $H.@ContainerBody #ContainerBody { ... } }
+// Java addresses "#MyContainer #ContainerTitle", "#MyContainer #CollapseButton",
+// "#MyContainer #CollapseArrow" (.AssetPath swaps the arrow) and
+// "#MyContainer #ContainerBody" (.Visible toggles the content).
 @TitledContainer = Group {
   LayoutMode: Top;
   Background: (TexturePath: "../textures/ContainerBackgroundSecondary.png", Border: 23);
   Padding: (Full: 12);
 
-  Label #ContainerTitle {
-    Style: @ContainerTitleStyle;
-    Text: "";
+  Group #ContainerHeader {
+    LayoutMode: CenterMiddle;
+    Anchor: (Height: 24);
+
+    Label #ContainerTitle {
+      Style: (...@ContainerTitleStyle, VerticalAlignment: Center);
+      Text: "";
+      FlexWeight: 1;
+    }
+
+    Button #CollapseButton {
+      Anchor: (Width: 24, Height: 24);
+      LayoutMode: CenterMiddle;
+      Style: (
+        Default: (Background: (Color: #000000(0))),
+        Hovered: (Background: (Color: #ffffff(0.1))),
+        Pressed: (Background: (Color: #ffffff(0.2))),
+        Sounds: $Sounds.@ButtonsLight
+      );
+      TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+      TooltipText: %server.herbarium.ui.container.toggleCollapse;
+
+      // Image set at runtime by Java (#CollapseArrow.AssetPath): down arrow when
+      // expanded, right arrow when collapsed.
+      AssetImage #CollapseArrow {
+        Anchor: (Width: 12, Height: 16);
+        FallbackTexturePath: "UI/Custom/Pages/Memories/MissingIcon.png";
+      }
+    }
   }
+};
+
+// Body of a @TitledContainer: everything in here is hidden when collapsed.
+@ContainerBody = Group {
+  LayoutMode: Top;
 
   @Spacer {
     @Pad = Padding(Bottom: 8);

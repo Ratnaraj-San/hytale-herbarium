@@ -41,6 +41,15 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     private static final String TYPE_BACK = "Back";
     private static final String TYPE_COLLECT_REWARD = "CollectReward";
     private static final String TYPE_SHOW_INFO = "ShowInfo";
+    private static final String TYPE_TOGGLE_COLLAPSE = "ToggleCollapse";
+
+    /** Containers of the plant details panel that can be collapsed via #CollapseButton. */
+    private static final List<String> COLLAPSIBLE_CONTAINERS =
+            List.of("PlantContainerLocations", "PlantContainerObtainedFrom", "PlantContainerGives");
+
+    // Vanilla arrows: down = expanded, right = collapsed.
+    private static final String ARROW_EXPANDED = "UI/Custom/Common/ColorPickerDropdownBoxArrow@2x.png";
+    private static final String ARROW_COLLAPSED = "UI/Custom/Common/ContainerTitleArrow@2x.png";
     
     private static final String JOURNAL_NAME_KEY = "server.items.Herbarium_Journal.name";
     private static final String JOURNAL_DEV_NAME_KEY = "server.items.Herbarium_Journal_Dev.name";
@@ -71,6 +80,9 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
     private String selectedCategory;
     private String selectedPlant;
 
+    /** Ids of the collapsible containers currently collapsed (per open page instance). */
+    private final Set<String> collapsedContainers = new HashSet<>();
+
     private final boolean devView;
 
     public static final class PageEventData {
@@ -80,12 +92,15 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                                 PageEventData::setCategory, PageEventData::getCategory).add()
                         .append(new KeyedCodec<>("Plant", Codec.STRING),
                                 PageEventData::setPlant, PageEventData::getPlant).add()
+                        .append(new KeyedCodec<>("Container", Codec.STRING),
+                                PageEventData::setContainer, PageEventData::getContainer).add()
                         .append(new KeyedCodec<>("Type", Codec.STRING),
                                 PageEventData::setType, PageEventData::getType).add()
                         .build();
 
         private String category;
         private String plant;
+        private String container;
         private String type;
 
         public String getCategory() {
@@ -102,6 +117,14 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
 
         public void setPlant(String plant) {
             this.plant = plant;
+        }
+
+        public String getContainer() {
+            return container;
+        }
+
+        public void setContainer(String container) {
+            this.container = container;
         }
 
         public String getType() {
@@ -173,7 +196,19 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
                     setTileSelection(commands, newIndex, true);
                 }
                 PlantDetailsPanel.buildDetails(subjectRef, commands, events, selectedPlant, devView);
+                applyCollapseState(commands, events);
                 sendUpdate(commands, events, false);
+            }
+            case TYPE_TOGGLE_COLLAPSE -> {
+                String container = data.getContainer();
+                if (container != null && COLLAPSIBLE_CONTAINERS.contains(container)) {
+                    if (!collapsedContainers.remove(container)) {
+                        collapsedContainers.add(container);
+                    }
+                    UICommandBuilder commands = new UICommandBuilder();
+                    setContainerCollapsed(commands, container, collapsedContainers.contains(container));
+                    sendUpdate(commands, false);
+                }
             }
             case TYPE_BACK -> {
                 selectedCategory = null;
@@ -383,6 +418,31 @@ public class HerbariumUIPage extends InteractiveCustomUIPage<HerbariumUIPage.Pag
         );
 
         PlantDetailsPanel.buildDetails(subjectRef, commands, events, selectedPlant, devView);
+        applyCollapseState(commands, events);
+    }
+
+    /**
+     * Re-applies the collapsed state of every collapsible container and (re)binds
+     * their #CollapseButton. Called on every plant-view update so the bindings stay
+     * attached after the panel is rebuilt.
+     */
+    private void applyCollapseState(UICommandBuilder commands, UIEventBuilder events) {
+        for (String container : COLLAPSIBLE_CONTAINERS) {
+            events.addEventBinding(
+                    CustomUIEventBindingType.Activating,
+                    "#" + container + " #CollapseButton",
+                    new EventData()
+                            .append("Type", TYPE_TOGGLE_COLLAPSE)
+                            .append("Container", container)
+            );
+            setContainerCollapsed(commands, container, collapsedContainers.contains(container));
+        }
+    }
+
+    private static void setContainerCollapsed(UICommandBuilder commands, String container, boolean collapsed) {
+        String selector = "#" + container;
+        commands.set(selector + " #ContainerBody.Visible", !collapsed);
+        commands.set(selector + " #CollapseArrow.AssetPath", collapsed ? ARROW_COLLAPSED : ARROW_EXPANDED);
     }
 
     private void setTileSelection(UICommandBuilder commands, int index, boolean selected) {

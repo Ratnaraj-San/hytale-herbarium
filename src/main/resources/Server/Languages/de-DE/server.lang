@@ -27,6 +27,7 @@ herbarium.ui.category.vine = Lianen
 herbarium.ui.container.locations.title = Zu finden in:
 herbarium.ui.container.obtained_from.title = Erhalten durch
 herbarium.ui.container.gives.title = Gibt
+herbarium.ui.container.toggleCollapse = Einklappen / ausklappen
 herbarium.ui.locations.unknown = Fundort unbekannt
 herbarium.ui.plant.discoveredOn = Entdeckt am {date}
 herbarium.ui.plant.discoveredAt = Entdeckt am {date} bei ({place})

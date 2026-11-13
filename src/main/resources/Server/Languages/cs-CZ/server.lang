@@ -27,6 +27,7 @@ herbarium.ui.category.vine = Liany
 herbarium.ui.container.locations.title = Lze nalézt v:
 herbarium.ui.container.obtained_from.title = Získáno z
 herbarium.ui.container.gives.title = Dává
+herbarium.ui.container.toggleCollapse = Sbalit / rozbalit
 herbarium.ui.locations.unknown = Místo výskytu neznámé
 herbarium.ui.plant.discoveredOn = Nalezeno {date}
 herbarium.ui.plant.discoveredAt = Nalezeno {date} na ({place})

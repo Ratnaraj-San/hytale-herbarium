@@ -27,6 +27,7 @@ herbarium.ui.category.vine = Ліани
 herbarium.ui.container.locations.title = Зустрічається в:
 herbarium.ui.container.obtained_from.title = Отримано з
 herbarium.ui.container.gives.title = Дає
+herbarium.ui.container.toggleCollapse = Згорнути / розгорнути
 herbarium.ui.locations.unknown = Місцезнаходження невідоме
 herbarium.ui.plant.discoveredOn = Виявлено {date}
 herbarium.ui.plant.discoveredAt = Виявлено {date} біля ({place})

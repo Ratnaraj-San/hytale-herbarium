@@ -27,6 +27,7 @@ herbarium.ui.category.vine = Lianor
 herbarium.ui.container.locations.title = Finns i:
 herbarium.ui.container.obtained_from.title = Erhållen från
 herbarium.ui.container.gives.title = Ger
+herbarium.ui.container.toggleCollapse = Fäll in / fäll ut
 herbarium.ui.locations.unknown = Okänd plats
 herbarium.ui.plant.discoveredOn = Upptäckt {date}
 herbarium.ui.plant.discoveredAt = Upptäckt {date} vid ({place})
