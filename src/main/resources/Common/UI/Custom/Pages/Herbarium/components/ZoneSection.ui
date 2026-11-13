@@ -4,7 +4,8 @@ Group {
   LayoutMode: Top;
 
   $Herbarium.@SectionBox #ZoneSection {
-    @ListMode = Top;
+    @ListMode = LeftWrap;
+    @BoxPad = Padding(Horizontal: 8, Top: 16, Bottom: 8);
   }
 
   $Herbarium.@Spacer #ZoneSpacer {

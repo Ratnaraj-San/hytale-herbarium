@@ -26,7 +26,8 @@ public class PlantDetailsPanel {
     /** Same event as the LeftPanel tiles: opens that plant's page. */
     public static final String TYPE_SELECT_PLANT = "SelectPlant";
 
-    private static final String LOCATION_ENTRY_UI = "Pages/Herbarium/components/LocationEntry.ui";
+    private static final String LOCATION_TILE_UI = "Pages/Herbarium/components/LocationTile.ui";
+    private static final String REGION_IMAGE_DIR = "UI/Custom/Pages/Herbarium/textures/Locations/";
     private static final String ZONE_SECTION_UI = "Pages/Herbarium/components/ZoneSection.ui";
     private static final String INGREDIENT_TILE_UI = "Pages/Herbarium/components/IngredientTile.ui";
     private static final String PLANT_INGREDIENT_TILE_UI =
@@ -203,12 +204,32 @@ public class PlantDetailsPanel {
         commands.clear(list);
 
         for (int i = 0; i < entries.size(); i++) {
-            // First entry has no top spacer; the rest are spaced.
-            commands.append(list, LOCATION_ENTRY_UI);
-            commands.set(list + "[" + i + "] #TopSpacer.Visible", i > 0);
-            commands.set(
-                    list + "[" + i + "] #LocationText.Text", Message.translation(entries.get(i)));
+            String key = entries.get(i);
+            String entry = appendEntry(commands, list, LOCATION_TILE_UI, i);
+            // Region image when the pack has one for this key (textures/Locations/<suffix>.png)
+            String image = locationImagePath(key);
+
+            if (image != null) {
+                commands.set(entry + " #LocationImage.AssetPath", image);
+            } else {
+                commands.setNull(entry + " #LocationImage.AssetPath");
+            }
+
+            // The former text line becomes the tile's tooltip (translated name).
+            commands.set(entry + ".TooltipTextSpans", Message.translation(key));
         }
+    }
+
+    /**
+     * Maps a location translation key to its region image in this pack:
+     * "server.map.region.Zone1_Tier1" -> "UI/.../textures/Locations/Zone1_Tier1.png", when that
+     * file exists in the asset pack (checked on the classpath); null otherwise (the tile then
+     * shows its fallback icon, e.g. for portals without an image).
+     */
+    private static String locationImagePath(String translationKey) {
+        String suffix = translationKey.substring(translationKey.lastIndexOf('.') + 1);
+        String path = REGION_IMAGE_DIR + suffix + ".png";
+        return PlantDetailsPanel.class.getResource("/Common/" + path) != null ? path : null;
     }
 
     /**

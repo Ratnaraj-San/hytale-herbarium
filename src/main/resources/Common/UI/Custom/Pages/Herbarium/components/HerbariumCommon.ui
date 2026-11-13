@@ -372,3 +372,28 @@ $Sounds = "../../../Sounds.ui";
     }
   }
 };
+
+@LocationTile = Group {
+  @Width = 93;
+  @Height = 114;
+  @ImageWidth = 85;
+  @ImageHeight = 104;
+  @GapRight = 8;
+  @GapBottom = 8;
+
+  Anchor: (Width: @Width, Height: @Height, Right: @GapRight, Bottom: @GapBottom);
+  LayoutMode: Top;
+  Background: (TexturePath: "../textures/SectionBackground.png", Border: 8);
+  Padding: (Full: 0);
+  TextTooltipStyle: $Common.@DefaultTextTooltipStyle;
+  TooltipText: "";
+
+  Group {
+    LayoutMode: Middle;
+    FlexWeight: 1;
+
+    AssetImage #LocationImage {
+      Anchor: (Width: @ImageWidth, Height: @ImageHeight);
+    }
+  }
+};
