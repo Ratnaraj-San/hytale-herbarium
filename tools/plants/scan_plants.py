@@ -102,7 +102,15 @@ def main():
         drop = bool(own_drops) or any(dl in drop_path for dl in item_chain.drop_lists_of(plant_id))
         sources = []
         for src, flags in sorted(relations.get(plant_id, {}).items()):
-            sources.append({"id": src, **flags, "shears": item_chain.has_shears(src)})
+            # Shearing a source yields the SOURCE item itself, so a source relation via
+            # shears only holds for the plant itself (already shown in its own Interactions
+            # section). In particular, shearing a moss block drops the block, not the moss
+            # item — moss items come from breaking the block (drop), not shears.
+            sources.append({
+                "id": src,
+                **flags,
+                "shears": src == plant_id and item_chain.has_shears(src, drop_path),
+            })
         sources = cleanup_plant_sources(
             plant_id, sources, set(all_plants) | set(item_path),
             magical=item_chain.uses_crystal_fertilizer(plant_id, crop_ids),
@@ -115,7 +123,7 @@ def main():
             "drop": drop,
             "break": item_chain.has_break_drop(plant_id, drop_path),
             "collect": item_chain.has_collect_interaction(plant_id, drop_path),
-            "shears": item_chain.has_shears(plant_id),
+            "shears": item_chain.has_shears(plant_id, drop_path),
             "salvage": any(src == plant_id for src, _ in salvage_rel),
             "crafting": item_chain.own_recipe(plant_id) is not None,
             "has_location": any(locations[plant_id][k] for k in ("regions", "zones", "portals")),

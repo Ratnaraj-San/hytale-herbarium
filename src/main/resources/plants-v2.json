@@ -11443,7 +11443,7 @@
         },
         {
           "id": "Plant_Moss_Blue",
-          "shears": true,
+          "shears": false,
           "drop": true,
           "salvage": false,
           "collect": false,
@@ -11520,7 +11520,7 @@
         },
         {
           "id": "Plant_Moss_Green",
-          "shears": true,
+          "shears": false,
           "drop": true,
           "salvage": false,
           "collect": false,
@@ -11593,7 +11593,7 @@
         },
         {
           "id": "Plant_Moss_Green_Dark",
-          "shears": true,
+          "shears": false,
           "drop": true,
           "salvage": false,
           "collect": false,
@@ -11662,7 +11662,7 @@
         },
         {
           "id": "Plant_Moss_Red",
-          "shears": true,
+          "shears": false,
           "drop": true,
           "salvage": false,
           "collect": false,
@@ -11737,7 +11737,7 @@
         },
         {
           "id": "Plant_Moss_Yellow",
-          "shears": true,
+          "shears": false,
           "drop": true,
           "salvage": false,
           "collect": false,
@@ -11769,16 +11769,16 @@
         "plants": [
           {
             "id": "Plant_Moss_Block_Blue",
-            "shears": true,
+            "shears": false,
             "drop": true,
             "salvage": false
           }
         ],
         "crafting": null,
         "interactions": {
-          "break": false,
+          "break": true,
           "collect": false,
-          "shears": true
+          "shears": false
         },
         "other": []
       },
@@ -12117,16 +12117,16 @@
         "plants": [
           {
             "id": "Plant_Moss_Block_Green",
-            "shears": true,
+            "shears": false,
             "drop": true,
             "salvage": false
           }
         ],
         "crafting": null,
         "interactions": {
-          "break": false,
+          "break": true,
           "collect": false,
-          "shears": true
+          "shears": false
         },
         "other": []
       },
@@ -12210,16 +12210,16 @@
         "plants": [
           {
             "id": "Plant_Moss_Block_Green_Dark",
-            "shears": true,
+            "shears": false,
             "drop": true,
             "salvage": false
           }
         ],
         "crafting": null,
         "interactions": {
-          "break": false,
+          "break": true,
           "collect": false,
-          "shears": true
+          "shears": false
         },
         "other": []
       },
@@ -12282,16 +12282,16 @@
         "plants": [
           {
             "id": "Plant_Moss_Block_Red",
-            "shears": true,
+            "shears": false,
             "drop": true,
             "salvage": false
           }
         ],
         "crafting": null,
         "interactions": {
-          "break": false,
+          "break": true,
           "collect": false,
-          "shears": true
+          "shears": false
         },
         "other": []
       },
@@ -13098,16 +13098,16 @@
         "plants": [
           {
             "id": "Plant_Moss_Block_Yellow",
-            "shears": true,
+            "shears": false,
             "drop": true,
             "salvage": false
           }
         ],
         "crafting": null,
         "interactions": {
-          "break": false,
+          "break": true,
           "collect": false,
-          "shears": true
+          "shears": false
         },
         "other": []
       },

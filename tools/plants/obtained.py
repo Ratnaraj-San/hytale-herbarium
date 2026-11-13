@@ -204,6 +204,7 @@ class ItemChain:
     def __init__(self, assets, item_path):
         self.assets = assets
         self.item_path = item_path
+        self._soft_drop_ids = None
 
     def _data(self, plant_id):
         p = self.item_path.get(plant_id)
@@ -370,7 +371,11 @@ class ItemChain:
         - a Gathering.Breaking key in the Parent chain (no DropList -> the block
           drops itself when broken, e.gathering. cacti with hatchet), or
         - a Gathering.Soft key with no DropList (soft block drops itself, e.gathering. corals;
-          Soft.DropList "Empty" means breaking gives nothing, e.gathering. grasses)."""
+          Soft.DropList "Empty" means breaking gives nothing, e.gathering. grasses), or
+        - a Gathering.Soft DropList (anywhere in the Parent chain) whose drop file
+          contains ItemId == plant_id (e.gathering. moss: the Soft drop list of every
+          Plant_Moss_* variant points at Plant_Moss_Block_<Color>, which drops the moss
+          item -> breaking moss yields the moss item)."""
         for _, data in self._chain(plant_id):
             gathering = (data.get("BlockType") or {}).get("Gathering")
             if not isinstance(gathering, dict):
@@ -378,8 +383,17 @@ class ItemChain:
             if "Breaking" in gathering:
                 return True
             soft = gathering.get("Soft")
-            if isinstance(soft, dict) and not soft.get("DropList"):
-                return True
+            if isinstance(soft, dict):
+                if not soft.get("DropList"):
+                    return True
+                stem = soft["DropList"]
+                stem = stem[len("Drops_"):] if stem.startswith("Drops_") else stem
+                path = drop_path.get(stem)
+                if path:
+                    ids = set()
+                    collect_item_ids(self.assets.load_json(path) or {}, ids)
+                    if plant_id in ids:
+                        return True
         for stem, path in drop_path.items():
             if (stem == plant_id or stem.startswith(plant_id + "_")) and not stem.endswith("_Harvest"):
                 data = self.assets.load_json(path)
@@ -391,9 +405,37 @@ class ItemChain:
                     return True
         return False
 
-    def has_shears(self, plant_id):
-        """Shears = the Gathering.Tools chain includes Shears (shearing yields the item)."""
-        return "Shears" in self.tools_of(plant_id)
+    def _soft_drop_plant_ids(self, drop_path):
+        """Plant item ids appearing in any item's Gathering.Soft drop list (cached)."""
+        if self._soft_drop_ids is None:
+            ids = set()
+            for pid in self.item_path:
+                for _, data in self._chain(pid):
+                    gathering = (data.get("BlockType") or {}).get("Gathering")
+                    if not isinstance(gathering, dict):
+                        continue
+                    soft = gathering.get("Soft")
+                    if isinstance(soft, dict) and soft.get("DropList"):
+                        stem = soft["DropList"]
+                        stem = stem[len("Drops_"):] if stem.startswith("Drops_") else stem
+                        path = drop_path.get(stem)
+                        if path:
+                            collect_item_ids(self.assets.load_json(path) or {}, ids)
+            self._soft_drop_ids = {i for i in ids if PLANT_ID_RE.match(i)}
+        return self._soft_drop_ids
+
+    def has_shears(self, plant_id, drop_path=None):
+        """Shears = the Gathering.Tools chain includes Shears (shearing yields the item),
+        UNLESS the plant item appears in another item's Gathering.Soft drop list: then it is
+        obtained by soft-breaking that other plant, not by shearing itself. E.g. moss: moss
+        blocks drop the BLOCK itself when sheared ("moss blocks don't drop moss with shears,
+        they drop themselves"), and soft-breaking them drops the moss item — so only the
+        base moss items (Plant_Moss_<Color>) lose shears; the placeable variants keep it."""
+        if "Shears" not in self.tools_of(plant_id):
+            return False
+        if drop_path is not None and plant_id in self._soft_drop_plant_ids(drop_path):
+            return False
+        return True
 
 
 def drop_list_refs(item_path, item_chain):
