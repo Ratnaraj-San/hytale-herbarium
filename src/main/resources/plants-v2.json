@@ -525,6 +525,219 @@
         }
       },
       "gives": []
+    },
+    {
+      "id": "Plant_Crop_Berry_Block",
+      "obtainableInExplorationMode": true,
+      "locations": {
+        "regions": [
+          "server.map.region.Zone1_Tier1",
+          "server.map.region.Zone1_Tier2",
+          "server.map.region.Zone1_Tier3"
+        ],
+        "zones": [
+          "server.map.zone.Emerald_Wilds"
+        ],
+        "portals": []
+      },
+      "obtainedFrom": {
+        "plants": [
+          {
+            "id": "Plant_Crop_Berry_Stage1",
+            "shears": false,
+            "drop": true,
+            "salvage": false
+          },
+          {
+            "id": "Plant_Crop_Berry_Stage2",
+            "shears": false,
+            "drop": true,
+            "salvage": false
+          },
+          {
+            "id": "Plant_Crop_Berry_Stage3",
+            "shears": false,
+            "drop": true,
+            "salvage": false
+          }
+        ],
+        "crafting": null,
+        "interactions": {
+          "break": false,
+          "collect": true,
+          "shears": false
+        }
+      },
+      "gives": [
+        {
+          "id": "Ingredient_Fibre",
+          "shears": false,
+          "drop": true,
+          "salvage": false,
+          "collect": false,
+          "growth": false,
+          "magical": false,
+          "craft": false
+        },
+        {
+          "id": "Ingredient_Stick",
+          "shears": false,
+          "drop": true,
+          "salvage": false,
+          "collect": false,
+          "growth": false,
+          "magical": false,
+          "craft": false
+        },
+        {
+          "id": "Plant_Fruit_Berries_Red",
+          "shears": false,
+          "drop": true,
+          "salvage": false,
+          "collect": true,
+          "growth": false,
+          "magical": false,
+          "craft": false
+        }
+      ]
+    },
+    {
+      "id": "Plant_Crop_Berry_Wet_Block",
+      "obtainableInExplorationMode": true,
+      "locations": {
+        "regions": [],
+        "zones": [],
+        "portals": []
+      },
+      "obtainedFrom": {
+        "plants": [
+          {
+            "id": "Plant_Crop_Berry_Wet_Stage1",
+            "shears": false,
+            "drop": true,
+            "salvage": false
+          },
+          {
+            "id": "Plant_Crop_Berry_Wet_Stage2",
+            "shears": false,
+            "drop": true,
+            "salvage": false
+          },
+          {
+            "id": "Plant_Crop_Berry_Wet_Stage3",
+            "shears": false,
+            "drop": true,
+            "salvage": false
+          }
+        ],
+        "crafting": null,
+        "interactions": {
+          "break": false,
+          "collect": true,
+          "shears": false
+        }
+      },
+      "gives": [
+        {
+          "id": "Ingredient_Fibre",
+          "shears": false,
+          "drop": true,
+          "salvage": false,
+          "collect": false,
+          "growth": false,
+          "magical": false,
+          "craft": false
+        },
+        {
+          "id": "Ingredient_Stick",
+          "shears": false,
+          "drop": true,
+          "salvage": false,
+          "collect": false,
+          "growth": false,
+          "magical": false,
+          "craft": false
+        },
+        {
+          "id": "Plant_Fruit_Berries_Red",
+          "shears": false,
+          "drop": true,
+          "salvage": false,
+          "collect": true,
+          "growth": false,
+          "magical": false,
+          "craft": false
+        }
+      ]
+    },
+    {
+      "id": "Plant_Crop_Berry_Winter_Block",
+      "obtainableInExplorationMode": true,
+      "locations": {
+        "regions": [],
+        "zones": [],
+        "portals": []
+      },
+      "obtainedFrom": {
+        "plants": [
+          {
+            "id": "Plant_Crop_Berry_Winter_Stage1",
+            "shears": false,
+            "drop": true,
+            "salvage": false
+          },
+          {
+            "id": "Plant_Crop_Berry_Winter_Stage2",
+            "shears": false,
+            "drop": true,
+            "salvage": false
+          },
+          {
+            "id": "Plant_Crop_Berry_Winter_Stage3",
+            "shears": false,
+            "drop": true,
+            "salvage": false
+          }
+        ],
+        "crafting": null,
+        "interactions": {
+          "break": false,
+          "collect": true,
+          "shears": false
+        }
+      },
+      "gives": [
+        {
+          "id": "Ingredient_Fibre",
+          "shears": false,
+          "drop": true,
+          "salvage": false,
+          "collect": false,
+          "growth": false,
+          "magical": false,
+          "craft": false
+        },
+        {
+          "id": "Ingredient_Stick",
+          "shears": false,
+          "drop": true,
+          "salvage": false,
+          "collect": false,
+          "growth": false,
+          "magical": false,
+          "craft": false
+        },
+        {
+          "id": "Plant_Fruit_Berries_Red",
+          "shears": false,
+          "drop": true,
+          "salvage": false,
+          "collect": true,
+          "growth": false,
+          "magical": false,
+          "craft": false
+        }
+      ]
     }
   ],
   "Bramble": [
@@ -1789,219 +2002,6 @@
           "magical": false,
           "craft": true,
           "bench": "Bench_Farming"
-        }
-      ]
-    },
-    {
-      "id": "Plant_Crop_Berry_Block",
-      "obtainableInExplorationMode": true,
-      "locations": {
-        "regions": [
-          "server.map.region.Zone1_Tier1",
-          "server.map.region.Zone1_Tier2",
-          "server.map.region.Zone1_Tier3"
-        ],
-        "zones": [
-          "server.map.zone.Emerald_Wilds"
-        ],
-        "portals": []
-      },
-      "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Berry_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Berry_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Berry_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
-        "crafting": null,
-        "interactions": {
-          "break": false,
-          "collect": true,
-          "shears": false
-        }
-      },
-      "gives": [
-        {
-          "id": "Ingredient_Fibre",
-          "shears": false,
-          "drop": true,
-          "salvage": false,
-          "collect": false,
-          "growth": false,
-          "magical": false,
-          "craft": false
-        },
-        {
-          "id": "Ingredient_Stick",
-          "shears": false,
-          "drop": true,
-          "salvage": false,
-          "collect": false,
-          "growth": false,
-          "magical": false,
-          "craft": false
-        },
-        {
-          "id": "Plant_Fruit_Berries_Red",
-          "shears": false,
-          "drop": true,
-          "salvage": false,
-          "collect": true,
-          "growth": false,
-          "magical": false,
-          "craft": false
-        }
-      ]
-    },
-    {
-      "id": "Plant_Crop_Berry_Wet_Block",
-      "obtainableInExplorationMode": true,
-      "locations": {
-        "regions": [],
-        "zones": [],
-        "portals": []
-      },
-      "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Berry_Wet_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Berry_Wet_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Berry_Wet_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
-        "crafting": null,
-        "interactions": {
-          "break": false,
-          "collect": true,
-          "shears": false
-        }
-      },
-      "gives": [
-        {
-          "id": "Ingredient_Fibre",
-          "shears": false,
-          "drop": true,
-          "salvage": false,
-          "collect": false,
-          "growth": false,
-          "magical": false,
-          "craft": false
-        },
-        {
-          "id": "Ingredient_Stick",
-          "shears": false,
-          "drop": true,
-          "salvage": false,
-          "collect": false,
-          "growth": false,
-          "magical": false,
-          "craft": false
-        },
-        {
-          "id": "Plant_Fruit_Berries_Red",
-          "shears": false,
-          "drop": true,
-          "salvage": false,
-          "collect": true,
-          "growth": false,
-          "magical": false,
-          "craft": false
-        }
-      ]
-    },
-    {
-      "id": "Plant_Crop_Berry_Winter_Block",
-      "obtainableInExplorationMode": true,
-      "locations": {
-        "regions": [],
-        "zones": [],
-        "portals": []
-      },
-      "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Berry_Winter_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Berry_Winter_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Berry_Winter_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
-        "crafting": null,
-        "interactions": {
-          "break": false,
-          "collect": true,
-          "shears": false
-        }
-      },
-      "gives": [
-        {
-          "id": "Ingredient_Fibre",
-          "shears": false,
-          "drop": true,
-          "salvage": false,
-          "collect": false,
-          "growth": false,
-          "magical": false,
-          "craft": false
-        },
-        {
-          "id": "Ingredient_Stick",
-          "shears": false,
-          "drop": true,
-          "salvage": false,
-          "collect": false,
-          "growth": false,
-          "magical": false,
-          "craft": false
-        },
-        {
-          "id": "Plant_Fruit_Berries_Red",
-          "shears": false,
-          "drop": true,
-          "salvage": false,
-          "collect": true,
-          "growth": false,
-          "magical": false,
-          "craft": false
         }
       ]
     },

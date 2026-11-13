@@ -37,6 +37,7 @@ from obtained import (
     index_items,
     resolve_bench_items,
     sapling_prefab_links,
+    scan_crop_and_stage_ids,
     scan_salvage_relations,
 )
 
@@ -60,6 +61,7 @@ def main():
     bench_items = bench_item_map(az)
     binfo = bench_info(az)
     harvest_refs = drop_list_refs(item_path, chain)
+    crop_ids, stage_suffixes = scan_crop_and_stage_ids(az, item_path)
 
     # leaves (and any plant inside a tree prefab) are obtainable via the tree grown
     # from a craftable sapling: sapling -> Farming stages -> prefab -> leaves
@@ -92,8 +94,10 @@ def main():
             sources.append({"id": src, **flags, "shears": chain.has_shears(src)})
         sources = cleanup_plant_sources(
             pid, sources, set(all_plants) | set(item_path),
-            magical=chain.uses_crystal_fertilizer(pid),
+            magical=chain.uses_crystal_fertilizer(pid, crop_ids),
             harvest_refs=harvest_refs,
+            crop_ids=crop_ids,
+            stage_suffixes=stage_suffixes,
         )
         crafting = resolve_bench_items(chain.own_recipe(pid), bench_items)
 

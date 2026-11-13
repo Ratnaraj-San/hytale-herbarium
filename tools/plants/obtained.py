@@ -9,12 +9,12 @@ from assets_zip import (
     SALVAGE_RE,
     collect_item_ids,
 )
+from common import PLANTS_JSON, load_json_file
 
 
-# Category names follow src/main/resources/plants.json: all singular (Bush, Flower, ...).
+# Fallback for plant ids not yet listed in plants.json (v1): dir-name normalization
+# (all categories are singular: Bushes -> Bush) plus ID-prefix overrides.
 DIR_TO_CATEGORY = {"Bushes": "Bush", "Flowers": "Flower"}
-
-# ID-prefix overrides (checked before the directory name), matching plants.json categories.
 PREFIX_TO_CATEGORY = [
     ("Plant_Sapling", "Sapling"),
     ("Plant_Seeds_", "Seeds"),
@@ -27,25 +27,32 @@ PREFIX_TO_CATEGORY = [
 ]
 
 
-# Exact IDs that form their own family (brambles), matching plants.json.
-EXACT_TO_CATEGORY = {
-    "Plant_Bush_Bramble": "Bramble",
-    "Plant_Leaves_Bramble": "Bramble",
-}
+def load_plant_categories():
+    """plant item id -> category, read from plants.json (v1) — the source of truth
+    for category names. New plants missing from it fall back to categorize()."""
+    data = load_json_file(PLANTS_JSON)
+    out = {}
+    for cat, items in data.items():
+        if cat.startswith("_"):
+            continue
+        for it in items:
+            if isinstance(it, dict) and "id" in it:
+                out[it["id"]] = cat
+    return out
 
 
 def categorize(pid, dir_name):
-    if pid in EXACT_TO_CATEGORY:
-        return EXACT_TO_CATEGORY[pid]
     for prefix, cat in PREFIX_TO_CATEGORY:
         if pid.startswith(prefix):
             return cat
     return DIR_TO_CATEGORY.get(dir_name, dir_name)
 
 
-def index_items(names):
-    """item id -> (path, category). Category = dir under Items/Plant, normalized
-    to the singular names used by plants.json, with ID-prefix overrides."""
+def index_items(names, plant_categories=None):
+    """item id -> (path, category). Category comes from plants.json when known,
+    else from the dir/prefix fallback."""
+    if plant_categories is None:
+        plant_categories = load_plant_categories()
     item_path = {}
     item_category = {}
     for n in names:
@@ -54,7 +61,8 @@ def index_items(names):
             item_path[m.group(2)] = n
             parts = m.group(1).split("/")
             dir_name = parts[1] if parts[0] == "Plant" and len(parts) > 1 else parts[0]
-            item_category[m.group(2)] = categorize(m.group(2), dir_name)
+            item_category[m.group(2)] = plant_categories.get(
+                m.group(2), categorize(m.group(2), dir_name))
     return item_path, item_category
 
 
@@ -151,18 +159,19 @@ class ItemChain:
                             cur[flag] = True
         return out
 
-    def uses_crystal_fertilizer(self, pid):
-        """True when the plant needs Soil_Dirt_Crystal (drops Tool_Fertilizer_Crystal):
-        either the crop block Support requires it, or the seeds item has the
-        Seed_Condition_Crystal secondary interaction (only needed at stage 0)."""
+    def uses_crystal_fertilizer(self, pid, crop_ids=None):
+        """True when the plant needs a crystal soil (any Support BlockTypeId containing
+        "Crystal"), or when the matching seeds item has a crystal seed condition (any
+        interaction value containing "Crystal"). Both are detected by name pattern from
+        the game data instead of hard-coded ids."""
         for _, data in self._chain(pid):
             bt = data.get("BlockType") or {}
             support = bt.get("Support") or {}
             for face, blocks in support.items():
                 for b in blocks or []:
-                    if isinstance(b, dict) and b.get("BlockTypeId") == "Soil_Dirt_Crystal":
+                    if isinstance(b, dict) and "Crystal" in str(b.get("BlockTypeId") or ""):
                         return True
-        if pid.startswith("Plant_Crop_"):
+        if crop_ids is not None and pid in crop_ids or pid.startswith("Plant_Crop_"):
             base = pid[len("Plant_Crop_"):]
             for suffix in ("_Item", "_Block"):
                 if base.endswith(suffix):
@@ -171,7 +180,7 @@ class ItemChain:
             seeds = f"Plant_Seeds_{base}"
             for _, data in self._chain(seeds):
                 interactions = data.get("Interactions") or {}
-                if any("Seed_Condition_Crystal" in str(v) for v in interactions.values()):
+                if any("Crystal" in str(v) for v in interactions.values()):
                     return True
         return False
 
@@ -273,7 +282,53 @@ def drop_list_refs(item_path, chain):
     return {k: sorted(v) for k, v in refs.items()}
 
 
-def cleanup_plant_sources(pid, sources, known_ids, magical=False, harvest_refs=None):
+def scan_crop_and_stage_ids(az, item_path):
+    """Crop item ids (items whose BlockType has State.Definitions stages) and the set
+    of all stage names (Stage1, StageFinal, ...) — read from the game data instead of
+    hard-coding the "Plant_Crop_" prefix and the "_StageFinal" suffix."""
+    crops, stages = set(), set()
+    for pid, path in item_path.items():
+        if not PLANT_ID_RE.match(pid):
+            continue
+        data = az.load_json(path) or {}
+        states = ((data.get("BlockType") or {}).get("State") or {}).get("Definitions") or {}
+        if states:
+            # the item/block variants of the same crop share the family
+            base = pid
+            for suffix in ("_Item", "_Block"):
+                if pid.endswith(suffix):
+                    base = pid[: -len(suffix)]
+                    break
+            crops.update({base, base + "_Item", base + "_Block"})
+            stages.update(states.keys())
+    return crops, stages
+
+
+def is_crop(pid, crop_ids):
+    return pid in crop_ids if crop_ids is not None else pid.startswith("Plant_Crop_")
+
+
+def has_stage_suffix(sid, stage_suffixes):
+    return (
+        any(sid.endswith("_" + s) for s in stage_suffixes)
+        if stage_suffixes is not None
+        else "_StageFinal" in sid
+    )
+
+
+def is_crop_stage(sid, crop_ids, stage_suffixes):
+    """True for block-state ids of a crop (e.g. Plant_Crop_Carrot_StageFinal): the id
+    ends with a known stage name and its base (without the stage) is a known crop."""
+    if not has_stage_suffix(sid, stage_suffixes):
+        return False
+    for s in sorted(stage_suffixes or (), key=len, reverse=True):
+        if sid.endswith("_" + s):
+            return sid[: -(len(s) + 1)] in (crop_ids or set())
+    return "_StageFinal" in sid and sid.startswith("Plant_Crop_") if crop_ids is None else False
+
+
+def cleanup_plant_sources(pid, sources, known_ids, magical=False, harvest_refs=None,
+                          crop_ids=None, stage_suffixes=None):
     """Clean up obtainedFrom.plants: replace raw crop block-state sources
     (*_StageFinal / *_Harvest / *_StageN) by the growable source, flagged growth=True:
     - crop target  -> seeds bag (Plant_Seeds_<X>, + _Eternal variant when present)
@@ -305,7 +360,7 @@ def cleanup_plant_sources(pid, sources, known_ids, magical=False, harvest_refs=N
         add(s["id"], shears=s.get("shears", False), drop=s.get("drop", False),
             salvage=s.get("salvage", False))
 
-    if pid.startswith("Plant_Crop_"):
+    if is_crop(pid, crop_ids):
         base = pid[len("Plant_Crop_"):]
         for suffix in ("_Item", "_Block"):
             if base.endswith(suffix):
@@ -333,7 +388,7 @@ def cleanup_plant_sources(pid, sources, known_ids, magical=False, harvest_refs=N
             add(sapling, growth=True)
             for s in sources:
                 sid = s["id"]
-                if not (sid.startswith("Plant_Crop_") and "_StageFinal" in sid):
+                if not is_crop_stage(sid, crop_ids, stage_suffixes):
                     add(sid, growth=sid.startswith(("Plant_Sapling_", "Plant_Bush_")),
                         shears=s.get("shears", False), drop=s.get("drop", False),
                         salvage=s.get("salvage", False))
