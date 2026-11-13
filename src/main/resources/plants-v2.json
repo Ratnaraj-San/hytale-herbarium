@@ -541,164 +541,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Berry_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Berry_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Berry_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
-        "crafting": null,
-        "interactions": {
-          "break": false,
-          "collect": true,
-          "shears": false
-        }
-      },
-      "gives": [
-        {
-          "id": "Ingredient_Fibre",
-          "shears": false,
-          "drop": true,
-          "salvage": false,
-          "collect": false,
-          "growth": false,
-          "magical": false,
-          "craft": false
-        },
-        {
-          "id": "Ingredient_Stick",
-          "shears": false,
-          "drop": true,
-          "salvage": false,
-          "collect": false,
-          "growth": false,
-          "magical": false,
-          "craft": false
-        },
-        {
-          "id": "Plant_Fruit_Berries_Red",
-          "shears": false,
-          "drop": true,
-          "salvage": false,
-          "collect": true,
-          "growth": false,
-          "magical": false,
-          "craft": false
-        }
-      ]
-    },
-    {
-      "id": "Plant_Crop_Berry_Wet_Block",
-      "obtainableInExplorationMode": true,
-      "locations": {
-        "regions": [],
-        "zones": [],
-        "portals": []
-      },
-      "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Berry_Wet_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Berry_Wet_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Berry_Wet_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
-        "crafting": null,
-        "interactions": {
-          "break": false,
-          "collect": true,
-          "shears": false
-        }
-      },
-      "gives": [
-        {
-          "id": "Ingredient_Fibre",
-          "shears": false,
-          "drop": true,
-          "salvage": false,
-          "collect": false,
-          "growth": false,
-          "magical": false,
-          "craft": false
-        },
-        {
-          "id": "Ingredient_Stick",
-          "shears": false,
-          "drop": true,
-          "salvage": false,
-          "collect": false,
-          "growth": false,
-          "magical": false,
-          "craft": false
-        },
-        {
-          "id": "Plant_Fruit_Berries_Red",
-          "shears": false,
-          "drop": true,
-          "salvage": false,
-          "collect": true,
-          "growth": false,
-          "magical": false,
-          "craft": false
-        }
-      ]
-    },
-    {
-      "id": "Plant_Crop_Berry_Winter_Block",
-      "obtainableInExplorationMode": true,
-      "locations": {
-        "regions": [],
-        "zones": [],
-        "portals": []
-      },
-      "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Berry_Winter_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Berry_Winter_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Berry_Winter_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": null,
         "interactions": {
           "break": false,
@@ -4206,20 +4049,7 @@
         ]
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Mushroom_Boomshroom",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Mushroom_Boomshroom_Large",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": null,
         "interactions": {
           "break": false,
@@ -7840,124 +7670,6 @@
       ]
     },
     {
-      "id": "Plant_Fruit_Berries_Red",
-      "obtainableInExplorationMode": true,
-      "locations": {
-        "regions": [],
-        "zones": [],
-        "portals": []
-      },
-      "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Bush_Berry_Red",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Berry_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Berry_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Berry_Wet_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Berry_Wet_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Berry_Winter_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Berry_Winter_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
-        "crafting": null,
-        "interactions": {
-          "break": true,
-          "collect": true,
-          "shears": false
-        }
-      },
-      "gives": [
-        {
-          "id": "Deco_Trophy_Harvest",
-          "shears": false,
-          "drop": false,
-          "salvage": false,
-          "collect": false,
-          "growth": false,
-          "magical": false,
-          "craft": true,
-          "bench": "Bench_Farming"
-        },
-        {
-          "id": "Food_Salad_Berry",
-          "shears": false,
-          "drop": false,
-          "salvage": false,
-          "collect": false,
-          "growth": false,
-          "magical": false,
-          "craft": true,
-          "bench": "Bench_Cooking"
-        },
-        {
-          "id": "Potion_Health",
-          "shears": false,
-          "drop": false,
-          "salvage": false,
-          "collect": false,
-          "growth": false,
-          "magical": false,
-          "craft": true,
-          "bench": "Bench_Alchemy"
-        },
-        {
-          "id": "Potion_Health_Lesser",
-          "shears": false,
-          "drop": false,
-          "salvage": false,
-          "collect": false,
-          "growth": false,
-          "magical": false,
-          "craft": true,
-          "bench": "Bench_Alchemy"
-        },
-        {
-          "id": "Weapon_Bomb_Popberry",
-          "shears": false,
-          "drop": false,
-          "salvage": false,
-          "collect": false,
-          "growth": false,
-          "magical": false,
-          "craft": true,
-          "bench": "Bench_Alchemy"
-        }
-      ]
-    },
-    {
       "id": "Plant_Fruit_Coconut",
       "obtainableInExplorationMode": true,
       "locations": {
@@ -10316,16 +10028,7 @@
         ]
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Sapling_Poisoned",
-            "shears": false,
-            "drop": false,
-            "salvage": false,
-            "growth": true,
-            "magical": false
-          }
-        ],
+        "plants": [],
         "crafting": null,
         "interactions": {
           "break": false,
@@ -17382,26 +17085,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Aubergine_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Aubergine_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Aubergine_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -17467,44 +17151,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Aubergine_Eternal_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Aubergine_Eternal_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Aubergine_Eternal_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Aubergine_Eternal_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Aubergine_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Aubergine_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -17568,26 +17215,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Carrot_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Carrot_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Carrot_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -17653,44 +17281,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Carrot_Eternal_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Carrot_Eternal_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Carrot_Eternal_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Carrot_Eternal_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Carrot_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Carrot_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -17754,26 +17345,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Cauliflower_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cauliflower_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cauliflower_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -17839,44 +17411,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Cauliflower_Eternal_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cauliflower_Eternal_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cauliflower_Eternal_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cauliflower_Eternal_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cauliflower_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cauliflower_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -17940,38 +17475,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Chilli_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Chilli_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Chilli_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Chilli_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Chilli_Stage4",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -18037,56 +17541,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Chilli_Eternal_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Chilli_Eternal_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Chilli_Eternal_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Chilli_Eternal_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Chilli_Eternal_Stage4",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Chilli_Eternal_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Chilli_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Chilli_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -18150,32 +17605,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Corn_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Corn_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Corn_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Corn_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -18241,50 +17671,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Corn_Eternal_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Corn_Eternal_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Corn_Eternal_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Corn_Eternal_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Corn_Eternal_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Corn_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Corn_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -18348,32 +17735,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Cotton_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cotton_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cotton_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cotton_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -18439,50 +17801,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Cotton_Eternal_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cotton_Eternal_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cotton_Eternal_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cotton_Eternal_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cotton_Eternal_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cotton_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Cotton_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -18546,26 +17865,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Health1_Stage_0",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Health1_Stage_1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Health1_Stage_2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -18615,26 +17915,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Health2_Stage_0",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Health2_Stage_1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Health2_Stage_2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "Input": [
             {
@@ -18683,26 +17964,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Health3_Stage_0",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Health3_Stage_1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Health3_Stage_2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "Input": [
             {
@@ -18750,26 +18012,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Lettuce_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Lettuce_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Lettuce_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -18834,44 +18077,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Lettuce_Eternal_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Lettuce_Eternal_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Lettuce_Eternal_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Lettuce_Eternal_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Lettuce_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Lettuce_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -18935,26 +18141,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Mana1_Stage_0",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Mana1_Stage_1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Mana1_Stage_2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "Input": [
             {
@@ -19003,26 +18190,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Mana2_Stage_0",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Mana2_Stage_1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Mana2_Stage_2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "Input": [
             {
@@ -19071,26 +18239,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Mana3_Stage_0",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Mana3_Stage_1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Mana3_Stage_2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "Input": [
             {
@@ -19138,26 +18287,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Onion_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Onion_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Onion_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -19223,44 +18353,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Onion_Eternal_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Onion_Eternal_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Onion_Eternal_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Onion_Eternal_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Onion_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Onion_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -19380,32 +18473,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Potato_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Potato_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Potato_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Potato_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -19471,50 +18539,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Potato_Eternal_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Potato_Eternal_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Potato_Eternal_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Potato_Eternal_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Potato_Eternal_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Potato_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Potato_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -19578,32 +18603,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Pumpkin_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Pumpkin_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Pumpkin_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Pumpkin_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -19668,50 +18668,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Pumpkin_Eternal_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Pumpkin_Eternal_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Pumpkin_Eternal_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Pumpkin_Eternal_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Pumpkin_Eternal_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Pumpkin_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Pumpkin_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -19775,32 +18732,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Rice_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Rice_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Rice_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Rice_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -19866,50 +18798,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Rice_Eternal_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Rice_Eternal_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Rice_Eternal_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Rice_Eternal_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Rice_Eternal_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Rice_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Rice_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -19973,26 +18862,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Stamina1_Stage_0",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Stamina1_Stage_1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Stamina1_Stage_2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -20042,26 +18912,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Stamina2_Stage_0",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Stamina2_Stage_1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Stamina2_Stage_2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "Input": [
             {
@@ -20110,26 +18961,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Stamina3_Stage_0",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Stamina3_Stage_1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Stamina3_Stage_2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -20226,44 +19058,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Tomato_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Tomato_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Tomato_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Tomato_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Tomato_Stage4",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Tomato_Stage5",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -20329,62 +19124,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Tomato_Eternal_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Tomato_Eternal_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Tomato_Eternal_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Tomato_Eternal_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Tomato_Eternal_Stage4",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Tomato_Eternal_Stage5",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Tomato_Eternal_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Tomato_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Tomato_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -20448,32 +19188,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Turnip_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Turnip_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Turnip_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Turnip_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -20539,50 +19254,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Turnip_Eternal_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Turnip_Eternal_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Turnip_Eternal_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Turnip_Eternal_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Turnip_Eternal_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Turnip_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Turnip_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -20646,32 +19318,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Wheat_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Wheat_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Wheat_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Wheat_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [
@@ -20736,50 +19383,7 @@
         "portals": []
       },
       "obtainedFrom": {
-        "plants": [
-          {
-            "id": "Plant_Crop_Wheat_Eternal_Block",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Wheat_Eternal_Stage1",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Wheat_Eternal_Stage2",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Wheat_Eternal_Stage3",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Wheat_Eternal_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Wheat_StageFinal",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          },
-          {
-            "id": "Plant_Crop_Wheat_StageFinal_Harvest",
-            "shears": false,
-            "drop": true,
-            "salvage": false
-          }
-        ],
+        "plants": [],
         "crafting": {
           "TimeSeconds": 0,
           "Input": [

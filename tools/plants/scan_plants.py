@@ -89,21 +89,15 @@ def main():
     gives_map = defaultdict(lambda: defaultdict(
         lambda: {"shears": False, "drop": False, "salvage": False, "collect": False,
                  "growth": False, "magical": False, "craft": False, "bench": None}))
-    for plant_id in all_plants:
-        own_drops = [p for stem, p in drop_path.items() if stem == plant_id or stem.startswith(plant_id + "_")]
-        drop = bool(own_drops) or any(dl in drop_path for dl in item_chain.drop_lists_of(plant_id))
-        has_location = any(locations[plant_id][k] for k in ("regions", "zones", "portals"))
-        obtainable = (
-            has_location
-            and plant_id in item_path
-            and plant_id not in orphan_state_items
-            and (
-                drop
-                or item_chain.has_shears(plant_id)
-                or any(src == plant_id for src, _ in salvage_rel)
-            )
-        )
 
+    # Pass 1: raw signals and cleaned sources for every plant.
+    raw = {}
+    for plant_id in all_plants:
+        own_drops = [
+            p for stem, p in drop_path.items()
+            if stem == plant_id or stem.startswith(plant_id + "_")
+        ]
+        drop = bool(own_drops) or any(dl in drop_path for dl in item_chain.drop_lists_of(plant_id))
         sources = []
         for src, flags in sorted(relations.get(plant_id, {}).items()):
             sources.append({"id": src, **flags, "shears": item_chain.has_shears(src)})
@@ -114,6 +108,57 @@ def main():
             crop_ids=crop_ids,
             stage_suffixes=stage_suffixes,
         )
+        raw[plant_id] = {
+            "sources": sources,
+            "drop": drop,
+            "break": item_chain.has_break_drop(plant_id, drop_path),
+            "collect": item_chain.has_collect_interaction(plant_id, drop_path),
+            "shears": item_chain.has_shears(plant_id),
+            "salvage": any(src == plant_id for src, _ in salvage_rel),
+            "crafting": item_chain.own_recipe(plant_id) is not None,
+            "has_location": any(locations[plant_id][k] for k in ("regions", "zones", "portals")),
+        }
+
+    # Pass 2: fixpoint — a source is listed only if the source itself is obtainable, and a
+    # plant is obtainable only if it has an obtainable source, an interaction, or a recipe
+    # (plus a location, unless it is crafted). Block-states like *_Stage1 and other
+    # unobtainable items thus disappear from "Obtained from / Plants" automatically.
+    obtainable = {plant_id: True for plant_id in all_plants}
+    sources_by_id = {plant_id: list(raw[plant_id]["sources"]) for plant_id in all_plants}
+    while True:
+        changed = False
+        for plant_id in all_plants:
+            info = raw[plant_id]
+            kept = [s for s in sources_by_id[plant_id] if obtainable.get(s["id"])]
+            if kept != sources_by_id[plant_id]:
+                sources_by_id[plant_id] = kept
+                changed = True
+            value = (
+                plant_id in item_path
+                and plant_id not in orphan_state_items
+                and (bool(kept) or info["break"] or info["collect"] or info["shears"] or info["salvage"] or info["crafting"])
+                and (info["has_location"] or info["crafting"] or bool(kept))
+            )
+            if obtainable[plant_id] != value:
+                obtainable[plant_id] = value
+                changed = True
+        if not changed:
+            break
+    dropped = {
+        plant_id: sorted(
+            s["id"] for s in raw[plant_id]["sources"] if s not in sources_by_id[plant_id]
+        )
+        for plant_id in all_plants
+    }
+    dropped = {pid: ids for pid, ids in dropped.items() if ids}
+    if dropped:
+        print(f"Dropped {sum(len(v) for v in dropped.values())} unobtainable sources, e.g.:")
+        for pid, ids in list(dropped.items())[:10]:
+            print(f"  {pid} <- {ids}")
+
+    for plant_id in all_plants:
+        obtainable_flag = obtainable[plant_id]
+        sources = sources_by_id[plant_id]
         crafting = resolve_bench_items(item_chain.own_recipe(plant_id), bench_items)
 
         for s in sources:
@@ -128,9 +173,10 @@ def main():
             gives_entry["drop"] = gives_entry["drop"] or flags["drop"]
             gives_entry["collect"] = gives_entry["collect"] or flags["collect"]
 
+        info = raw[plant_id]
         result[item_category.get(plant_id, "Unknown")].append({
             "id": plant_id,
-            "obtainableInExplorationMode": obtainable,
+            "obtainableInExplorationMode": obtainable_flag,
             "locations": {
                 "regions": sorted({region_key(r) for r in locations[plant_id]["regions"]}),
                 "zones": sorted({zone_key_for_region(r) for r in locations[plant_id]["regions"]}),
@@ -140,9 +186,9 @@ def main():
                 "plants": sources,
                 "crafting": crafting,
                 "interactions": {
-                    "break": item_chain.has_break_drop(plant_id, drop_path),
-                    "collect": item_chain.has_collect_interaction(plant_id, drop_path),
-                    "shears": item_chain.has_shears(plant_id),
+                    "break": info["break"],
+                    "collect": info["collect"],
+                    "shears": info["shears"],
                 },
             },
         })
