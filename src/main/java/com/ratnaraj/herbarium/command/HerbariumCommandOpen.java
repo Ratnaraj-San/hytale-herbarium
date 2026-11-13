@@ -1,5 +1,7 @@
 package com.ratnaraj.herbarium.command;
 
+import javax.annotation.Nonnull;
+
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.Message;
@@ -13,10 +15,7 @@ import com.hypixel.hytale.server.core.permissions.HytalePermissions;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
-
 import com.ratnaraj.herbarium.Herbarium;
-
-import javax.annotation.Nonnull;
 
 public class HerbariumCommandOpen extends AbstractPlayerCommand {
 
@@ -37,8 +36,7 @@ public class HerbariumCommandOpen extends AbstractPlayerCommand {
             @Nonnull Store<EntityStore> store,
             @Nonnull Ref<EntityStore> ref,
             @Nonnull PlayerRef playerRef,
-            @Nonnull World world
-    ) {
+            @Nonnull World world) {
         PlayerRef targetRef = ctx.provided(playerArg) ? playerArg.get(ctx) : playerRef;
 
         CustomUIPage page = Herbarium.createJournalPage(targetRef, playerRef);

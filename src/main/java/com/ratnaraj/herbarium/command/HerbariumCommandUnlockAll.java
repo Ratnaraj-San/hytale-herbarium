@@ -1,5 +1,9 @@
 package com.ratnaraj.herbarium.command;
 
+import java.util.concurrent.CompletableFuture;
+
+import javax.annotation.Nonnull;
+
 import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.command.system.CommandContext;
 import com.hypixel.hytale.server.core.command.system.CommandSender;
@@ -8,11 +12,7 @@ import com.hypixel.hytale.server.core.command.system.arguments.types.ArgTypes;
 import com.hypixel.hytale.server.core.command.system.basecommands.AbstractAsyncCommand;
 import com.hypixel.hytale.server.core.permissions.HytalePermissions;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
-
 import com.ratnaraj.herbarium.Herbarium;
-
-import javax.annotation.Nonnull;
-import java.util.concurrent.CompletableFuture;
 
 public class HerbariumCommandUnlockAll extends AbstractAsyncCommand {
 
@@ -41,10 +41,8 @@ public class HerbariumCommandUnlockAll extends AbstractAsyncCommand {
 
         Herbarium.getPlayerStore().unlockAllPlayerMemories(targetRef);
 
-        ctx.sendMessage(Message
-                .translation(UNLOCK_ALL_DONE_KEY)
-                .param("player", targetRef.getUsername())
-        );
+        ctx.sendMessage(
+                Message.translation(UNLOCK_ALL_DONE_KEY).param("player", targetRef.getUsername()));
 
         return CompletableFuture.completedFuture(null);
     }

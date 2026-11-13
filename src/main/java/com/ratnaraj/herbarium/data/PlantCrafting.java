@@ -2,9 +2,7 @@ package com.ratnaraj.herbarium.data;
 
 import java.util.List;
 
-/**
- * Crafting recipe of a plant (from plants-v2.json obtainedFrom.crafting).
- */
+/** Crafting recipe of a plant (from plants-v2.json obtainedFrom.crafting). */
 public record PlantCrafting(List<Ingredient> inputs, List<Bench> benches, int outputQuantity) {
 
     public record Ingredient(String itemId, int quantity) {}

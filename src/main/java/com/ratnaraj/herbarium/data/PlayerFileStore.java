@@ -1,14 +1,5 @@
 package com.ratnaraj.herbarium.data;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
-import com.ratnaraj.herbarium.Herbarium;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -25,11 +16,18 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.ratnaraj.herbarium.Herbarium;
+
 /**
- * Persistence of player progression: one JSON file per player, holding the
- * journalOpened flag, the collected reward tiers and the plant memories.
- * Only knows how to read and write files; the in-memory state of players
- * lives in PlayerStore.
+ * Persistence of player progression: one JSON file per player, holding the journalOpened flag, the
+ * collected reward tiers and the plant memories. Only knows how to read and write files; the
+ * in-memory state of players lives in PlayerStore.
  */
 public class PlayerFileStore {
 
@@ -49,9 +47,10 @@ public class PlayerFileStore {
         try {
             Files.createDirectories(dataDirectory);
         } catch (IOException e) {
-            Herbarium.getInstance().getLogger().at(Level.SEVERE).log(
-                    "[Herbarium] Error creating data directory: " + e.getMessage()
-            );
+            Herbarium.getInstance()
+                    .getLogger()
+                    .at(Level.SEVERE)
+                    .log("[Herbarium] Error creating data directory: " + e.getMessage());
         }
     }
 
@@ -59,16 +58,15 @@ public class PlayerFileStore {
         return dataDirectory != null && Files.exists(dataDirectory);
     }
 
-    /**
-     * Loads every valid save file, skipping unreadable ones with a warning.
-     */
+    /** Loads every valid save file, skipping unreadable ones with a warning. */
     public Map<UUID, PlayerData> loadAll() {
         Map<UUID, PlayerData> loaded = new HashMap<>();
 
         if (!isInitialized()) {
-            Herbarium.getInstance().getLogger().at(Level.WARNING).log(
-                    "[Herbarium] Data directory not initialized, loading cancelled."
-            );
+            Herbarium.getInstance()
+                    .getLogger()
+                    .at(Level.WARNING)
+                    .log("[Herbarium] Data directory not initialized, loading cancelled.");
             return loaded;
         }
 
@@ -86,28 +84,34 @@ public class PlayerFileStore {
                         loaded.put(uuid, data);
                     }
                 } catch (IllegalArgumentException e) {
-                    Herbarium.getInstance().getLogger().at(Level.WARNING).log(
-                            "[Herbarium] Invalid memory file: " + file.getFileName()
-                    );
+                    Herbarium.getInstance()
+                            .getLogger()
+                            .at(Level.WARNING)
+                            .log("[Herbarium] Invalid memory file: " + file.getFileName());
                 } catch (Exception e) {
-                    Herbarium.getInstance().getLogger().at(Level.WARNING).log(
-                            "[Herbarium] Error loading " + file.getFileName() + ": " + e.getMessage()
-                    );
+                    Herbarium.getInstance()
+                            .getLogger()
+                            .at(Level.WARNING)
+                            .log(
+                                    "[Herbarium] Error loading "
+                                            + file.getFileName()
+                                            + ": "
+                                            + e.getMessage());
                 }
             }
         } catch (IOException e) {
-            Herbarium.getInstance().getLogger().at(Level.SEVERE).log(
-                    "[Herbarium] Error loading memories: " + e.getMessage()
-            );
+            Herbarium.getInstance()
+                    .getLogger()
+                    .at(Level.SEVERE)
+                    .log("[Herbarium] Error loading memories: " + e.getMessage());
         }
 
         return loaded;
     }
 
     /**
-     * Loads a player's progression from their file: the journalOpened
-     * flag, collected reward tiers and plant memories. Missing or
-     * corrupted files give a fresh progression.
+     * Loads a player's progression from their file: the journalOpened flag, collected reward tiers
+     * and plant memories. Missing or corrupted files give a fresh progression.
      */
     public PlayerData loadPlayer(UUID playerId) {
         Path file = getPlayerFile(playerId);
@@ -134,8 +138,9 @@ public class PlayerFileStore {
                 backupAsV1(file, playerId);
             }
 
-            boolean journalOpened = rootObject.has("journalOpened")
-                    && rootObject.get("journalOpened").getAsBoolean();
+            boolean journalOpened =
+                    rootObject.has("journalOpened")
+                            && rootObject.get("journalOpened").getAsBoolean();
 
             Set<PlantInfo> plants = new HashSet<>();
             for (JsonElement element : rootObject.getAsJsonArray("plants")) {
@@ -147,35 +152,55 @@ public class PlayerFileStore {
                 for (JsonElement element : rootObject.getAsJsonArray("collectedRewardTiers")) {
                     try {
                         JsonObject entry = element.getAsJsonObject();
-                        String collectedDate = entry.has("collectedDate")
-                                && !entry.get("collectedDate").isJsonNull()
-                                ? entry.get("collectedDate").getAsString() : "";
-                        String tierRewardsVersion = entry.has("rewardsVersion")
-                                && entry.get("rewardsVersion").isJsonPrimitive()
-                                ? entry.get("rewardsVersion").getAsString() : "1.0.0";
-                        tiers.put(entry.get("tier").getAsInt(),
+                        String collectedDate =
+                                entry.has("collectedDate")
+                                                && !entry.get("collectedDate").isJsonNull()
+                                        ? entry.get("collectedDate").getAsString()
+                                        : "";
+                        String tierRewardsVersion =
+                                entry.has("rewardsVersion")
+                                                && entry.get("rewardsVersion").isJsonPrimitive()
+                                        ? entry.get("rewardsVersion").getAsString()
+                                        : "1.0.0";
+                        tiers.put(
+                                entry.get("tier").getAsInt(),
                                 new PlayerData.CollectedTier(collectedDate, tierRewardsVersion));
                     } catch (ClassCastException | IllegalStateException | NullPointerException e) {
-                        Herbarium.getInstance().getLogger().at(Level.WARNING).log(
-                                "[Herbarium] Invalid collected reward tier for " + playerId + ": " + element
-                        );
+                        Herbarium.getInstance()
+                                .getLogger()
+                                .at(Level.WARNING)
+                                .log(
+                                        "[Herbarium] Invalid collected reward tier for "
+                                                + playerId
+                                                + ": "
+                                                + element);
                     }
                 }
             }
 
             Map<Integer, Set<String>> claimedCompensations = new ConcurrentHashMap<>();
-            if (rootObject.has("claimedCompensations") && rootObject.get("claimedCompensations").isJsonObject()) {
-                for (Map.Entry<String, JsonElement> entry : rootObject.getAsJsonObject("claimedCompensations").entrySet()) {
+            if (rootObject.has("claimedCompensations")
+                    && rootObject.get("claimedCompensations").isJsonObject()) {
+                for (Map.Entry<String, JsonElement> entry :
+                        rootObject.getAsJsonObject("claimedCompensations").entrySet()) {
                     try {
                         Set<String> versions = new HashSet<>();
                         for (JsonElement version : entry.getValue().getAsJsonArray()) {
                             versions.add(version.getAsString());
                         }
                         claimedCompensations.put(Integer.parseInt(entry.getKey()), versions);
-                    } catch (ClassCastException | IllegalStateException | NullPointerException | NumberFormatException e) {
-                        Herbarium.getInstance().getLogger().at(Level.WARNING).log(
-                                "[Herbarium] Invalid claimed compensation for " + playerId + ": " + entry
-                        );
+                    } catch (ClassCastException
+                            | IllegalStateException
+                            | NullPointerException
+                            | NumberFormatException e) {
+                        Herbarium.getInstance()
+                                .getLogger()
+                                .at(Level.WARNING)
+                                .log(
+                                        "[Herbarium] Invalid claimed compensation for "
+                                                + playerId
+                                                + ": "
+                                                + entry);
                     }
                 }
             }
@@ -190,19 +215,24 @@ public class PlayerFileStore {
             Set<PlantInfo> merged = new HashSet<>();
             for (PlantInfo catalogPlant : catalog.getAllPlants().values()) {
                 PlantInfo previous = memoriesFromFile.get(catalogPlant.getId());
-                merged.add(previous != null ? previous : new PlantInfo(catalogPlant.getId(), "", false));
+                merged.add(
+                        previous != null
+                                ? previous
+                                : new PlantInfo(catalogPlant.getId(), "", false));
             }
 
             return new PlayerData(merged, tiers, claimedCompensations, journalOpened);
         } catch (IOException e) {
-            Herbarium.getInstance().getLogger().at(Level.WARNING).log(
-                    "[Herbarium] Error reading file for " + playerId + ": " + e.getMessage()
-            );
+            Herbarium.getInstance()
+                    .getLogger()
+                    .at(Level.WARNING)
+                    .log("[Herbarium] Error reading file for " + playerId + ": " + e.getMessage());
             return newPlayerData();
         } catch (Exception e) {
-            Herbarium.getInstance().getLogger().at(Level.WARNING).log(
-                    "[Herbarium] Corrupted memory file for " + playerId + ", reinitializing"
-            );
+            Herbarium.getInstance()
+                    .getLogger()
+                    .at(Level.WARNING)
+                    .log("[Herbarium] Corrupted memory file for " + playerId + ", reinitializing");
             return newPlayerData();
         }
     }
@@ -220,7 +250,8 @@ public class PlayerFileStore {
             root.addProperty("pluginVersion", Herbarium.getPluginVersion());
             root.addProperty("journalOpened", data.hasOpenedJournal());
 
-            Map<Integer, PlayerData.CollectedTier> collected = new TreeMap<>(data.getCollectedRewardTiers());
+            Map<Integer, PlayerData.CollectedTier> collected =
+                    new TreeMap<>(data.getCollectedRewardTiers());
             JsonArray collectedArray = new JsonArray();
             for (Map.Entry<Integer, PlayerData.CollectedTier> entry : collected.entrySet()) {
                 JsonObject collectedEntry = new JsonObject();
@@ -254,9 +285,14 @@ public class PlayerFileStore {
             root.add("plants", jsonArray);
             writer.write(gson.toJson(root));
         } catch (IOException e) {
-            Herbarium.getInstance().getLogger().at(Level.SEVERE).log(
-                    "[Herbarium] Error saving memories for " + playerId + ": " + e.getMessage()
-            );
+            Herbarium.getInstance()
+                    .getLogger()
+                    .at(Level.SEVERE)
+                    .log(
+                            "[Herbarium] Error saving memories for "
+                                    + playerId
+                                    + ": "
+                                    + e.getMessage());
         }
     }
 
@@ -265,22 +301,31 @@ public class PlayerFileStore {
     }
 
     /**
-     * A save file without pluginVersion predates versioned saves: keep an
-     * untouched copy as v1.<uuid>.json so the player can roll back by
-     * deleting the new file and renaming the backup. The current version is
-     * stamped on the file at the next save.
+     * A save file without pluginVersion predates versioned saves: keep an untouched copy as
+     * v1.<uuid>.json so the player can roll back by deleting the new file and renaming the backup.
+     * The current version is stamped on the file at the next save.
      */
     private void backupAsV1(Path file, UUID playerId) {
         try {
             Path backup = dataDirectory.resolve(V1_BACKUP_PREFIX + file.getFileName());
             Files.copy(file, backup, StandardCopyOption.REPLACE_EXISTING);
-            Herbarium.getInstance().getLogger().at(Level.INFO).log(
-                    "[Herbarium] Save of " + playerId + " had no pluginVersion, backed up as " + backup.getFileName()
-            );
+            Herbarium.getInstance()
+                    .getLogger()
+                    .at(Level.INFO)
+                    .log(
+                            "[Herbarium] Save of "
+                                    + playerId
+                                    + " had no pluginVersion, backed up as "
+                                    + backup.getFileName());
         } catch (IOException e) {
-            Herbarium.getInstance().getLogger().at(Level.WARNING).log(
-                    "[Herbarium] Could not create v1 backup for " + playerId + ": " + e.getMessage()
-            );
+            Herbarium.getInstance()
+                    .getLogger()
+                    .at(Level.WARNING)
+                    .log(
+                            "[Herbarium] Could not create v1 backup for "
+                                    + playerId
+                                    + ": "
+                                    + e.getMessage());
         }
     }
 
@@ -297,10 +342,14 @@ public class PlayerFileStore {
         JsonObject jsonObject = element.getAsJsonObject();
         String id = jsonObject.get("id").getAsString();
         boolean wasDiscovered = jsonObject.get("wasDiscovered").getAsBoolean();
-        String discoveredDate = jsonObject.has("discoveredDate") && !jsonObject.get("discoveredDate").isJsonNull()
-                ? jsonObject.get("discoveredDate").getAsString() : null;
-        String discoveredPlace = jsonObject.has("discoveredPlace") && !jsonObject.get("discoveredPlace").isJsonNull()
-                ? jsonObject.get("discoveredPlace").getAsString() : null;
+        String discoveredDate =
+                jsonObject.has("discoveredDate") && !jsonObject.get("discoveredDate").isJsonNull()
+                        ? jsonObject.get("discoveredDate").getAsString()
+                        : null;
+        String discoveredPlace =
+                jsonObject.has("discoveredPlace") && !jsonObject.get("discoveredPlace").isJsonNull()
+                        ? jsonObject.get("discoveredPlace").getAsString()
+                        : null;
         return new PlantInfo(id, "", wasDiscovered, discoveredDate, discoveredPlace);
     }
 }

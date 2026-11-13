@@ -1,10 +1,5 @@
 package com.ratnaraj.herbarium.data;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.ratnaraj.herbarium.Herbarium;
-
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -15,13 +10,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.ratnaraj.herbarium.Herbarium;
+
 public class PlantLocationsV2 {
 
-    public static final PlantLocationsV2 EMPTY = new PlantLocationsV2(
-            Collections.emptyList(),
-            Collections.emptyList(),
-            Collections.emptyList()
-    );
+    public static final PlantLocationsV2 EMPTY =
+            new PlantLocationsV2(
+                    Collections.emptyList(), Collections.emptyList(), Collections.emptyList());
 
     public static final Map<String, List<String>> REGIONS_BY_ZONE = loadRegionsByZone();
 
@@ -56,12 +54,10 @@ public class PlantLocationsV2 {
 
             return Collections.unmodifiableMap(sorted);
         } catch (Exception e) {
-            Herbarium
-                    .getInstance()
+            Herbarium.getInstance()
                     .getLogger()
                     .at(Level.WARNING)
-                    .log("[Herbarium] Failed to load regions-by-zone.json: " + e.getMessage())
-            ;
+                    .log("[Herbarium] Failed to load regions-by-zone.json: " + e.getMessage());
 
             return Map.of();
         }
@@ -70,7 +66,8 @@ public class PlantLocationsV2 {
     /** Zone number from its first ZoneN_* region; Integer.MAX_VALUE when none (e.g. Oceans). */
     private static int zoneOrder(List<String> regions) {
         for (String region : regions) {
-            java.util.regex.Matcher m = java.util.regex.Pattern.compile("Zone(\\d+)_").matcher(region);
+            java.util.regex.Matcher m =
+                    java.util.regex.Pattern.compile("Zone(\\d+)_").matcher(region);
             if (m.find()) {
                 return Integer.parseInt(m.group(1));
             }

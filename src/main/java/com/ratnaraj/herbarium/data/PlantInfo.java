@@ -11,8 +11,12 @@ public class PlantInfo {
         this(id, plantName, wasDiscovered, null, null);
     }
 
-    public PlantInfo(String id, String plantName, boolean wasDiscovered,
-                     String discoveredDate, String discoveredPlace) {
+    public PlantInfo(
+            String id,
+            String plantName,
+            boolean wasDiscovered,
+            String discoveredDate,
+            String discoveredPlace) {
         this.id = id;
         this.plantName = plantName;
         this.wasDiscovered = wasDiscovered;
@@ -32,24 +36,24 @@ public class PlantInfo {
         return wasDiscovered;
     }
 
-    /**
-     * ISO-8601 instant of the discovery, or null if unknown or not discovered.
-     */
+    /** ISO-8601 instant of the discovery, or null if unknown or not discovered. */
     public String getDiscoveredDate() {
         return discoveredDate;
     }
 
-    /**
-     * Human-readable coordinates of the discovery, or null if unknown.
-     */
+    /** Human-readable coordinates of the discovery, or null if unknown. */
     public String getDiscoveredPlace() {
         return discoveredPlace;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         PlantInfo that = (PlantInfo) o;
         return id.equals(that.id);
     }

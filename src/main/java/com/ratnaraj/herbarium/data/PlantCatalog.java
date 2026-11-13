@@ -1,15 +1,20 @@
 package com.ratnaraj.herbarium.data;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.ratnaraj.herbarium.Herbarium;
-
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.*;
-import java.util.logging.Level;
 
 public final class PlantCatalog {
 
@@ -26,7 +31,8 @@ public final class PlantCatalog {
         try {
             InputStream is = getClass().getResourceAsStream("/plants.json");
             if (is != null) {
-                JsonObject config = JsonParser.parseReader(new InputStreamReader(is)).getAsJsonObject();
+                JsonObject config =
+                        JsonParser.parseReader(new InputStreamReader(is)).getAsJsonObject();
                 for (String category : config.keySet()) {
                     JsonArray items = config.getAsJsonArray(category);
                     List<String> categoryPlants = new ArrayList<>();
@@ -34,8 +40,9 @@ public final class PlantCatalog {
                         JsonObject item = element.getAsJsonObject();
                         String id = item.get("id").getAsString();
 
-                        boolean obtainable = !item.has("obtainableInExplorationMode")
-                                || item.get("obtainableInExplorationMode").getAsBoolean();
+                        boolean obtainable =
+                                !item.has("obtainableInExplorationMode")
+                                        || item.get("obtainableInExplorationMode").getAsBoolean();
                         if (!obtainable) {
                             continue;
                         }
@@ -55,14 +62,19 @@ public final class PlantCatalog {
                         plantCategories.put(category, Collections.unmodifiableList(categoryPlants));
                     }
                 }
-                Herbarium.getInstance().getLogger().at(Level.INFO).log(
-                        "[Herbarium] Loaded " + plants.size() + " obtainable plants from plants.json"
-                );
+                Herbarium.getInstance()
+                        .getLogger()
+                        .at(Level.INFO)
+                        .log(
+                                "[Herbarium] Loaded "
+                                        + plants.size()
+                                        + " obtainable plants from plants.json");
             }
         } catch (Exception e) {
-            Herbarium.getInstance().getLogger().at(Level.WARNING).log(
-                    "[Herbarium] Failed to load plants.json: " + e.getMessage()
-            );
+            Herbarium.getInstance()
+                    .getLogger()
+                    .at(Level.WARNING)
+                    .log("[Herbarium] Failed to load plants.json: " + e.getMessage());
         }
         return Collections.unmodifiableMap(plants);
     }
@@ -88,9 +100,10 @@ public final class PlantCatalog {
     }
 
     public boolean isPlantItem(String itemId) {
-        if (itemId == null) return false;
+        if (itemId == null) {
+            return false;
+        }
 
         return itemId.startsWith("Plant_");
     }
-
 }

@@ -1,5 +1,7 @@
 package com.ratnaraj.herbarium.command;
 
+import javax.annotation.Nonnull;
+
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.Message;
@@ -16,8 +18,6 @@ import com.hypixel.hytale.server.core.permissions.HytalePermissions;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
-
-import javax.annotation.Nonnull;
 
 public class HerbariumCommandGive extends AbstractPlayerCommand {
 
@@ -44,8 +44,7 @@ public class HerbariumCommandGive extends AbstractPlayerCommand {
             @Nonnull Store<EntityStore> store,
             @Nonnull Ref<EntityStore> ref,
             @Nonnull PlayerRef playerRef,
-            @Nonnull World world
-    ) {
+            @Nonnull World world) {
         PlayerRef target = ctx.provided(playerArg) ? playerArg.get(ctx) : playerRef;
         Boolean developer = ctx.provided(developerFlag);
 
@@ -60,20 +59,23 @@ public class HerbariumCommandGive extends AbstractPlayerCommand {
         World targetWorld = targetStore.getExternalData().getWorld();
 
         // The target may be in another world: inventory access must run on that world's thread.
-        targetWorld.execute(() -> {
-            CombinedItemContainer container = InventoryComponent.getCombined(targetStore, targetRef, InventoryComponent.HOTBAR_FIRST);
+        targetWorld.execute(
+                () -> {
+                    CombinedItemContainer container =
+                            InventoryComponent.getCombined(
+                                    targetStore, targetRef, InventoryComponent.HOTBAR_FIRST);
 
-            String journalId = developer ? "Herbarium_Journal_Dev" : "Herbarium_Journal";
+                    String journalId = developer ? "Herbarium_Journal_Dev" : "Herbarium_Journal";
 
-            ItemStack journal = new ItemStack(journalId, 1);
+                    ItemStack journal = new ItemStack(journalId, 1);
 
-            SimpleItemContainer.addOrDropItemStack(targetStore, targetRef, container, journal);
+                    SimpleItemContainer.addOrDropItemStack(
+                            targetStore, targetRef, container, journal);
 
-            ctx.sendMessage(Message
-                    .translation(GIVE_DONE_KEY)
-                    .param("journal", Message.translation(JOURNAL_NAME_KEY))
-                    .param("player", target.getUsername())
-            );
-        });
+                    ctx.sendMessage(
+                            Message.translation(GIVE_DONE_KEY)
+                                    .param("journal", Message.translation(JOURNAL_NAME_KEY))
+                                    .param("player", target.getUsername()));
+                });
     }
 }
