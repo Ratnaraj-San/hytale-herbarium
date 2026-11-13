@@ -401,7 +401,9 @@ def scan_locations(az):
             print("   ", pid)
 
     # Tree leaves are only ever placed as part of a tree prefab: their locations
-    # come exclusively from prefab contents, not from mask allowlists.
+    # come exclusively from prefab contents, not from mask allowlists. "Plant_Leaves_"
+    # is a vanilla naming convention (no structural marker in item JSON distinguishes
+    # leaves from fruits in the same tree prefab), so the prefix stays.
     for pid in list(loc):
         if pid.startswith("Plant_Leaves_"):
             backed = prefab_backed.get(pid) or {"regions": set(), "zones": set(), "portals": set()}
