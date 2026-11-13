@@ -31,8 +31,9 @@ public final class HerbariumRewards {
                             2, List.of(new Reward("Potion_Poison", 4)),
                             3, List.of(new Reward("Potion_Regen_Mana", 4)),
                             5, List.of(new Reward("Potion_Regen_Health", 4)),
-                            6, List.of(new Reward("Potion_Regen_Stamina", 4)),
-                            8, List.of(new Reward("Potion_Mana", 5))));
+                            6, List.of(new Reward("Potion_Regen_Stamina", 4))
+                    )
+            );
 
     /**
      * Compares two "x.y.z" version strings segment by segment ("2.0.10" > "2.0.9"). Returns a
@@ -158,15 +159,23 @@ public final class HerbariumRewards {
                                     new Reward("Ingredient_Spices", 25),
                                     new Reward("Ingredient_Life_Essence_Concentrated", 32)),
                     8,
-                            List.of(
-                                    new Reward("Potion_Mana", 5),
-                                    new Reward("Food_Pie_Pumpkin", 25),
-                                    new Reward("Ingredient_Life_Essence_Concentrated", 64)),
-                    9,
-                            List.of(
-                                    new Reward("Deco_Trophy_Harvest", 1),
-                                    new Reward("Tool_Repair_Kit_Goblin", 25),
-                                    new Reward("Ingredient_Life_Essence_Concentrated", 100)));
+                    List.of(
+                            new Reward("Deco_Trophy_Harvest", 5),
+                            new Reward("Food_Pie_Pumpkin", 25),
+                            new Reward("Ingredient_Life_Essence_Concentrated", 64))
+
+//                    Will serve when total plants >= 450
+//                    8,
+//                            List.of(
+//                                    new Reward("Potion_Mana", 5),
+//                                    new Reward("Food_Pie_Pumpkin", 25),
+//                                    new Reward("Ingredient_Life_Essence_Concentrated", 64)),
+//                    9,
+//                            List.of(
+//                                    new Reward("Deco_Trophy_Harvest", 1),
+//                                    new Reward("Tool_Repair_Kit_Goblin", 25),
+//                                    new Reward("Ingredient_Life_Essence_Concentrated", 100))
+            );
 
     public static int getTierThreshold(int tier) {
         return tier * TIER_SIZE;
